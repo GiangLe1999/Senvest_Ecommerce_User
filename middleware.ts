@@ -1,0 +1,13 @@
+import createMiddleware from "next-intl/middleware";
+
+export default createMiddleware({
+  locales: ["vi", "en"],
+
+  // Used when no locale matches
+  defaultLocale: "vi",
+});
+
+export const config = {
+  // Match only internationalized pathnames
+  matcher: ["/", "/(vi|en)/:path*"],
+};
