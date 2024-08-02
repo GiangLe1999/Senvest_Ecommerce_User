@@ -4,7 +4,6 @@ import SloganCarousel from "./slogan-carousel";
 import LanguageSwitcher from "./language-switcher";
 import { getSlogans } from "@/queries/slogans.queries";
 import { Slogan } from "@/entities/slogan.entity";
-export const revalidate = 10;
 
 interface Props {}
 
