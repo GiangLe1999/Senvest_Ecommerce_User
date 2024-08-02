@@ -8,14 +8,14 @@ import { Slogan } from "@/entities/slogan.entity";
 interface Props {}
 
 const Header: FC<Props> = async (props): Promise<JSX.Element> => {
-  const { data } = await getSlogans();
+  const { slogans } = await getSlogans();
   return (
     <header>
       <div className="bg-primary">
         <SectionContainer className="grid grid-cols-12 h-10">
           <div className="col-span-3" />
           <div className="col-span-6">
-            <SloganCarousel slogans={data.slogans as Slogan[]} />
+            <SloganCarousel slogans={slogans as Slogan[]} />
           </div>
           <div className="col-span-3">
             <LanguageSwitcher />
