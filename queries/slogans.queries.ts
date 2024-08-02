@@ -1,6 +1,3 @@
-"use server";
-export const revalidate = 0;
-
 import { publicAxiosInstance } from "@/configs/axios";
 
 export const getSlogans = async () => {
