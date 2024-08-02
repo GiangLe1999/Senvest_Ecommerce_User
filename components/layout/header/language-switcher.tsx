@@ -6,12 +6,14 @@ import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/configs/i18n-navigation";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+
 import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+  HybridTooltip,
+  HybridTooltipContent,
+  HybridTooltipTrigger,
+  TouchProvider,
+} from "@/components/hybrid-tooltip";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 interface Props {}
 
@@ -48,32 +50,34 @@ const LanguageSwitcher: FC<Props> = (props): JSX.Element => {
 
   return (
     <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger className="w-fit h-full ml-auto text-white text-xs uppercase flex items-center cursor-pointer">
-          {locale === "vi" ? "Tiếng Việt" : "English"}
-          <ChevronDown className="h-3 w-3 ml-1" />
-        </TooltipTrigger>
-        <TooltipContent className="p-0">
-          <ul className="text-muted text-xs">
-            <li
-              className={cn(
-                "py-2 px-4 hover:text-primary hover:bg-primary/10 transition rounded-t-sm",
-                locale === "en" && "text-primary font-bold"
-              )}
-            >
-              <button onClick={changeLocaleHandler}>{t("en")}</button>
-            </li>
-            <li
-              className={cn(
-                "py-2 px-4 hover:text-primary hover:bg-primary/10 transition rounded-b-sm",
-                locale === "vi" && "text-primary font-bold"
-              )}
-            >
-              <button onClick={changeLocaleHandler}>{t("vi")}</button>
-            </li>
-          </ul>
-        </TooltipContent>
-      </Tooltip>
+      <TouchProvider>
+        <HybridTooltip>
+          <HybridTooltipTrigger className="w-fit h-full ml-auto text-white text-xs uppercase flex items-center cursor-pointer">
+            {locale === "vi" ? "Tiếng Việt" : "English"}
+            <ChevronDown className="h-3 w-3 ml-1" />
+          </HybridTooltipTrigger>
+          <HybridTooltipContent className="p-0">
+            <ul className="text-muted text-xs">
+              <li
+                className={cn(
+                  "py-2 px-4 hover:text-primary hover:bg-primary/10 transition rounded-t-sm",
+                  locale === "en" && "text-primary font-bold"
+                )}
+              >
+                <button onClick={changeLocaleHandler}>{t("en")}</button>
+              </li>
+              <li
+                className={cn(
+                  "py-2 px-4 hover:text-primary hover:bg-primary/10 transition rounded-b-sm",
+                  locale === "vi" && "text-primary font-bold"
+                )}
+              >
+                <button onClick={changeLocaleHandler}>{t("vi")}</button>
+              </li>
+            </ul>
+          </HybridTooltipContent>
+        </HybridTooltip>
+      </TouchProvider>
     </TooltipProvider>
   );
 };

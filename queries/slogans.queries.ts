@@ -1,9 +1,8 @@
 "use server";
-import { publicAxiosInstance } from "@/configs/axios";
 
 export const getSlogans = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/slogans`, {
-    next: { revalidate: 10 },
+    next: { revalidate: 20 },
   });
 
   if (!res.ok) {

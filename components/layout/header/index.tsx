@@ -4,6 +4,7 @@ import SloganCarousel from "./slogan-carousel";
 import LanguageSwitcher from "./language-switcher";
 import { getSlogans } from "@/queries/slogans.queries";
 import { Slogan } from "@/entities/slogan.entity";
+import Logo from "./logo";
 
 interface Props {}
 
@@ -24,7 +25,13 @@ const Header: FC<Props> = async (props): Promise<JSX.Element> => {
       </div>
 
       <div>
-        <SectionContainer>test</SectionContainer>
+        <SectionContainer className="grid grid-cols-12 h-[88px]">
+          <div className="col-span-3">
+            <Logo />
+          </div>
+          <div className="col-span-6"></div>
+          <div className="col-span-3"></div>
+        </SectionContainer>
       </div>
     </header>
   );
