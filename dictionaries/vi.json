@@ -2,5 +2,21 @@
   "common": {
     "en": "Tiếng Anh",
     "vi": "Tiếng Việt"
+  },
+  "navigation": {
+    "home": "Trang Chủ",
+    "shop": "Cửa Hàng",
+    "new": "Mới",
+    "new_arrivals": "Sản Phẩm Mới",
+    "best_sellers": "Bán Chạy",
+    "sale": "Giảm Giá",
+    "the_sale_room": "Giảm Giá",
+    "about": "Giới Thiệu",
+    "mission": "Sứ Mệnh",
+    "blogs": "Blogs",
+    "contact": "Liên Hệ",
+    "featured": "Nổi Bật",
+    "categories": "Danh Mục",
+    "shop_by_scent": "Mua Theo Mùi Hương"
   }
 }

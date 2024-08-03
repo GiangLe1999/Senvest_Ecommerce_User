@@ -2,16 +2,22 @@
 
 import { Skeleton } from "@/components/ui/skeleton";
 import { Link } from "@/configs/i18n-navigation";
-import { Category } from "@/entities/category.entity";
+import useMountAnimation from "@/hooks/useMountAnimation";
 import { getCategoriesForNavigation } from "@/queries/categories.queries";
 import { useQuery } from "@tanstack/react-query";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
-import { FC } from "react";
+import { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
 
-interface Props {}
+interface Props {
+  showShopCollectionItems: boolean;
+  setShowShopCollectionItems: Dispatch<SetStateAction<boolean>>;
+}
 
-const ShopCollectionItems: FC<Props> = (props): JSX.Element => {
+const ShopCollectionItems: FC<Props> = ({
+  showShopCollectionItems,
+  setShowShopCollectionItems,
+}): JSX.Element => {
   const { isPending, data } = useQuery({
     queryKey: ["categories-for-navigation"],
     queryFn: getCategoriesForNavigation,
@@ -21,8 +27,21 @@ const ShopCollectionItems: FC<Props> = (props): JSX.Element => {
 
   const locale = useLocale();
 
+  const { visible, handleAnimationEnd } = useMountAnimation({
+    show: showShopCollectionItems,
+  });
+
   return (
-    <nav className="border shadow-md p-5 absolute top-full left-0 w-full grid grid-cols-4 gap-4 rounded-sm">
+    <nav
+      className={`border shadow-md p-5 absolute top-full left-0 w-full grid grid-cols-4 gap-4 rounded-sm transition-opacity ${
+        showShopCollectionItems
+          ? "opacity-100 animate-fade-in"
+          : "opacity-0 animate-fade-out"
+      } ${visible ? "block" : "hidden"}`}
+      onMouseEnter={() => setShowShopCollectionItems(true)}
+      onMouseLeave={() => setShowShopCollectionItems(false)}
+      onAnimationEnd={handleAnimationEnd}
+    >
       <div>
         <p className="font-bold">{t("featured")}</p>
         <ul className="text-muted text-[13px] space-y-1 mt-2">
@@ -65,13 +84,11 @@ const ShopCollectionItems: FC<Props> = (props): JSX.Element => {
 
       <div>
         <p className="font-bold">{t("shop_by_scent")}</p>
-        <ul className="text-muted text-[13px] space-y-1 mt-2">
-          <li>{t("new")}</li>
-          <li>{t("best_sellers")}</li>
-          <li>{t("the_sale_room")}</li>
-          <li>{t("the_sale_room")}</li>
-          <li>{t("the_sale_room")}</li>
-          <li>{t("the_sale_room")}</li>
+        <ul className="text-muted text-[13px] mt-2">
+          <Skeleton className="h-6 w-full mb-2" />
+          <Skeleton className="h-6 w-full mb-2" />
+          <Skeleton className="h-6 w-full mb-2" />
+          <Skeleton className="h-6 w-full mb-2" />
         </ul>
       </div>
 

@@ -27,13 +27,13 @@ const Header: FC<Props> = async (props): Promise<JSX.Element> => {
 
       <div>
         <SectionContainer className="grid grid-cols-12 h-[88px] py-4">
-          <div className="col-span-3">
+          <div className="col-span-2">
             <Logo />
           </div>
-          <div className="col-span-6">
+          <div className="col-span-8">
             <Navigation />
           </div>
-          <div className="col-span-3"></div>
+          <div className="col-span-2"></div>
         </SectionContainer>
       </div>
     </header>
