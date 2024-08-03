@@ -1,3 +1,5 @@
+import { Category } from "@/entities/category.entity";
+
 // Slogans
 export const getCategoriesForNavigation = async () => {
   const res = await fetch(
@@ -8,5 +10,5 @@ export const getCategoriesForNavigation = async () => {
     throw new Error("Failed to fetch data");
   }
 
-  return await res.json();
+  return (await res.json()) as { ok: boolean; categories?: Category[] };
 };

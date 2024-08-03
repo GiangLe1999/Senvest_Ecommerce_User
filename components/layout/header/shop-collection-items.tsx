@@ -42,7 +42,7 @@ const ShopCollectionItems: FC<Props> = (props): JSX.Element => {
         <ul className="text-muted text-[13px] space-y-1 mt-2">
           {isPending
             ? "loading"
-            : data?.categories?.map((category: Category) => (
+            : data?.categories?.map((category) => (
                 <li
                   key={category._id}
                   className="py-1 hover:text-primary transition-colors capitalize"
