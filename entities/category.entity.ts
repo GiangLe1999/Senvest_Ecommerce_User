@@ -5,7 +5,7 @@ export interface Category {
   name: LocalizedString;
   description: LocalizedString;
   slug: LocalizedString;
-  image: LocalizedString;
+  image: string;
   status: string;
   products: any[];
 }

@@ -5,6 +5,10 @@ export const locales = ["vi", "en"] as const;
 
 export const pathnames = {
   "/": "/",
+  "/danh-muc/[categorySlug]": {
+    vi: "/danh-muc/[categorySlug]",
+    en: "/categories/[categorySlug]",
+  },
   "/cua-hang": {
     vi: "/cua-hang",
     en: "/shop",
@@ -29,6 +33,7 @@ export const pathnames = {
     vi: "/mui-huong/[scentSlug]",
     en: "/scent/[scentSlug]",
   },
+
   "/ve-chung-toi": {
     vi: "/ve-chung-toi",
     en: "/about-us",
