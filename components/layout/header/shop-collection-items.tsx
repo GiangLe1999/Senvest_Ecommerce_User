@@ -2,6 +2,7 @@
 
 import { Link } from "@/configs/i18n-navigation";
 import { Category } from "@/entities/category.entity";
+import { LocalizedString } from "@/entities/common.entity";
 import { getCategoriesForNavigation } from "@/queries/categories.queries";
 import { useQuery } from "@tanstack/react-query";
 import { useLocale, useTranslations } from "next-intl";
@@ -47,8 +48,14 @@ const ShopCollectionItems: FC<Props> = (props): JSX.Element => {
                   key={category._id}
                   className="py-1 hover:text-primary transition-colors capitalize"
                 >
-                  <Link href={`/bo-suu-tap/${category.slug?.[locale]}` as any}>
-                    {category.name?.[locale]}
+                  <Link
+                    href={
+                      `/bo-suu-tap/${
+                        (category.slug as LocalizedString)[locale]
+                      }` as any
+                    }
+                  >
+                    {(category.name as LocalizedString)[locale]}
                   </Link>
                 </li>
               ))}
