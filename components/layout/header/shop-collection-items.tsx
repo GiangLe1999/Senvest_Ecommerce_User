@@ -47,8 +47,8 @@ const ShopCollectionItems: FC<Props> = (props): JSX.Element => {
                   key={category._id}
                   className="py-1 hover:text-primary transition-colors capitalize"
                 >
-                  <Link href={`/bo-suu-tap/${category.slug[locale]}` as any}>
-                    {category.name[locale]}
+                  <Link href={`/bo-suu-tap/${category.slug?.[locale]}` as any}>
+                    {category.name?.[locale]}
                   </Link>
                 </li>
               ))}
