@@ -4,7 +4,7 @@ export interface Category {
   _id: string;
   name: LocalizedString;
   description: LocalizedString;
-  slug: LocalizedString;
+  slug: any;
   image: LocalizedString;
   status: string;
   products: any[];
