@@ -73,8 +73,14 @@ const ShopCollectionItems: FC<Props> = ({
                 key={category._id}
                 className="py-1 my-1 hover:text-primary transition-colors capitalize"
               >
-                <Link href={`/danh-muc/${category.slug[locale]}` as any}>
-                  {category.name[locale]}
+                <Link
+                  href={
+                    `/danh-muc/${
+                      locale === "en" ? category.slug.en : category.slug.vi
+                    }` as any
+                  }
+                >
+                  {locale === "en" ? category.name.en : category.name.vi}
                 </Link>
               </li>
             ))}
