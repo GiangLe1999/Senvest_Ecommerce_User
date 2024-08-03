@@ -56,23 +56,33 @@ const LanguageSwitcher: FC<Props> = (props): JSX.Element => {
             {locale === "vi" ? "Tiếng Việt" : "English"}
             <ChevronDown className="h-3 w-3 ml-1" />
           </HybridTooltipTrigger>
-          <HybridTooltipContent className="p-0">
-            <ul className="text-muted text-xs">
+          <HybridTooltipContent align="end" className="p-0">
+            <ul className="text-muted text-xs w-fit">
               <li
                 className={cn(
-                  "py-2 px-4 hover:text-primary hover:bg-primary/10 transition rounded-t-sm",
+                  "hover:text-primary hover:bg-primary/10 transition rounded-t-sm border-b border-[#eeeeee]",
                   locale === "en" && "text-primary font-bold"
                 )}
               >
-                <button onClick={changeLocaleHandler}>{t("en")}</button>
+                <button
+                  onClick={changeLocaleHandler}
+                  className="w-full h-full py-2 px-4 text-left"
+                >
+                  {t("en")}
+                </button>
               </li>
               <li
                 className={cn(
-                  "py-2 px-4 hover:text-primary hover:bg-primary/10 transition rounded-b-sm",
+                  "hover:text-primary hover:bg-primary/10 transition rounded-b-sm",
                   locale === "vi" && "text-primary font-bold"
                 )}
               >
-                <button onClick={changeLocaleHandler}>{t("vi")}</button>
+                <button
+                  onClick={changeLocaleHandler}
+                  className="w-full h-full py-2 px-4 text-left"
+                >
+                  {t("vi")}
+                </button>
               </li>
             </ul>
           </HybridTooltipContent>

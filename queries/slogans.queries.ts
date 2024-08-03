@@ -1,5 +1,6 @@
 "use server";
 
+// Slogans
 export const getSlogans = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/slogans`, {
     next: { revalidate: 20 },

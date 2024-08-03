@@ -1,6 +1,7 @@
 import { locales } from "@/configs/i18n-configs";
 import NextAuthProvider from "@/contexts/next-auth-provider";
 import NextIntlProvider from "@/contexts/next-intl-provider";
+import TanstackQueryProvider from "@/contexts/tanstack-query-provider";
 import { FC } from "react";
 
 interface Props {
@@ -13,7 +14,9 @@ const Providers: FC<Props> = (props: Props) => {
 
   return (
     <NextAuthProvider>
-      <NextIntlProvider locale={locale}>{children}</NextIntlProvider>
+      <NextIntlProvider locale={locale}>
+        <TanstackQueryProvider>{children}</TanstackQueryProvider>
+      </NextIntlProvider>
     </NextAuthProvider>
   );
 };

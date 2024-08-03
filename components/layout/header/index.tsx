@@ -5,6 +5,7 @@ import LanguageSwitcher from "./language-switcher";
 import { getSlogans } from "@/queries/slogans.queries";
 import { Slogan } from "@/entities/slogan.entity";
 import Logo from "./logo";
+import Navigation from "./navigation";
 
 interface Props {}
 
@@ -25,11 +26,13 @@ const Header: FC<Props> = async (props): Promise<JSX.Element> => {
       </div>
 
       <div>
-        <SectionContainer className="grid grid-cols-12 h-[88px]">
+        <SectionContainer className="grid grid-cols-12 h-[88px] py-4">
           <div className="col-span-3">
             <Logo />
           </div>
-          <div className="col-span-6"></div>
+          <div className="col-span-6">
+            <Navigation />
+          </div>
           <div className="col-span-3"></div>
         </SectionContainer>
       </div>

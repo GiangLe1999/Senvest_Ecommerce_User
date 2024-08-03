@@ -36,7 +36,11 @@ export const TouchProvider = (props: PropsWithChildren) => {
 export const HybridTooltip = (props: TooltipProps & PopoverProps) => {
   const isTouch = useTouch();
 
-  return isTouch ? <Popover {...props} /> : <Tooltip {...props} />;
+  return isTouch ? (
+    <Popover {...props} />
+  ) : (
+    <Tooltip delayDuration={0} {...props} />
+  );
 };
 
 export const HybridTooltipTrigger = (

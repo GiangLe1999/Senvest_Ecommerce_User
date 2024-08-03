@@ -2,5 +2,21 @@
   "common": {
     "en": "English",
     "vi": "Vietnamese"
+  },
+  "navigation": {
+    "home": "Home",
+    "shop": "Shop",
+    "new": "New",
+    "new_arrivals": "New Arrivals",
+    "best_sellers": "Best Sellers",
+    "sale": "Sale",
+    "the_sale_room": "The Sale Room",
+    "about": "About",
+    "mission": "Mission",
+    "blogs": "Blogs",
+    "contact": "Contact",
+    "featured": "Featured",
+    "categories": "Categories",
+    "shop_by_scent": "Shop By Scent"
   }
 }

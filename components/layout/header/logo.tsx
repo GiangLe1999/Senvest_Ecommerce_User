@@ -8,10 +8,10 @@ const Logo: FC<Props> = (props): JSX.Element => {
   return (
     <Link href="/" className="flex items-center h-full">
       <Image
-        src="/vercel.svg"
+        src="/logo.png"
         alt="Kindle Hope Candles Logo"
         width={110}
-        height={24.88}
+        height={82.5}
         priority
       />
     </Link>
