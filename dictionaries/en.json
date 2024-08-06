@@ -19,6 +19,31 @@
     "contact": "Contact",
     "featured": "Featured",
     "categories": "Categories",
-    "shop_by_scent": "Shop By Scent"
+    "shop_by_scent": "Shop By Scent",
+    "register": "Register",
+    "sign_in": "Sign in",
+    "wishlist": "Wishlist",
+    "compare": "Compare",
+    "checkout": "Checkout",
+    "profile": "Profile"
+  },
+  "register_page": {
+    "heading": "Create an account",
+    "name": "Full name",
+    "email": "Email",
+    "password": "Password",
+    "terms": "Accept terms and conditions",
+    "submit": "Submit",
+    "already_have_an_account": "Already have an account?",
+    "sign_in": "Sign in",
+    "or": "or",
+    "forgot_password": "Forgot password",
+    "name_rule": "Only letters and the dot (.) character, followed by a space, are allowed.",
+    "email_rule": "Invalid email address.",
+    "password_rule_1": "Password must be at least 6 characters.",
+    "password_rule_2": "Password must have at least one special character.",
+    "terms_rule": "You must accept the terms and conditions.",
+    "email_desc": "Email must be a valid email address.",
+    "password_desc": "Password must be at least 6 characters and must have at least one special character."
   }
 }

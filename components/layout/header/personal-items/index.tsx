@@ -13,7 +13,7 @@ import { Link } from "@/configs/i18n-navigation";
 interface Props {}
 
 const PersonalItems: FC<Props> = (props): JSX.Element => {
-  const t = useTranslations();
+  const t = useTranslations("navigation");
 
   return (
     <TooltipProvider>
@@ -29,19 +29,19 @@ const PersonalItems: FC<Props> = (props): JSX.Element => {
             <nav>
               <ul className="text-muted text-[13px] space-y-1">
                 <li className="py-1 mb-1 hover:text-primary transition-colors">
-                  <Link href="/dang-ki">Register</Link>
+                  <Link href="/dang-ki">{t("register")}</Link>
                 </li>
                 <li className="py-1 mb-1 hover:text-primary transition-colors">
-                  <Link href="/dang-nhap">Sign in</Link>
+                  <Link href="/dang-nhap">{t("sign_in")}</Link>
                 </li>
                 <li className="py-1 my-1 hover:text-primary transition-colors">
-                  <Link href="/dong-gop">Wishlist</Link>
+                  <Link href="/dong-gop">{t("wishlist")}</Link>
                 </li>
                 <li className="py-1 my-1 hover:text-primary transition-colors">
-                  <Link href="/faqs">Compare</Link>
+                  <Link href="/faqs">{t("compare")}</Link>
                 </li>
                 <li className="py-1 my-1 hover:text-primary transition-colors">
-                  <Link href="/faqs">Checkout</Link>
+                  <Link href="/faqs">{t("checkout")}</Link>
                 </li>
               </ul>
             </nav>

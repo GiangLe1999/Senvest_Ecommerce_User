@@ -13,10 +13,37 @@
     "the_sale_room": "Giảm Giá",
     "about": "Giới Thiệu",
     "mission": "Sứ Mệnh",
+    "mission_vs_impact": "Sứ mệnh & Ảnh hưởng",
+    "donate": "Đóng góp",
     "blogs": "Blogs",
     "contact": "Liên Hệ",
     "featured": "Nổi Bật",
     "categories": "Danh Mục",
-    "shop_by_scent": "Mua Theo Mùi Hương"
+    "shop_by_scent": "Mua Theo Mùi Hương",
+    "register": "Đăng ký",
+    "sign_in": "Đăng nhập",
+    "wishlist": "Yêu thích",
+    "compare": "So sánh",
+    "checkout": "Thanh toán",
+    "profile": "Profile"
+  },
+  "register_page": {
+    "heading": "Đăng ký tài khoản",
+    "name": "Họ và tên",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "terms": "Đồng ý với điều khoản và điều kiện",
+    "submit": "Xác nhận",
+    "already_have_an_account": "Đã có tài khoản?",
+    "sign_in": "Đăng nhập",
+    "or": "hoặc",
+    "forgot_password": "Quên mật khẩu",
+    "name_rule": "Chỉ cho phép các chữ cái và ký tự dấu chấm (.), theo sau là khoảng trắng.",
+    "email_rule": "Địa chỉ email không hợp lệ.",
+    "password_rule_1": "Mật khẩu phải có ít nhất 6 ký tự.",
+    "password_rule_2": "Mật khẩu phải có ít nhất một ký tự đặc biệt.",
+    "terms_rule": "Bạn phải chấp nhận các điều khoản và điều kiện.",
+    "email_desc": "Email phải là một địa chỉ email hợp lệ.",
+    "password_desc": "Mật khẩu phải có ít nhất 6 ký tự và phải có ít nhất một ký tự đặc biệt."
   }
 }
