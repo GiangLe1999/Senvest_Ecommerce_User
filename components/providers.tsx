@@ -1,8 +1,8 @@
-import { locales } from "@/configs/i18n-configs";
 import NextAuthProvider from "@/contexts/next-auth-provider";
 import NextIntlProvider from "@/contexts/next-intl-provider";
 import TanstackQueryProvider from "@/contexts/tanstack-query-provider";
 import { FC } from "react";
+import CustomToaster from "./custom-toaster";
 
 interface Props {
   children: React.ReactNode;
@@ -15,7 +15,10 @@ const Providers: FC<Props> = (props: Props) => {
   return (
     <NextAuthProvider>
       <NextIntlProvider locale={locale}>
-        <TanstackQueryProvider>{children}</TanstackQueryProvider>
+        <TanstackQueryProvider>
+          {children}
+          <CustomToaster />
+        </TanstackQueryProvider>
       </NextIntlProvider>
     </NextAuthProvider>
   );

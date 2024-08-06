@@ -1,8 +1,10 @@
+const createNextIntlPlugin = require("next-intl/plugin");
+
+const withNextIntl = createNextIntlPlugin("./configs/i18n.ts");
+
 /** @type {import('next').NextConfig} */
-
-const withNextIntl = require("next-intl/plugin")("./configs/i18n.ts");
-
 const nextConfig = {
+  transpilePackages: ["lucide-react"],
   images: {
     remotePatterns: [
       {

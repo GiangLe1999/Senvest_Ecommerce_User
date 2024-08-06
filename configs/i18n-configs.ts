@@ -4,7 +4,7 @@ export const defaultLocale = "vi" as const;
 export const locales = ["vi", "en"] as const;
 
 export const pathnames = {
-  "/": "/",
+  "/": { vi: "/", en: "/" },
   "/danh-muc/[categorySlug]": {
     vi: "/danh-muc/[categorySlug]",
     en: "/categories/[categorySlug]",
@@ -33,7 +33,6 @@ export const pathnames = {
     vi: "/mui-huong/[scentSlug]",
     en: "/scent/[scentSlug]",
   },
-
   "/ve-chung-toi": {
     vi: "/ve-chung-toi",
     en: "/about-us",
@@ -42,13 +41,29 @@ export const pathnames = {
     vi: "/su-menh",
     en: "/mission",
   },
+  "/dong-gop": {
+    vi: "/dong-gop",
+    en: "/donate",
+  },
+  "/faqs": {
+    vi: "/faqs",
+    en: "/faqs",
+  },
   "/blog": {
     vi: "/blog",
     en: "/blog",
   },
   "/lien-he": {
     vi: "/lien-he",
-    en: "/tin-tuc",
+    en: "/contact",
+  },
+  "/dang-nhap": {
+    vi: "/dang-nhap",
+    en: "/login",
+  },
+  "/dang-ki": {
+    vi: "/dang-ki",
+    en: "/register",
   },
 } satisfies Pathnames<typeof locales>;
 

@@ -1,10 +1,11 @@
+import { defaultLocale, pathnames, localePrefix } from "@/configs/i18n-configs";
 import createMiddleware from "next-intl/middleware";
 
 export default createMiddleware({
   locales: ["vi", "en"],
-
-  // Used when no locale matches
-  defaultLocale: "vi",
+  defaultLocale,
+  pathnames,
+  localePrefix,
 });
 
 export const config = {

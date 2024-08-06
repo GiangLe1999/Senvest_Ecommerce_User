@@ -10,8 +10,8 @@ const Logo: FC<Props> = (props): JSX.Element => {
       <Image
         src="/logo.png"
         alt="Kindle Hope Candles Logo"
-        width={110}
-        height={82.5}
+        width={75}
+        height={56.25}
         priority
       />
     </Link>

@@ -65,7 +65,10 @@ const LanguageSwitcher: FC<Props> = (props): JSX.Element => {
                 )}
               >
                 <button
-                  onClick={changeLocaleHandler}
+                  onClick={() => {
+                    if (locale === "en") return;
+                    changeLocaleHandler();
+                  }}
                   className="w-full h-full py-2 px-4 text-left"
                 >
                   {t("en")}
@@ -78,7 +81,10 @@ const LanguageSwitcher: FC<Props> = (props): JSX.Element => {
                 )}
               >
                 <button
-                  onClick={changeLocaleHandler}
+                  onClick={() => {
+                    if (locale === "vi") return;
+                    changeLocaleHandler();
+                  }}
                   className="w-full h-full py-2 px-4 text-left"
                 >
                   {t("vi")}

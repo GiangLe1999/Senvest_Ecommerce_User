@@ -1,4 +1,3 @@
-import { locales } from "@/configs/i18n-configs";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { FC } from "react";
 
