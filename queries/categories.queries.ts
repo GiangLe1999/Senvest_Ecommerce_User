@@ -1,6 +1,5 @@
 import { Category } from "@/entities/category.entity";
 
-// Slogans
 export const getCategoriesForNavigation = async () => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_BASE_URL}/categories/for-navigation`

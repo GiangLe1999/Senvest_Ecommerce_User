@@ -27,21 +27,46 @@ const PersonalItems: FC<Props> = (props): JSX.Element => {
             className="border shadow-md p-3 px-4 w-max rounded-sm min-w-[120px]"
           >
             <nav>
-              <ul className="text-muted text-[13px] space-y-1">
-                <li className="py-1 mb-1 hover:text-primary transition-colors">
-                  <Link href="/dang-ki">{t("register")}</Link>
+              <ul className="text-muted text-[13px]">
+                <li>
+                  <Link
+                    className="block w-full py-2 hover:text-primary transition-colors"
+                    href="/dang-ki"
+                  >
+                    {t("register")}
+                  </Link>
                 </li>
-                <li className="py-1 mb-1 hover:text-primary transition-colors">
-                  <Link href="/dang-nhap">{t("sign_in")}</Link>
+                <li>
+                  <Link
+                    className="block w-full py-2 hover:text-primary transition-colors"
+                    href="/dang-nhap"
+                  >
+                    {t("sign_in")}
+                  </Link>
                 </li>
-                <li className="py-1 my-1 hover:text-primary transition-colors">
-                  <Link href="/dong-gop">{t("wishlist")}</Link>
+                <li>
+                  <Link
+                    className="block w-full py-2 hover:text-primary transition-colors"
+                    href="/dong-gop"
+                  >
+                    {t("wishlist")}
+                  </Link>
                 </li>
-                <li className="py-1 my-1 hover:text-primary transition-colors">
-                  <Link href="/faqs">{t("compare")}</Link>
+                <li>
+                  <Link
+                    className="block w-full py-2 hover:text-primary transition-colors"
+                    href="/faqs"
+                  >
+                    {t("compare")}
+                  </Link>
                 </li>
-                <li className="py-1 my-1 hover:text-primary transition-colors">
-                  <Link href="/faqs">{t("checkout")}</Link>
+                <li>
+                  <Link
+                    className="block w-full py-2 hover:text-primary transition-colors"
+                    href="/faqs"
+                  >
+                    {t("checkout")}
+                  </Link>
                 </li>
               </ul>
             </nav>

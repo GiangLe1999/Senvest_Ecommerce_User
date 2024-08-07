@@ -16,15 +16,26 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
-import { FC } from "react";
+import { Dispatch, FC, SetStateAction, useState } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Link } from "@/configs/i18n-navigation";
 import { useTranslations } from "next-intl";
+import { Separator } from "@/components/ui/separator";
+import Image from "next/image";
+import { signIn } from "next-auth/react";
+import { useSearchParams } from "next/navigation";
+import { registerNewAccount } from "@/actions/authentication";
+import CustomLoadingButton from "@/components/custom-loading-button";
 
-interface Props {}
+interface Props {
+  setActiveForm: Dispatch<SetStateAction<string>>;
+  setCurrentEmail: Dispatch<SetStateAction<string>>;
+}
 
-const RegisterForm: FC<Props> = () => {
+const RegisterForm: FC<Props> = ({ setActiveForm, setCurrentEmail }) => {
   const t = useTranslations("register_page");
+  const searchParams = useSearchParams();
+  const [loading, setLoading] = useState(false);
 
   const FormSchema = z.object({
     name: z.string().regex(/^[a-zA-Z. ]+$/, {
@@ -56,13 +67,41 @@ const RegisterForm: FC<Props> = () => {
     },
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast.success("You submitted the following values:", {
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          {JSON.stringify(data, null, 2)}
-        </pre>
-      ),
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
+    try {
+      setLoading(true);
+      const res = await registerNewAccount({
+        name: data.name,
+        email: data.email,
+        password: data.password,
+      });
+
+      if (res.ok) {
+        setLoading(false);
+        toast.success("Đăng ký tài khoản thành công", {
+          description: <p>Vui lòng tiếp tục xác thực tài khoản của bạn.</p>,
+        });
+        setCurrentEmail(data.email);
+        setActiveForm("verification");
+      } else {
+        setLoading(false);
+        return toast.error(res.error, {
+          description: "Vui lòng kiểm tra lại thông tin đăng ký.",
+        });
+      }
+    } catch (error) {
+      setLoading(false);
+      return toast.error("Đăng ký tài khoản thất bại", {
+        description: "Chúng tôi sẽ khắc phục trong thời gian sớm nhất.",
+      });
+    }
+  }
+
+  function onGoogleSignIn() {
+    const redirectURL = searchParams.get("next") ?? "/";
+
+    signIn("google", {
+      callbackUrl: redirectURL,
     });
   }
 
@@ -160,9 +199,13 @@ const RegisterForm: FC<Props> = () => {
             )}
           />
 
-          <Button type="submit" size="lg" className="text-lg w-full !mt-8 h-12">
-            {t("submit")}
-          </Button>
+          <CustomLoadingButton
+            loading={loading}
+            content={t("submit")}
+            type="submit"
+            size="lg"
+            className="text-lg w-full !mt-8 h-12"
+          />
 
           <div className="text-sm flex items-center gap-1 justify-end">
             <span className="text-muted">{t("already_have_an_account")}</span>
@@ -180,6 +223,29 @@ const RegisterForm: FC<Props> = () => {
               {t("forgot_password")}
             </Link>
           </div>
+
+          <div className="flex items-center gap-2">
+            <Separator className="w-[45%]" />
+            <span className="flex-1 text-center capitalize">{t("or")}</span>
+            <Separator className="w-[45%]" />
+          </div>
+
+          <Button
+            size="lg"
+            className="text-lg w-full h-12 bg-[#4F86EC] hover:bg-[#4F86EC]/90 pl-[3px] pt-[3px] pb-[2px]"
+            onClick={onGoogleSignIn}
+            type="button"
+          >
+            <div className="h-full aspect-square grid place-items-center bg-white rounded-sm">
+              <Image
+                src="/icons/google-logo.png"
+                width={20}
+                height={20}
+                alt="Google logo"
+              />
+            </div>
+            <span className="flex-1">{t("gg_register")}</span>
+          </Button>
         </form>
       </Form>
     </div>

@@ -1,7 +1,8 @@
 {
   "common": {
     "en": "English",
-    "vi": "Vietnamese"
+    "vi": "Vietnamese",
+    "loading": "Loading..."
   },
   "navigation": {
     "home": "Home",
@@ -29,6 +30,7 @@
   },
   "register_page": {
     "heading": "Create an account",
+    "heading_2": "Verify your account",
     "name": "Full name",
     "email": "Email",
     "password": "Password",
@@ -44,6 +46,8 @@
     "password_rule_2": "Password must have at least one special character.",
     "terms_rule": "You must accept the terms and conditions.",
     "email_desc": "Email must be a valid email address.",
-    "password_desc": "Password must be at least 6 characters and must have at least one special character."
+    "password_desc": "Password must be at least 6 characters and must have at least one special character.",
+    "gg_register": "Register with Google",
+    "gg_sign_in": "Sign in with Google"
   }
 }
