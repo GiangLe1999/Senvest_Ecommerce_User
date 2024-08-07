@@ -21,7 +21,7 @@ import {
 
 import { toast } from "sonner";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import CountdownTimer from "./countdown-timer";
 import CustomLoadingButton from "@/components/custom-loading-button";
@@ -32,10 +32,9 @@ interface Props {
 }
 
 const VerificationForm: FC<Props> = ({ email }): JSX.Element => {
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(60);
   const canResendOtp = count === 0;
   const router = useRouter();
-  const searchParams = useSearchParams();
   const [loading, setLoading] = useState(false);
   const [resendLoading, setResendLoading] = useState(false);
 
@@ -73,7 +72,8 @@ const VerificationForm: FC<Props> = ({ email }): JSX.Element => {
           description: <p>Chào mừng bạn đến với Kindle Hope Candles.</p>,
         });
 
-        const redirectURL = searchParams.get("next") ?? "/";
+        let params = new URLSearchParams(document.location.search);
+        const redirectURL = params.get("next") ?? "/";
         router.replace(redirectURL);
       } else {
         setLoading(false);

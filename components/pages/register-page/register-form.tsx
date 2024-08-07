@@ -23,7 +23,6 @@ import { useTranslations } from "next-intl";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
-import { useSearchParams } from "next/navigation";
 import { registerNewAccount } from "@/actions/authentication";
 import CustomLoadingButton from "@/components/custom-loading-button";
 
@@ -34,7 +33,6 @@ interface Props {
 
 const RegisterForm: FC<Props> = ({ setActiveForm, setCurrentEmail }) => {
   const t = useTranslations("register_page");
-  const searchParams = useSearchParams();
   const [loading, setLoading] = useState(false);
 
   const FormSchema = z.object({
@@ -98,7 +96,8 @@ const RegisterForm: FC<Props> = ({ setActiveForm, setCurrentEmail }) => {
   }
 
   function onGoogleSignIn() {
-    const redirectURL = searchParams.get("next") ?? "/";
+    let params = new URLSearchParams(document.location.search);
+    const redirectURL = params.get("next") ?? "/";
 
     signIn("google", {
       callbackUrl: redirectURL,
