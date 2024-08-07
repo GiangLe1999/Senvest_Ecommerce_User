@@ -1,5 +1,4 @@
 import CustomBreadcrumb from "@/components/custom-breadcrumb";
-import RegisterForm from "@/components/pages/register-page/register-form";
 import RegisterPageContent from "@/components/pages/register-page/register-page-content";
 import SectionContainer from "@/components/section-container";
 import { NextPage } from "next";

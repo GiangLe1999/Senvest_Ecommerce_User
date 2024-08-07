@@ -76,21 +76,21 @@ const RegisterForm: FC<Props> = ({ setActiveForm, setCurrentEmail }) => {
 
       if (res.ok) {
         setLoading(false);
-        toast.success("Đăng ký tài khoản thành công", {
-          description: <p>Vui lòng tiếp tục xác thực tài khoản của bạn.</p>,
+        toast.success(t("success"), {
+          description: t("success_desc"),
         });
         setCurrentEmail(data.email);
         setActiveForm("verification");
       } else {
         setLoading(false);
-        return toast.error(res.error, {
-          description: "Vui lòng kiểm tra lại thông tin đăng ký.",
+        return toast.error(t("fail_1"), {
+          description: t("fail_1_desc"),
         });
       }
     } catch (error) {
       setLoading(false);
-      return toast.error("Đăng ký tài khoản thất bại", {
-        description: "Chúng tôi sẽ khắc phục trong thời gian sớm nhất.",
+      return toast.error(t("fail_2"), {
+        description: t("fail_2_desc"),
       });
     }
   }
@@ -231,7 +231,7 @@ const RegisterForm: FC<Props> = ({ setActiveForm, setCurrentEmail }) => {
 
           <Button
             size="lg"
-            className="text-lg w-full h-12 bg-[#4F86EC] hover:bg-[#4F86EC]/90 pl-[3px] pt-[3px] pb-[2px]"
+            className="text-lg w-full h-12 bg-[#4F86EC] hover:bg-[#4F86EC]/90 pl-1 py-[3px]"
             onClick={onGoogleSignIn}
             type="button"
           >

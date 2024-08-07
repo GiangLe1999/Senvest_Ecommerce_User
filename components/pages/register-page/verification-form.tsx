@@ -21,11 +21,11 @@ import {
 
 import { toast } from "sonner";
 
-import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import CountdownTimer from "./countdown-timer";
 import CustomLoadingButton from "@/components/custom-loading-button";
 import { resendOtp, verifyAccount } from "@/actions/authentication";
+import { useRouter } from "@/configs/i18n-navigation";
 
 interface Props {
   email?: string;
@@ -41,7 +41,7 @@ const VerificationForm: FC<Props> = ({ email }): JSX.Element => {
   const t = useTranslations("register_page");
   const FormSchema = z.object({
     otp: z.string().min(6, {
-      message: "Mã xác thực phải có đủ 6 ký tự.",
+      message: t("otp_rule"),
     }),
   });
 
@@ -68,23 +68,21 @@ const VerificationForm: FC<Props> = ({ email }): JSX.Element => {
 
       if (res.ok) {
         setLoading(false);
-        toast.success("Xác thực tài khoản thành công", {
-          description: <p>Chào mừng bạn đến với Kindle Hope Candles.</p>,
+        toast.success(t("verify_success"), {
+          description: t("verify_success_desc"),
         });
 
-        let params = new URLSearchParams(document.location.search);
-        const redirectURL = params.get("next") ?? "/";
-        router.replace(redirectURL);
+        router.replace("/dang-nhap");
       } else {
         setLoading(false);
-        return toast.error(res.error, {
-          description: "Vui lòng kiểm tra lại thông tin xác thực.",
+        return toast.error(t("verify_fail_1"), {
+          description: t("verify_fail_1_desc"),
         });
       }
     } catch (error) {
       setLoading(false);
-      return toast.error("Xác thực tài khoản thất bại", {
-        description: "Chúng tôi sẽ khắc phục trong thời gian sớm nhất.",
+      return toast.error(t("verify_fail_2"), {
+        description: t("verify_fail_2_desc"),
       });
     }
   }
@@ -106,20 +104,20 @@ const VerificationForm: FC<Props> = ({ email }): JSX.Element => {
 
       if (res.ok) {
         setResendLoading(false);
-        toast.success("Gửi lại mã xác thực thành công", {
-          description: <p>Vui lòng nhập mã xác thực để xác thực tài khoản.</p>,
+        toast.success(t("resend_otp_success"), {
+          description: t("resend_otp_success_desc"),
         });
         setCount(60);
       } else {
         setResendLoading(false);
-        return toast.error(res.error, {
-          description: "Vui lòng kiểm tra lại thông tin tài khoản.",
+        return toast.error(t("resend_otp_fail_1"), {
+          description: t("resend_otp_fail_1_desc"),
         });
       }
     } catch (error) {
       setResendLoading(false);
-      return toast.error("Xác thực tài khoản thất bại", {
-        description: "Chúng tôi sẽ khắc phục trong thời gian sớm nhất.",
+      return toast.error(t("resend_otp_fail_1"), {
+        description: t("resend_otp_fail_1_desc"),
       });
     }
   }
@@ -131,11 +129,9 @@ const VerificationForm: FC<Props> = ({ email }): JSX.Element => {
           {t("heading_2")}
         </h1>
 
-        <p className="text-muted mb-2">
-          One Time Password (OTP) has been sent via Email to:{" "}
-        </p>
+        <p className="text-muted mb-2">{t("resend_otp_first_line")} </p>
         <strong>{email}</strong>
-        <p className="text-muted mt-6">Enter the OTP below to verify it</p>
+        <p className="text-muted mt-6">{t("resend_otp_second_line")}</p>
       </div>
 
       <Form {...form}>
@@ -165,11 +161,11 @@ const VerificationForm: FC<Props> = ({ email }): JSX.Element => {
                       onClick={resend}
                       disabled={resendLoading}
                     >
-                      Resend OTP
+                      {t("resend_otp")}
                     </Button>
                   ) : (
                     <p>
-                      Resend OTP in:{" "}
+                      {t("resend_otp_in")}{" "}
                       <CountdownTimer count={count} setCount={setCount} />
                     </p>
                   )}
@@ -181,7 +177,7 @@ const VerificationForm: FC<Props> = ({ email }): JSX.Element => {
 
           <CustomLoadingButton
             loading={loading}
-            content="Xác nhận"
+            content={t("submit")}
             type="submit"
             size="lg"
             className="text-lg w-full !mt-8 h-12"
