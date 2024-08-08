@@ -68,7 +68,7 @@ const AccountPageItems: FC<Props> = ({ session }): JSX.Element => {
         {itemList.map((item, index) => (
           <Link
             key={index}
-            className="border rounded-sm shadow-md p-6 flex flex-col justify-center gap-3 items-center cursor-pointer group hover:shadow-lg transition hover:text-primary"
+            className="border rounded-md text-muted shadow-md p-6 flex flex-col justify-center gap-3 items-center cursor-pointer group hover:shadow-lg transition hover:text-primary hover:border-primary"
             href={item.link as any}
           >
             {item.icon}

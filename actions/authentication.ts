@@ -33,3 +33,27 @@ export const resendOtp = async (data: { email: string }) => {
     return error.response.data;
   }
 };
+
+export const forgotPassword = async (data: {
+  email: string;
+  locale: string;
+}) => {
+  try {
+    const res = await publicAxiosInstance.post("users/forgot-password", data);
+    return res.data;
+  } catch (error: AxiosError<any> | any) {
+    return error.response.data;
+  }
+};
+
+export const resetPassword = async (data: {
+  token: string;
+  password: string;
+}) => {
+  try {
+    const res = await publicAxiosInstance.put("users/reset-password", data);
+    return res.data;
+  } catch (error: AxiosError<any> | any) {
+    return error.response.data;
+  }
+};

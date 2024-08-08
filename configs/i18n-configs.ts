@@ -65,6 +65,14 @@ export const pathnames = {
     vi: "/dang-ki",
     en: "/register",
   },
+  "/quen-mat-khau": {
+    vi: "/quen-mat-khau",
+    en: "/forgot-password",
+  },
+  "/reset-password": {
+    vi: "/reset-password",
+    en: "/reset-password",
+  },
   "/tai-khoan": {
     vi: "/tai-khoan",
     en: "/account",

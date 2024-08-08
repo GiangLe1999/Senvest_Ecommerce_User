@@ -17,8 +17,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { FC, useState } from "react";
-import { Link, useRouter } from "@/configs/i18n-navigation";
-import { useTranslations } from "next-intl";
+import { Link } from "@/configs/i18n-navigation";
+import { useLocale, useTranslations } from "next-intl";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
@@ -29,7 +29,7 @@ interface Props {}
 const LoginForm: FC<Props> = () => {
   const t = useTranslations("login_page");
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
+  const locale = useLocale();
 
   const FormSchema = z.object({
     email: z.string().email({
@@ -69,8 +69,8 @@ const LoginForm: FC<Props> = () => {
         });
 
         let params = new URLSearchParams(document.location.search);
-        const redirectURL = params.get("next") ?? ("/" as any);
-        router.replace(redirectURL);
+        const redirectURL = params.get("next") ?? (`/${locale}` as any);
+        window.location.replace(redirectURL);
       } else {
         setLoading(false);
         return toast.error(t("sign_in_fail_1"), {
@@ -169,7 +169,7 @@ const LoginForm: FC<Props> = () => {
               </Link>
             </p>
             <Link
-              href="/dang-nhap"
+              href="/quen-mat-khau"
               className="font-semibold hover:text-primary hover:underline transition"
             >
               {t("forgot_password")}
