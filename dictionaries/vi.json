@@ -1,7 +1,8 @@
 {
   "common": {
     "en": "Tiếng Anh",
-    "vi": "Tiếng Việt"
+    "vi": "Tiếng Việt",
+    "loading": "Đang xử lý..."
   },
   "navigation": {
     "home": "Trang Chủ",
@@ -25,10 +26,13 @@
     "wishlist": "Yêu thích",
     "compare": "So sánh",
     "checkout": "Thanh toán",
-    "profile": "Profile"
+    "sign_out": "Đăng xuất",
+    "profile": "Profile",
+    "account": "Tài khoản"
   },
   "register_page": {
     "heading": "Đăng ký tài khoản",
+    "heading_2": "Xác thực tài khoản",
     "name": "Họ và tên",
     "email": "Email",
     "password": "Mật khẩu",
