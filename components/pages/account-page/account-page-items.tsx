@@ -1,3 +1,5 @@
+"use client";
+
 import SmallSectionContainer from "@/components/small-section-container";
 import { Link } from "@/configs/i18n-navigation";
 import {
@@ -9,6 +11,7 @@ import {
   SquareUserIcon,
 } from "lucide-react";
 import { Session } from "next-auth";
+import { signOut } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import { FC } from "react";
 
@@ -56,25 +59,31 @@ const AccountPageItems: FC<Props> = ({ session }): JSX.Element => {
 
   return (
     <SmallSectionContainer>
-      <h1 className="text-2xl text-center text-primary font-bold my-8">
-        {t("heading")}, {session && session.user.name}
+      <h1 className="text-xl text-muted text-center my-8">
+        {t("heading")},{" "}
+        <strong className="text-primary">{session && session.user.name}</strong>
       </h1>
 
       <div className="grid grid-cols-3 gap-[30px]">
         {itemList.map((item, index) => (
-          <div
+          <Link
             key={index}
-            className="w-full border rounded-sm shadow-md p-6 flex flex-col justify-center gap-3 items-center cursor-pointer group hover:shadow-lg transition-shadow"
+            className="border rounded-sm shadow-md p-6 flex flex-col justify-center gap-3 items-center cursor-pointer group hover:shadow-lg transition hover:text-primary"
+            href={item.link as any}
           >
             {item.icon}
-            <Link
-              className="uppercase font-bold group-hover:text-primary transition-colors"
-              href={item.link as any}
-            >
-              {item.name}
-            </Link>
-          </div>
+            {item.name}
+          </Link>
         ))}
+      </div>
+
+      <div className="text-center">
+        <button
+          onClick={() => signOut()}
+          className="mx-auto underline text-lg my-10 hover:text-primary transition-colors"
+        >
+          {t("sign_out")}
+        </button>
       </div>
     </SmallSectionContainer>
   );
