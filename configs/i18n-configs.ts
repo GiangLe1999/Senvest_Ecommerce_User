@@ -65,6 +65,42 @@ export const pathnames = {
     vi: "/dang-ki",
     en: "/register",
   },
+  "/tai-khoan": {
+    vi: "/tai-khoan",
+    en: "/account",
+  },
+  "/tai-khoan/thong-tin": {
+    vi: "/tai-khoan/thong-tin",
+    en: "/account/profile",
+  },
+  "/tai-khoan/dia-chi": {
+    vi: "/tai-khoan/dia-chi",
+    en: "/account/addresses",
+  },
+  "/tai-khoan/lich-su-mua-hang": {
+    vi: "/tai-khoan/lich-su-mua-hang",
+    en: "/account/order-history",
+  },
+  "/tai-khoan/hoa-don-tra-hang": {
+    vi: "/tai-khoan/hoa-don-tra-hang",
+    en: "/account/credit-slips",
+  },
+  "/tai-khoan/gdpr": {
+    vi: "/tai-khoan/gdpr",
+    en: "/account/gdpr",
+  },
+  "/tai-khoan/san-pham-yeu-thich": {
+    vi: "/tai-khoan/san-pham-yeu-thich",
+    en: "/account/wishlist",
+  },
+  "/gio-hang": {
+    vi: "/gio-hang",
+    en: "/cart",
+  },
+  "/thanh-toan": {
+    vi: "/thanh-toan",
+    en: "/checkout",
+  },
 } satisfies Pathnames<typeof locales>;
 
 export const localePrefix = undefined;

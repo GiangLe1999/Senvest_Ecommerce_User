@@ -3,6 +3,7 @@ import { Philosopher } from "next/font/google";
 import "@/app/globals.css";
 import Providers from "@/components/providers";
 import { unstable_setRequestLocale } from "next-intl/server";
+import Header from "@/components/layout/header";
 
 const philosopher = Philosopher({
   subsets: ["vietnamese"],
@@ -48,7 +49,10 @@ export default function RootLayout({
         href="/static/favicons/favicon-16x16.png"
       /> */}
       <Providers locale={locale}>
-        <body className={philosopher.className}>{children}</body>
+        <body className={philosopher.className}>
+          <Header />
+          {children}
+        </body>
       </Providers>
     </html>
   );

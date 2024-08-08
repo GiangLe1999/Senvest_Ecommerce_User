@@ -26,7 +26,9 @@
     "wishlist": "Wishlist",
     "compare": "Compare",
     "checkout": "Checkout",
-    "profile": "Profile"
+    "sign_out": "Sign out",
+    "profile": "Profile",
+    "account": "Account"
   },
   "register_page": {
     "heading": "Create an account",
@@ -89,5 +91,15 @@
     "sign_in_fail_1_desc": "Please check your login information.",
     "sign_in_fail_2": "Sign in failed",
     "sign_in_fail_2_desc": "We will resolve this issue as soon as possible."
+  },
+  "account_page": {
+    "breadcrumb": "Your account",
+    "heading": "Welcome to Kindle Hope Candles",
+    "profile": "Profile",
+    "addresses": "Addresses",
+    "order_history": "Order history & details",
+    "credit_slip": "Credit slips",
+    "gdpr": "GDPR - Personal data",
+    "wishlist": "Wishlist"
   }
 }

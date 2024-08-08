@@ -1,3 +1,5 @@
+"use client";
+
 import { FC } from "react";
 import {
   HybridTooltip,
@@ -9,10 +11,17 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { User } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/configs/i18n-navigation";
+import { Session } from "next-auth";
+import { signOut } from "next-auth/react";
 
-interface Props {}
+interface Props {
+  session: Session | null;
+}
 
-const PersonalItems: FC<Props> = (props): JSX.Element => {
+const itemClassname =
+  "block w-full py-2 hover:text-primary transition-colors text-left";
+
+const PersonalItems: FC<Props> = ({ session }): JSX.Element => {
   const t = useTranslations("navigation");
 
   return (
@@ -28,46 +37,53 @@ const PersonalItems: FC<Props> = (props): JSX.Element => {
           >
             <nav>
               <ul className="text-muted text-[13px]">
+                {!session ? (
+                  <>
+                    <li>
+                      <Link className={itemClassname} href="/dang-ki">
+                        {t("register")}
+                      </Link>
+                    </li>
+                    <li>
+                      <Link className={itemClassname} href="/dang-nhap">
+                        {t("sign_in")}
+                      </Link>
+                    </li>
+                  </>
+                ) : (
+                  <li>
+                    <Link className={itemClassname} href="/tai-khoan">
+                      {t("account")}
+                    </Link>
+                  </li>
+                )}
+
                 <li>
                   <Link
-                    className="block w-full py-2 hover:text-primary transition-colors"
-                    href="/dang-ki"
+                    className={itemClassname}
+                    href="/tai-khoan/san-pham-yeu-thich"
                   >
-                    {t("register")}
+                    {t("wishlist")} (0)
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    className="block w-full py-2 hover:text-primary transition-colors"
-                    href="/dang-nhap"
-                  >
-                    {t("sign_in")}
+                  <Link className={itemClassname} href="/faqs">
+                    {t("compare")} (0)
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    className="block w-full py-2 hover:text-primary transition-colors"
-                    href="/dong-gop"
-                  >
-                    {t("wishlist")}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="block w-full py-2 hover:text-primary transition-colors"
-                    href="/faqs"
-                  >
-                    {t("compare")}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="block w-full py-2 hover:text-primary transition-colors"
-                    href="/faqs"
-                  >
+                  <Link className={itemClassname} href="/faqs">
                     {t("checkout")}
                   </Link>
                 </li>
+
+                {session && (
+                  <li>
+                    <button className={itemClassname} onClick={() => signOut()}>
+                      {t("sign_out")}
+                    </button>
+                  </li>
+                )}
               </ul>
             </nav>
           </HybridTooltipContent>

@@ -42,7 +42,7 @@ const Header: FC<Props> = async (props): Promise<JSX.Element> => {
             <Navigation />
           </div>
           <div className="col-span-2 grid grid-cols-4 gap-1 ml-auto">
-            <PersonalItems />
+            <PersonalItems session={session} />
             <CartItem />
             <WishlistItem />
             <SearchItem />

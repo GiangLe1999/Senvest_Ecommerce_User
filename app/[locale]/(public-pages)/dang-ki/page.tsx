@@ -1,6 +1,4 @@
-import CustomBreadcrumb from "@/components/custom-breadcrumb";
 import RegisterPageContent from "@/components/pages/register-page/register-page-content";
-import SectionContainer from "@/components/section-container";
 import { NextPage } from "next";
 import { unstable_setRequestLocale } from "next-intl/server";
 
@@ -13,14 +11,7 @@ interface Props {
 const RegisterPage: NextPage<Props> = ({ params: { locale } }: Props) => {
   unstable_setRequestLocale(locale);
 
-  return (
-    <SectionContainer>
-      <div className="max-w-[640px] mx-auto">
-        <CustomBreadcrumb pages={[{ name: "Đăng ký", link: "/dang-ki" }]} />
-        <RegisterPageContent />
-      </div>
-    </SectionContainer>
-  );
+  return <RegisterPageContent />;
 };
 
 export default RegisterPage;
