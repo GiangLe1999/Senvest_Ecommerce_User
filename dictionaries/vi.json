@@ -87,5 +87,50 @@
     "sign_in_fail_1_desc": "Vui lòng kiểm tra lại thông tin đăng nhập.",
     "sign_in_fail_2": "Đăng nhập thất bại",
     "sign_in_fail_2_desc": "Chúng tôi sẽ khắc phục trong thời gian sớm nhất."
+  },
+  "forgot_password_page": {
+    "breadcrumb": "Quên mật khẩu",
+    "heading": "Quên mật khẩu của bạn?",
+    "description": "Nhập địa chỉ email của bạn và chúng tôi sẽ gửi hướng dẫn để đặt lại mật khẩu của bạn.",
+    "email_desc": "Email của bạn phải được đăng ký với chúng tôi trước.",
+    "email_rule": "Email của bạn phải hợp lệ và đã đăng ký với chúng tôi trước.",
+    "email": "Địa chỉ email",
+    "continue": "Tiếp tục",
+    "back": "Quay lại Kindle Hope Candles Console",
+    "success": "Gửi email đặt lại mật khẩu thành công",
+    "success_desc": "Vui lòng kiểm tra email",
+    "fail_1": "Email không hợp lệ",
+    "fail_1_desc": "Vui lòng kiểm tra lại email của bạn.",
+    "fail_2": "Gửi email đặt lại mật khẩu thất bại",
+    "fail_2_desc": "Chúng tôi sẽ giải quyết vấn đề này sớm nhất có thể."
+  },
+  "reset_password_page": {
+    "breadcrumb": "Đặt lại mật khẩu",
+    "heading": "Thay đổi mật khẩu của bạn",
+    "description": "Nhập mật khẩu mới dưới đây để thay đổi mật khẩu của bạn.",
+    "new_password": "Mật khẩu mới",
+    "new_password_desc": "Mật khẩu phải có ít nhất 6 ký tự và phải có ít nhất một ký tự đặc biệt.",
+    "confirm_password": "Xác nhận mật khẩu",
+    "confirm_password_desc": "Xác nhận mật khẩu phải chính xác giống như mật khẩu mới.",
+    "re_enter_password": "Nhập lại mật khẩu mới",
+    "password_rule_1": "Mật khẩu phải có ít nhất 6 ký tự.",
+    "password_rule_2": "Mật khẩu phải có ít nhất một ký tự đặc biệt.",
+    "success": "Đặt lại mật khẩu thành công",
+    "success_desc": "Vui lòng đăng nhập vào tài khoản của bạn để tiếp tục mua sắm.",
+    "fail_1": "Email không hợp lệ",
+    "fail_1_desc": "Vui lòng kiểm tra lại email của bạn.",
+    "fail_2": "Đặt lại mật khẩu thất bại",
+    "fail_2_desc": "Chúng tôi sẽ giải quyết vấn đề này sớm nhất có thể."
+  },
+  "account_page": {
+    "breadcrumb": "Tài khoản của bạn",
+    "heading": "Chào mừng đến với Kindle Hope Candles",
+    "profile": "Hồ sơ",
+    "addresses": "Địa chỉ",
+    "order_history": "Lịch sử & chi tiết đơn hàng",
+    "credit_slip": "Biên lai tín dụng",
+    "gdpr": "GDPR - Dữ liệu cá nhân",
+    "wishlist": "Danh sách yêu thích",
+    "sign_out": "Đăng xuất"
   }
 }
