@@ -4,7 +4,7 @@ import axios from "axios";
 import { getServerSession } from "next-auth";
 
 const baseURL =
-  process.env.API_BASE_URL || "http://localhost:8000/api/v1/admins";
+  process.env.API_BASE_URL || "http://localhost:8000/api/v1/users";
 
 const publicBaseURL =
   process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000/api/v1";

@@ -164,7 +164,11 @@ const RegisterForm: FC<Props> = ({ setActiveForm, setCurrentEmail }) => {
                 <FormLabel className="font-bold"> {t("password")}</FormLabel>
                 <div className="flex-1">
                   <FormControl>
-                    <Input placeholder="johndoeXYZ@" {...field} />
+                    <Input
+                      type="password"
+                      placeholder="johndoeXYZ@"
+                      {...field}
+                    />
                   </FormControl>
                   {form.formState.errors.password ? (
                     <FormMessage />

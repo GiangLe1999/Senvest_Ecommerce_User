@@ -1,10 +1,13 @@
-import { LocalizedString } from "./common.entity";
+export enum GenderEnum {
+  male = "male",
+  female = "female",
+}
 
-export interface Category {
+export interface User {
   _id: string;
   email: string;
   name: string;
-  gender: string;
+  gender: GenderEnum;
   date_of_birth?: Date;
   receive_offers: boolean;
   is_verified: boolean;
