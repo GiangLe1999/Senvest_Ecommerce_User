@@ -23,7 +23,14 @@ const AccountProfilePageContent: FC<Props> = ({ userProfile }): JSX.Element => {
           ]}
         />
 
-        <AccountProfileForm userProfile={userProfile} />
+        <AccountProfileForm
+          userProfile={{
+            ...userProfile,
+            ...(userProfile.date_of_birth && {
+              date_of_birth: new Date(userProfile.date_of_birth),
+            }),
+          }}
+        />
       </SmallSectionContainer>
     </SectionContainer>
   );

@@ -160,10 +160,16 @@
     "terms_desc": "You must accept the terms and conditions and the privacy policy before submitting.",
     "save": "Save",
     "update": "Update",
-    "success": "Update successful",
+    "success": "Update profile successful",
     "success_desc": "Please log in to your account to continue shopping.",
     "back": "Back to your account",
     "pick_date": "Pick a date",
-    "optional_field": "This is an optional field."
+    "optional_field": "This is an optional field.",
+    "fail_1": "Nothing to update",
+    "fail_1_desc": "Please change at least one field before submitting.",
+    "fail_2": "Update profile failed",
+    "fail_2_desc": "Please check your account information and try again.",
+    "fail_3": "Update profile failed",
+    "fail_3_desc": "We will resolve this issue as soon as possible."
   }
 }

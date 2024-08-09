@@ -30,8 +30,10 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Calendar } from "@/components/ui/calendar";
 import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
-import { cn } from "@/lib/utils";
+import { cn, getChangedFields } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { updateUserProfile } from "@/actions/user";
+import { vi, enUS } from "date-fns/locale";
 
 interface Props {
   userProfile: User;
@@ -39,8 +41,8 @@ interface Props {
 
 const AccountProfileForm: FC<Props> = ({ userProfile }) => {
   const t = useTranslations("account_profile_page");
-  const locale = useLocale();
   const [loading, setLoading] = useState(false);
+  const locale = useLocale();
 
   const FormSchema = z
     .object({
@@ -101,36 +103,67 @@ const AccountProfileForm: FC<Props> = ({ userProfile }) => {
       gender: userProfile.gender || GenderEnum.male,
       current_password: "",
       new_password: "",
-      date_of_birth: userProfile.date_of_birth || undefined,
+      date_of_birth: userProfile?.date_of_birth || undefined,
       terms: false,
       data_privacy: false,
       receive_offers: userProfile.receive_offers || false,
     },
   });
 
-  console.log(userProfile);
-
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
-      // setLoading(true);
-      // const res = await forgotPassword({
-      //   locale: locale ? locale : "vi",
-      // });
-      // if (res.ok) {
-      //   setLoading(false);
-      //   toast.success(t("success"), {
-      //     description: `${t("success_desc")} ${data.email}.`,
-      //   });
-      // } else {
-      //   setLoading(false);
-      //   return toast.error(t("fail_1"), {
-      //     description: t("fail_1_desc"),
-      //   });
-      // }
+      const formattedInitialData = {
+        name: userProfile.name,
+        ...(userProfile?.date_of_birth && {
+          date_of_birth: userProfile.date_of_birth.toISOString(),
+        }),
+        receive_offers: userProfile.receive_offers,
+        gender: userProfile.gender,
+      };
+
+      const formattedFormData = {
+        name: data.name,
+        ...(data?.date_of_birth && {
+          date_of_birth: data.date_of_birth.toISOString(),
+        }),
+        ...(data.current_password && {
+          current_password: data.current_password,
+        }),
+        ...(data.new_password && { new_password: data.new_password }),
+        receive_offers: data.receive_offers,
+        gender: data.gender,
+      };
+
+      const changedFields = getChangedFields({
+        initialFormData: formattedInitialData,
+        currentFormData: formattedFormData,
+      });
+
+      if (Object.keys(changedFields).length === 0) {
+        return toast.error(t("fail_1"), {
+          description: t("fail_1_desc"),
+        });
+      }
+
+      setLoading(true);
+      const res = await updateUserProfile(changedFields);
+      if (res.ok) {
+        setLoading(false);
+        toast.success(t("success"), {
+          description: `${t("success_desc")}.`,
+        });
+
+        window.location.reload();
+      } else {
+        setLoading(false);
+        return toast.error(t("fail_2"), {
+          description: t("fail_2_desc"),
+        });
+      }
     } catch (error) {
       setLoading(false);
-      return toast.error(t("fail_2"), {
-        description: t("fail_2_desc"),
+      return toast.error(t("fail_3"), {
+        description: t("fail_3_desc"),
       });
     }
   }
@@ -247,7 +280,9 @@ const AccountProfileForm: FC<Props> = ({ userProfile }) => {
               name="date_of_birth"
               render={({ field }) => (
                 <FormItem className="flex flex-col">
-                  <FormLabel className="font-bold">Date of birth</FormLabel>
+                  <FormLabel className="font-bold">
+                    {t("date_of_birth")}
+                  </FormLabel>
                   <Popover>
                     <PopoverTrigger asChild>
                       <FormControl>
@@ -258,22 +293,28 @@ const AccountProfileForm: FC<Props> = ({ userProfile }) => {
                           )}
                         >
                           {field.value ? (
-                            <span className="text-foreground">
-                              {format(field.value, "PPP")}
+                            <span className="text-foreground capitalize">
+                              {format(field.value, "PPP", {
+                                locale: locale === "en" ? enUS : vi,
+                              })}
                             </span>
                           ) : (
                             <span>{t("pick_date")}</span>
                           )}
-                          <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                          <CalendarIcon className="ml-auto h-4 w-4 text-muted" />
                         </Button>
                       </FormControl>
                     </PopoverTrigger>
                     <PopoverContent className="w-auto p-0" align="start">
                       <Calendar
+                        locale={locale === "en" ? enUS : vi}
                         mode="single"
                         selected={field.value}
                         onSelect={field.onChange}
                         initialFocus
+                        captionLayout="dropdown-buttons"
+                        fromYear={1960}
+                        toYear={2030}
                       />
                     </PopoverContent>
                   </Popover>
