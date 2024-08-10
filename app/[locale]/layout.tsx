@@ -6,6 +6,7 @@ import Providers from "@/components/providers";
 import { unstable_setRequestLocale } from "next-intl/server";
 import Header from "@/components/layout/header";
 import { cn } from "@/lib/utils";
+import Footer from "@/components/layout/footer";
 
 const philosopher = Philosopher({
   subsets: ["vietnamese"],
@@ -60,6 +61,7 @@ export default function RootLayout({
         <body className={cn(grey_qo.variable, philosopher.className)}>
           <Header />
           {children}
+          <Footer />
         </body>
       </Providers>
     </html>

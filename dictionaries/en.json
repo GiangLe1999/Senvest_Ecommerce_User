@@ -290,5 +290,18 @@
       "feature_4_heading": "Secure Checkout",
       "feature_4_description": "100% protected by Paypal"
     }
+  },
+  "footer": {
+    "about_us": "About Us",
+    "store_location": "Store Location",
+    "contact_us": "Contact Us",
+    "delivery": "Delivery",
+    "terms": "Terms and Conditions",
+    "privacy_policy": "Privacy Policy",
+    "faqs": "FAQs",
+    "subscribe": "Subscribe",
+    "subscribe_description": "Get on the list and get 10% off your first order!",
+    "email": "Your email address",
+    "copyright": "Copyright © 2024 Kindle Hope Candles. All Rights Reserved"
   }
 }

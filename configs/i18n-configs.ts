@@ -117,6 +117,22 @@ export const pathnames = {
     vi: "/thanh-toan",
     en: "/checkout",
   },
+  "/vi-tri-cua-hang": {
+    vi: "/vi-tri-cua-hang",
+    en: "/store-location",
+  },
+  "/dieu-kien-dieu-khoan": {
+    vi: "/dieu-kien-dieu-khoan",
+    en: "/terms-and-conditions",
+  },
+  "/chinh-sach-bao-mat": {
+    vi: "/chinh-sach-bao-mat",
+    en: "/privacy-policy",
+  },
+  "/van-chuyen": {
+    vi: "/van-chuyen",
+    en: "/delivery",
+  },
 } satisfies Pathnames<typeof locales>;
 
 export const localePrefix = undefined;
