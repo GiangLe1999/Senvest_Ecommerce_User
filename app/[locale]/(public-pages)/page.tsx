@@ -1,7 +1,13 @@
 import BannerCarousel from "@/components/home-page/banner-carousel";
+
+import dynamic from "next/dynamic";
 import { getBanners } from "@/queries/banners.queries";
 import { NextPage } from "next";
 import { unstable_setRequestLocale } from "next-intl/server";
+
+const Introduction = dynamic(
+  () => import("@/components/home-page/introduction")
+);
 
 interface Props {
   params: {
@@ -16,6 +22,7 @@ const HomePage: NextPage<Props> = async ({ params: { locale } }: Props) => {
   return (
     <main>
       <BannerCarousel banners={banners} />
+      <Introduction />
     </main>
   );
 };

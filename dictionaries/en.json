@@ -240,6 +240,17 @@
       "heading_line_2": "Sweet Water Decor",
       "description": "Elevates any retail environment and sustainable, too!",
       "button": "Shop Now"
+    },
+    "introduction": {
+      "heading_1_line_1": "Handcrafted by",
+      "heading_1_line_2": "a team of artisans.",
+      "heading_2": "The Kindle Hope Candles Story",
+      "about_us": "About us",
+      "sub_heading_2": "We like to think of our wares as full sensory experiences!",
+      "description_2": "Porttitor massa id neque aliquam, diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Consectetur a erat nam dui id cuso ornare arcu odio ut sem.",
+      "discovery": "Discovery Now",
+      "heading_3_line_1": "We use 100% soy",
+      "heading_3_line_2": "wax derived."
     }
   }
 }
