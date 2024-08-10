@@ -279,6 +279,16 @@
       "line_2": "Pure Essential Oils.",
       "line_3": "Hand poured in.",
       "discovery": "Discovery Now"
+    },
+    "features": {
+      "feature_1_heading": "Free Easy Returns",
+      "feature_1_description": "Return to 7 days",
+      "feature_2_heading": "Free Delivery Monday",
+      "feature_2_description": "Orders over $499",
+      "feature_3_heading": "All Day Support",
+      "feature_3_description": "24/7 Support care",
+      "feature_4_heading": "Secure Checkout",
+      "feature_4_description": "100% protected by Paypal"
     }
   }
 }

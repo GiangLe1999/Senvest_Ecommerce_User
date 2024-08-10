@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { getBanners } from "@/queries/banners.queries";
 import { NextPage } from "next";
 import { unstable_setRequestLocale } from "next-intl/server";
+import Features from "@/components/home-page/features";
 
 const Introduction = dynamic(
   () => import("@/components/home-page/introduction")
@@ -34,6 +35,7 @@ const HomePage: NextPage<Props> = async ({ params: { locale } }: Props) => {
       <Ingredients />
       <Testimonials />
       <JustForYou />
+      <Features />
     </main>
   );
 };
