@@ -251,6 +251,18 @@
       "discovery": "Discovery Now",
       "heading_3_line_1": "We use 100% soy",
       "heading_3_line_2": "wax derived."
+    },
+    "ingredients": {
+      "heading_line_1": "Eco-Friendly &",
+      "heading_line_2": "Natural Ingredients",
+      "ingredient_1_heading": "Petroleum Free",
+      "ingredient_1_description": "Excepteur sint occaecat cupidatat non proident",
+      "ingredient_2_heading": "Cruelty Free",
+      "ingredient_2_description": "Excepteur sint occaecat cupidatat non proident",
+      "ingredient_3_heading": "Phthalate Free",
+      "ingredient_3_description": "Excepteur sint occaecat cupidatat non proident",
+      "ingredient_4_heading": "100% Vegan",
+      "ingredient_4_description": "Excepteur sint occaecat cupidatat non proident"
     }
   }
 }
