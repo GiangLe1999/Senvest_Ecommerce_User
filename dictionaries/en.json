@@ -263,6 +263,22 @@
       "ingredient_3_description": "Excepteur sint occaecat cupidatat non proident",
       "ingredient_4_heading": "100% Vegan",
       "ingredient_4_description": "Excepteur sint occaecat cupidatat non proident"
+    },
+    "testimonials": {
+      "sub_heading": "Customer said",
+      "heading": "All That Kind Words",
+      "testimonial_1": "The scent is refreshing and sweet, but not too overwhelming, and it reminds me of strolling on the beaches of Hawaii, i.e. heaven. I also love the cute, millennial-pink color...",
+      "testimonial_1_author": "Craig Jenkins",
+      "testimonial_2": "The scent is refreshing and sweet, but not too overwhelming, and it reminds me of strolling on the beaches of Hawaii, i.e. heaven. I also love the cute, millennial-pink color...",
+      "testimonial_2_author": "Rebeca Villalobos"
+    },
+    "just_for_you": {
+      "sub_heading": "Just for you",
+      "heading": "The Self Discovery Collection",
+      "line_1": "100% Organic Natural Wax.",
+      "line_2": "Pure Essential Oils.",
+      "line_3": "Hand poured in.",
+      "discovery": "Discovery Now"
     }
   }
 }

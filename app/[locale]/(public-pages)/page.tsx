@@ -11,6 +11,12 @@ const Introduction = dynamic(
 
 const Ingredients = dynamic(() => import("@/components/home-page/ingredients"));
 
+const Testimonials = dynamic(
+  () => import("@/components/home-page/testimonials")
+);
+
+const JustForYou = dynamic(() => import("@/components/home-page/just-for-you"));
+
 interface Props {
   params: {
     locale: string;
@@ -26,6 +32,8 @@ const HomePage: NextPage<Props> = async ({ params: { locale } }: Props) => {
       <BannerCarousel banners={banners} />
       <Introduction />
       <Ingredients />
+      <Testimonials />
+      <JustForYou />
     </main>
   );
 };
