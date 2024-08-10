@@ -16,7 +16,7 @@ const Navigation: FC<Props> = (props): JSX.Element => {
   const [showShopCollectionItems, setShowShopCollectionItems] = useState(false);
 
   return (
-    <nav className="h-full relative">
+    <nav className="h-full relative z-[10]">
       <ul className="flex h-full justify-center">
         <li
           className="h-full relative"
