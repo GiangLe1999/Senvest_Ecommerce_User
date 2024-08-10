@@ -232,5 +232,14 @@
     "success_desc": "Now you can choose this address as one of your shipping address.",
     "fail_1": "Fail to update address",
     "fail_1_desc": "Please try to update address again."
+  },
+  "home_page": {
+    "banner_carousel": {
+      "sub_heading": "Discount off",
+      "heading_line_1": "30% Sale Off",
+      "heading_line_2": "Sweet Water Decor",
+      "description": "Elevates any retail environment and sustainable, too!",
+      "button": "Shop Now"
+    }
   }
 }

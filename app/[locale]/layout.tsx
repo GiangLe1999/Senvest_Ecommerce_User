@@ -1,13 +1,21 @@
 import type { Metadata } from "next";
 import { Philosopher } from "next/font/google";
+import { Grey_Qo } from "next/font/google";
 import "@/app/globals.css";
 import Providers from "@/components/providers";
 import { unstable_setRequestLocale } from "next-intl/server";
 import Header from "@/components/layout/header";
+import { cn } from "@/lib/utils";
 
 const philosopher = Philosopher({
   subsets: ["vietnamese"],
   weight: ["400", "700"],
+});
+
+const grey_qo = Grey_Qo({
+  subsets: ["vietnamese"],
+  weight: ["400"],
+  variable: "--font-grey-qo",
 });
 
 export const metadata: Metadata = {
@@ -49,7 +57,7 @@ export default function RootLayout({
         href="/static/favicons/favicon-16x16.png"
       /> */}
       <Providers locale={locale}>
-        <body className={philosopher.className}>
+        <body className={cn(grey_qo.variable, philosopher.className)}>
           <Header />
           {children}
         </body>

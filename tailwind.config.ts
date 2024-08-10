@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        grey_qo: ["var(--font-grey-qo)"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
