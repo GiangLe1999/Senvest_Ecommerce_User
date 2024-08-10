@@ -286,6 +286,24 @@
       "feature_3_description": "Chăm sóc hỗ trợ 24/7",
       "feature_4_heading": "Thanh toán an toàn",
       "feature_4_description": "100% được bảo vệ bởi Paypal"
+    },
+    "products": {
+      "sub_heading": "Tốt nhất cho bạn",
+      "heading": "Bộ Sưu Tập Mới Bán Chạy Nhất"
     }
+  },
+  "footer": {
+    "about_us": "Về Chúng Tôi",
+    "store_location": "Địa Điểm Cửa Hàng",
+    "contact_us": "Liên Hệ",
+    "delivery": "Giao Hàng",
+    "terms": "Điều Khoản và Điều Kiện",
+    "privacy_policy": "Chính Sách Bảo Mật",
+    "faqs": "Câu Hỏi Thường Gặp",
+    "subscribe": "Đăng Ký",
+    "subscribe_description": "Hãy đăng ký và nhận ngay 10% giảm giá cho đơn hàng đầu tiên của bạn!",
+    "subscribe_rule": "Vui lòng nhập địa chỉ email hợp lệ.",
+    "email": "Địa chỉ email của bạn",
+    "copyright": "Bản quyền © 2024 Kindle Hope Candles. Bảo Lưu Mọi Quyền."
   }
 }
