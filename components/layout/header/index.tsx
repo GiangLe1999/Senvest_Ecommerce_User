@@ -12,6 +12,7 @@ import WishlistItem from "./wishlist-item";
 import SearchItem from "./search-item";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
+import SmallSectionContainer from "@/components/small-section-container";
 
 interface Props {}
 
@@ -22,7 +23,7 @@ const Header: FC<Props> = async (props): Promise<JSX.Element> => {
   return (
     <header className="border-b">
       <div className="bg-primary">
-        <SectionContainer className="grid grid-cols-12 h-10">
+        <SmallSectionContainer className="grid grid-cols-12 h-10">
           <div className="col-span-3" />
           <div className="col-span-6">
             <SloganCarousel slogans={slogans as Slogan[]} />
@@ -30,11 +31,11 @@ const Header: FC<Props> = async (props): Promise<JSX.Element> => {
           <div className="col-span-3">
             <LanguageSwitcher />
           </div>
-        </SectionContainer>
+        </SmallSectionContainer>
       </div>
 
       <div>
-        <SectionContainer className="grid grid-cols-12 h-[88px] py-4">
+        <SmallSectionContainer className="grid grid-cols-12 h-[88px] py-4">
           <div className="col-span-2">
             <Logo />
           </div>
@@ -47,7 +48,7 @@ const Header: FC<Props> = async (props): Promise<JSX.Element> => {
             <WishlistItem />
             <SearchItem />
           </div>
-        </SectionContainer>
+        </SmallSectionContainer>
       </div>
     </header>
   );

@@ -26,7 +26,7 @@ const Subscribe: FC<Props> = (props): JSX.Element => {
 
   const FormSchema = z.object({
     email: z.string().email({
-      message: t("email_rule"),
+      message: t("subscribe_rule"),
     }),
   });
 

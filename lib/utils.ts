@@ -62,3 +62,18 @@ export function getChangedFields({
 
   return changedFields;
 }
+
+export function formatCurrencyVND(amount: string) {
+  // Convert the string to a number
+  const numberAmount = parseFloat(amount);
+
+  if (isNaN(numberAmount)) {
+    throw new Error("Invalid number format");
+  }
+
+  // Format the number as VND currency
+  return new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+  }).format(numberAmount);
+}

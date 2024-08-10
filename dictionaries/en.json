@@ -289,6 +289,10 @@
       "feature_3_description": "24/7 Support care",
       "feature_4_heading": "Secure Checkout",
       "feature_4_description": "100% protected by Paypal"
+    },
+    "products": {
+      "sub_heading": "Best for you",
+      "heading": "New Collection Best Seller"
     }
   },
   "footer": {
@@ -301,6 +305,7 @@
     "faqs": "FAQs",
     "subscribe": "Subscribe",
     "subscribe_description": "Get on the list and get 10% off your first order!",
+    "subscribe_rule": "Please enter a valid email address.",
     "email": "Your email address",
     "copyright": "Copyright © 2024 Kindle Hope Candles. All Rights Reserved"
   }

@@ -5,6 +5,7 @@ import { getBanners } from "@/queries/banners.queries";
 import { NextPage } from "next";
 import { unstable_setRequestLocale } from "next-intl/server";
 import Features from "@/components/home-page/features";
+import { getHomepageProducts } from "@/queries/products.queries";
 
 const Introduction = dynamic(
   () => import("@/components/home-page/introduction")
@@ -18,6 +19,8 @@ const Testimonials = dynamic(
 
 const JustForYou = dynamic(() => import("@/components/home-page/just-for-you"));
 
+const Products = dynamic(() => import("@/components/home-page/products"));
+
 interface Props {
   params: {
     locale: string;
@@ -27,11 +30,13 @@ interface Props {
 const HomePage: NextPage<Props> = async ({ params: { locale } }: Props) => {
   unstable_setRequestLocale(locale);
   const { banners } = await getBanners();
+  const { products } = await getHomepageProducts();
 
   return (
     <main>
       <BannerCarousel banners={banners} />
       <Introduction />
+      <Products products={products} />
       <Ingredients />
       <Testimonials />
       <JustForYou />
