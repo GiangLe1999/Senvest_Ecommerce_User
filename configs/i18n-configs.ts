@@ -69,7 +69,7 @@ export const pathnames = {
     vi: "/quen-mat-khau",
     en: "/forgot-password",
   },
-  "/reset-password": {
+  "/reset-password/:token": {
     vi: "/reset-password",
     en: "/reset-password",
   },
@@ -84,6 +84,14 @@ export const pathnames = {
   "/tai-khoan/dia-chi": {
     vi: "/tai-khoan/dia-chi",
     en: "/account/addresses",
+  },
+  "/tai-khoan/dia-chi/tao-moi": {
+    vi: "/tai-khoan/dia-chi/tao-moi",
+    en: "/account/addresses/add",
+  },
+  "/tai-khoan/dia-chi/cap-nhat/:addressId": {
+    vi: "/tai-khoan/dia-chi/cap-nhat",
+    en: "/account/addresses/update",
   },
   "/tai-khoan/lich-su-mua-hang": {
     vi: "/tai-khoan/lich-su-mua-hang",

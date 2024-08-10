@@ -19,7 +19,7 @@ import { FC, useState } from "react";
 import { useRouter } from "@/configs/i18n-navigation";
 import { useTranslations } from "next-intl";
 import CustomLoadingButton from "@/components/custom-loading-button";
-import { resetPassword } from "@/actions/authentication";
+import { resetPassword } from "@/actions/authentication.actions";
 
 interface Props {
   token: string;

@@ -19,7 +19,7 @@ interface Props {
   session: Session | null;
 }
 
-const iconClassname = "w-9 h-9 group-hover:text-primary transition-colors";
+const iconClassname = "w-9 h-9";
 
 const AccountPageItems: FC<Props> = ({ session }): JSX.Element => {
   const t = useTranslations("account_page");
@@ -68,7 +68,7 @@ const AccountPageItems: FC<Props> = ({ session }): JSX.Element => {
         {itemList.map((item, index) => (
           <Link
             key={index}
-            className="border rounded-md text-muted shadow-md p-6 flex flex-col justify-center gap-3 items-center cursor-pointer group hover:shadow-lg transition hover:text-primary hover:border-primary"
+            className="rounded-sm text-muted shadow p-6 flex flex-col justify-center gap-3 items-center cursor-pointer group transition-all hover:text-white hover:border-primary hover:bg-primary"
             href={item.link as any}
           >
             {item.icon}

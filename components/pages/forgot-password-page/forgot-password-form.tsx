@@ -18,7 +18,7 @@ import { toast } from "sonner";
 import { FC, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import CustomLoadingButton from "@/components/custom-loading-button";
-import { forgotPassword } from "@/actions/authentication";
+import { forgotPassword } from "@/actions/authentication.actions";
 
 interface Props {}
 

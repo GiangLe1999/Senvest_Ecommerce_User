@@ -6,17 +6,19 @@ import { useTranslations } from "next-intl";
 interface Props {
   loading: boolean;
   content: string;
-  type: "submit" | "reset" | "button" | undefined;
-  size: "default" | "sm" | "lg" | "icon" | null | undefined;
+  type?: "submit" | "reset" | "button" | undefined;
+  size?: "default" | "sm" | "lg" | "icon" | null | undefined;
   className?: string;
+  onClick?: () => void;
 }
 
 const CustomLoadingButton: FC<Props> = ({
   loading,
   content,
   type = "button",
-  size = "sm",
+  size = "default",
   className,
+  onClick = () => {},
   ...props
 }): JSX.Element => {
   const t = useTranslations("common");
@@ -26,6 +28,7 @@ const CustomLoadingButton: FC<Props> = ({
       type={type}
       size={size}
       className={className}
+      onClick={onClick}
       {...props}
     >
       {loading ? (

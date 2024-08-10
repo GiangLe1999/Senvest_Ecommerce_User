@@ -2,7 +2,10 @@
   "common": {
     "en": "English",
     "vi": "Vietnamese",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "empty_heading": "Oops!",
+    "empty_description": "Sorry, we could not find any results",
+    "cancel": "Cancel"
   },
   "navigation": {
     "home": "Home",
@@ -162,7 +165,6 @@
     "update": "Update",
     "success": "Update profile successful",
     "success_desc": "Please log in to your account to continue shopping.",
-    "back": "Back to your account",
     "pick_date": "Pick a date",
     "optional_field": "This is an optional field.",
     "fail_1": "Nothing to update",
@@ -171,5 +173,52 @@
     "fail_2_desc": "Please check your account information and try again.",
     "fail_3": "Update profile failed",
     "fail_3_desc": "We will resolve this issue as soon as possible."
+  },
+  "account_addresses_page": {
+    "breadcrumb_1": "Your account",
+    "breadcrumb_2": "Addresses",
+    "heading": "Your adresses",
+    "my_address": "My address",
+    "vietnam": "Vietnam",
+    "update": "Update",
+    "delete": "Delete",
+    "delete_success": "Delete address successfully",
+    "delete_success_desc": "The address has been deleted.",
+    "delete_fail": "Delete address failed",
+    "delete_fail_1_desc": "Please check your account information and try again.",
+    "delete_fail_2_desc": "We will resolve this issue as soon as possible."
+  },
+  "add_address_page": {
+    "breadcrumb_1": "Your account",
+    "breadcrumb_2": "Addresses",
+    "breadcrumb_3": "Add an address",
+    "heading": "New address",
+    "description": "You just need to fill in fields which has an asterisk (*). The rest are optional.",
+    "alias": "Alias",
+    "name": "Full name",
+    "name_rule": "Only letters and the dot (.) character, followed by a space, are allowed.",
+    "address": "Address",
+    "address_desc": "The address includes the house number, street, district.",
+    "address_rule": "Address cannot be empty.",
+    "city": "City",
+    "city_rule": "City is required.",
+    "province": "Province",
+    "province_desc": "Choose your province",
+    "province_rule": "Province is required.",
+    "zip": "Postal code",
+    "zip_rule": "Zip/Postal code is required.",
+    "country": "Country",
+    "vietnam": "Vietnam",
+    "country_desc": "Currently only Vietnam is supported.",
+    "phone": "Phone number",
+    "phone_rule": "Phone number is required.",
+    "save": "Save",
+    "success": "Add address successfully",
+    "success_desc": "Now you can choose this address as one of your shipping address.",
+    "fail_1": "Fail to add address",
+    "fail_1_desc": "Please try to add address again.",
+    "fail_2": "Fail to add address",
+    "fail_2_desc": "We will resolve this issue as soon as possible.",
+    "optional_field": "This is an optional field."
   }
 }

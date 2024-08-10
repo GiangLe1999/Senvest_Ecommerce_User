@@ -23,8 +23,9 @@ import { useTranslations } from "next-intl";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
-import { registerNewAccount } from "@/actions/authentication";
+import { registerNewAccount } from "@/actions/authentication.actions";
 import CustomLoadingButton from "@/components/custom-loading-button";
+import { nameRegex } from "@/data/regexes";
 
 interface Props {
   setActiveForm: Dispatch<SetStateAction<string>>;
@@ -36,7 +37,7 @@ const RegisterForm: FC<Props> = ({ setActiveForm, setCurrentEmail }) => {
   const [loading, setLoading] = useState(false);
 
   const FormSchema = z.object({
-    name: z.string().regex(/^[a-zA-Z. ]+$/, {
+    name: z.string().regex(nameRegex, {
       message: t("name_rule"),
     }),
     email: z.string().email({

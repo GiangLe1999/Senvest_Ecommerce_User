@@ -5,18 +5,14 @@ import { unstable_setRequestLocale } from "next-intl/server";
 interface Props {
   params: {
     locale: string;
-  };
-  searchParams: {
     token: string;
   };
 }
 
 const ResetPasswordPage: NextPage<Props> = ({
-  params: { locale },
-  searchParams,
+  params: { locale, token },
 }: Props) => {
   unstable_setRequestLocale(locale);
-  const token = searchParams.token;
 
   return <ResetPasswordPageContent token={token} />;
 };

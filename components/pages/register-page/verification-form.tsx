@@ -24,7 +24,7 @@ import { toast } from "sonner";
 import { useTranslations } from "next-intl";
 import CountdownTimer from "./countdown-timer";
 import CustomLoadingButton from "@/components/custom-loading-button";
-import { resendOtp, verifyAccount } from "@/actions/authentication";
+import { resendOtp, verifyAccount } from "@/actions/authentication.actions";
 import { useRouter } from "@/configs/i18n-navigation";
 
 interface Props {
