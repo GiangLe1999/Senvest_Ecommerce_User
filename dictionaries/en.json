@@ -186,7 +186,9 @@
     "delete_success_desc": "The address has been deleted.",
     "delete_fail": "Delete address failed",
     "delete_fail_1_desc": "Please check your account information and try again.",
-    "delete_fail_2_desc": "We will resolve this issue as soon as possible."
+    "delete_fail_2_desc": "We will resolve this issue as soon as possible.",
+    "add_address": "Add an address",
+    "add_more_address": "Add more address"
   },
   "add_address_page": {
     "breadcrumb_1": "Your account",
@@ -217,8 +219,18 @@
     "success_desc": "Now you can choose this address as one of your shipping address.",
     "fail_1": "Fail to add address",
     "fail_1_desc": "Please try to add address again.",
-    "fail_2": "Fail to add address",
+    "fail_2": "Fail to add / update address",
     "fail_2_desc": "We will resolve this issue as soon as possible.",
     "optional_field": "This is an optional field."
+  },
+  "update_address_page": {
+    "breadcrumb_3": "Update an address",
+    "heading": "Update address",
+    "no_changes": "Nothing to update",
+    "no_changes_desc": "Please change at least one field before submitting.",
+    "success": "Update address successfully",
+    "success_desc": "Now you can choose this address as one of your shipping address.",
+    "fail_1": "Fail to update address",
+    "fail_1_desc": "Please try to update address again."
   }
 }

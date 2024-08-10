@@ -25,14 +25,25 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { createUserAddress } from "@/actions/user-addresses.actions";
+import {
+  createUserAddress,
+  updateUserAddress,
+} from "@/actions/user-addresses.actions";
 import { nameRegex } from "@/data/regexes";
 import { provinces } from "@/data/provinces";
+import { UserAddress } from "@/entities/user-address.entity";
+import { getChangedFields } from "@/lib/utils";
 
-interface Props {}
+interface Props {
+  initialAddress?: UserAddress;
+}
 
-const AddAddressForm: FC<Props> = () => {
+const AddUpdateAddressForm: FC<Props> = ({ initialAddress }) => {
   const t = useTranslations("add_address_page");
+  const t2 = useTranslations("update_address_page");
+
+  const isEdit = initialAddress ? true : false;
+
   const [loading, setLoading] = useState(false);
   const locale = useLocale();
 
@@ -61,32 +72,63 @@ const AddAddressForm: FC<Props> = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      alias: "",
-      name: "",
-      address: "",
-      city: "",
-      province: "",
-      zip: "",
-      phone: "",
+      alias: initialAddress?.alias || "",
+      name: initialAddress?.name || "",
+      address: initialAddress?.address || "",
+      city: initialAddress?.city || "",
+      province: initialAddress?.province || "",
+      zip: initialAddress?.zip || "",
+      phone: initialAddress?.phone || "",
     },
   });
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
-      setLoading(true);
-      const res = await createUserAddress(data);
-      if (res.ok) {
-        setLoading(false);
-        toast.success(t("success"), {
-          description: `${t("success_desc")}.`,
+      if (isEdit && initialAddress) {
+        const changedFields = getChangedFields({
+          initialFormData: initialAddress,
+          currentFormData: data,
         });
 
-        window.location.href = `/${locale}/tai-khoan/dia-chi`;
-      } else {
-        setLoading(false);
-        return toast.error(t("fail_1"), {
-          description: t("fail_1_desc"),
+        if (Object.keys(changedFields).length === 0) {
+          return toast.error(t2("no_changes"), {
+            description: t2("no_changes_desc"),
+          });
+        }
+
+        setLoading(true);
+        const res = await updateUserAddress({
+          _id: initialAddress._id,
+          ...changedFields,
         });
+        if (res.ok) {
+          setLoading(false);
+          toast.success(t2("success"), {
+            description: t2("success_desc"),
+          });
+          window.location.href = `/${locale}/tai-khoan/dia-chi`;
+        } else {
+          setLoading(false);
+          return toast.error(t2("fail_1"), {
+            description: t2("fail_1_desc"),
+          });
+        }
+      } else {
+        setLoading(true);
+        const res = await createUserAddress(data);
+        if (res.ok) {
+          setLoading(false);
+          toast.success(t("success"), {
+            description: `${t("success_desc")}.`,
+          });
+
+          window.location.href = `/${locale}/tai-khoan/dia-chi`;
+        } else {
+          setLoading(false);
+          return toast.error(t("fail_1"), {
+            description: t("fail_1_desc"),
+          });
+        }
       }
     } catch (error) {
       setLoading(false);
@@ -98,7 +140,9 @@ const AddAddressForm: FC<Props> = () => {
 
   return (
     <div className="bg-white pt-10 pb-6 px-6 border shadow-md rounded-sm">
-      <h1 className="font-bold text-3xl text-primary mb-4">{t("heading")}</h1>
+      <h1 className="font-bold text-3xl text-primary mb-4">
+        {isEdit ? t2("heading") : t("heading")}
+      </h1>
 
       <p className="mb-8">{t("description")}</p>
 
@@ -320,4 +364,4 @@ const AddAddressForm: FC<Props> = () => {
   );
 };
 
-export default AddAddressForm;
+export default AddUpdateAddressForm;

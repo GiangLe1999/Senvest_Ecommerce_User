@@ -3,12 +3,16 @@ import SectionContainer from "@/components/section-container";
 import SmallSectionContainer from "@/components/small-section-container";
 import { useTranslations } from "next-intl";
 import { FC } from "react";
-import AddUpdateAddressForm from "./add-update-address-form";
+import { UserAddress } from "@/entities/user-address.entity";
+import AddUpdateAddressForm from "../add-address-page/add-update-address-form";
 
-interface Props {}
+interface Props {
+  address: UserAddress;
+}
 
-const AddAddressPageContent: FC<Props> = (): JSX.Element => {
+const UpdateAddressPageContent: FC<Props> = ({ address }): JSX.Element => {
   const t = useTranslations("add_address_page");
+  const t2 = useTranslations("update_address_page");
 
   return (
     <SectionContainer>
@@ -17,14 +21,14 @@ const AddAddressPageContent: FC<Props> = (): JSX.Element => {
           pages={[
             { name: t("breadcrumb_1"), link: "/tai-khoan" },
             { name: t("breadcrumb_2"), link: "/tai-khoan/dia-chi" },
-            { name: t("breadcrumb_3"), link: "/tai-khoan/dia-chi/tao-moi" },
+            { name: t2("breadcrumb_3"), link: "/tai-khoan/dia-chi/tao-moi" },
           ]}
         />
 
-        <AddUpdateAddressForm />
+        <AddUpdateAddressForm initialAddress={address} />
       </SmallSectionContainer>
     </SectionContainer>
   );
 };
 
-export default AddAddressPageContent;
+export default UpdateAddressPageContent;
