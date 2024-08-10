@@ -237,6 +237,55 @@
       "heading_line_2": "Sweet Water Decor",
       "description": "Nâng tầm bất kỳ môi trường bán lẻ nào và cũng bền vững!",
       "button": "Mua ngay"
+    },
+    "introduction": {
+      "heading_1_line_1": "Thủ công bởi",
+      "heading_1_line_2": "một đội ngũ thợ thủ công.",
+      "heading_2": "Câu chuyện về Nến Kindle Hope",
+      "about_us": "Về chúng tôi",
+      "sub_heading_2": "Chúng tôi thích nghĩ rằng sản phẩm của mình là những trải nghiệm toàn diện!",
+      "description_2": "Porttitor massa id neque aliquam, diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Consectetur a erat nam dui id cuso ornare arcu odio ut sem.",
+      "discovery": "Khám phá ngay",
+      "heading_3_line_1": "Chúng tôi sử dụng 100% sáp đậu nành",
+      "heading_3_line_2": "nguồn gốc tự nhiên."
+    },
+    "ingredients": {
+      "heading_line_1": "Thân thiện với môi trường &",
+      "heading_line_2": "Nguyên liệu tự nhiên",
+      "ingredient_1_heading": "Không có Petroleum",
+      "ingredient_1_description": "Excepteur sint occaecat cupidatat non proident",
+      "ingredient_2_heading": "Không thử nghiệm trên động vật",
+      "ingredient_2_description": "Excepteur sint occaecat cupidatat non proident",
+      "ingredient_3_heading": "Không chứa Phthalate",
+      "ingredient_3_description": "Excepteur sint occaecat cupidatat non proident",
+      "ingredient_4_heading": "100% Thuần chay",
+      "ingredient_4_description": "Excepteur sint occaecat cupidatat non proident"
+    },
+    "testimonials": {
+      "sub_heading": "Khách hàng nói",
+      "heading": "Tất cả những lời khen ngợi",
+      "testimonial_1": "Hương thơm tươi mát và ngọt ngào, nhưng không quá nồng nàn, khiến tôi nhớ đến những lần dạo chơi trên bãi biển Hawaii, tức là thiên đường. Tôi cũng rất thích màu hồng dễ thương...",
+      "testimonial_1_author": "Craig Jenkins",
+      "testimonial_2": "Hương thơm tươi mát và ngọt ngào, nhưng không quá nồng nàn, khiến tôi nhớ đến những lần dạo chơi trên bãi biển Hawaii, tức là thiên đường. Tôi cũng rất thích màu hồng dễ thương...",
+      "testimonial_2_author": "Rebeca Villalobos"
+    },
+    "just_for_you": {
+      "sub_heading": "Dành riêng cho bạn",
+      "heading": "Bộ sưu tập Khám phá bản thân",
+      "line_1": "100% Sáp tự nhiên hữu cơ.",
+      "line_2": "Tinh dầu nguyên chất.",
+      "line_3": "Được đổ tay.",
+      "discovery": "Khám phá ngay"
+    },
+    "features": {
+      "feature_1_heading": "Miễn phí đổi trả dễ dàng",
+      "feature_1_description": "Đổi trả trong vòng 7 ngày",
+      "feature_2_heading": "Giao hàng miễn phí vào thứ Hai",
+      "feature_2_description": "Cho đơn hàng trên $499",
+      "feature_3_heading": "Hỗ trợ cả ngày",
+      "feature_3_description": "Chăm sóc hỗ trợ 24/7",
+      "feature_4_heading": "Thanh toán an toàn",
+      "feature_4_description": "100% được bảo vệ bởi Paypal"
     }
   }
 }
