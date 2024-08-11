@@ -7,6 +7,7 @@ import { unstable_setRequestLocale } from "next-intl/server";
 import Header from "@/components/layout/header";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/layout/footer";
+import { Cart } from "@/components/cart";
 
 const philosopher = Philosopher({
   subsets: ["vietnamese"],
@@ -58,10 +59,13 @@ export default function RootLayout({
         href="/static/favicons/favicon-16x16.png"
       /> */}
       <Providers locale={locale}>
-        <body className={cn(grey_qo.variable, philosopher.className)}>
+        <body
+          className={cn(grey_qo.variable, philosopher.className, "relative")}
+        >
           <Header />
           {children}
           <Footer />
+          <Cart />
         </body>
       </Providers>
     </html>

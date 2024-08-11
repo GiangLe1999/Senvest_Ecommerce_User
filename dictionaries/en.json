@@ -314,6 +314,12 @@
     "add_to_cart": "Add to cart",
     "add_to_wishlist": "Add to wishlist",
     "compare": "Compare",
-    "quick_view": "Quick view"
+    "quick_view": "Quick view",
+    "scent": "Scent"
+  },
+  "cart": {
+    "see_cart": "Let's see your cart",
+    "item": "item",
+    "items": "items"
   }
 }

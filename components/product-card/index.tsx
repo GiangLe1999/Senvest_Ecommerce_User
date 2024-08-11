@@ -4,8 +4,8 @@ import { Product } from "@/entities/product.entity";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { FC, useState } from "react";
-import { cn, formatCurrencyVND } from "@/lib/utils";
-import { Link } from "@/configs/i18n-navigation";
+import { cn } from "@/lib/utils";
+import { Link, useRouter } from "@/configs/i18n-navigation";
 import {
   ChartColumnDecreasingIcon,
   HeartIcon,
@@ -20,6 +20,11 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import SalesBadge from "./sales-badge";
+import QuickView from "./quick-view";
+import Price from "./price";
+import Variants from "./variants";
+import { useCartStore } from "@/stores/useCartStore";
+import CustomFlyingButton from "../custom-flying-button";
 
 interface Props {
   product: Product;
@@ -35,13 +40,34 @@ const ProductCard: FC<Props> = ({ product }): JSX.Element => {
   const activeVariant = product.variants[activeVariantIndex];
   const [showAddToCartBtn, setShowAddToCartBtn] = useState(false);
   const t = useTranslations("product_card");
+  const [openQuickView, setOpenQuickView] = useState(false);
+  const router = useRouter();
+
+  const addToCart = useCartStore((state) => state.addToCart);
+  const addToCartHandler = () => {
+    addToCart({
+      _id: product._id,
+      variant_id: activeVariant._id,
+      quantity: 1,
+      price: activeVariant?.discountedPrice
+        ? activeVariant.discountedPrice
+        : activeVariant.price,
+      image: activeVariant.images[0],
+      name: product.name,
+      scent: activeVariant.fragrance,
+      stock: activeVariant.stock,
+    });
+  };
 
   return (
     <article
       onMouseEnter={() => setShowAddToCartBtn(true)}
       onMouseLeave={() => setShowAddToCartBtn(false)}
     >
-      <Link href={"/"} className="block relative bg-white rounded-sm">
+      <div
+        onClick={() => router.push("/")}
+        className="block relative bg-white rounded-sm cursor-pointer"
+      >
         {/* Product images */}
         <div className="relative w-full aspect-square overflow-hidden">
           <Image
@@ -68,9 +94,14 @@ const ProductCard: FC<Props> = ({ product }): JSX.Element => {
                   showAddToCartBtn ? "translate-x-0" : "translate-x-12",
                   "product-card-btn-1"
                 )}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  addToCartHandler();
+                }}
               >
                 <ShoppingCartIcon className="w-3 h-3" />
               </TooltipTrigger>
+
               <TooltipContent align="start" side="left" className="bg-black">
                 <p>{t("add_to_cart")}</p>
               </TooltipContent>
@@ -86,6 +117,10 @@ const ProductCard: FC<Props> = ({ product }): JSX.Element => {
                   showAddToCartBtn ? "translate-x-0" : "translate-x-12",
                   "product-card-btn-2"
                 )}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setOpenQuickView(true);
+                }}
               >
                 <SquareArrowOutUpRightIcon className="w-3 h-3" />
               </TooltipTrigger>
@@ -136,26 +171,15 @@ const ProductCard: FC<Props> = ({ product }): JSX.Element => {
         {activeVariant.discountedPrice && (
           <SalesBadge activeVariant={activeVariant} t={t} />
         )}
-      </Link>
+      </div>
 
       {/* Pruduct variants */}
       <div className="mt-5 mb-4">
-        <div className="flex flex-wrap gap-2">
-          {product.variants.map((variant, index) => (
-            <button
-              key={variant.fragrance}
-              onClick={() => setActiveVariantIndex(index)}
-              className={cn(
-                "px-2 py-1 rounded-md text-[10px] shadow-md",
-                activeVariantIndex === index
-                  ? "bg-primary text-white"
-                  : "bg-white text-muted"
-              )}
-            >
-              {variant.fragrance}
-            </button>
-          ))}
-        </div>
+        <Variants
+          product={product}
+          activeVariantIndex={activeVariantIndex}
+          setActiveVariantIndex={setActiveVariantIndex}
+        />
       </div>
 
       {/* Product name */}
@@ -166,43 +190,43 @@ const ProductCard: FC<Props> = ({ product }): JSX.Element => {
       </h4>
 
       {/* Product price */}
-      <div className="relative">
-        <span
-          className={cn(
-            "text-sm transition-all duration-500 absolute z-10 inset-0 flex justify-start items-center p-0 hover:text-primary hover:underline cursor-pointer",
-            showAddToCartBtn
-              ? "opacity-100 translate-x-0"
-              : "opacity-0 -translate-x-6"
-          )}
-          onClick={() => alert("Add to cart")}
-        >
-          <ShoppingBagIcon className="w-4 h-4 mr-1" />
-          {t("add_to_cart")}
-        </span>
-        <div
-          className={cn(
-            "transition-all duration-500",
-            showAddToCartBtn
-              ? "opacity-0 translate-x-12"
-              : "opacity-100 translate-x-0"
-          )}
-        >
-          {activeVariant?.discountedPrice ? (
-            <p>
-              <span className="mr-4 text-sm text-muted line-through">
-                {formatCurrencyVND(activeVariant.price)}
-              </span>
-              <span className="text-primary font-bold text-xl">
-                {formatCurrencyVND(activeVariant.discountedPrice)}
-              </span>
-            </p>
-          ) : (
-            <p className="text-primary font-bold text-xl">
-              {formatCurrencyVND(activeVariant.price)}
-            </p>
-          )}
+      <CustomFlyingButton src={activeVariant.images[0]}>
+        <div className="relative">
+          <span
+            className={cn(
+              "text-sm transition-all duration-500 absolute z-10 inset-0 p-0 cursor-pointer",
+              showAddToCartBtn
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-6"
+            )}
+            onClick={addToCartHandler}
+          >
+            <div className="flex justify-start items-center h-7 hover:text-primary hover:underline transition-colors text-muted">
+              + {t("add_to_cart")}
+            </div>
+          </span>
+          <div
+            className={cn(
+              "transition-all duration-500",
+              showAddToCartBtn
+                ? "opacity-0 translate-x-12"
+                : "opacity-100 translate-x-0"
+            )}
+          >
+            <Price activeVariant={activeVariant} />
+          </div>
         </div>
-      </div>
+      </CustomFlyingButton>
+
+      <QuickView
+        open={openQuickView}
+        setOpen={setOpenQuickView}
+        product={product}
+        activeVariant={activeVariant}
+        isVi={isVi}
+        activeVariantIndex={activeVariantIndex}
+        setActiveVariantIndex={setActiveVariantIndex}
+      />
     </article>
   );
 };
