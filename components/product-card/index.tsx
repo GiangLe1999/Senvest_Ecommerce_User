@@ -4,27 +4,11 @@ import { Product } from "@/entities/product.entity";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { FC, useState } from "react";
-import { cn } from "@/lib/utils";
 import { Link, useRouter } from "@/configs/i18n-navigation";
-import {
-  ChartColumnDecreasingIcon,
-  HeartIcon,
-  ShoppingBagIcon,
-  ShoppingCartIcon,
-  SquareArrowOutUpRightIcon,
-} from "lucide-react";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import SalesBadge from "./sales-badge";
 import QuickView from "./quick-view";
-import Price from "./price";
 import Variants from "./variants";
 import { useCartStore } from "@/stores/useCartStore";
-import CustomFlyingButton from "../custom-flying-button";
 import ActionButtons from "./action-buttons";
 import PriceOrAddToCart from "./price-or-add-to-cart";
 
@@ -42,6 +26,8 @@ const ProductCard: FC<Props> = ({ product }): JSX.Element => {
   const activeVariant = product.variants[activeVariantIndex];
 
   const [showAddToCartBtn, setShowAddToCartBtn] = useState(false);
+
+  const [openQuickView, setOpenQuickView] = useState(false);
 
   const addToCart = useCartStore((state) => state.addToCart);
 
@@ -91,11 +77,7 @@ const ProductCard: FC<Props> = ({ product }): JSX.Element => {
             t={t}
             showAddToCartBtn={showAddToCartBtn}
             addToCartHandler={addToCartHandler}
-            product={product}
-            isVi={isVi}
-            activeVariantIndex={activeVariantIndex}
-            setActiveVariantIndex={setActiveVariantIndex}
-            activeVariant={activeVariant}
+            setOpenQuickView={setOpenQuickView}
           />
         </div>
 
@@ -128,6 +110,17 @@ const ProductCard: FC<Props> = ({ product }): JSX.Element => {
         t={t}
         showAddToCartBtn={showAddToCartBtn}
         addToCartHandler={addToCartHandler}
+      />
+
+      {/* QuickView */}
+      <QuickView
+        open={openQuickView}
+        setOpen={setOpenQuickView}
+        product={product}
+        activeVariant={activeVariant}
+        isVi={isVi}
+        activeVariantIndex={activeVariantIndex}
+        setActiveVariantIndex={setActiveVariantIndex}
       />
     </article>
   );

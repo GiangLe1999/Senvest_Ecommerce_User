@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction, useState } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
 import {
   Tooltip,
   TooltipContent,
@@ -12,8 +12,6 @@ import {
   ShoppingCartIcon,
   SquareArrowOutUpRightIcon,
 } from "lucide-react";
-import QuickView from "./quick-view";
-import { Product } from "@/entities/product.entity";
 
 const btnClassname =
   "absolute top-3 right-3 w-8 h-8 bg-[#ffece4] hover:bg-primary hover:text-white grid place-items-center rounded-sm border border-white";
@@ -22,25 +20,15 @@ interface Props {
   t: any;
   showAddToCartBtn: boolean;
   addToCartHandler: () => void;
-  product: Product;
-  isVi: boolean;
-  activeVariantIndex: number;
-  setActiveVariantIndex: Dispatch<SetStateAction<number>>;
-  activeVariant: Product["variants"][0];
+  setOpenQuickView: Dispatch<SetStateAction<boolean>>;
 }
 
 const ActionButtons: FC<Props> = ({
   t,
   showAddToCartBtn,
   addToCartHandler,
-  product,
-  isVi,
-  activeVariantIndex,
-  setActiveVariantIndex,
-  activeVariant,
+  setOpenQuickView,
 }): JSX.Element => {
-  const [openQuickView, setOpenQuickView] = useState(false);
-
   return (
     <>
       {/* Action buttons */}
@@ -123,17 +111,6 @@ const ActionButtons: FC<Props> = ({
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
-
-      {/* QuickView */}
-      <QuickView
-        open={openQuickView}
-        setOpen={setOpenQuickView}
-        product={product}
-        activeVariant={activeVariant}
-        isVi={isVi}
-        activeVariantIndex={activeVariantIndex}
-        setActiveVariantIndex={setActiveVariantIndex}
-      />
     </>
   );
 };

@@ -14,7 +14,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { ShoppingBagIcon } from "lucide-react";
+import { DotIcon, SquareArrowOutUpRightIcon } from "lucide-react";
 
 interface Props {
   open: boolean;
@@ -43,63 +43,66 @@ const QuickView: FC<Props> = ({
         className="sm:max-w-[70%] flex items-center gap-10"
         closeButtonClassName="-top-3 -right-3 bg-primary text-white rounded-full w-8 h-8 grid place-items-center border-2 border-white opacity-100"
       >
-        <div className="w-1/2 aspect-square">
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="border rounded-sm"
-          >
-            <CarouselContent>
-              {activeVariant.images.map((image, index) => (
-                <CarouselItem
+        <Carousel
+          opts={{
+            loop: true,
+          }}
+          className="w-1/2 border rounded-sm"
+        >
+          <CarouselContent>
+            {activeVariant.images.map((image, index) => (
+              <CarouselItem
+                key={index}
+                className="relative w-full aspect-square group"
+              >
+                <Image
                   key={index}
-                  className="relative w-full aspect-square group"
-                >
-                  <Image
-                    key={index}
-                    src={image}
-                    alt={
-                      isVi
-                        ? `${product.name.vi} ${activeVariant.fragrance} ${index}`
-                        : `${product.name.en} ${activeVariant.fragrance} ${index}`
-                    }
-                    fill
-                    sizes="100vw"
-                    style={{
-                      objectFit: "cover",
-                    }}
-                    priority={index === 0}
-                  />
-                  <CarouselPrevious className="absolute top-1/2 left-2 -translate-y-1/2 bg-secondary shadow-md border-none opacity-0 group-hover:opacity-100 group-hover:left-4 transition-all cursor-pointer" />
-                  <CarouselNext className="absolute top-1/2 right-2 -translate-y-1/2 bg-secondary shadow-md border-none opacity-0 group-hover:opacity-100 group-hover:right-4 transition-all cursor-pointer" />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
-        </div>
+                  src={image}
+                  alt={
+                    isVi
+                      ? `${product.name.vi} ${activeVariant.fragrance} ${index}`
+                      : `${product.name.en} ${activeVariant.fragrance} ${index}`
+                  }
+                  width={460}
+                  height={460}
+                />
+                <CarouselPrevious className="absolute top-1/2 left-6 -translate-y-1/2 bg-secondary shadow-md border-none opacity-0 group-hover:opacity-100 group-hover:left-8 transition-all cursor-pointer" />
+                <CarouselNext className="absolute top-1/2 right-2 -translate-y-1/2 bg-secondary shadow-md border-none opacity-0 group-hover:opacity-100 group-hover:right-4 transition-all cursor-pointer" />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
         <div className="flex-1">
           <Price activeVariant={activeVariant} />
           <p className="text-2xl my-3">
             {isVi ? product?.name?.vi : product?.name?.en}
           </p>
+
           <p className="text-muted">
             {isVi
               ? parse(product?.description?.vi)
               : parse(product?.description?.en)}
           </p>
 
-          <div className="my-3">
-            <p className="text-muted font-bold mb-2">{t("scent")}:</p>
+          <div className="mt-3 mb-2 text-sm flex items-center flex-wrap gap-4 -ml-2">
+            <p className="text-muted font-bold flex items-center">
+              <DotIcon className="w-6 h-6" /> {t("stock")}:
+            </p>
+            <p>{activeVariant.stock}</p>
+          </div>
+
+          <div className="mb-2 flex items-center flex-wrap gap-4 -ml-2">
+            <p className="text-muted font-bold text-sm flex items-center">
+              <DotIcon className="w-6 h-6" /> {t("scent")}:
+            </p>
             <Variants
               {...{ product, activeVariantIndex, setActiveVariantIndex }}
             />
           </div>
 
-          <Button>
-            <ShoppingBagIcon className="w-4 h-4 mr-2" />
-            {t("add_to_cart")}
+          <Button variant="link" className="text-primary p-0 font-bold">
+            {t("go_to_product")}
+            <SquareArrowOutUpRightIcon className="w-3 h-3 ml-1" />
           </Button>
         </div>
       </DialogContent>

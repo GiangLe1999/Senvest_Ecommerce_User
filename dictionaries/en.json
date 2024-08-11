@@ -315,7 +315,9 @@
     "add_to_wishlist": "Add to wishlist",
     "compare": "Compare",
     "quick_view": "Quick view",
-    "scent": "Scent"
+    "scent": "Scent",
+    "stock": "Stock",
+    "go_to_product": "Go to product page for more details"
   },
   "cart": {
     "see_cart": "Let's see your cart",
