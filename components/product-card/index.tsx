@@ -25,13 +25,12 @@ import Price from "./price";
 import Variants from "./variants";
 import { useCartStore } from "@/stores/useCartStore";
 import CustomFlyingButton from "../custom-flying-button";
+import ActionButtons from "./action-buttons";
+import PriceOrAddToCart from "./price-or-add-to-cart";
 
 interface Props {
   product: Product;
 }
-
-const btnClassname =
-  "absolute top-3 right-3 w-8 h-8 bg-[#ffece4] hover:bg-primary hover:text-white grid place-items-center rounded-sm border border-white";
 
 const ProductCard: FC<Props> = ({ product }): JSX.Element => {
   const t = useTranslations("product_card");
@@ -44,17 +43,10 @@ const ProductCard: FC<Props> = ({ product }): JSX.Element => {
 
   const [showAddToCartBtn, setShowAddToCartBtn] = useState(false);
 
-  const [openQuickView, setOpenQuickView] = useState(false);
-
-  const cartState = useCartStore((state) => state);
-  // Define cannot added item
-  const watchedItem = cartState?.cart.find(
-    (item) => item._id === product._id && item.variant_id === activeVariant._id
-  );
-  const cannotAdd = watchedItem?.quantity === parseInt(activeVariant.stock);
+  const addToCart = useCartStore((state) => state.addToCart);
 
   const addToCartHandler = () => {
-    cartState.addToCart({
+    addToCart({
       _id: product._id,
       variant_id: activeVariant._id,
       quantity: 1,
@@ -95,85 +87,16 @@ const ProductCard: FC<Props> = ({ product }): JSX.Element => {
           />
 
           {/* Action buttons */}
-          <TooltipProvider delayDuration={0}>
-            <Tooltip>
-              <TooltipTrigger
-                className={cn(
-                  btnClassname,
-                  showAddToCartBtn ? "translate-x-0" : "translate-x-12",
-                  "product-card-btn-1"
-                )}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  addToCartHandler();
-                }}
-              >
-                <ShoppingCartIcon className="w-3 h-3" />
-              </TooltipTrigger>
-
-              <TooltipContent align="start" side="left" className="bg-black">
-                <p>{t("add_to_cart")}</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-
-          <TooltipProvider delayDuration={0}>
-            <Tooltip>
-              <TooltipTrigger
-                className={cn(
-                  btnClassname,
-                  "top-12",
-                  showAddToCartBtn ? "translate-x-0" : "translate-x-12",
-                  "product-card-btn-2"
-                )}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setOpenQuickView(true);
-                }}
-              >
-                <SquareArrowOutUpRightIcon className="w-3 h-3" />
-              </TooltipTrigger>
-              <TooltipContent align="start" side="left" className="bg-black">
-                <p>{t("quick_view")}</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-
-          <TooltipProvider delayDuration={0}>
-            <Tooltip>
-              <TooltipTrigger
-                className={cn(
-                  btnClassname,
-                  "top-[84px]",
-                  showAddToCartBtn ? "translate-x-0" : "translate-x-12",
-                  "product-card-btn-3"
-                )}
-              >
-                <ChartColumnDecreasingIcon className="w-3 h-3" />
-              </TooltipTrigger>
-              <TooltipContent align="start" side="left" className="bg-black">
-                <p>{t("compare")}</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-
-          <TooltipProvider delayDuration={0}>
-            <Tooltip>
-              <TooltipTrigger
-                className={cn(
-                  btnClassname,
-                  "top-[120px]",
-                  showAddToCartBtn ? "translate-x-0" : "translate-x-12",
-                  "product-card-btn-4"
-                )}
-              >
-                <HeartIcon className="w-3 h-3" />
-              </TooltipTrigger>
-              <TooltipContent align="start" side="left" className="bg-black">
-                <p>{t("add_to_wishlist")}</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+          <ActionButtons
+            t={t}
+            showAddToCartBtn={showAddToCartBtn}
+            addToCartHandler={addToCartHandler}
+            product={product}
+            isVi={isVi}
+            activeVariantIndex={activeVariantIndex}
+            setActiveVariantIndex={setActiveVariantIndex}
+            activeVariant={activeVariant}
+          />
         </div>
 
         {/* Sales badge */}
@@ -199,40 +122,12 @@ const ProductCard: FC<Props> = ({ product }): JSX.Element => {
       </h4>
 
       {/* Product price */}
-      <CustomFlyingButton src={activeVariant.images[0]} disabled={cannotAdd}>
-        <div className="relative w-[150px]">
-          <div
-            className={cn(
-              "text-sm !leading-7 transition-all duration-500 absolute z-10 inset-0 p-0 cursor-pointer h-[28px] hover:text-primary hover:underline text-muted text-left",
-              showAddToCartBtn
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 -translate-x-6"
-            )}
-            onClick={addToCartHandler}
-          >
-            + {t("add_to_cart")}
-          </div>
-          <div
-            className={cn(
-              "transition-all duration-500",
-              showAddToCartBtn
-                ? "opacity-0 translate-x-12"
-                : "opacity-100 translate-x-0"
-            )}
-          >
-            <Price activeVariant={activeVariant} />
-          </div>
-        </div>
-      </CustomFlyingButton>
-
-      <QuickView
-        open={openQuickView}
-        setOpen={setOpenQuickView}
+      <PriceOrAddToCart
         product={product}
         activeVariant={activeVariant}
-        isVi={isVi}
-        activeVariantIndex={activeVariantIndex}
-        setActiveVariantIndex={setActiveVariantIndex}
+        t={t}
+        showAddToCartBtn={showAddToCartBtn}
+        addToCartHandler={addToCartHandler}
       />
     </article>
   );
