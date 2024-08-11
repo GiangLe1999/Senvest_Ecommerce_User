@@ -82,12 +82,12 @@ const QuickView: FC<Props> = ({
         <div className="flex-1">
           <Price activeVariant={activeVariant} />
           <p className="text-2xl my-3">
-            {isVi ? product.name.vi : product.name.en}
+            {isVi ? product?.name?.vi : product?.name?.en}
           </p>
           <p className="text-muted">
             {isVi
-              ? parse(product.description.vi)
-              : parse(product.description.en)}
+              ? parse(product?.description?.vi)
+              : parse(product?.description?.en)}
           </p>
 
           <div className="my-3">
