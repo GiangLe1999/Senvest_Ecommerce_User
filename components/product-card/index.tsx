@@ -34,18 +34,27 @@ const btnClassname =
   "absolute top-3 right-3 w-8 h-8 bg-[#ffece4] hover:bg-primary hover:text-white grid place-items-center rounded-sm border border-white";
 
 const ProductCard: FC<Props> = ({ product }): JSX.Element => {
+  const t = useTranslations("product_card");
   const locale = useLocale();
   const isVi = locale === "vi";
-  const [activeVariantIndex, setActiveVariantIndex] = useState(0);
-  const activeVariant = product.variants[activeVariantIndex];
-  const [showAddToCartBtn, setShowAddToCartBtn] = useState(false);
-  const t = useTranslations("product_card");
-  const [openQuickView, setOpenQuickView] = useState(false);
   const router = useRouter();
 
-  const addToCart = useCartStore((state) => state.addToCart);
+  const [activeVariantIndex, setActiveVariantIndex] = useState(0);
+  const activeVariant = product.variants[activeVariantIndex];
+
+  const [showAddToCartBtn, setShowAddToCartBtn] = useState(false);
+
+  const [openQuickView, setOpenQuickView] = useState(false);
+
+  const cartState = useCartStore((state) => state);
+  // Define cannot added item
+  const watchedItem = cartState?.cart.find(
+    (item) => item._id === product._id && item.variant_id === activeVariant._id
+  );
+  const cannotAdd = watchedItem?.quantity === parseInt(activeVariant.stock);
+
   const addToCartHandler = () => {
-    addToCart({
+    cartState.addToCart({
       _id: product._id,
       variant_id: activeVariant._id,
       quantity: 1,
@@ -190,7 +199,7 @@ const ProductCard: FC<Props> = ({ product }): JSX.Element => {
       </h4>
 
       {/* Product price */}
-      <CustomFlyingButton src={activeVariant.images[0]}>
+      <CustomFlyingButton src={activeVariant.images[0]} disabled={cannotAdd}>
         <div className="relative w-[150px]">
           <div
             className={cn(

@@ -2,11 +2,12 @@ import { CartProduct } from "@/entities/cart-product.entity";
 import { MinusIcon, PlusIcon, Trash2Icon } from "lucide-react";
 import { useLocale } from "next-intl";
 import Image from "next/image";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Input } from "../ui/input";
 import { formatCurrencyVND } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { useCartStore } from "@/stores/useCartStore";
+import { toast } from "sonner";
 
 interface Props {
   cartItem: CartProduct | undefined;
@@ -18,13 +19,35 @@ const CartItem: FC<Props> = ({ cartItem }): JSX.Element => {
 
   const cartState = useCartStore((state) => state);
 
-  console.log(cartItem);
-
   const increaseQuantity = () => {
-    if (cartItem && cartItem.quantity < parseInt(cartItem.stock)) {
+    if (cartItem) {
       cartState.addToCart(cartItem);
-    } else {
-      alert("Out of stock");
+    }
+  };
+
+  const decreaseQuantity = () => {
+    if (cartItem) {
+      cartState.subtractFromCart(cartItem);
+    }
+  };
+
+  const inputChangeHandler = (e: any) => {
+    const value = e.target.value;
+
+    if (value < 1) {
+      return;
+    }
+
+    if (value > parseInt(cartItem?.stock || "0")) {
+      toast.error("Cannot add more anymore", {
+        description: "You can only add up to " + cartItem?.stock,
+        position: "top-right",
+      });
+      return;
+    }
+
+    if (cartItem) {
+      cartState.addMultipleToCart(cartItem, parseInt(value));
     }
   };
 
@@ -59,20 +82,20 @@ const CartItem: FC<Props> = ({ cartItem }): JSX.Element => {
         <div className="w-[20%]">
           <div className="flex items-center">
             <button
-              // onClick={handleDecrement}
-              className="bg-secondary text-gray-700 rounded-sm w-8 h-8 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+              onClick={decreaseQuantity}
+              className="bg-secondary hover:bg-primary hover:text-white transition-all text-gray-700 rounded-sm w-8 h-8 flex items-center justify-center"
             >
               <MinusIcon className="w-3 h-3" />
             </button>
             <Input
               type="text"
               value={cartItem?.quantity}
-              readOnly
               className="text-center w-12 h-8 mx-2 border rounded-sm bg-white"
+              onChange={(e) => inputChangeHandler(e)}
             />
             <button
               onClick={increaseQuantity}
-              className="bg-secondary text-gray-700 rounded-sm w-8 h-8 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+              className="bg-secondary hover:bg-primary hover:text-white transition-all text-gray-700 rounded-sm w-8 h-8 flex items-center justify-center"
             >
               <PlusIcon className="w-3 h-3" />
             </button>
