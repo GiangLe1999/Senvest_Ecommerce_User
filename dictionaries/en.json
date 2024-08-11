@@ -308,5 +308,12 @@
     "subscribe_rule": "Please enter a valid email address.",
     "email": "Your email address",
     "copyright": "Copyright © 2024 Kindle Hope Candles. All Rights Reserved"
+  },
+  "product_card": {
+    "sales": "Sales",
+    "add_to_cart": "Add to cart",
+    "add_to_wishlist": "Add to wishlist",
+    "compare": "Compare",
+    "quick_view": "Quick view"
   }
 }

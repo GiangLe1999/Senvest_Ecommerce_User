@@ -305,5 +305,12 @@
     "subscribe_rule": "Vui lòng nhập địa chỉ email hợp lệ.",
     "email": "Địa chỉ email của bạn",
     "copyright": "Bản quyền © 2024 Kindle Hope Candles. Bảo Lưu Mọi Quyền."
+  },
+  "product_card": {
+    "sales": "Giảm giá",
+    "add_to_cart": "Thêm vào giỏ hàng",
+    "add_to_wishlist": "Thêm vào yêu thích",
+    "compare": "So sánh",
+    "quick_view": "Xem nhanh"
   }
 }
