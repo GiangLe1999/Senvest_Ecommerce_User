@@ -55,10 +55,15 @@ export const useCartStore = create(
       },
       removeFromCart: (product: CartProduct) => {
         set((state) => ({
-          cart: state.cart.filter(
-            (item) =>
-              item._id !== product._id && item.variant_id !== product.variant_id
-          ),
+          cart: state.cart.filter((item) => {
+            if (
+              item._id === product._id &&
+              item.variant_id === product.variant_id
+            ) {
+              return false;
+            }
+            return true;
+          }),
           totalItems: state.totalItems - product.quantity,
           totalPrice:
             state.totalPrice - parseFloat(product.price) * product.quantity,

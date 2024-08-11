@@ -191,20 +191,18 @@ const ProductCard: FC<Props> = ({ product }): JSX.Element => {
 
       {/* Product price */}
       <CustomFlyingButton src={activeVariant.images[0]}>
-        <div className="relative">
-          <span
+        <div className="relative w-[150px]">
+          <div
             className={cn(
-              "text-sm transition-all duration-500 absolute z-10 inset-0 p-0 cursor-pointer",
+              "text-sm !leading-7 transition-all duration-500 absolute z-10 inset-0 p-0 cursor-pointer h-[28px] hover:text-primary hover:underline text-muted text-left",
               showAddToCartBtn
                 ? "opacity-100 translate-x-0"
                 : "opacity-0 -translate-x-6"
             )}
             onClick={addToCartHandler}
           >
-            <div className="flex justify-start items-center h-7 hover:text-primary hover:underline transition-colors text-muted">
-              + {t("add_to_cart")}
-            </div>
-          </span>
+            + {t("add_to_cart")}
+          </div>
           <div
             className={cn(
               "transition-all duration-500",

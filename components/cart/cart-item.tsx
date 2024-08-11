@@ -13,11 +13,20 @@ interface Props {
 }
 
 const CartItem: FC<Props> = ({ cartItem }): JSX.Element => {
-  console.log(cartItem);
   const locale = useLocale();
   const isVi = locale === "vi";
 
   const cartState = useCartStore((state) => state);
+
+  console.log(cartItem);
+
+  const increaseQuantity = () => {
+    if (cartItem && cartItem.quantity < parseInt(cartItem.stock)) {
+      cartState.addToCart(cartItem);
+    } else {
+      alert("Out of stock");
+    }
+  };
 
   return (
     <div className="my-5">
@@ -62,8 +71,7 @@ const CartItem: FC<Props> = ({ cartItem }): JSX.Element => {
               className="text-center w-12 h-8 mx-2 border rounded-sm bg-white"
             />
             <button
-              // onClick={handleIncrement}
-              // disabled={quantity >= max}
+              onClick={increaseQuantity}
               className="bg-secondary text-gray-700 rounded-sm w-8 h-8 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <PlusIcon className="w-3 h-3" />

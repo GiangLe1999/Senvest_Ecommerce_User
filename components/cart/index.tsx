@@ -20,6 +20,7 @@ import TotalCalculation from "./total-calculation";
 import CartItem from "./cart-item";
 import { Separator } from "../ui/separator";
 import { ScrollArea } from "../ui/scroll-area";
+import Empty from "../empty";
 
 interface Props {}
 
@@ -47,11 +48,11 @@ export const Cart: FC<Props> = () => {
                 There are {cartState?.totalItems} items in your cart.
               </DrawerDescription>
             </DrawerHeader>
-            <ScrollArea className="px-5 pb-5 h-[387px]">
+            <ScrollArea className="px-5 h-[280px]">
               <Separator className="mb-5" />
 
               {cartState?.cart?.length === 0 ? (
-                <div className="text-center text-sm">No items in your cart</div>
+                <Empty />
               ) : (
                 cartState?.cart?.map((item) => (
                   <CartItem cartItem={item} key={item.variant_id} />

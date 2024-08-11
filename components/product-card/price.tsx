@@ -10,7 +10,7 @@ const Price: FC<Props> = ({ activeVariant }): JSX.Element => {
   return (
     <>
       {activeVariant?.discountedPrice ? (
-        <p>
+        <p className="text-left">
           <span className="mr-4 text-sm text-muted line-through">
             {formatCurrencyVND(activeVariant.price)}
           </span>
@@ -19,7 +19,7 @@ const Price: FC<Props> = ({ activeVariant }): JSX.Element => {
           </span>
         </p>
       ) : (
-        <p className="text-primary font-bold text-xl">
+        <p className="text-left text-primary font-bold text-xl">
           {formatCurrencyVND(activeVariant.price)}
         </p>
       )}
