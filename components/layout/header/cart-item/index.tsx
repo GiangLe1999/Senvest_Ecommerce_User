@@ -8,14 +8,21 @@ import {
   TouchProvider,
 } from "@/components/hybrid-tooltip";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { Link } from "@/configs/i18n-navigation";
 import { ShoppingBagIcon } from "lucide-react";
 import useFromStore from "@/hooks/useFromStore";
 import { useCartStore } from "@/stores/useCartStore";
+import { useTranslations } from "next-intl";
+import TotalCalculation from "./total-calculation";
+import Empty from "@/components/empty";
+import Item from "./item";
+import { Separator } from "@/components/ui/separator";
+import { ScrollArea } from "@/components/ui/scroll-area";
+
 interface Props {}
 
 const CartItem: FC<Props> = (props): JSX.Element => {
   const cartState = useFromStore(useCartStore, (state) => state);
+  const t = useTranslations("cart");
 
   return (
     <TooltipProvider>
@@ -31,24 +38,34 @@ const CartItem: FC<Props> = (props): JSX.Element => {
           </HybridTooltipTrigger>
           <HybridTooltipContent
             align="end"
-            className="border shadow-md p-3 px-4 w-max rounded-sm"
+            className="border shadow-md rounded-sm text-foreground w-[350px] p-0"
           >
-            <nav>
-              <ul className="text-muted text-[13px] space-y-1">
-                <li className="py-1 mb-1 hover:text-primary transition-colors">
-                  Sign in
-                </li>
-                <li className="py-1 my-1 hover:text-primary transition-colors">
-                  <Link href="/dong-gop">Wishlist</Link>
-                </li>
-                <li className="py-1 my-1 hover:text-primary transition-colors">
-                  <Link href="/faqs">Compare</Link>
-                </li>
-                <li className="py-1 my-1 hover:text-primary transition-colors">
-                  <Link href="/faqs">Checkout</Link>
-                </li>
-              </ul>
-            </nav>
+            <div className="flex items-center justify-between bg-primary text-white px-4 py-2 mb-4 rounde-t-sm">
+              <div className="text-sm font-bold">Your Cart</div>
+              <div className="text-sm font-bold">
+                {cartState?.totalItems} items
+              </div>
+            </div>
+
+            <ScrollArea className="px-4 h-[230px]">
+              {cartState?.cart?.length === 0 ? (
+                <Empty className="pt-4" />
+              ) : (
+                cartState?.cart?.map((item) => (
+                  <Item
+                    cartItem={item}
+                    key={item.variant_id}
+                    cartState={cartState}
+                  />
+                ))
+              )}
+            </ScrollArea>
+
+            <div className="px-4">
+              <Separator className="mt-3 mb-4" />
+            </div>
+
+            <TotalCalculation totalPrice={cartState?.totalPrice || 0} />
           </HybridTooltipContent>
         </HybridTooltip>
       </TouchProvider>

@@ -2,7 +2,7 @@ import { CartProduct } from "@/entities/cart-product.entity";
 import { MinusIcon, PlusIcon, Trash2Icon } from "lucide-react";
 import { useLocale } from "next-intl";
 import Image from "next/image";
-import { FC, useState } from "react";
+import { FC } from "react";
 import { Input } from "../ui/input";
 import { formatCurrencyVND } from "@/lib/utils";
 import { Button } from "../ui/button";
