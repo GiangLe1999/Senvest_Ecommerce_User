@@ -43,9 +43,10 @@ export const Cart: FC<Props> = () => {
         <div className="flex">
           <div className="flex-1">
             <DrawerHeader className="p-5">
-              <DrawerTitle>Your Cart</DrawerTitle>
+              <DrawerTitle>{t("your_cart")}</DrawerTitle>
               <DrawerDescription>
-                There are {cartState?.totalItems} items in your cart.
+                {t("there_are")} {cartState?.totalItems}{" "}
+                {t("items_in_your_cart")}.
               </DrawerDescription>
             </DrawerHeader>
             <ScrollArea className="px-5 h-[280px]">
@@ -55,14 +56,14 @@ export const Cart: FC<Props> = () => {
                 <Empty />
               ) : (
                 cartState?.cart?.map((item) => (
-                  <CartItem cartItem={item} key={item.variant_id} />
+                  <CartItem cartItem={item} key={item.variant_id} t={t} />
                 ))
               )}
             </ScrollArea>
           </div>
 
           <div className="w-[30%] bg-[#F5F5F6]">
-            <TotalCalculation totalPrice={cartState?.totalPrice || 0} />
+            <TotalCalculation totalPrice={cartState?.totalPrice || 0} t={t} />
           </div>
         </div>
       </DrawerContent>

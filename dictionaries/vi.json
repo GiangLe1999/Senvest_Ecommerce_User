@@ -2,7 +2,10 @@
   "common": {
     "en": "Tiếng Anh",
     "vi": "Tiếng Việt",
-    "loading": "Đang xử lý..."
+    "loading": "Đang xử lý...",
+    "empty_heading": "Ôi!",
+    "empty_description": "Xin lỗi, chúng tôi không tìm thấy kết quả nào",
+    "cancel": "Hủy"
   },
   "navigation": {
     "home": "Trang chủ",
@@ -311,6 +314,28 @@
     "add_to_cart": "Thêm vào giỏ hàng",
     "add_to_wishlist": "Thêm vào yêu thích",
     "compare": "So sánh",
-    "quick_view": "Xem nhanh"
+    "quick_view": "Xem nhanh",
+    "scent": "Hương thơm",
+    "stock": "Kho hàng",
+    "go_to_product": "Đi đến trang sản phẩm để biết thêm chi tiết"
+  },
+  "cart": {
+    "your_cart": "Giỏ Hàng Của Bạn",
+    "there_are": "Có",
+    "items_in_your_cart": "sản phẩm trong giỏ hàng của bạn",
+    "see_cart": "Xem giỏ hàng của bạn",
+    "item": "sản phẩm",
+    "items": "sản phẩm",
+    "scent": "Hương thơm",
+    "price": "Giá",
+    "total_price": "Tổng giá",
+    "order_summary": "Tóm tắt đơn hàng",
+    "click_checkout": "Nhấn “Thanh toán” để tiếp tục.",
+    "subtotal": "Tạm tính",
+    "shipping_cost": "Chi phí vận chuyển",
+    "tax": "Thuế dự kiến",
+    "total": "Tổng dự kiến",
+    "checkout": "Thanh toán",
+    "view_cart": "Xem giỏ hàng"
   }
 }

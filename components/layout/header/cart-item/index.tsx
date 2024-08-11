@@ -41,9 +41,12 @@ const CartItem: FC<Props> = (props): JSX.Element => {
             className="border shadow-md rounded-sm text-foreground w-[350px] p-0"
           >
             <div className="flex items-center justify-between bg-primary text-white px-4 py-2 mb-4 rounde-t-sm">
-              <div className="text-sm font-bold">Your Cart</div>
+              <div className="text-sm font-bold">{t("cart")}</div>
               <div className="text-sm font-bold">
-                {cartState?.totalItems} items
+                {cartState?.totalItems || 0}{" "}
+                {cartState?.totalItems && cartState?.totalItems < 2
+                  ? t("item")
+                  : t("items")}
               </div>
             </div>
 
@@ -56,6 +59,7 @@ const CartItem: FC<Props> = (props): JSX.Element => {
                     cartItem={item}
                     key={item.variant_id}
                     cartState={cartState}
+                    t={t}
                   />
                 ))
               )}
@@ -65,7 +69,7 @@ const CartItem: FC<Props> = (props): JSX.Element => {
               <Separator className="mt-3 mb-4" />
             </div>
 
-            <TotalCalculation totalPrice={cartState?.totalPrice || 0} />
+            <TotalCalculation totalPrice={cartState?.totalPrice || 0} t={t} />
           </HybridTooltipContent>
         </HybridTooltip>
       </TouchProvider>

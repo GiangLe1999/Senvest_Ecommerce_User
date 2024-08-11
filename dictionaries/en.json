@@ -320,8 +320,21 @@
     "go_to_product": "Go to product page for more details"
   },
   "cart": {
-    "see_cart": "Let's see your cart",
+    "your_cart": "Your Shopping Cart",
+    "there_are": "There are",
+    "items_in_your_cart": "items in your cart",
     "item": "item",
-    "items": "items"
+    "items": "items",
+    "scent": "Scent",
+    "price": "Price",
+    "total_price": "Total price",
+    "order_summary": "Order Summary",
+    "click_checkout": "Click “Checkout” to proceed.",
+    "subtotal": "Subtotal",
+    "shipping_cost": "Shipping cost",
+    "tax": "Estimated tax",
+    "total": "Estimated total",
+    "checkout": "Checkout",
+    "view_cart": "View cart"
   }
 }

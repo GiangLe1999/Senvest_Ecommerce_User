@@ -11,9 +11,10 @@ import { toast } from "sonner";
 
 interface Props {
   cartItem: CartProduct | undefined;
+  t: any;
 }
 
-const CartItem: FC<Props> = ({ cartItem }): JSX.Element => {
+const CartItem: FC<Props> = ({ cartItem, t }): JSX.Element => {
   const locale = useLocale();
   const isVi = locale === "vi";
 
@@ -69,7 +70,7 @@ const CartItem: FC<Props> = ({ cartItem }): JSX.Element => {
               {isVi ? cartItem?.name?.vi : cartItem?.name?.en}
             </p>
             <p className="text-muted text-xs">
-              <span className="font-bold">Scent: </span>
+              <span className="font-bold">{t("scent")}: </span>
               {cartItem?.scent}
             </p>
             <p className="text-muted text-xs">

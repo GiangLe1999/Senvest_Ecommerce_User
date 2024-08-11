@@ -10,9 +10,10 @@ import { Input } from "@/components/ui/input";
 interface Props {
   cartState: any;
   cartItem: CartProduct | undefined;
+  t: any;
 }
 
-const Item: FC<Props> = ({ cartState, cartItem }): JSX.Element => {
+const Item: FC<Props> = ({ cartState, cartItem, t }): JSX.Element => {
   const locale = useLocale();
   const isVi = locale === "vi";
 
@@ -64,15 +65,15 @@ const Item: FC<Props> = ({ cartState, cartItem }): JSX.Element => {
           {isVi ? cartItem?.name?.vi : cartItem?.name?.en}
         </p>
         <p className="text-muted text-xs">
-          <span className="font-bold">Scent: </span>
+          <span className="font-bold">{t("scent")}: </span>
           {cartItem?.scent}
         </p>
         <p className="text-muted text-xs">
-          <span className="font-bold">Price: </span>
+          <span className="font-bold">{t("price")}: </span>
           {formatCurrencyVND(cartItem?.price || 0)}
         </p>
         <p className="text-muted text-xs">
-          <span className="font-bold">Total price: </span>
+          <span className="font-bold">{t("total_price")}: </span>
           {formatCurrencyVND(
             parseFloat(cartItem?.price || "0") * (cartItem?.quantity || 0) || 0
           )}

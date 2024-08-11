@@ -12,36 +12,37 @@ import { Button } from "../ui/button";
 
 interface Props {
   totalPrice: number;
+  t: any;
 }
 
-const TotalCalculation: FC<Props> = ({ totalPrice }): JSX.Element => {
+const TotalCalculation: FC<Props> = ({ totalPrice, t }): JSX.Element => {
   return (
     <>
       <DrawerHeader className="p-5">
-        <DrawerTitle>Order summary</DrawerTitle>
-        <DrawerDescription>Click “Checkout” to proceed.</DrawerDescription>
+        <DrawerTitle>{t("order_summary")}</DrawerTitle>
+        <DrawerDescription>{t("click_checkout")}</DrawerDescription>
       </DrawerHeader>
       <div className="px-5">
         <Separator className="mb-5" />
         <div className="flex items-center justify-between text-sm mb-2">
-          <span className="text-muted">Subtotal:</span>
+          <span className="text-muted">{t("subtotal")}:</span>
           <span className="font-bold text-base">
             {formatCurrencyVND(totalPrice || 0)}
           </span>
         </div>
 
         <div className="flex items-center justify-between text-sm mb-2">
-          <span className="text-muted">Shipping cost:</span>
+          <span className="text-muted">{t("shipping_cost")}:</span>
           <span className="font-bold text-base">{formatCurrencyVND(0)}</span>
         </div>
 
         <div className="flex items-center justify-between text-sm mb-2">
-          <span className="text-muted">Estimated tax:</span>
+          <span className="text-muted">{t("tax")}:</span>
           <span className="font-bold text-base">{formatCurrencyVND(0)}</span>
         </div>
 
         <div className="flex items-center justify-between text-sm mb-2">
-          <span className="text-muted">Estimated total:</span>
+          <span className="text-muted">{t("total")}:</span>
           <span className="font-bold text-base">
             {formatCurrencyVND(totalPrice || 0)}
           </span>
@@ -52,10 +53,10 @@ const TotalCalculation: FC<Props> = ({ totalPrice }): JSX.Element => {
 
       <DrawerFooter className="p-5 space-y-2">
         <Button className="hover:bg-primary">
-          Checkout <CreditCardIcon className="w-4 h-4 ml-1" />
+          {t("checkout")} <CreditCardIcon className="w-4 h-4 ml-1" />
         </Button>
         <Button variant="outline" className="text-white">
-          View cart
+          {t("view_cart")}
           <ShoppingCartIcon className="w-4 h-4 ml-1" />
         </Button>
       </DrawerFooter>
