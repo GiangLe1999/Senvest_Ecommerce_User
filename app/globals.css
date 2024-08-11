@@ -53,3 +53,19 @@
 .custom-card-shadow {
   box-shadow: 2px 2px 11px 0 rgba(0, 0, 0, 0.1);
 }
+
+.product-card-btn-1 {
+  transition: transform 300ms 0s, color 300ms 0s, background-color 300ms 0s;
+}
+
+.product-card-btn-2 {
+  transition: transform 300ms 0.05s, color 300ms 0s, background-color 300ms 0s;
+}
+
+.product-card-btn-3 {
+  transition: transform 300ms 0.1s, color 300ms 0s, background-color 300ms 0s;
+}
+
+.product-card-btn-4 {
+  transition: transform 300ms 0.15s, color 300ms 0s, background-color 300ms 0s;
+}

@@ -84,6 +84,9 @@ const config = {
         height: "height",
         spacing: "margin, padding",
       },
+      transitionDelay: {
+        "225": "225ms",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
