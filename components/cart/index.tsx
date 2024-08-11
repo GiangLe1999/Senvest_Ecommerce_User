@@ -50,10 +50,10 @@ export const Cart: FC<Props> = () => {
             <ScrollArea className="px-5 pb-5 h-[387px]">
               <Separator className="mb-5" />
 
-              {cartState?.cart.length === 0 ? (
+              {cartState?.cart?.length === 0 ? (
                 <div className="text-center text-sm">No items in your cart</div>
               ) : (
-                cartState?.cart.map((item) => (
+                cartState?.cart?.map((item) => (
                   <CartItem cartItem={item} key={item.variant_id} />
                 ))
               )}

@@ -1,3 +1,5 @@
+"use client";
+
 import { FC } from "react";
 import {
   HybridTooltip,
@@ -8,9 +10,13 @@ import {
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Link } from "@/configs/i18n-navigation";
 import { ShoppingBagIcon } from "lucide-react";
+import useFromStore from "@/hooks/useFromStore";
+import { useCartStore } from "@/stores/useCartStore";
 interface Props {}
 
 const CartItem: FC<Props> = (props): JSX.Element => {
+  const cartState = useFromStore(useCartStore, (state) => state);
+
   return (
     <TooltipProvider>
       <TouchProvider>
@@ -19,7 +25,7 @@ const CartItem: FC<Props> = (props): JSX.Element => {
             <div className="relative">
               <ShoppingBagIcon className="w-5 h-5" />
               <div className="bg-primary w-4 h-4 grid place-items-center leading-none text-[10px] rounded-full text-white absolute -top-2 -right-1">
-                3
+                {cartState?.totalItems || 0}
               </div>
             </div>
           </HybridTooltipTrigger>

@@ -26,7 +26,7 @@ const CartItem: FC<Props> = ({ cartItem }): JSX.Element => {
           <div className="border rounded-sm">
             <Image
               src={cartItem?.image || ""}
-              alt={(isVi ? cartItem?.name.vi : cartItem?.name.en) || ""}
+              alt={(isVi ? cartItem?.name?.vi : cartItem?.name?.en) || ""}
               width={100}
               height={100}
               className="rounded-sm"
@@ -34,7 +34,7 @@ const CartItem: FC<Props> = ({ cartItem }): JSX.Element => {
           </div>
           <div className="space-y-2">
             <p className="font-bold text-sm">
-              {isVi ? cartItem?.name.vi : cartItem?.name.en}
+              {isVi ? cartItem?.name?.vi : cartItem?.name?.en}
             </p>
             <p className="text-muted text-xs">
               <span className="font-bold">Scent: </span>
