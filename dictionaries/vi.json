@@ -320,10 +320,10 @@
     "go_to_product": "Đi đến trang sản phẩm để biết thêm chi tiết"
   },
   "cart": {
+    "breadcrumb": "Giỏ hàng",
     "your_cart": "Giỏ Hàng Của Bạn",
     "there_are": "Có",
     "items_in_your_cart": "sản phẩm trong giỏ hàng của bạn",
-    "see_cart": "Xem giỏ hàng của bạn",
     "item": "sản phẩm",
     "items": "sản phẩm",
     "scent": "Hương thơm",
@@ -336,6 +336,22 @@
     "tax": "Thuế dự kiến",
     "total": "Tổng dự kiến",
     "checkout": "Thanh toán",
-    "view_cart": "Xem giỏ hàng"
+    "view_cart": "Xem giỏ hàng",
+    "details": "Chi tiết",
+    "see_details": "Xem chi tiết",
+    "quantity": "Số lượng",
+    "remove": "Xóa",
+    "actions": "Hành động",
+    "image": "Hình ảnh",
+    "continue": "Tiếp tục mua sắm",
+    "proceed_to_checkout": "Tiến hành thanh toán",
+    "secure_payment": "Thanh toán an toàn",
+    "secure_payment_desc": "Chúng tôi chấp nhận Thẻ Tín Dụng, Momo, VNPay, ZaloPay, ... và cũng có thể thanh toán qua Chuyển Khoản Ngân Hàng",
+    "fast_delivery": "Giao hàng nhanh chóng",
+    "fast_delivery_desc": "Nhận đơn hàng tại nhà. Nếu bạn cần gấp, chúng tôi cũng cung cấp dịch vụ Giao Hàng Nhanh Tận Nhà",
+    "free_returns": "Đổi trả miễn phí và dễ dàng",
+    "free_returns_desc": "Bạn có thể đổi hoặc trả đơn hàng trong vòng 30 ngày. Chúng tôi có thể đến thu hồi từ địa chỉ nhà hoặc nơi làm việc của bạn",
+    "packaging": "Bao bì",
+    "packaging_desc": "Bao bì hiện đại và thân thiện với môi trường với chất liệu cao cấp"
   }
 }

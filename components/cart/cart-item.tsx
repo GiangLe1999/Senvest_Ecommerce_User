@@ -1,5 +1,10 @@
 import { CartProduct } from "@/entities/cart-product.entity";
-import { MinusIcon, PlusIcon, Trash2Icon } from "lucide-react";
+import {
+  MinusIcon,
+  PlusIcon,
+  SquareArrowOutUpRightIcon,
+  Trash2Icon,
+} from "lucide-react";
 import { useLocale } from "next-intl";
 import Image from "next/image";
 import { FC } from "react";
@@ -8,13 +13,21 @@ import { formatCurrencyVND } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { useCartStore } from "@/stores/useCartStore";
 import { toast } from "sonner";
+import { Link } from "@/configs/i18n-navigation";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface Props {
   cartItem: CartProduct | undefined;
   t: any;
+  isCartPage?: boolean;
 }
 
-const CartItem: FC<Props> = ({ cartItem, t }): JSX.Element => {
+const CartItem: FC<Props> = ({ cartItem, t, isCartPage }): JSX.Element => {
   const locale = useLocale();
   const isVi = locale === "vi";
 
@@ -105,7 +118,7 @@ const CartItem: FC<Props> = ({ cartItem, t }): JSX.Element => {
 
         <div className="w-[25%]">
           <p className="line-clamp-1">
-            <span className="text-sm text-muted">Total price: </span>
+            <span className="text-sm text-muted">{t("total_price")}: </span>
             <span className="font-bold">
               {formatCurrencyVND(
                 parseFloat(cartItem?.price || "0") *
@@ -116,15 +129,54 @@ const CartItem: FC<Props> = ({ cartItem, t }): JSX.Element => {
         </div>
 
         <div className="flex-1">
-          <Button
-            className="bg-red-500 h-8"
-            variant="destructive"
-            onClick={() => {
-              if (cartItem) cartState.removeFromCart(cartItem);
-            }}
-          >
-            <Trash2Icon className="w-3 h-3 mr-1" /> Remove
-          </Button>
+          {isCartPage ? (
+            <div className="flex items-center gap-2">
+              <TooltipProvider delayDuration={0}>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <Button
+                      className="bg-red-500 h-8 w-8 grid place-items-center"
+                      variant="destructive"
+                      onClick={() => {
+                        if (cartItem) cartState.removeFromCart(cartItem);
+                      }}
+                    >
+                      <Trash2Icon className="w-4 h-4" />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent align="center" className="bg-black">
+                    <p>{t("remove")}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+
+              <TooltipProvider delayDuration={0}>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <Link
+                      href="/"
+                      className="bg-blue-700 w-8 h-8 grid place-items-center text-white rounded-sm"
+                    >
+                      <SquareArrowOutUpRightIcon className="w-4 h-4" />
+                    </Link>
+                  </TooltipTrigger>
+                  <TooltipContent align="center" className="bg-black">
+                    <p>{t("see_details")}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </div>
+          ) : (
+            <Button
+              className="bg-red-500 h-8"
+              variant="destructive"
+              onClick={() => {
+                if (cartItem) cartState.removeFromCart(cartItem);
+              }}
+            >
+              <Trash2Icon className="w-3 h-3 mr-1" /> {t("remove")}
+            </Button>
+          )}
         </div>
       </div>
     </div>

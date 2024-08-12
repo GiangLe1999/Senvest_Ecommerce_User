@@ -1,31 +1,37 @@
 import { FC } from "react";
-import {
-  DrawerClose,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-} from "@/components/ui/drawer";
 import { formatCurrencyVND } from "@/lib/utils";
 import { Separator } from "../ui/separator";
-import { CreditCardIcon, ShoppingCartIcon } from "lucide-react";
+import {
+  CreditCardIcon,
+  MoveLeftIcon,
+  MoveRightIcon,
+  ShoppingCartIcon,
+} from "lucide-react";
 import { Button } from "../ui/button";
 import { Link, useRouter } from "@/configs/i18n-navigation";
+import Features from "./features";
 
 interface Props {
   totalPrice: number;
+  totalItems: number;
   t: any;
 }
 
-const TotalCalculation: FC<Props> = ({ totalPrice, t }): JSX.Element => {
+const TotalCalculation: FC<Props> = ({
+  totalPrice,
+  totalItems,
+  t,
+}): JSX.Element => {
   const router = useRouter();
 
   return (
     <>
-      <DrawerHeader className="p-5">
-        <DrawerTitle>{t("order_summary")}</DrawerTitle>
-        <DrawerDescription>{t("click_checkout")}</DrawerDescription>
-      </DrawerHeader>
+      <div className="p-5 pt-4">
+        <h1 className="text-xl font-bold mb-1">{t("order_summary")}</h1>
+        <h2 className="text-sm text-muted">
+          {t("there_are")} {totalItems} {t("items_in_your_cart")}.
+        </h2>
+      </div>
       <div className="px-5">
         <Separator className="mb-5" />
         <div className="flex items-center justify-between text-sm mb-2">
@@ -55,21 +61,28 @@ const TotalCalculation: FC<Props> = ({ totalPrice, t }): JSX.Element => {
         <Separator className="mt-5" />
       </div>
 
-      <DrawerFooter className="p-5 space-y-2">
-        <Button className="hover:bg-primary">
-          {t("checkout")} <CreditCardIcon className="w-4 h-4 ml-1" />
+      <div className="px-5 py-6 space-y-4">
+        <Button
+          className="hover:bg-primary w-full"
+          onClick={() => router.push("/thanh-toan")}
+        >
+          <CreditCardIcon className="w-4 h-4 mr-1" />
+          {t("proceed_to_checkout")}
         </Button>
-        <DrawerClose>
-          <Button
-            variant="outline"
-            className="text-white p-0 w-full"
-            onClick={() => router.push("/gio-hang")}
-          >
-            {t("view_cart")}
-            <ShoppingCartIcon className="w-4 h-4 ml-1" />
-          </Button>
-        </DrawerClose>
-      </DrawerFooter>
+        <Button
+          variant="outline"
+          className="text-white p-0 w-full"
+          onClick={() => router.push("/")}
+        >
+          <MoveLeftIcon className="w-4 h-4 mr-1" />
+          {t("continue")}
+        </Button>
+      </div>
+
+      <div className="p-5 pt-0">
+        <Separator className="mb-5" />
+        <Features t={t} />
+      </div>
     </>
   );
 };

@@ -41,7 +41,7 @@ const CartItem: FC<Props> = (props): JSX.Element => {
             className="border shadow-md rounded-sm text-foreground w-[350px] p-0"
           >
             <div className="flex items-center justify-between bg-primary text-white px-4 py-2 mb-4 rounde-t-sm">
-              <div className="text-sm font-bold">{t("cart")}</div>
+              <div className="text-sm font-bold">{t("your_cart")}</div>
               <div className="text-sm font-bold">
                 {cartState?.totalItems || 0}{" "}
                 {cartState?.totalItems && cartState?.totalItems < 2

@@ -320,6 +320,7 @@
     "go_to_product": "Go to product page for more details"
   },
   "cart": {
+    "breadcrumb": "Shopping cart",
     "your_cart": "Your Shopping Cart",
     "there_are": "There are",
     "items_in_your_cart": "items in your cart",
@@ -335,6 +336,22 @@
     "tax": "Estimated tax",
     "total": "Estimated total",
     "checkout": "Checkout",
-    "view_cart": "View cart"
+    "view_cart": "View cart",
+    "details": "Details",
+    "see_details": "See details",
+    "quantity": "Quantity",
+    "remove": "Remove",
+    "actions": "Actions",
+    "image": "Image",
+    "continue": "Continue shopping",
+    "proceed_to_checkout": "Proceed to checkout",
+    "secure_payment": "Secure payment",
+    "secure_payment_desc": "We accept Credit Cards, Momo, VNPay, ZaloPay, ... and Bank Transfers are also available",
+    "fast_delivery": "Fast Delivery",
+    "fast_delivery_desc": "Receive your order at home. In a hurry, we also offer Express Home Delivery",
+    "free_returns": "Free and easy returns",
+    "free_returns_desc": "You can exchange or return your order within 30 days. And we can collect it from your home or work address",
+    "packaging": "Packaging",
+    "packaging_desc": "Contemporary and eco-friendly wrapping with high quality materials"
   }
 }

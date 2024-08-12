@@ -33,7 +33,7 @@ const HomePage: NextPage<Props> = async ({ params: { locale } }: Props) => {
   const { products } = await getHomepageProducts();
 
   return (
-    <main>
+    <>
       <BannerCarousel banners={banners} />
       <Introduction />
       <Products products={products} />
@@ -41,7 +41,7 @@ const HomePage: NextPage<Props> = async ({ params: { locale } }: Props) => {
       <Testimonials />
       <JustForYou />
       <Features />
-    </main>
+    </>
   );
 };
 
