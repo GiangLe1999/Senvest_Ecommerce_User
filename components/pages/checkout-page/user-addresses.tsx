@@ -16,7 +16,7 @@ import { Link } from "@/configs/i18n-navigation";
 import { UserAddress } from "@/entities/user-address.entity";
 import { ChevronsRightIcon, CirclePlusIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { FC } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
 import NoAccountAddresses from "../account-addresses-page/no-account-addresses";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -26,9 +26,16 @@ import AccountAddress from "../account-addresses-page/account-address";
 interface Props {
   userAdddresses: UserAddress[] | null;
   locale: string;
+  setUserAddressId: Dispatch<SetStateAction<string | undefined>>;
+  setContent: Dispatch<SetStateAction<"adddress" | "payment">>;
 }
 
-const UserAddresses: FC<Props> = ({ userAdddresses, locale }): JSX.Element => {
+const UserAddresses: FC<Props> = ({
+  userAdddresses,
+  locale,
+  setUserAddressId,
+  setContent,
+}): JSX.Element => {
   const t = useTranslations("account_addresses_page");
 
   const FormSchema = z.object({
@@ -42,7 +49,10 @@ const UserAddresses: FC<Props> = ({ userAdddresses, locale }): JSX.Element => {
     },
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {}
+  function onSubmit(data: z.infer<typeof FormSchema>) {
+    setUserAddressId(data.address_id);
+    setContent("payment");
+  }
 
   return (
     <div className="mt-6">

@@ -188,7 +188,8 @@
     "delete_fail_1_desc": "Vui lòng kiểm tra thông tin tài khoản của bạn và thử lại.",
     "delete_fail_2_desc": "Chúng tôi sẽ giải quyết vấn đề này càng sớm càng tốt.",
     "add_address": "Thêm địa chỉ",
-    "add_more_address": "Thêm địa chỉ khác"
+    "add_more_address": "Thêm địa chỉ khác",
+    "continue": "Tiếp tục"
   },
   "add_address_page": {
     "breadcrumb_1": "Tài khoản của bạn",
@@ -221,7 +222,10 @@
     "fail_1_desc": "Vui lòng thử thêm địa chỉ lại.",
     "fail_2": "Thêm/cập nhật địa chỉ không thành công",
     "fail_2_desc": "Chúng tôi sẽ giải quyết vấn đề này càng sớm càng tốt.",
-    "optional_field": "Đây là một trường tùy chọn."
+    "optional_field": "Đây là một trường tùy chọn.",
+    "continue": "Tiếp tục",
+    "email_rule": "Địa chỉ email không hợp lệ.",
+    "email_desc": "Email phải là một địa chỉ email hợp lệ."
   },
   "update_address_page": {
     "breadcrumb_3": "Cập nhật địa chỉ",
@@ -324,6 +328,7 @@
     "your_cart": "Giỏ Hàng Của Bạn",
     "there_are": "Có",
     "items_in_your_cart": "sản phẩm trong giỏ hàng của bạn",
+    "items_in_your_order": "sản phẩm trong đơn hàng của bạn",
     "item": "sản phẩm",
     "items": "sản phẩm",
     "scent": "Hương thơm",
@@ -353,5 +358,16 @@
     "free_returns_desc": "Bạn có thể đổi hoặc trả đơn hàng trong vòng 30 ngày. Chúng tôi có thể đến thu hồi từ địa chỉ nhà hoặc nơi làm việc của bạn",
     "packaging": "Bao bì",
     "packaging_desc": "Bao bì hiện đại và thân thiện với môi trường với chất liệu cao cấp"
+  },
+  "checkout_page": {
+    "breadcrumb_1": "Giỏ hàng",
+    "breadcrumb_2": "Thanh toán",
+    "heading_1": "Chọn địa chỉ",
+    "heading_1_desc": "Địa chỉ được chọn sẽ được sử dụng như địa chỉ cá nhân của bạn (cho hóa đơn) và là địa chỉ giao hàng của bạn.",
+    "heading_2": "Thêm địa chỉ của bạn",
+    "heading_2_desc_part_1": "Nếu bạn chưa đăng nhập, bạn có thể tạo địa chỉ mới, hoặc ",
+    "heading_2_desc_part_2": "đăng nhập",
+    "heading_2_desc_part_3": " vào tài khoản của bạn để chọn địa chỉ hiện có.",
+    "heading_3": "Thanh toán"
   }
 }

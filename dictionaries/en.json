@@ -328,6 +328,7 @@
     "your_cart": "Your Shopping Cart",
     "there_are": "There are",
     "items_in_your_cart": "items in your cart",
+    "items_in_your_order": "items in your order",
     "item": "item",
     "items": "items",
     "scent": "Scent",
@@ -362,7 +363,11 @@
     "breadcrumb_1": "Shopping cart",
     "breadcrumb_2": "Checkout",
     "heading_1": "Choose address",
+    "heading_1_desc": "The selected address will be used both as your personal address (for invoice) and as your delivery address.",
     "heading_2": "Add your address",
+    "heading_2_desc_part_1": "If you are not logged in, you can create your address, or ",
+    "heading_2_desc_part_2": "login",
+    "heading_2_desc_part_3": " to your account to choose your existing address.",
     "heading_3": "Checkout"
   }
 }

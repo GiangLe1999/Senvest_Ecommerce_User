@@ -8,6 +8,8 @@ import SmallSectionContainer from "@/components/small-section-container";
 import { useTranslations } from "next-intl";
 import { NotUserInfo } from "@/entities/not-user-info-entity";
 import { UserAddress } from "@/entities/user-address.entity";
+import CheckoutItems from "./checkout-items";
+import { useCartStore } from "@/stores/useCartStore";
 
 interface Props {
   session: Session | null;
@@ -19,9 +21,12 @@ const CheckoutPageContent: FC<Props> = ({
   userAdddresses,
 }): JSX.Element => {
   const t = useTranslations("checkout_page");
+  const { cart, totalItems, totalPrice } = useCartStore((state) => state);
+
   const [content, setContent] = useState<"adddress" | "payment">("adddress");
 
   const [notUserInfo, setNotUserInfo] = useState<NotUserInfo>();
+  const [userAddressId, setUserAddressId] = useState<string>();
 
   return (
     <SmallSectionContainer className="mt-12">
@@ -39,6 +44,7 @@ const CheckoutPageContent: FC<Props> = ({
               session={session}
               t={t}
               setNotUserInfo={setNotUserInfo}
+              setUserAddressId={setUserAddressId}
               setContent={setContent}
               userAdddresses={userAdddresses}
             />
@@ -47,7 +53,13 @@ const CheckoutPageContent: FC<Props> = ({
           )}
         </div>
 
-        <div className="col-span-4"></div>
+        <div className="col-span-4">
+          <CheckoutItems
+            cart={cart}
+            totalItems={totalItems}
+            totalPrice={totalPrice}
+          />
+        </div>
       </div>
     </SmallSectionContainer>
   );

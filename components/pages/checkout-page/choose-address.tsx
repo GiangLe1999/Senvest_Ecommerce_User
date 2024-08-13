@@ -1,7 +1,7 @@
 import { Session } from "next-auth";
 import { Dispatch, FC, SetStateAction } from "react";
 import NotUserAddressForm from "./not-user-address-form";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/configs/i18n-navigation";
 import { NotUserInfo } from "@/entities/not-user-info-entity";
 import { UserAddress } from "@/entities/user-address.entity";
@@ -13,6 +13,7 @@ interface Props {
   setNotUserInfo: Dispatch<SetStateAction<NotUserInfo | undefined>>;
   setContent: Dispatch<SetStateAction<"adddress" | "payment">>;
   userAdddresses: UserAddress[] | null;
+  setUserAddressId: Dispatch<SetStateAction<string | undefined>>;
 }
 
 const ChooseAddress: FC<Props> = ({
@@ -21,6 +22,7 @@ const ChooseAddress: FC<Props> = ({
   setNotUserInfo,
   setContent,
   userAdddresses,
+  setUserAddressId,
 }): JSX.Element => {
   const locale = useLocale();
 
@@ -31,10 +33,10 @@ const ChooseAddress: FC<Props> = ({
       </p>
       <p className="text-sm text-muted">
         {session ? (
-          "The selected address will be used both as your personal address (for invoice) and as your delivery address."
+          t("heading_1_desc")
         ) : (
           <>
-            If you are not logged in, you can create your address, or{" "}
+            {t("heading_2_desc_part_1")}
             <strong className="text-primary underline">
               <Link
                 href={
@@ -43,16 +45,21 @@ const ChooseAddress: FC<Props> = ({
                   }` as any
                 }
               >
-                login
+                {t("heading_2_desc_part_2")}
               </Link>
             </strong>{" "}
-            to your account to choose your existing address.
+            {t("heading_2_desc_part_3")}
           </>
         )}
       </p>
 
       {session ? (
-        <UserAddresses userAdddresses={userAdddresses} locale={locale} />
+        <UserAddresses
+          userAdddresses={userAdddresses}
+          locale={locale}
+          setUserAddressId={setUserAddressId}
+          setContent={setContent}
+        />
       ) : (
         <NotUserAddressForm
           setNotUserInfo={setNotUserInfo}
