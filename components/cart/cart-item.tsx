@@ -156,6 +156,7 @@ const CartItem: FC<Props> = ({ cartItem, t, isCartPage }): JSX.Element => {
                     <Link
                       href="/"
                       className="bg-blue-700 w-8 h-8 grid place-items-center text-white rounded-sm"
+                      target="_blank"
                     >
                       <SquareArrowOutUpRightIcon className="w-4 h-4" />
                     </Link>

@@ -4,20 +4,30 @@ import { deleteUserAddress } from "@/actions/user-addresses.actions";
 import WarningDialog from "@/components/warning-dialog";
 import { Link } from "@/configs/i18n-navigation";
 import { UserAddress } from "@/entities/user-address.entity";
+import { cn } from "@/lib/utils";
 import { PencilRulerIcon, TrashIcon } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { FC, useState } from "react";
 import { toast } from "sonner";
 
 interface Props {
   address: UserAddress;
   order: number;
+  isChooseAddressPage?: boolean;
+  isChosen?: boolean;
 }
 
-const AccountAddress: FC<Props> = ({ address, order }): JSX.Element => {
+const AccountAddress: FC<Props> = ({
+  address,
+  order,
+  isChooseAddressPage,
+  isChosen,
+}): JSX.Element => {
   const t = useTranslations("account_addresses_page");
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const locale = useLocale();
 
   const deleteAddressHandler = async () => {
     try {
@@ -47,7 +57,15 @@ const AccountAddress: FC<Props> = ({ address, order }): JSX.Element => {
 
   return (
     <>
-      <article className="custom-card-shadow rounded-sm">
+      <article
+        className={cn(
+          "rounded-sm transition",
+          isChooseAddressPage
+            ? "border cursor-pointer hover:bg-secondary/40"
+            : "custom-card-shadow",
+          isChosen && "bg-secondary/60 hover:bg-secondary/60"
+        )}
+      >
         <div className="p-5">
           <h4 className="font-bold mb-1">
             {address?.alias || `${t("my_address")} ${order}`}
@@ -62,7 +80,15 @@ const AccountAddress: FC<Props> = ({ address, order }): JSX.Element => {
         <div className="border-t py-2 px-5 flex items-center gap-4 text-sm">
           <Link
             className="flex items-center gap-1 text-emerald-600 hover:underline"
-            href={`/tai-khoan/dia-chi/cap-nhat/${address._id}` as any}
+            href={
+              isChooseAddressPage
+                ? (`/tai-khoan/dia-chi/cap-nhat/${
+                    address._id
+                  }?next=/${locale}/${
+                    locale === "vi" ? "thanh-toan" : "checkout"
+                  }` as any)
+                : (`/tai-khoan/dia-chi/cap-nhat/${address._id}` as any)
+            }
           >
             <PencilRulerIcon className="w-3 h-3" />
             {t("update")}

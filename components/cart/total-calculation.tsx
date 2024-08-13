@@ -56,9 +56,15 @@ const TotalCalculation: FC<Props> = ({ totalPrice, t }): JSX.Element => {
       </div>
 
       <DrawerFooter className="p-5 space-y-2">
-        <Button className="hover:bg-primary">
-          {t("checkout")} <CreditCardIcon className="w-4 h-4 ml-1" />
-        </Button>
+        <DrawerClose>
+          <Button
+            className="hover:bg-primary w-full"
+            onClick={() => router.push("/thanh-toan")}
+          >
+            {t("checkout")} <CreditCardIcon className="w-4 h-4 ml-1" />
+          </Button>
+        </DrawerClose>
+
         <DrawerClose>
           <Button
             variant="outline"

@@ -106,7 +106,11 @@ const AddUpdateAddressForm: FC<Props> = ({ initialAddress }) => {
           toast.success(t2("success"), {
             description: t2("success_desc"),
           });
-          window.location.href = `/${locale}/tai-khoan/dia-chi`;
+
+          let params = new URLSearchParams(document.location.search);
+          const redirectURL =
+            params.get("next") ?? (`/${locale}/tai-khoan/dia-chi` as any);
+          window.location.replace(redirectURL);
         } else {
           setLoading(false);
           return toast.error(t2("fail_1"), {
@@ -122,7 +126,10 @@ const AddUpdateAddressForm: FC<Props> = ({ initialAddress }) => {
             description: `${t("success_desc")}.`,
           });
 
-          window.location.href = `/${locale}/tai-khoan/dia-chi`;
+          let params = new URLSearchParams(document.location.search);
+          const redirectURL =
+            params.get("next") ?? (`/${locale}/tai-khoan/dia-chi` as any);
+          window.location.replace(redirectURL);
         } else {
           setLoading(false);
           return toast.error(t("fail_1"), {

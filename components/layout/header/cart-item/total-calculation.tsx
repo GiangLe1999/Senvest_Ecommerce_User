@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "@/configs/i18n-navigation";
 import { formatCurrencyVND } from "@/lib/utils";
 import { CreditCardIcon, ShoppingCartIcon } from "lucide-react";
 import { FC } from "react";
@@ -36,13 +37,19 @@ const TotalCalculation: FC<Props> = ({ totalPrice, t }): JSX.Element => {
       </div>
 
       <div className="grid grid-cols-2 gap-4">
-        <Button className="hover:bg-primary w-full">
+        <Link
+          href="/thanh-toan"
+          className="flex items-center justify-center px-4 w-full h-10 bg-primary text-white rounded-sm"
+        >
           {t("checkout")} <CreditCardIcon className="w-4 h-4 ml-1" />
-        </Button>
-        <Button variant="outline" className="text-white w-full">
+        </Link>
+        <Link
+          href="/gio-hang"
+          className="flex bg-background items-center justify-center px-4 w-full h-10 text-white rounded-sm"
+        >
           {t("view_cart")}
           <ShoppingCartIcon className="w-4 h-4 ml-1" />
-        </Button>
+        </Link>
       </div>
     </div>
   );

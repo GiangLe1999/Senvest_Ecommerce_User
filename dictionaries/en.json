@@ -188,7 +188,8 @@
     "delete_fail_1_desc": "Please check your account information and try again.",
     "delete_fail_2_desc": "We will resolve this issue as soon as possible.",
     "add_address": "Add an address",
-    "add_more_address": "Add more address"
+    "add_more_address": "Add more address",
+    "continue": "Continue"
   },
   "add_address_page": {
     "breadcrumb_1": "Your account",
@@ -221,7 +222,10 @@
     "fail_1_desc": "Please try to add address again.",
     "fail_2": "Fail to add / update address",
     "fail_2_desc": "We will resolve this issue as soon as possible.",
-    "optional_field": "This is an optional field."
+    "optional_field": "This is an optional field.",
+    "continue": "Continue",
+    "email_rule": "Invalid email address.",
+    "email_desc": "Email must be a valid email address."
   },
   "update_address_page": {
     "breadcrumb_3": "Update an address",
@@ -353,5 +357,12 @@
     "free_returns_desc": "You can exchange or return your order within 30 days. And we can collect it from your home or work address",
     "packaging": "Packaging",
     "packaging_desc": "Contemporary and eco-friendly wrapping with high quality materials"
+  },
+  "checkout_page": {
+    "breadcrumb_1": "Shopping cart",
+    "breadcrumb_2": "Checkout",
+    "heading_1": "Choose address",
+    "heading_2": "Add your address",
+    "heading_3": "Checkout"
   }
 }
