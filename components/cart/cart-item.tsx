@@ -87,7 +87,7 @@ const CartItem: FC<Props> = ({ cartItem, t, isCartPage }): JSX.Element => {
               {cartItem?.scent}
             </p>
             <p className="text-muted text-xs">
-              <span className="font-bold">Price: </span>
+              <span className="font-bold">{t("price")}: </span>
               {formatCurrencyVND(cartItem?.price || 0)}
             </p>
           </div>
@@ -155,7 +155,7 @@ const CartItem: FC<Props> = ({ cartItem, t, isCartPage }): JSX.Element => {
                   <TooltipTrigger>
                     <Link
                       href="/"
-                      className="bg-blue-700 w-8 h-8 grid place-items-center text-white rounded-sm"
+                      className="bg-background w-8 h-8 grid place-items-center text-white rounded-sm"
                       target="_blank"
                     >
                       <SquareArrowOutUpRightIcon className="w-4 h-4" />

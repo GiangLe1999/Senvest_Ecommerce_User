@@ -10,6 +10,7 @@ import { NotUserInfo } from "@/entities/not-user-info-entity";
 import { UserAddress } from "@/entities/user-address.entity";
 import CheckoutItems from "./checkout-items";
 import { useCartStore } from "@/stores/useCartStore";
+import PaymentProcess from "./payment-process";
 
 interface Props {
   session: Session | null;
@@ -49,7 +50,15 @@ const CheckoutPageContent: FC<Props> = ({
               userAdddresses={userAdddresses}
             />
           ) : (
-            <></>
+            <PaymentProcess
+              session={session}
+              notUserInfo={notUserInfo}
+              userAddresses={userAdddresses}
+              userAddressId={userAddressId}
+              totalItems={totalItems}
+              totalPrice={totalPrice}
+              cart={cart}
+            />
           )}
         </div>
 
