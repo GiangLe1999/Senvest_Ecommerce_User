@@ -11,6 +11,7 @@ import Variants from "./variants";
 import { useCartStore } from "@/stores/useCartStore";
 import ActionButtons from "./action-buttons";
 import PriceOrAddToCart from "./price-or-add-to-cart";
+import { getPriceForVariant, isDiscounted } from "@/lib/utils";
 
 interface Props {
   product: Product;
@@ -36,9 +37,7 @@ const ProductCard: FC<Props> = ({ product }): JSX.Element => {
       _id: product._id,
       variant_id: activeVariant._id,
       quantity: 1,
-      price: activeVariant?.discountedPrice
-        ? activeVariant.discountedPrice
-        : activeVariant.price,
+      price: getPriceForVariant(activeVariant),
       image: activeVariant.images[0],
       name: product.name,
       scent: activeVariant.fragrance,
@@ -82,7 +81,7 @@ const ProductCard: FC<Props> = ({ product }): JSX.Element => {
         </div>
 
         {/* Sales badge */}
-        {activeVariant.discountedPrice && (
+        {isDiscounted(activeVariant) && (
           <SalesBadge activeVariant={activeVariant} t={t} />
         )}
       </div>

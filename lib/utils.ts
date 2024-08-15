@@ -1,4 +1,6 @@
+import { Variant } from "@/entities/variant.entity";
 import { type ClassValue, clsx } from "clsx";
+import { add } from "date-fns";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
@@ -78,4 +80,49 @@ export function formatCurrencyVND(amount: string | number) {
     style: "currency",
     currency: "VND",
   }).format(amount);
+}
+
+const now = new Date();
+const utc_timestamp = Date.UTC(
+  now.getUTCFullYear(),
+  now.getUTCMonth(),
+  now.getUTCDate(),
+  now.getUTCHours(),
+  now.getUTCMinutes(),
+  now.getUTCSeconds(),
+  now.getUTCMilliseconds()
+);
+
+export function getPriceForVariant(variant: Variant): string {
+  if (
+    !variant?.discountedPrice ||
+    !variant?.discountedFrom ||
+    !variant?.discountedTo
+  ) {
+    return variant?.price;
+  }
+
+  const discountedFrom = new Date(variant?.discountedFrom).getTime();
+  const discountedTo = new Date(variant?.discountedTo).getTime();
+
+  if (utc_timestamp >= discountedFrom && utc_timestamp <= discountedTo) {
+    return variant?.discountedPrice;
+  } else {
+    return variant?.price;
+  }
+}
+
+export function isDiscounted(variant: Variant): boolean {
+  if (
+    !variant?.discountedPrice ||
+    !variant?.discountedFrom ||
+    !variant?.discountedTo
+  ) {
+    return false;
+  }
+
+  const discountedFrom = new Date(variant?.discountedFrom).getTime();
+  const discountedTo = new Date(variant?.discountedTo).getTime();
+
+  return utc_timestamp >= discountedFrom && utc_timestamp <= discountedTo;
 }

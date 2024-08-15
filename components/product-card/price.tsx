@@ -1,5 +1,5 @@
 import { Product } from "@/entities/product.entity";
-import { formatCurrencyVND } from "@/lib/utils";
+import { formatCurrencyVND, isDiscounted } from "@/lib/utils";
 import { FC } from "react";
 
 interface Props {
@@ -9,13 +9,13 @@ interface Props {
 const Price: FC<Props> = ({ activeVariant }): JSX.Element => {
   return (
     <>
-      {activeVariant?.discountedPrice ? (
+      {isDiscounted(activeVariant) ? (
         <p className="text-left">
           <span className="mr-4 text-sm text-muted line-through">
             {formatCurrencyVND(activeVariant.price)}
           </span>
           <span className="text-primary font-bold text-xl">
-            {formatCurrencyVND(activeVariant.discountedPrice)}
+            {formatCurrencyVND(activeVariant.discountedPrice as string)}
           </span>
         </p>
       ) : (

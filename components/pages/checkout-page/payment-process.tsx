@@ -42,7 +42,7 @@ const PaymentProcess: FC<Props> = ({
       const res = await createPaymentLink({
         locale,
         amount: totalPrice,
-        description: "Thanh toán đơn hàng",
+        description: "TT nen thom KHC",
         cancelUrl: `${window.location.origin}/`,
         returnUrl: `${window.location.origin}/`,
         not_user_info: notUserInfo,

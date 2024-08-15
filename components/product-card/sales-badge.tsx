@@ -7,14 +7,12 @@ interface Props {
 }
 
 const SalesBadge: FC<Props> = ({ t, activeVariant }): JSX.Element => {
-  const salesPercentage =
-    activeVariant?.discountedPrice &&
-    Math.round(
-      ((parseFloat(activeVariant.price) -
-        parseFloat(activeVariant.discountedPrice)) /
-        parseFloat(activeVariant.price)) *
-        100
-    );
+  const salesPercentage = Math.round(
+    ((parseFloat(activeVariant?.price as string) -
+      parseFloat(activeVariant?.discountedPrice as string)) /
+      parseFloat(activeVariant?.price as string)) *
+      100
+  );
 
   return (
     <span className="sales-badge">
