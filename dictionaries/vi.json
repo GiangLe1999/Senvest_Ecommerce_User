@@ -391,6 +391,20 @@
     "item_3": "Trong trường hợp có vấn đề với thanh toán, bạn sẽ nhận được một liên kết mới để gia hạn thanh toán qua địa chỉ email đã cung cấp.",
     "item_4_1": "Vui lòng liên hệ với chúng tôi ",
     "item_4_2": "nếu bạn có bất kỳ câu hỏi nào.",
-    "back_to_home": "Quay về trang chủ"
+    "back_to_home": "Quay về trang chủ",
+    "failed_heading": "Có sự cố với đơn hàng của bạn.",
+    "failed_sub_heading": "Chúng tôi rất tiếc, nhưng đơn hàng của bạn không thể được xử lý. Bạn nên làm gì tiếp theo?",
+    "failed_item_1": "Vui lòng kiểm tra lại thông tin thanh toán và thử lại.",
+    "failed_item_2": "Nếu sự cố vẫn tiếp diễn, bạn có thể thử đặt hàng lại sau.",
+    "failed_item_3": "Chúng tôi sẽ gửi email cho bạn với một liên kết mới để thử thanh toán lại.",
+    "failed_item_4_1": "Nếu bạn cần thêm sự hỗ trợ, vui lòng liên hệ với đội ngũ hỗ trợ của chúng tôi ",
+    "failed_item_4_2": "để được giúp đỡ giải quyết vấn đề.",
+    "pending_heading": "Đơn hàng của bạn đang chờ xử lý.",
+    "pending_sub_heading": "Chúng tôi đang xử lý đơn hàng của bạn. Tiếp theo là gì?",
+    "pending_item_1": "Chúng tôi hiện đang xác minh thông tin thanh toán của bạn. Quá trình này có thể mất vài phút.",
+    "pending_item_2": "Bạn sẽ nhận được email xác nhận sau khi thanh toán của bạn được xử lý thành công.",
+    "pending_item_3": "Nếu thanh toán của bạn không được xác nhận trong một khoảng thời gian nhất định, chúng tôi sẽ gửi thêm hướng dẫn qua email.",
+    "pending_item_4_1": "Nếu bạn có bất kỳ lo ngại hoặc câu hỏi nào, vui lòng liên hệ với chúng tôi ",
+    "pending_item_4_2": "để được hỗ trợ thêm."
   }
 }
