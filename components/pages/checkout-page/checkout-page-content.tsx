@@ -51,6 +51,7 @@ const CheckoutPageContent: FC<Props> = ({
             />
           ) : (
             <PaymentProcess
+              t={t}
               session={session}
               notUserInfo={notUserInfo}
               userAddresses={userAdddresses}

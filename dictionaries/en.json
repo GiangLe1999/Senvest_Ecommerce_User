@@ -368,6 +368,29 @@
     "heading_2_desc_part_1": "If you are not logged in, you can create your address, or ",
     "heading_2_desc_part_2": "login",
     "heading_2_desc_part_3": " to your account to choose your existing address.",
-    "heading_3": "Checkout"
+    "heading_3": "Checkout",
+    "review_order": "Review Your Order",
+    "details": "Details",
+    "name": "Name",
+    "address": "Address",
+    "city": "City",
+    "phone": "Phone number",
+    "add_more_address": "Add more address",
+    "continue": "Continue",
+    "total_items": "Total items",
+    "total_price": "Total price",
+    "paymet_methods": "Payment methods",
+    "payment_note": "* After clicking “Complete order”, you will be directed to PayOS, pay later with PayOS to complete your purchase securely.",
+    "complete_order": "Complete order"
+  },
+  "thank_you_page": {
+    "heading": "Thank you for shopping!",
+    "sub_heading": "Your order is on the way. What's next?",
+    "item_1": "We will send confirmation of the order and information about its progress by e-mail.",
+    "item_2": "The order will be processed after your payment is confirmed.",
+    "item_3": "In case of problems with the payment, you will receive a new link to renew the payment to the e-mail address provided.",
+    "item_4_1": "Please feel free to contact us ",
+    "item_4_2": "if you have any questions.",
+    "back_to_home": "Back to home"
   }
 }

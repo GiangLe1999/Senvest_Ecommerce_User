@@ -117,6 +117,10 @@ export const pathnames = {
     vi: "/thanh-toan",
     en: "/checkout",
   },
+  "/cam-on": {
+    vi: "/cam-on",
+    en: "/thank-you",
+  },
   "/vi-tri-cua-hang": {
     vi: "/vi-tri-cua-hang",
     en: "/store-location",

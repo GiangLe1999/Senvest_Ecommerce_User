@@ -1,4 +1,5 @@
 import { createPaymentLink } from "@/actions/payment.actions";
+import CustomLoadingButton from "@/components/custom-loading-button";
 import { Button } from "@/components/ui/button";
 import { CartProduct } from "@/entities/cart-product.entity";
 import { NotUserInfo } from "@/entities/not-user-info-entity";
@@ -11,6 +12,7 @@ import { FC, useState } from "react";
 import { toast } from "sonner";
 
 interface Props {
+  t: any;
   cart: CartProduct[];
   session: Session | null;
   notUserInfo: NotUserInfo | undefined;
@@ -21,6 +23,7 @@ interface Props {
 }
 
 const PaymentProcess: FC<Props> = ({
+  t,
   session,
   notUserInfo,
   userAddresses,
@@ -43,8 +46,12 @@ const PaymentProcess: FC<Props> = ({
         locale,
         amount: totalPrice,
         description: "TT nen thom KHC",
-        cancelUrl: `${window.location.origin}/`,
-        returnUrl: `${window.location.origin}/`,
+        cancelUrl: `${process.env.NEXT_PUBLIC_APP_URL}/${locale}/${
+          locale === "vi" ? "thanh-toan" : "checkout"
+        }`,
+        returnUrl: `${process.env.NEXT_PUBLIC_APP_URL}/${locale}/${
+          locale === "vi" ? "cam-on" : "thank-you"
+        }`,
         not_user_info: notUserInfo,
         user_address: userAddressId,
         items: cart?.map((item) => ({
@@ -55,8 +62,7 @@ const PaymentProcess: FC<Props> = ({
       });
       if (res.ok) {
         setLoading(false);
-        console.log(res.data);
-        window.open(res.data.checkoutUrl, "_blank");
+        window.location.href = res.data.checkoutUrl;
       } else {
         setLoading(false);
         return toast.error("Tạo link thất bại", {
@@ -73,14 +79,16 @@ const PaymentProcess: FC<Props> = ({
 
   return (
     <div className="bg-white p-5 border shadow-md rounded-sm">
-      <p className="font-bold text-2xl text-primary mb-4">Review Your Order</p>
+      <p className="font-bold text-2xl text-primary mb-4">
+        {t("review_order")}
+      </p>
 
       <div>
-        <h2 className="font-bold mb-3">Details</h2>
+        <h2 className="font-bold mb-3">{t("details")}</h2>
         {notUserInfo ? (
           <ul className="space-y-2 text-xs text-muted list-disc ml-4">
             <li>
-              <strong>Name: </strong>
+              <strong>{t("name")}: </strong>
               {notUserInfo?.name}
             </li>
             <li>
@@ -88,30 +96,30 @@ const PaymentProcess: FC<Props> = ({
               {notUserInfo?.email}
             </li>
             <li>
-              <strong>Phone: </strong>
+              <strong>{t("phone")}: </strong>
               {notUserInfo?.phone}
             </li>
             <li>
-              <strong>Address: </strong>
+              <strong>{t("address")}: </strong>
               {notUserInfo?.address}
             </li>
             <li>
-              <strong>City: </strong>
+              <strong>{t("city")}: </strong>
               {notUserInfo?.city}, {notUserInfo?.province} {notUserInfo?.zip}
             </li>
             <li>
-              <strong>Total items: </strong>
+              <strong>{t("total_items")}: </strong>
               {totalItems}
             </li>
             <li>
-              <strong>Total price: </strong>
+              <strong>{t("total_price")}: </strong>
               {formatCurrencyVND(totalPrice)}
             </li>
           </ul>
         ) : (
           <ul className="space-y-2 text-xs text-muted list-disc ml-4">
             <li className="mt-2">
-              <strong>Name: </strong>
+              <strong>{t("name")}: </strong>
               {chosenUserAddress?.name}
             </li>
             <li>
@@ -119,24 +127,24 @@ const PaymentProcess: FC<Props> = ({
               {session?.user?.email}
             </li>
             <li>
-              <strong>Phone: </strong>
+              <strong>{t("phone")}: </strong>
               {chosenUserAddress?.phone}
             </li>
             <li>
-              <strong>Address: </strong>
+              <strong>{t("address")}: </strong>
               {chosenUserAddress?.address}
             </li>
             <li>
-              <strong>City: </strong>
+              <strong>{t("city")}: </strong>
               {chosenUserAddress?.city}, {chosenUserAddress?.province}{" "}
               {chosenUserAddress?.zip}
             </li>
             <li>
-              <strong>Total items: </strong>
+              <strong>{t("total_items")}: </strong>
               {totalItems}
             </li>
             <li>
-              <strong>Total price: </strong>
+              <strong>{t("total_price")}: </strong>
               {formatCurrencyVND(totalPrice)}
             </li>
           </ul>
@@ -144,7 +152,7 @@ const PaymentProcess: FC<Props> = ({
       </div>
 
       <div className="mt-4">
-        <h2 className="font-bold mb-3">Payment methods</h2>
+        <h2 className="font-bold mb-3">{t("payment_methods")}</h2>
         <Image
           src="/checkout-page/accepted-payment-methods.png"
           alt="Accepted payment methods"
@@ -153,12 +161,15 @@ const PaymentProcess: FC<Props> = ({
         />
 
         <div className="mt-5 text-center">
-          <Button onClick={createPaymentLinkHandler}>Complete order</Button>
+          <CustomLoadingButton
+            loading={loading}
+            onClick={createPaymentLinkHandler}
+            content={t("complete_order")}
+          />
         </div>
 
         <p className="text-muted italic mt-4 text-center text-xs">
-          * After clicking “Complete order”, you will be directed to PayOS, pay
-          later with PayOS to complete your purchase securely.
+          {t("payment_note")}
         </p>
       </div>
     </div>

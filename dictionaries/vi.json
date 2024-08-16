@@ -368,6 +368,29 @@
     "heading_2_desc_part_1": "Nếu bạn chưa đăng nhập, bạn có thể tạo địa chỉ mới, hoặc ",
     "heading_2_desc_part_2": "đăng nhập",
     "heading_2_desc_part_3": " vào tài khoản của bạn để chọn địa chỉ hiện có.",
-    "heading_3": "Thanh toán"
+    "heading_3": "Thanh toán",
+    "review_order": "Xem lại đơn hàng của bạn",
+    "details": "Chi tiết",
+    "name": "Tên",
+    "address": "Địa chỉ",
+    "city": "Thành phố",
+    "phone": "Số điện thoại",
+    "add_more_address": "Thêm địa chỉ khác",
+    "continue": "Tiếp tục",
+    "total_items": "Tổng số mặt hàng",
+    "total_price": "Tổng giá",
+    "payment_methods": "Phương thức thanh toán",
+    "payment_note": "* Sau khi nhấn “Hoàn tất đơn hàng”, bạn sẽ được chuyển đến PayOS. Thanh toán sau với PayOS để hoàn tất mua hàng của bạn một cách an toàn.",
+    "complete_order": "Hoàn tất đơn hàng"
+  },
+  "thank_you_page": {
+    "heading": "Cảm ơn bạn đã mua sắm!",
+    "sub_heading": "Đơn hàng của bạn đang trên đường. Tiếp theo là gì?",
+    "item_1": "Chúng tôi sẽ gửi xác nhận đơn hàng và thông tin về tiến trình qua email.",
+    "item_2": "Đơn hàng sẽ được xử lý sau khi thanh toán của bạn được xác nhận.",
+    "item_3": "Trong trường hợp có vấn đề với thanh toán, bạn sẽ nhận được một liên kết mới để gia hạn thanh toán qua địa chỉ email đã cung cấp.",
+    "item_4_1": "Vui lòng liên hệ với chúng tôi ",
+    "item_4_2": "nếu bạn có bất kỳ câu hỏi nào.",
+    "back_to_home": "Quay về trang chủ"
   }
 }
