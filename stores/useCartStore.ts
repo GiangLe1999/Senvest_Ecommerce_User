@@ -14,6 +14,7 @@ interface Actions {
   removeFromCart: (Item: CartProduct) => void;
   subtractFromCart: (Item: CartProduct) => void;
   addMultipleToCart: (Item: CartProduct, quantity: number) => void;
+  clearCart: () => void;
 }
 
 const INITIAL_STATE: State = {
@@ -141,6 +142,9 @@ export const useCartStore = create(
           totalPrice:
             state.totalPrice - parseFloat(product.price) * product.quantity,
         }));
+      },
+      clearCart: () => {
+        set(INITIAL_STATE);
       },
     }),
     {
