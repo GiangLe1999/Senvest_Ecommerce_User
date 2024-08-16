@@ -1,5 +1,6 @@
 import SmallSectionContainer from "@/components/small-section-container";
 import { Link } from "@/configs/i18n-navigation";
+import { Payment } from "@/entities/payment.entity";
 import { CircleCheckBigIcon, MoveLeftIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
@@ -7,7 +8,7 @@ import { FC } from "react";
 
 interface Props {}
 
-const ThankYouPageContent: FC<Props> = (props): JSX.Element => {
+const ThankYouPageContent: FC<Props> = (): JSX.Element => {
   const t = useTranslations("thank_you_page");
 
   return (

@@ -391,6 +391,20 @@
     "item_3": "In case of problems with the payment, you will receive a new link to renew the payment to the e-mail address provided.",
     "item_4_1": "Please feel free to contact us ",
     "item_4_2": "if you have any questions.",
-    "back_to_home": "Back to home"
+    "back_to_home": "Back to home",
+    "failed_heading": "There was an issue with your order.",
+    "failed_sub_heading": "We're sorry, but your order could not be processed. What to do next?",
+    "failed_item_1": "Please check your payment details and try again.",
+    "failed_item_2": "If the problem persists, you can attempt to place your order again later.",
+    "failed_item_3": "We will send you an e-mail with a new link to retry the payment.",
+    "failed_item_4_1": "If you need further assistance, please contact our support team ",
+    "failed_item_4_2": "for help with resolving the issue.",
+    "pending_heading": "Your order is pending.",
+    "pending_sub_heading": "We're processing your order. What happens next?",
+    "pending_item_1": "We are currently verifying your payment details. This may take a few minutes.",
+    "pending_item_2": "You will receive an email confirmation once your payment has been successfully processed.",
+    "pending_item_3": "If your payment is not confirmed within a certain timeframe, we will send you further instructions via email.",
+    "pending_item_4_1": "If you have any concerns or questions, please don't hesitate to contact us ",
+    "pending_item_4_2": "for further assistance."
   }
 }
