@@ -31,7 +31,7 @@ export default function NewPaymentNotification() {
       // Set a timeout to clear the notification after 4 seconds
       setTimeout(() => {
         setData(null);
-      }, 4000);
+      }, 8000);
     });
 
     // Cleanup on unmount
@@ -46,7 +46,7 @@ export default function NewPaymentNotification() {
   }
 
   return (
-    <div className="rounded-sm border shadow-md fixed bottom-4 right-4 bg-white">
+    <div className="rounded-sm border shadow-md fixed bottom-4 right-4 bg-white max-w-[300px]">
       <p className="font-bold bg-primary text-white py-2 px-4 rounded-t-sm flex items-center justify-between">
         New Order by {data.name}
         <XIcon
