@@ -21,6 +21,7 @@ import { useCartStore } from "@/stores/useCartStore";
 import { useRouter } from "@/configs/i18n-navigation";
 
 interface Props {
+  t: any;
   isVi: boolean;
   product: Product;
   activeVariant: Variant;
@@ -29,6 +30,7 @@ interface Props {
 }
 
 const ProductMainInfo: FC<Props> = ({
+  t,
   isVi,
   product,
   activeVariant,
@@ -53,14 +55,14 @@ const ProductMainInfo: FC<Props> = ({
             type="button"
             className="hover:text-primary transition-colors"
           >
-            Read reviews(0)
+            {t("read_reviews")}(0)
           </button>
           <div className="h-4 bg-border w-[1px]"></div>
           <button
             type="button"
             className="hover:text-primary transition-colors"
           >
-            Write a review
+            {t("write_a_review")}
           </button>
         </div>
         <Price activeVariant={activeVariant} isDetailPage />
@@ -74,7 +76,7 @@ const ProductMainInfo: FC<Props> = ({
 
         {/* Variants */}
         <div>
-          <p className="mb-1 font-bold text-sm text-muted">Scent:</p>
+          <p className="mb-1 font-bold text-sm text-muted">{t("scent")}:</p>
           <div className="flex items-center flex-wrap gap-4">
             {product.variants.map((variant, index) => (
               <button
@@ -112,25 +114,25 @@ const ProductMainInfo: FC<Props> = ({
             className="flex items-center gap-2 pr-6 border-r hover:text-primary transition-colors"
           >
             <HeartIcon className="w-4 h-4" />
-            Wishlist
+            {t("wishlist")}
           </button>
           <button
             type="button"
             className="flex items-center gap-2 px-6 border-r hover:text-primary transition-colors"
           >
-            <ChartColumnIncreasingIcon className="w-4 h-4" /> Compare
+            <ChartColumnIncreasingIcon className="w-4 h-4" /> {t("compare")}
           </button>
           <button
             type="button"
             className="flex items-center gap-2 px-6 border-r hover:text-primary transition-colors"
           >
-            <CircleHelpIcon className="w-4 h-4" /> Ask A Question
+            <CircleHelpIcon className="w-4 h-4" /> {t("ask_question")}
           </button>
           <button
             type="button"
             className="flex items-center gap-2 px-6 hover:text-primary transition-colors"
           >
-            <Share2 className="w-4 h-4" /> Share
+            <Share2 className="w-4 h-4" /> {t("share")}
           </button>
         </div>
 
@@ -160,7 +162,7 @@ const ProductMainInfo: FC<Props> = ({
             className="hover:bg-primary"
             onClick={() => router.push("/gio-hang")}
           >
-            <ShoppingCartIcon className="w-5 h-5 mr-2" /> Check your cart
+            <ShoppingCartIcon className="w-5 h-5 mr-2" /> {t("check_cart")}
           </Button>
           <Button
             variant="outline"
@@ -168,7 +170,7 @@ const ProductMainInfo: FC<Props> = ({
             className="text-white"
             onClick={() => router.push("/thanh-toan")}
           >
-            <CreditCardIcon className="w-5 h-5 mr-2" /> Buy it now
+            <CreditCardIcon className="w-5 h-5 mr-2" /> {t("buy_now")}
           </Button>
         </div>
 
@@ -176,24 +178,26 @@ const ProductMainInfo: FC<Props> = ({
 
         <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-muted">
           <div className="flex items-center gap-4">
-            <span className="uppercase">Available: </span>{" "}
-            <span className="font-bold">{activeVariant.stock} products</span>
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="uppercase">TOTAL SALES: </span>{" "}
+            <span className="uppercase">{t("available")}: </span>{" "}
             <span className="font-bold">
-              {product.totalQuantitySold} products
+              {activeVariant.stock} {t("products")}
             </span>
           </div>
           <div className="flex items-center gap-4">
-            <span className="uppercase">Category: </span>{" "}
+            <span className="uppercase">{t("total_sales")}: </span>{" "}
+            <span className="font-bold">
+              {product.totalQuantitySold} {t("products")}
+            </span>
+          </div>
+          <div className="flex items-center gap-4">
+            <span className="uppercase">{t("category")}: </span>{" "}
             <span className="font-bold">
               {isVi ? product.category.name.vi : product.category.name.en}
             </span>
           </div>
 
           <div className="flex items-center gap-4">
-            <span className="uppercase">BRAND: </span>{" "}
+            <span className="uppercase">{t("brand")}: </span>{" "}
             <span className="font-bold">
               {activeVariant.stock} Kindle Hope Candles
             </span>

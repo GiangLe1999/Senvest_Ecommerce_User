@@ -414,6 +414,27 @@
     "total_price": "Total price"
   },
   "product_page": {
-    "product_details": "Product details"
+    "product_details": "Product details",
+    "read_reviews": "Read reviews",
+    "write_a_review": "Write a review",
+    "related_products": "Related products",
+    "scent": "Scent",
+    "wishlist": "Wishlist",
+    "compare": "Compare",
+    "ask_question": "Ask a question",
+    "share": "Share",
+    "check_cart": "Check your cart",
+    "buy_now": "Buy it now",
+    "available": "Available",
+    "products": "products",
+    "total_sales": "Total sales",
+    "category": "Category",
+    "brand": "Brand"
+  },
+  "change_product_quantity": {
+    "success": "Add product to cart successfully",
+    "success_desc": "Check your cart to see the updated quantity.",
+    "fail": "Fail to add product to cart",
+    "fail_desc": "You can only add up to "
   }
 }

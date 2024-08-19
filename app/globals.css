@@ -81,6 +81,7 @@
   position: absolute;
   top: 8px;
   left: -0.375rem;
+  z-index: 10;
 }
 
 .sales-badge::after {
@@ -94,6 +95,7 @@
   border-style: solid;
   border-width: 0.25rem 0 0 0.375rem;
   border-color: #120036 transparent transparent transparent;
+  z-index: 10;
 }
 
 /* No select element */

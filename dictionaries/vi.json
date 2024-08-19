@@ -406,5 +406,35 @@
     "pending_item_3": "Nếu thanh toán của bạn không được xác nhận trong một khoảng thời gian nhất định, chúng tôi sẽ gửi thêm hướng dẫn qua email.",
     "pending_item_4_1": "Nếu bạn có bất kỳ lo ngại hoặc câu hỏi nào, vui lòng liên hệ với chúng tôi ",
     "pending_item_4_2": "để được hỗ trợ thêm."
+  },
+  "new_payment_notification": {
+    "new_order_by": "Đơn hàng mới bởi",
+    "phone": "Điện thoại",
+    "address": "Địa chỉ",
+    "total_price": "Tổng giá"
+  },
+  "product_page": {
+    "product_details": "Chi tiết sản phẩm",
+    "read_reviews": "Đọc đánh giá",
+    "write_a_review": "Viết đánh giá",
+    "related_products": "Sản phẩm liên quan",
+    "scent": "Hương thơm",
+    "wishlist": "Danh sách yêu thích",
+    "compare": "So sánh",
+    "ask_question": "Hỏi đáp",
+    "share": "Chia sẻ",
+    "check_cart": "Kiểm tra giỏ hàng của bạn",
+    "buy_now": "Mua ngay",
+    "available": "Còn hàng",
+    "products": "sản phẩm",
+    "total_sales": "Tổng doanh số",
+    "category": "Danh mục",
+    "brand": "Thương hiệu"
+  },
+  "change_product_quantity": {
+    "success": "Thêm sản phẩm vào giỏ hàng thành công",
+    "success_desc": "Kiểm tra giỏ hàng của bạn để xem số lượng cập nhật.",
+    "fail": "Thêm sản phẩm vào giỏ hàng thất bại",
+    "fail_desc": "Bạn chỉ có thể thêm tối đa "
   }
 }

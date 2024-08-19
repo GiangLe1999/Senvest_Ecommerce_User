@@ -5,6 +5,7 @@ import { Input } from "./ui/input";
 import { useCartStore } from "@/stores/useCartStore";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 interface Props {
   cartItem: CartProduct | undefined;
@@ -19,13 +20,15 @@ const ChangeProductQuantity: FC<Props> = ({
     (state) => state
   );
 
+  const t = useTranslations("change_product_quantity");
+
   const increaseQuantity = () => {
     if (cartItem) {
       addToCart(cartItem);
     }
 
-    toast.success("Add to cart successfully", {
-      description: `Check your cart to see the updated quantity.`,
+    toast.success(t("success"), {
+      description: t("success_desc"),
       position: "top-right",
     });
   };
@@ -44,8 +47,8 @@ const ChangeProductQuantity: FC<Props> = ({
     }
 
     if (value > parseInt(cartItem?.stock || "0")) {
-      toast.error("Cannot add more anymore", {
-        description: "You can only add up to " + cartItem?.stock,
+      toast.error(t("fail"), {
+        description: t("fail_desc") + cartItem?.stock,
         position: "top-right",
       });
       return;
@@ -54,8 +57,8 @@ const ChangeProductQuantity: FC<Props> = ({
     if (cartItem) {
       addMultipleToCart(cartItem, parseInt(value));
 
-      toast.success("Add to cart successfully", {
-        description: `Check your cart to see the updated quantity.`,
+      toast.success(t("success"), {
+        description: t("success_desc"),
         position: "top-right",
       });
     }

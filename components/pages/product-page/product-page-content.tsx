@@ -7,6 +7,8 @@ import { useLocale, useTranslations } from "next-intl";
 import { FC, useState } from "react";
 import ProductImagesGallery from "./product-images-gallery";
 import ProductMainInfo from "./product-main-info";
+import { isDiscounted } from "@/lib/utils";
+import SalesBadge from "@/components/product-card/sales-badge";
 
 interface Props {
   product: Product;
@@ -39,7 +41,11 @@ const ProductPageContent: FC<Props> = ({ product }): JSX.Element => {
       />
 
       <div className="flex gap-10 mt-12">
-        <div className="w-[40%]">
+        <div className="w-[40%] relative">
+          {/* Sales badge */}
+          {isDiscounted(activeVariant) && (
+            <SalesBadge activeVariant={activeVariant} />
+          )}
           <ProductImagesGallery
             images={activeVariant.images}
             videos={product?.videos}
@@ -48,6 +54,7 @@ const ProductPageContent: FC<Props> = ({ product }): JSX.Element => {
 
         <div className="flex-1">
           <ProductMainInfo
+            t={t}
             isVi={isVi}
             product={product}
             activeVariant={activeVariant}
