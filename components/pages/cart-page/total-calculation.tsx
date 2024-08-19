@@ -1,15 +1,15 @@
 import { FC } from "react";
 import { formatCurrencyVND } from "@/lib/utils";
-import { Separator } from "../ui/separator";
 import {
   CreditCardIcon,
   MoveLeftIcon,
   MoveRightIcon,
   ShoppingCartIcon,
 } from "lucide-react";
-import { Button } from "../ui/button";
 import { Link, useRouter } from "@/configs/i18n-navigation";
 import Features from "./features";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 
 interface Props {
   totalPrice: number;

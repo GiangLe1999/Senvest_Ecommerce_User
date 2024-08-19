@@ -10,7 +10,7 @@ import { formatCurrencyVND } from "@/lib/utils";
 import { Separator } from "../ui/separator";
 import { CreditCardIcon, ShoppingCartIcon } from "lucide-react";
 import { Button } from "../ui/button";
-import { Link, useRouter } from "@/configs/i18n-navigation";
+import { useRouter } from "@/configs/i18n-navigation";
 
 interface Props {
   totalPrice: number;
