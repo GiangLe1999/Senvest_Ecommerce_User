@@ -95,3 +95,32 @@
   border-width: 0.25rem 0 0 0.375rem;
   border-color: #120036 transparent transparent transparent;
 }
+
+/* No select element */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Product images gallery */
+.product-images-gallery .slide {
+  @apply w-full aspect-square;
+}
+
+.product-images-gallery .slide.selected {
+  @apply relative border rounded-sm;
+}
+
+.product-images-gallery .carousel .thumbs-wrapper {
+  @apply mt-4 mx-0;
+}
+
+.product-images-gallery .carousel .thumb {
+  @apply relative w-[100px] aspect-square !border !border-[#ccc] rounded-sm no-select;
+}
+
+.product-images-gallery .carousel .thumb.selected {
+  @apply !border-primary !border-[3px];
+}

@@ -12,9 +12,9 @@ import {
 import { Banner } from "@/entities/banner.entity";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { Button } from "../ui/button";
 import { Link } from "@/configs/i18n-navigation";
 import { MoveRightIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   banners: Banner[];

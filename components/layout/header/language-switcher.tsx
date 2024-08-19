@@ -15,9 +15,11 @@ import {
 } from "@/components/hybrid-tooltip";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
-interface Props {}
+interface Props {
+  productSlugsMapping: { [key: string]: string };
+}
 
-const LanguageSwitcher: FC<Props> = (props): JSX.Element => {
+const LanguageSwitcher: FC<Props> = ({ productSlugsMapping }): JSX.Element => {
   const t = useTranslations("common");
   const locale = useLocale();
   const router = useRouter();
@@ -27,18 +29,19 @@ const LanguageSwitcher: FC<Props> = (props): JSX.Element => {
 
   const changeLocaleHandler = () => {
     startTransition(() => {
-      if (pathname.startsWith("/project") || pathname.startsWith("/du-an")) {
-        // const currentSlug = params.projectSlug as string;
-        // const newSlug =
-        //   locale === "vi"
-        //     ? projectSlugMappings[currentSlug]
-        //     : Object.keys(projectSlugMappings).find(
-        //         (key) => projectSlugMappings[key] === currentSlug
-        //       );
-        // router.replace(
-        //   { pathname, params: { ...params, projectSlug: newSlug } },
-        //   { locale: locale === "vi" ? "en" : "vi" }
-        // );
+      if (pathname.startsWith("/san-pham") || pathname.startsWith("/product")) {
+        const currentSlug = params.productSlug as string;
+        const newSlug =
+          locale === "en"
+            ? productSlugsMapping[currentSlug]
+            : Object.keys(productSlugsMapping).find(
+                (key) => productSlugsMapping[key] === currentSlug
+              );
+        router.replace(
+          // @ts-expect-error
+          { pathname, params: { ...params, productSlug: newSlug } },
+          { locale: locale === "vi" ? "en" : "vi" }
+        );
       } else
         router.replace(
           // @ts-expect-error

@@ -126,3 +126,10 @@ export function isDiscounted(variant: Variant): boolean {
 
   return utc_timestamp >= discountedFrom && utc_timestamp <= discountedTo;
 }
+
+export function replaceFirstFiveCharacters(str: string) {
+  if (str.length <= 5) {
+    return "***";
+  }
+  return "*****" + str.slice(5);
+}

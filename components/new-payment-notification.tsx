@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Pusher from "pusher-js";
 import Image from "next/image";
 import { XIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { replaceFirstFiveCharacters } from "@/lib/utils";
 
 interface PaymentData {
   name: string;
@@ -16,6 +18,7 @@ interface PaymentData {
 
 export default function NewPaymentNotification() {
   const [data, setData] = useState<PaymentData | null>(null);
+  const t = useTranslations("new_payment_notification");
 
   useEffect(() => {
     // Initialize Pusher
@@ -48,7 +51,7 @@ export default function NewPaymentNotification() {
   return (
     <div className="rounded-sm border shadow-md fixed bottom-4 right-4 bg-white max-w-[300px]">
       <p className="font-bold bg-primary text-white py-2 px-4 rounded-t-sm flex items-center justify-between">
-        New Order by {data.name}
+        {t("new_order_by")} {data.name}
         <XIcon
           className="w-4 h-4 cursor-pointer"
           onClick={() => setData(null)}
@@ -65,13 +68,15 @@ export default function NewPaymentNotification() {
         />
         <div className="text-sm">
           <p>
-            <strong>Phone:</strong> {data.phone}
+            <strong>{t("phone")}:</strong>{" "}
+            {replaceFirstFiveCharacters(data.phone)}
           </p>
           <p>
-            <strong>Address:</strong> {data.address}, {data.city}
+            <strong>{t("address")}:</strong>{" "}
+            {replaceFirstFiveCharacters(data.address)}, {data.city}
           </p>
           <p>
-            <strong>Total price:</strong> {data.total}
+            <strong>{t("total_price")}:</strong> {data.total}
           </p>
         </div>
       </div>

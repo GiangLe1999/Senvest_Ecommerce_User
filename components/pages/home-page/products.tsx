@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { useTranslations } from "next-intl";
 import { Product } from "@/entities/product.entity";
-import SectionContainer from "../section-container";
-import ProductCard from "../product-card";
+import ProductCard from "@/components/product-card";
+import SectionContainer from "@/components/section-container";
 
 interface Props {
   products: Product[];

@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { FC } from "react";
-import SmallSectionContainer from "../small-section-container";
 import { useTranslations } from "next-intl";
-import { Button } from "../ui/button";
 import { Link } from "@/configs/i18n-navigation";
 import { MoveRightIcon } from "lucide-react";
+import SmallSectionContainer from "@/components/small-section-container";
+import { Button } from "@/components/ui/button";
 
 interface Props {}
 

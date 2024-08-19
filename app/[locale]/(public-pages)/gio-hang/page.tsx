@@ -1,4 +1,4 @@
-import CartPageContent from "@/components/cart-page/cart-page-content";
+import CartPageContent from "@/components/pages/cart-page/cart-page-content";
 import { NextPage } from "next";
 import { unstable_setRequestLocale } from "next-intl/server";
 

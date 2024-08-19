@@ -7,7 +7,7 @@ export const pathnames = {
   "/": { vi: "/", en: "/" },
   "/danh-muc/[categorySlug]": {
     vi: "/danh-muc/[categorySlug]",
-    en: "/categories/[categorySlug]",
+    en: "/category/[categorySlug]",
   },
   "/cua-hang": {
     vi: "/cua-hang",
@@ -69,7 +69,7 @@ export const pathnames = {
     vi: "/quen-mat-khau",
     en: "/forgot-password",
   },
-  "/reset-password/:token": {
+  "/reset-password/[token]": {
     vi: "/reset-password",
     en: "/reset-password",
   },
@@ -89,7 +89,7 @@ export const pathnames = {
     vi: "/tai-khoan/dia-chi/tao-moi",
     en: "/account/addresses/add",
   },
-  "/tai-khoan/dia-chi/cap-nhat/:addressId": {
+  "/tai-khoan/dia-chi/cap-nhat/[addressId]": {
     vi: "/tai-khoan/dia-chi/cap-nhat",
     en: "/account/addresses/update",
   },
@@ -108,6 +108,10 @@ export const pathnames = {
   "/tai-khoan/san-pham-yeu-thich": {
     vi: "/tai-khoan/san-pham-yeu-thich",
     en: "/account/wishlist",
+  },
+  "/san-pham/[productSlug]": {
+    vi: "/san-pham/[productSlug]",
+    en: "/product/[productSlug]",
   },
   "/gio-hang": {
     vi: "/gio-hang",

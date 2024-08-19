@@ -6,7 +6,7 @@ export interface Product {
   name: LocalizedString;
   slug: LocalizedString;
   description: LocalizedString;
-  category: string;
+  category: any;
   variants: Variant[];
   videos?: [];
   totalSales: number;

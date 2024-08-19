@@ -51,7 +51,13 @@ const ProductCard: FC<Props> = ({ product }): JSX.Element => {
       onMouseLeave={() => setShowAddToCartBtn(false)}
     >
       <div
-        onClick={() => router.push("/")}
+        onClick={() =>
+          router.push(
+            `/san-pham/${
+              locale === "vi" ? product.slug.vi : product.slug.en
+            }` as any
+          )
+        }
         className="block relative bg-white rounded-sm cursor-pointer"
       >
         {/* Product images */}

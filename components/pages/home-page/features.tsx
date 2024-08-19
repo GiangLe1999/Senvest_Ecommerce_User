@@ -1,8 +1,8 @@
 import { FC } from "react";
-import SmallSectionContainer from "../small-section-container";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
+import SmallSectionContainer from "@/components/small-section-container";
 
 interface Props {}
 

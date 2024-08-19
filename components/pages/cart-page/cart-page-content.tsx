@@ -1,15 +1,15 @@
 "use client";
 
 import { FC } from "react";
-import { Separator } from "../ui/separator";
-import Empty from "../empty";
 import { useTranslations } from "next-intl";
 import useFromStore from "@/hooks/useFromStore";
 import { useCartStore } from "@/stores/useCartStore";
-import SmallSectionContainer from "../small-section-container";
-import CustomBreadcrumb from "../custom-breadcrumb";
-import CartItem from "../cart/cart-item";
 import TotalCalculation from "./total-calculation";
+import { Separator } from "@/components/ui/separator";
+import Empty from "@/components/empty";
+import SmallSectionContainer from "@/components/small-section-container";
+import CustomBreadcrumb from "@/components/custom-breadcrumb";
+import CartItem from "@/components/cart/cart-item";
 
 interface Props {}
 

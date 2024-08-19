@@ -1,4 +1,3 @@
-import SectionContainer from "@/components/section-container";
 import { FC } from "react";
 import SloganCarousel from "./slogan-carousel";
 import LanguageSwitcher from "./language-switcher";
@@ -13,12 +12,17 @@ import SearchItem from "./search-item";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import SmallSectionContainer from "@/components/small-section-container";
+import { getProductSlugsMappings } from "@/queries/products.queries";
 
 interface Props {}
 
 const Header: FC<Props> = async (props): Promise<JSX.Element> => {
-  const { slogans } = await getSlogans();
-  const session = await getServerSession(authOptions);
+  const [slogansResponse, productSlugsMappingResponse, session] =
+    await Promise.all([
+      getSlogans(),
+      getProductSlugsMappings(),
+      getServerSession(authOptions),
+    ]);
 
   return (
     <header className="border-b">
@@ -26,10 +30,14 @@ const Header: FC<Props> = async (props): Promise<JSX.Element> => {
         <SmallSectionContainer className="grid grid-cols-12 h-10">
           <div className="col-span-3" />
           <div className="col-span-6">
-            <SloganCarousel slogans={slogans as Slogan[]} />
+            <SloganCarousel slogans={slogansResponse.slogans as Slogan[]} />
           </div>
           <div className="col-span-3">
-            <LanguageSwitcher />
+            <LanguageSwitcher
+              productSlugsMapping={
+                productSlugsMappingResponse.productSlugsMapping
+              }
+            />
           </div>
         </SmallSectionContainer>
       </div>

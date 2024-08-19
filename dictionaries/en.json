@@ -406,5 +406,14 @@
     "pending_item_3": "If your payment is not confirmed within a certain timeframe, we will send you further instructions via email.",
     "pending_item_4_1": "If you have any concerns or questions, please don't hesitate to contact us ",
     "pending_item_4_2": "for further assistance."
+  },
+  "new_payment_notification": {
+    "new_order_by": "New Order by",
+    "phone": "Phone",
+    "address": "Address",
+    "total_price": "Total price"
+  },
+  "product_page": {
+    "product_details": "Product details"
   }
 }

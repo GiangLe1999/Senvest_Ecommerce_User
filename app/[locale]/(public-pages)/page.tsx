@@ -1,25 +1,28 @@
-import BannerCarousel from "@/components/home-page/banner-carousel";
-
 import dynamic from "next/dynamic";
 import { getBanners } from "@/queries/banners.queries";
 import { NextPage } from "next";
 import { unstable_setRequestLocale } from "next-intl/server";
-import Features from "@/components/home-page/features";
+import Features from "@/components/pages/home-page/features";
 import { getHomepageProducts } from "@/queries/products.queries";
+import BannerCarousel from "@/components/pages/home-page/banner-carousel";
 
 const Introduction = dynamic(
-  () => import("@/components/home-page/introduction")
+  () => import("@/components/pages/home-page/introduction")
 );
 
-const Ingredients = dynamic(() => import("@/components/home-page/ingredients"));
+const Ingredients = dynamic(
+  () => import("@/components/pages/home-page/ingredients")
+);
 
 const Testimonials = dynamic(
-  () => import("@/components/home-page/testimonials")
+  () => import("@/components/pages/home-page/testimonials")
 );
 
-const JustForYou = dynamic(() => import("@/components/home-page/just-for-you"));
+const JustForYou = dynamic(
+  () => import("@/components/pages/home-page/just-for-you")
+);
 
-const Products = dynamic(() => import("@/components/home-page/products"));
+const Products = dynamic(() => import("@/components/pages/home-page/products"));
 
 interface Props {
   params: {
