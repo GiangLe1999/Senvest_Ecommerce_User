@@ -3,6 +3,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Image from "next/image";
 import { FC } from "react";
+import { StepBackIcon, StepForwardIcon } from "lucide-react";
 
 interface Props {
   videos?: string[];
@@ -138,9 +139,32 @@ const ProductImagesGallery: FC<Props> = ({
         emulateTouch
         infiniteLoop
         showIndicators={false}
-        showArrows={false}
         renderThumbs={() => RenderThumbs}
-        className="product-images-gallery"
+        className="product-images-gallery group"
+        renderArrowPrev={(onClickHandler, hasPrev, label) =>
+          hasPrev && (
+            <button
+              type="button"
+              onClick={onClickHandler}
+              title={label}
+              className="z-10 absolute w-8 h-8 bg-primary rounded-full opacity-0 top-1/2 left-4 -translate-y-1/2 group-hover:opacity-100 group-hover:left-1 transition-all duration-500 grid place-content-center hover:bg-black"
+            >
+              <StepBackIcon className="w-4 h-4 text-white" />
+            </button>
+          )
+        }
+        renderArrowNext={(onClickHandler, hasNext, label) =>
+          hasNext && (
+            <button
+              type="button"
+              onClick={onClickHandler}
+              title={label}
+              className="z-10 absolute w-8 h-8 bg-primary rounded-full opacity-0 top-1/2 right-4 -translate-y-1/2 group-hover:opacity-100 group-hover:right-1 transition-all duration-500 grid place-content-center hover:bg-black"
+            >
+              <StepForwardIcon className="w-4 h-4 text-white" />
+            </button>
+          )
+        }
       >
         {RenderElements}
       </Carousel>

@@ -3,8 +3,6 @@ import { formatCurrencyVND } from "@/lib/utils";
 import {
   CreditCardIcon,
   MoveLeftIcon,
-  MoveRightIcon,
-  ShoppingCartIcon,
 } from "lucide-react";
 import { Link, useRouter } from "@/configs/i18n-navigation";
 import Features from "./features";

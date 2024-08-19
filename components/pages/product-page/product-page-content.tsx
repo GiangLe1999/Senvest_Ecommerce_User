@@ -6,6 +6,7 @@ import { Product } from "@/entities/product.entity";
 import { useLocale, useTranslations } from "next-intl";
 import { FC, useState } from "react";
 import ProductImagesGallery from "./product-images-gallery";
+import ProductMainInfo from "./product-main-info";
 
 interface Props {
   product: Product;
@@ -37,7 +38,7 @@ const ProductPageContent: FC<Props> = ({ product }): JSX.Element => {
         ]}
       />
 
-      <div className="flex gap-10">
+      <div className="flex gap-10 mt-12">
         <div className="w-[40%]">
           <ProductImagesGallery
             images={activeVariant.images}
@@ -45,7 +46,15 @@ const ProductPageContent: FC<Props> = ({ product }): JSX.Element => {
           />
         </div>
 
-        <div className="flex-1"></div>
+        <div className="flex-1">
+          <ProductMainInfo
+            isVi={isVi}
+            product={product}
+            activeVariant={activeVariant}
+            activeVariantIndex={activeVariantIndex}
+            setActiveVariantIndex={setActiveVariantIndex}
+          />
+        </div>
       </div>
     </SmallSectionContainer>
   );

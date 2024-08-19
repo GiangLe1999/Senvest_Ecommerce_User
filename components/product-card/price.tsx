@@ -1,20 +1,31 @@
 import { Product } from "@/entities/product.entity";
-import { formatCurrencyVND, isDiscounted } from "@/lib/utils";
+import { cn, formatCurrencyVND, isDiscounted } from "@/lib/utils";
 import { FC } from "react";
 
 interface Props {
   activeVariant: Product["variants"][0];
+  isDetailPage?: boolean;
 }
 
-const Price: FC<Props> = ({ activeVariant }): JSX.Element => {
+const Price: FC<Props> = ({ activeVariant, isDetailPage }): JSX.Element => {
   return (
     <>
       {isDiscounted(activeVariant) ? (
         <p className="text-left">
-          <span className="mr-4 text-sm text-muted line-through">
+          <span
+            className={cn(
+              "mr-4 text-muted line-through",
+              isDetailPage ? "text-lg" : "text-sm"
+            )}
+          >
             {formatCurrencyVND(activeVariant.price)}
           </span>
-          <span className="text-primary font-bold text-xl">
+          <span
+            className={cn(
+              "font-bold",
+              isDetailPage ? "text-3xl" : "text-xl text-primary"
+            )}
+          >
             {formatCurrencyVND(activeVariant.discountedPrice as string)}
           </span>
         </p>
