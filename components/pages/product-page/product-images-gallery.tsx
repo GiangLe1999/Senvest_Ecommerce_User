@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Image from "next/image";
@@ -16,7 +16,6 @@ const captureThumbnail = (videoSrc: string): Promise<string> => {
     video.crossOrigin = "anonymous";
 
     video.addEventListener("loadeddata", () => {
-      // Set the time to capture the frame (e.g., 1 second)
       video.currentTime = 1;
     });
 
@@ -47,46 +46,91 @@ const ProductImagesGallery: FC<Props> = ({
   useEffect(() => {
     if (videos.length > 0) {
       const generateThumbnails = async () => {
-        const thumbPromises = videos.map((videoSrc) =>
-          captureThumbnail(videoSrc)
-        );
-        const thumbs = await Promise.all(thumbPromises);
-        setThumbnails(thumbs);
+        try {
+          const thumbPromises = videos.map((videoSrc) =>
+            captureThumbnail(videoSrc)
+          );
+          const thumbs = await Promise.all(thumbPromises);
+          setThumbnails(thumbs);
+        } catch (error) {
+          console.error("Error generating video thumbnails:", error);
+        }
       };
 
       generateThumbnails();
     }
   }, [videos]);
 
-  const RenderVideos = videos.map((video, index) => (
-    <div key={video} className="w-full h-full">
-      <video
-        controls
-        className="rounded-sm no-select h-full w-auto mx-auto"
-        poster={thumbnails[index]}
-      >
-        <source src={video} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  ));
+  const RenderVideos = useMemo(() => {
+    return videos.map((video, index) => (
+      <div key={video} className="w-full h-full">
+        <video
+          controls
+          className="rounded-sm no-select h-full w-auto mx-auto"
+          poster={thumbnails[index]}
+        >
+          <source src={video} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    ));
+  }, [videos, thumbnails]);
 
-  const RenderImages = images.map((image, index) => (
-    <Image
-      key={image}
-      src={image}
-      alt={`${image} preview`}
-      priority={index === 0 && thumbnails.length === 0}
-      fill
-      sizes="100vw"
-      style={{
-        objectFit: "cover",
-      }}
-      className="rounded-sm !border no-select"
-    />
-  ));
+  const RenderImages = useMemo(() => {
+    return images.map((image, index) => (
+      <Image
+        key={image}
+        src={image}
+        alt={`${image} preview`}
+        priority={index === 0 && thumbnails.length === 0}
+        fill
+        sizes="100vw"
+        style={{ objectFit: "cover" }}
+        className="rounded-sm !border no-select"
+      />
+    ));
+  }, [images, thumbnails]);
 
-  const RenderElements = [...RenderVideos, ...RenderImages];
+  const RenderElements = useMemo(() => {
+    return [...RenderVideos, ...RenderImages];
+  }, [RenderVideos, RenderImages]);
+
+  const RenderThumbs = useMemo(() => {
+    const renderedVideos = thumbnails.map((thumb, index) => (
+      <div key={`video-thumb-${index}`} className="relative w-full h-full">
+        <Image
+          src={thumb}
+          alt={`Video thumbnail ${index + 1}`}
+          fill
+          sizes="100vw"
+          style={{ objectFit: "cover" }}
+        />
+        <Image
+          src="/icons/play.svg"
+          width={35}
+          height={35}
+          alt="Play icon"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 !w-[35px]"
+        />
+      </div>
+    ));
+
+    const renderedImages = images.map((image, index) => (
+      <Image
+        key={image}
+        src={image}
+        alt={`${image} preview`}
+        priority={
+          renderedVideos.length === 0 && index === 0 && thumbnails.length === 0
+        }
+        fill
+        sizes="100vw"
+        style={{ objectFit: "cover" }}
+      />
+    ));
+
+    return [...renderedVideos, ...renderedImages];
+  }, [thumbnails, images]);
 
   return (
     <div>
@@ -95,50 +139,7 @@ const ProductImagesGallery: FC<Props> = ({
         infiniteLoop
         showIndicators={false}
         showArrows={false}
-        renderThumbs={() => {
-          const renderedVideos = thumbnails.map((thumb, index) => (
-            <>
-              <Image
-                src={thumb}
-                alt={`Video thumbnail ${index + 1}`}
-                priority={index === 0 && thumbnails.length === 0}
-                fill
-                sizes="100vw"
-                style={{
-                  objectFit: "cover",
-                }}
-              />
-
-              <Image
-                src="/icons/play.svg"
-                width={35}
-                height={35}
-                alt="Play icon"
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 !w-[35px]"
-              />
-            </>
-          ));
-
-          const renderedImages = images.map((image, index) => (
-            <Image
-              key={image}
-              src={image}
-              alt={`${image} preview`}
-              priority={
-                renderedVideos.length === 0 &&
-                index === 0 &&
-                thumbnails.length === 0
-              }
-              fill
-              sizes="100vw"
-              style={{
-                objectFit: "cover",
-              }}
-            />
-          ));
-
-          return [...renderedVideos, ...renderedImages];
-        }}
+        renderThumbs={() => RenderThumbs}
         className="product-images-gallery"
       >
         {RenderElements}
