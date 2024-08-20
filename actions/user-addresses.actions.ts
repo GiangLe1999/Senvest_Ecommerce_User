@@ -16,7 +16,7 @@ export const createUserAddress = async (data: {
     const res = await axiosInstance.post("user-addresses/create", data);
     return res.data;
   } catch (error: AxiosError<any> | any) {
-    return error.response.data;
+    throw new Error("Failed to delete user address");
   }
 };
 
@@ -34,7 +34,7 @@ export const updateUserAddress = async (data: {
     const res = await axiosInstance.put("user-addresses/update", data);
     return res.data;
   } catch (error: AxiosError<any> | any) {
-    return error.response.data;
+    throw new Error("Failed to update user address");
   }
 };
 
@@ -44,6 +44,8 @@ export const deleteUserAddress = async (id: string) => {
 
     return res.data;
   } catch (error: AxiosError<any> | any) {
-    throw new Error("Failed to delete user address");
+    if (error.response?.status === 400 || 404) {
+      return error.response.data;
+    } else throw new Error("Failed to delete user address");
   }
 };

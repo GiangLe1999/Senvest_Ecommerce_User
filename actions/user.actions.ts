@@ -9,7 +9,9 @@ export const getUserProfile = async () => {
     const res = await axiosInstance("profile");
     return res.data;
   } catch (error: AxiosError<any> | any) {
-    throw new Error("Failed to get user profile");
+    if (error.response?.status === 400) {
+      return error.response.data;
+    } else throw new Error("Failed to get user profile");
   }
 };
 
@@ -25,6 +27,8 @@ export const updateUserProfile = async (data: {
     const res = await axiosInstance.put("profile", data);
     return res.data;
   } catch (error: AxiosError<any> | any) {
-    throw new Error("Failed to update user profile");
+    if (error.response?.status === 400) {
+      return error.response.data;
+    } else throw new Error("Failed to update user profile");
   }
 };

@@ -14,9 +14,11 @@ export const addNewProductToWishlist = async (data: {
       item: data,
     });
 
-    return res;
+    return res.data;
   } catch (error: AxiosError<any> | any) {
-    throw new Error("Failed to add product to wishlist");
+    if (error.response?.status === 400) {
+      return error.response.data;
+    } else throw new Error("Failed to add product to wishlist");
   }
 };
 
@@ -30,6 +32,8 @@ export const updateWishlistProduct = async (data: {
     const res = await axiosInstance.post("user-wishlist/update", data);
     return res;
   } catch (error: AxiosError<any> | any) {
-    throw new Error("Failed to update product in wishlist");
+    if (error.response?.status === 400) {
+      return error.response.data;
+    } else throw new Error("Failed to update product in wishlist");
   }
 };

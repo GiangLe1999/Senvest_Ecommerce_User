@@ -51,6 +51,8 @@ const ActionButtons: FC<Props> = ({
         quantity: 1,
       });
 
+      console.log(res);
+
       if (res.ok) {
         setAddToWishlistLoading(false);
         toast.success(t("add_to_wl_success"), {
