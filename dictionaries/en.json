@@ -321,7 +321,8 @@
     "quick_view": "Quick view",
     "scent": "Scent",
     "stock": "Stock",
-    "go_to_product": "Go to product page for more details"
+    "go_to_product": "Go to product page for more details",
+    "added_to_wishlist": "Item added to wishlist"
   },
   "cart": {
     "breadcrumb": "Shopping cart",
@@ -432,9 +433,11 @@
     "brand": "Brand"
   },
   "change_product_quantity": {
-    "success": "Add product to cart successfully",
-    "success_desc": "Check your cart to see the updated quantity.",
-    "fail": "Fail to add product to cart",
-    "fail_desc": "You can only add up to "
+    "failed": "The quantity added has exceeded the stock",
+    "failed_desc_1": "You can only add up to ",
+    "failed_desc_2": " products"
+  },
+  "comparison_page": {
+    "heading": "Products comparison"
   }
 }

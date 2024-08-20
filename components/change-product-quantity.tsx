@@ -22,18 +22,15 @@ const ChangeProductQuantity: FC<Props> = ({
 
   const t = useTranslations("change_product_quantity");
 
-  const increaseQuantity = () => {
+  const increaseQuantity = (e: any) => {
+    e.stopPropagation();
     if (cartItem) {
       addToCart(cartItem);
     }
-
-    toast.success(t("success"), {
-      description: t("success_desc"),
-      position: "top-right",
-    });
   };
 
-  const decreaseQuantity = () => {
+  const decreaseQuantity = (e: any) => {
+    e.stopPropagation();
     if (cartItem) {
       subtractFromCart(cartItem);
     }
@@ -47,8 +44,8 @@ const ChangeProductQuantity: FC<Props> = ({
     }
 
     if (value > parseInt(cartItem?.stock || "0")) {
-      toast.error(t("fail"), {
-        description: t("fail_desc") + cartItem?.stock,
+      toast.error(t("failed"), {
+        description: t("failed_desc_1") + cartItem?.stock + t("failed_desc_2"),
         position: "top-right",
       });
       return;
@@ -56,18 +53,13 @@ const ChangeProductQuantity: FC<Props> = ({
 
     if (cartItem) {
       addMultipleToCart(cartItem, parseInt(value));
-
-      toast.success(t("success"), {
-        description: t("success_desc"),
-        position: "top-right",
-      });
     }
   };
 
   return (
     <div className="flex items-center">
       <button
-        onClick={decreaseQuantity}
+        onClick={(e) => decreaseQuantity(e)}
         className={cn(
           "bg-secondary hover:bg-primary hover:text-white transition-all text-gray-700 rounded-sm  flex items-center justify-center",
           isDetailPage ? "w-11 h-11" : "w-8 h-8"
@@ -83,9 +75,10 @@ const ChangeProductQuantity: FC<Props> = ({
           isDetailPage ? "h-11 w-16" : "h-8 w-12"
         )}
         onChange={inputChangeHandler}
+        onClick={(e) => e.stopPropagation()}
       />
       <button
-        onClick={increaseQuantity}
+        onClick={(e) => increaseQuantity(e)}
         className={cn(
           "bg-secondary hover:bg-primary hover:text-white transition-all text-gray-700 rounded-sm  flex items-center justify-center",
           isDetailPage ? "w-11 h-11" : "w-8 h-8"

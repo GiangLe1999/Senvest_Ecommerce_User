@@ -4,16 +4,16 @@ import { ShoppingBagIcon } from "lucide-react";
 
 import {
   Drawer,
+  DrawerClose,
   DrawerContent,
   DrawerDescription,
-  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { FC } from "react";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import useFromStore from "@/hooks/useFromStore";
 import { useCartStore } from "@/stores/useCartStore";
 import TotalCalculation from "./total-calculation";
@@ -21,12 +21,15 @@ import CartItem from "./cart-item";
 import { Separator } from "../ui/separator";
 import { ScrollArea } from "../ui/scroll-area";
 import Empty from "../empty";
+import { useRouter } from "@/configs/i18n-navigation";
 
 interface Props {}
 
 export const Cart: FC<Props> = () => {
   const cartState = useFromStore(useCartStore, (state) => state);
   const t = useTranslations("cart");
+  const router = useRouter();
+  const isVi = useLocale() === "vi";
 
   return (
     <Drawer>
@@ -56,7 +59,19 @@ export const Cart: FC<Props> = () => {
                 <Empty />
               ) : (
                 cartState?.cart?.map((item) => (
-                  <CartItem cartItem={item} key={item.variant_id} t={t} />
+                  <DrawerClose
+                    onClick={() =>
+                      router.push(
+                        `/san-pham/${
+                          isVi ? item?.slug?.vi : item?.slug?.en
+                        }` as any
+                      )
+                    }
+                    key={item.variant_id}
+                    className="w-full"
+                  >
+                    <CartItem cartItem={item} t={t} />
+                  </DrawerClose>
                 ))
               )}
             </ScrollArea>

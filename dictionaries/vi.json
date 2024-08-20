@@ -321,7 +321,8 @@
     "quick_view": "Xem nhanh",
     "scent": "Hương thơm",
     "stock": "Kho hàng",
-    "go_to_product": "Đi đến trang sản phẩm để biết thêm chi tiết"
+    "go_to_product": "Đi đến trang sản phẩm để biết thêm chi tiết",
+    "added_to_wishlist": "Đã thêm vào danh sách yêu thích"
   },
   "cart": {
     "breadcrumb": "Giỏ hàng",
@@ -432,9 +433,8 @@
     "brand": "Thương hiệu"
   },
   "change_product_quantity": {
-    "success": "Thêm sản phẩm vào giỏ hàng thành công",
-    "success_desc": "Kiểm tra giỏ hàng của bạn để xem số lượng cập nhật.",
-    "fail": "Thêm sản phẩm vào giỏ hàng thất bại",
-    "fail_desc": "Bạn chỉ có thể thêm tối đa "
+    "failed": "Số lượng thêm đã vượt quá tồn kho",
+    "failed_desc_1": "Bạn chỉ có thể thêm tối đa ",
+    "failed_desc_2": " sản phẩm"
   }
 }

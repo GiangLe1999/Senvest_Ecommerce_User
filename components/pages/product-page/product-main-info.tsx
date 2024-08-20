@@ -153,6 +153,8 @@ const ProductMainInfo: FC<Props> = ({
                 name: product.name,
                 scent: activeVariant.fragrance,
                 stock: activeVariant.stock,
+                slug: product.slug,
+                locale: isVi ? "vi" : "en",
               }
             }
             isDetailPage

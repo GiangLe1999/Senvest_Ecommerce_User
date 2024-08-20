@@ -20,6 +20,7 @@ interface Props {
   t: any;
   showAddToCartBtn: boolean;
   addToCartHandler: () => void;
+  addToCompareHandler: () => void;
   setOpenQuickView: Dispatch<SetStateAction<boolean>>;
 }
 
@@ -28,6 +29,7 @@ const ActionButtons: FC<Props> = ({
   showAddToCartBtn,
   addToCartHandler,
   setOpenQuickView,
+  addToCompareHandler,
 }): JSX.Element => {
   return (
     <>
@@ -85,6 +87,10 @@ const ActionButtons: FC<Props> = ({
               showAddToCartBtn ? "translate-x-0" : "translate-x-12",
               "product-card-btn-3"
             )}
+            onClick={(e) => {
+              e.stopPropagation();
+              addToCompareHandler();
+            }}
           >
             <ChartColumnDecreasingIcon className="w-3 h-3" />
           </TooltipTrigger>

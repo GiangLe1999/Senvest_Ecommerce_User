@@ -12,6 +12,7 @@ import { useCartStore } from "@/stores/useCartStore";
 import ActionButtons from "./action-buttons";
 import PriceOrAddToCart from "./price-or-add-to-cart";
 import { getPriceForVariant, isDiscounted } from "@/lib/utils";
+import { useCompareStore } from "@/stores/useCompareStore";
 
 interface Props {
   product: Product;
@@ -31,6 +32,7 @@ const ProductCard: FC<Props> = ({ product }): JSX.Element => {
   const [openQuickView, setOpenQuickView] = useState(false);
 
   const addToCart = useCartStore((state) => state.addToCart);
+  const addToCompare = useCompareStore((state) => state.addToCompare);
 
   const addToCartHandler = () => {
     addToCart({
@@ -42,6 +44,22 @@ const ProductCard: FC<Props> = ({ product }): JSX.Element => {
       name: product.name,
       scent: activeVariant.fragrance,
       stock: activeVariant.stock,
+      slug: product.slug,
+      locale,
+    });
+  };
+
+  const addToCompareHandler = () => {
+    addToCompare({
+      _id: product._id,
+      variant_id: activeVariant._id,
+      price: getPriceForVariant(activeVariant),
+      image: activeVariant.images[0],
+      name: product.name,
+      scent: activeVariant.fragrance,
+      slug: product.slug,
+      description: product.description,
+      locale,
     });
   };
 
@@ -82,13 +100,14 @@ const ProductCard: FC<Props> = ({ product }): JSX.Element => {
             t={t}
             showAddToCartBtn={showAddToCartBtn}
             addToCartHandler={addToCartHandler}
+            addToCompareHandler={addToCompareHandler}
             setOpenQuickView={setOpenQuickView}
           />
         </div>
 
         {/* Sales badge */}
         {isDiscounted(activeVariant) && (
-          <SalesBadge activeVariant={activeVariant} t={t} />
+          <SalesBadge activeVariant={activeVariant} />
         )}
       </div>
 

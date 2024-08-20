@@ -35,12 +35,22 @@ export const useCartStore = create(
           (item) =>
             item._id === product._id && item.variant_id === product.variant_id
         );
+
+        const isVi = product.locale === "vi";
+
         if (cartItem) {
           if (cartItem.quantity === parseInt(cartItem.stock)) {
-            return toast.error("Cannot add to cart anymore", {
-              description: "This item is out of stock",
-              position: "top-right",
-            });
+            return toast.error(
+              isVi
+                ? "Số lượng thêm đã vượt quá tồn kho"
+                : "The quantity added has exceeded the stock",
+              {
+                description: isVi
+                  ? `Bạn chỉ có thể thêm tối đa ${cartItem.stock} sản phẩm.`
+                  : `You can only add up to ${cartItem.stock} products.`,
+                position: "top-right",
+              }
+            );
           }
 
           const updatedCart = cart.map((item) =>
@@ -54,6 +64,20 @@ export const useCartStore = create(
             totalItems: state.totalItems + 1,
             totalPrice: state.totalPrice + parseFloat(product.price),
           }));
+
+          toast.success(isVi ? "Đã thêm vào giỏ hãng" : "Item added to cart", {
+            description: isVi
+              ? "Kiểm tra giỏ hãng của bạn ngay."
+              : "Check your cart now.",
+            action: {
+              label: isVi ? "Xem giỏ hãng" : "Go to cart",
+              onClick: () =>
+                (window.location.href = `/${product.locale}/${
+                  isVi ? "gio-hang" : "cart"
+                }`),
+            },
+            position: "top-right",
+          });
         } else {
           const updatedCart = [...cart, { ...product, quantity: 1 }];
           set((state) => ({
@@ -71,6 +95,8 @@ export const useCartStore = create(
             item._id === product._id && item.variant_id === product.variant_id
         );
 
+        const isVi = product.locale === "vi";
+
         if (cartItem) {
           const updatedCart = cart.map((item) =>
             item._id === product._id && item.variant_id === product.variant_id
@@ -86,6 +112,20 @@ export const useCartStore = create(
               parseFloat(product.price) * cartItem.quantity +
               parseFloat(product.price) * quantity,
           }));
+
+          toast.success(isVi ? "Đã thêm vào giỏ hãng" : "Item added to cart", {
+            description: isVi
+              ? "Kiểm tra giỏ hãng của bạn ngay."
+              : "Check your cart now.",
+            action: {
+              label: isVi ? "Xem giỏ hãng" : "Go to cart",
+              onClick: () =>
+                (window.location.href = `/${product.locale}/${
+                  isVi ? "gio-hang" : "cart"
+                }`),
+            },
+            position: "top-right",
+          });
         } else {
           const updatedCart = [...cart, { ...product, quantity: 1 }];
           set((state) => ({
