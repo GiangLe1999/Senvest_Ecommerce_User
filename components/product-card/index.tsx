@@ -97,6 +97,8 @@ const ProductCard: FC<Props> = ({ product }): JSX.Element => {
 
           {/* Action buttons */}
           <ActionButtons
+            _id={product._id}
+            variant_id={activeVariant._id}
             t={t}
             showAddToCartBtn={showAddToCartBtn}
             addToCartHandler={addToCartHandler}

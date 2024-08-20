@@ -44,9 +44,6 @@ export const deleteUserAddress = async (id: string) => {
 
     return res.data;
   } catch (error: AxiosError<any> | any) {
-    if (error.response) {
-      return error.response.data;
-    }
-    return { ok: false, error: error.message || "Unknown error occurred" };
+    throw new Error("Failed to delete user address");
   }
 };

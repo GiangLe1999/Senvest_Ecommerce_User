@@ -12,7 +12,7 @@ export const registerNewAccount = async (data: {
     const res = await publicAxiosInstance.post("users/register", data);
     return res.data;
   } catch (error: AxiosError<any> | any) {
-    return error.response.data;
+    throw new Error("Failed to register new account");
   }
 };
 
@@ -21,7 +21,7 @@ export const verifyAccount = async (data: { otp: string; email: string }) => {
     const res = await publicAxiosInstance.post("users/verify", data);
     return res.data;
   } catch (error: AxiosError<any> | any) {
-    return error.response.data;
+    throw new Error("Failed to verify account");
   }
 };
 
@@ -30,7 +30,7 @@ export const resendOtp = async (data: { email: string }) => {
     const res = await publicAxiosInstance.post("users/resend-otp", data);
     return res.data;
   } catch (error: AxiosError<any> | any) {
-    return error.response.data;
+    throw new Error("Failed to resend otp");
   }
 };
 
@@ -42,7 +42,7 @@ export const forgotPassword = async (data: {
     const res = await publicAxiosInstance.post("users/forgot-password", data);
     return res.data;
   } catch (error: AxiosError<any> | any) {
-    return error.response.data;
+    throw new Error("Failed to forgot password");
   }
 };
 
@@ -54,6 +54,6 @@ export const resetPassword = async (data: {
     const res = await publicAxiosInstance.put("users/reset-password", data);
     return res.data;
   } catch (error: AxiosError<any> | any) {
-    return error.response.data;
+    throw new Error("Failed to reset password");
   }
 };

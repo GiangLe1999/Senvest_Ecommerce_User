@@ -18,6 +18,6 @@ export const createPaymentLink = async (data: {
     const res = await axiosInstance.post("payments/create", data);
     return res.data;
   } catch (error: AxiosError<any> | any) {
-    return error.response.data;
+    throw new Error("Failed to create payment link");
   }
 };

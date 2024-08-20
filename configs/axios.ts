@@ -38,15 +38,6 @@ const axiosInstance = () => {
     return request;
   });
 
-  instance.interceptors.response.use(
-    (response) => {
-      return response;
-    },
-    (error) => {
-      console.log(error.response.data);
-    }
-  );
-
   return instance;
 };
 

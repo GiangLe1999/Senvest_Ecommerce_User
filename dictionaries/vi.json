@@ -172,7 +172,7 @@
     "fail_2": "Cập nhật hồ sơ không thành công",
     "fail_2_desc": "Vui lòng kiểm tra thông tin tài khoản của bạn và thử lại.",
     "fail_3": "Cập nhật hồ sơ không thành công",
-    "fail_3_desc": "Chúng tôi sẽ giải quyết vấn đề này càng sớm càng tốt."
+    "fail_3_desc": "Chúng tôi sẽ giải quyết vấn đề này trong thời gian sớm nhất."
   },
   "account_addresses_page": {
     "breadcrumb_1": "Tài khoản của bạn",
@@ -186,7 +186,7 @@
     "delete_success_desc": "Địa chỉ đã được xóa.",
     "delete_fail": "Xóa địa chỉ không thành công",
     "delete_fail_1_desc": "Vui lòng kiểm tra thông tin tài khoản của bạn và thử lại.",
-    "delete_fail_2_desc": "Chúng tôi sẽ giải quyết vấn đề này càng sớm càng tốt.",
+    "delete_fail_2_desc": "Chúng tôi sẽ giải quyết vấn đề này trong thời gian sớm nhất.",
     "add_address": "Thêm địa chỉ",
     "add_more_address": "Thêm địa chỉ khác",
     "continue": "Tiếp tục"
@@ -221,7 +221,7 @@
     "fail_1": "Thêm địa chỉ không thành công",
     "fail_1_desc": "Vui lòng thử thêm địa chỉ lại.",
     "fail_2": "Thêm/cập nhật địa chỉ không thành công",
-    "fail_2_desc": "Chúng tôi sẽ giải quyết vấn đề này càng sớm càng tốt.",
+    "fail_2_desc": "Chúng tôi sẽ giải quyết vấn đề này trong thời gian sớm nhất.",
     "optional_field": "Đây là một trường tùy chọn.",
     "continue": "Tiếp tục",
     "email_rule": "Địa chỉ email không hợp lệ.",
@@ -317,6 +317,12 @@
     "sales": "Giảm giá",
     "add_to_cart": "Thêm vào giỏ hàng",
     "add_to_wishlist": "Thêm vào yêu thích",
+    "add_to_wl_success": "Thêm sản phẩm vào danh sách yêu thích thành công",
+    "add_to_wl_desc": "Kiểm tra danh sách yêu thích của bạn ngay bây giờ.",
+    "view_wl": "Wishlist",
+    "add_to_wl_fail": "Thêm không thành công",
+    "add_to_wl_fail_desc": "Sản phẩm đã có trong danh sách yêu thích của bạn.",
+    "add_to_wl_fail_desc_2": "Chúng tôi sẽ giải quyết vấn đề này trong thời gian sớm nhất.",
     "compare": "So sánh",
     "quick_view": "Xem nhanh",
     "scent": "Hương thơm",
