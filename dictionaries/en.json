@@ -82,6 +82,8 @@
     "password": "Password",
     "email_desc": "Email must be a valid email address.",
     "password_desc": "Password must be at least 6 characters and must have at least one special character.",
+    "password_rule_1": "Password must be at least 6 characters.",
+    "password_rule_2": "Password must have at least one special character.",
     "create_one": " Create one here",
     "no_account": "No account?",
     "forgot_password": "Forgot password",

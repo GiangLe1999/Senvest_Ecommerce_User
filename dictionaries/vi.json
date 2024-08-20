@@ -82,6 +82,8 @@
     "password": "Mật khẩu",
     "email_desc": "Email phải là một địa chỉ email hợp lệ.",
     "password_desc": "Mật khẩu phải có ít nhất 6 ký tự và phải có ít nhất một ký tự đặc biệt.",
+    "password_rule_1": "Mật khẩu phải có ít nhất 6 ký tự.",
+    "password_rule_2": "Mật khẩu phải có ít nhất một ký tự đặc biệt.",
     "create_one": " Tạo tài khoản tại đây",
     "no_account": "Chưa có tài khoản?",
     "forgot_password": "Quên mật khẩu",
