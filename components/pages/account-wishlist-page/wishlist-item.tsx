@@ -172,7 +172,7 @@ const WishlistItem: FC<Props> = ({ item }): JSX.Element => {
   useEffect(() => {
     form.setValue("priority", item.priority || PriorityEnum.medium);
     form.setValue("quantity", item.quantity.toString());
-  }, [item]);
+  }, [item.priority, item.quantity, form]);
 
   return (
     // href={`/san-pham/${isVi ? item._id.slug.vi : item._id.slug.en}` as any}
