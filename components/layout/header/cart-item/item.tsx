@@ -39,7 +39,6 @@ const Item: FC<Props> = ({ cartState, cartItem, t }): JSX.Element => {
     if (value > parseInt(cartItem?.stock || "0")) {
       toast.error("Cannot add more anymore", {
         description: "You can only add up to " + cartItem?.stock,
-        position: "top-right",
       });
       return;
     }

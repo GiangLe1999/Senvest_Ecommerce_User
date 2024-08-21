@@ -46,7 +46,6 @@ const ChangeProductQuantity: FC<Props> = ({
     if (value > parseInt(cartItem?.stock || "0")) {
       toast.error(t("failed"), {
         description: t("failed_desc_1") + cartItem?.stock + t("failed_desc_2"),
-        position: "top-right",
       });
       return;
     }

@@ -29,11 +29,21 @@ export const updateWishlistProduct = async (data: {
   quantity?: number;
 }) => {
   try {
-    const res = await axiosInstance.post("user-wishlist/update", data);
-    return res;
+    const res = await axiosInstance.put("user-wishlist/update", data);
+    return res.data;
   } catch (error: AxiosError<any> | any) {
-    if (error.response?.status === 400) {
-      return error.response.data;
-    } else throw new Error("Failed to update product in wishlist");
+    throw new Error("Failed to update product in wishlist");
+  }
+};
+
+export const deleteWishlistProduct = async (data: {
+  product_id: string;
+  variant_id: string;
+}) => {
+  try {
+    const res = await axiosInstance.put("user-wishlist/delete", data);
+    return res.data;
+  } catch (error: AxiosError<any> | any) {
+    throw new Error("Failed to delete product in wishlist");
   }
 };

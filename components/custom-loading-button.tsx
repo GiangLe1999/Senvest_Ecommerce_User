@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import { Button } from "./ui/button";
 import { LoaderCircleIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -10,6 +10,7 @@ interface Props {
   size?: "default" | "sm" | "lg" | "icon" | null | undefined;
   className?: string;
   onClick?: () => void;
+  icon?: ReactNode;
 }
 
 const CustomLoadingButton: FC<Props> = ({
@@ -19,6 +20,7 @@ const CustomLoadingButton: FC<Props> = ({
   size = "default",
   className,
   onClick = () => {},
+  icon,
   ...props
 }): JSX.Element => {
   const t = useTranslations("common");
@@ -37,7 +39,9 @@ const CustomLoadingButton: FC<Props> = ({
           {t("loading")}
         </>
       ) : (
-        content
+        <>
+          {icon ? icon : null} {content}
+        </>
       )}
     </Button>
   );

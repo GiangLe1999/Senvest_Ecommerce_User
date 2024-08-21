@@ -100,6 +100,7 @@ const ProductCard: FC<Props> = ({ product }): JSX.Element => {
             _id={product._id}
             variant_id={activeVariant._id}
             t={t}
+            isVi={isVi}
             showAddToCartBtn={showAddToCartBtn}
             addToCartHandler={addToCartHandler}
             addToCompareHandler={addToCompareHandler}

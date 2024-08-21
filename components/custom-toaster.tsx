@@ -12,6 +12,7 @@ interface Props {}
 const CustomToaster: FC<Props> = (props): JSX.Element => {
   return (
     <Toaster
+      position="top-right"
       toastOptions={{
         classNames: {
           error: "bg-red-500 text-white border border-white",

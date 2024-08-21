@@ -24,6 +24,7 @@ interface Props {
   _id: string;
   variant_id: string;
   t: any;
+  isVi: boolean;
   showAddToCartBtn: boolean;
   addToCartHandler: () => void;
   addToCompareHandler: () => void;
@@ -35,6 +36,7 @@ const ActionButtons: FC<Props> = ({
   variant_id,
   t,
   showAddToCartBtn,
+  isVi,
   addToCartHandler,
   setOpenQuickView,
   addToCompareHandler,
@@ -51,8 +53,6 @@ const ActionButtons: FC<Props> = ({
         quantity: 1,
       });
 
-      console.log(res);
-
       if (res.ok) {
         setAddToWishlistLoading(false);
         toast.success(t("add_to_wl_success"), {
@@ -60,23 +60,22 @@ const ActionButtons: FC<Props> = ({
           action: {
             label: t("view_wl"),
             onClick: () => {
-              router.push("/tai-khoan/san-pham-yeu-thich");
+              window.location.href = isVi
+                ? "/vi/tai-khoan/san-pham-yeu-thich"
+                : "/en/account/wishlist";
             },
           },
-          position: "top-right",
         });
       } else {
         setAddToWishlistLoading(false);
         return toast.error(t("add_to_wl_fail"), {
           description: t("add_to_wl_fail_desc"),
-          position: "top-right",
         });
       }
     } catch (error) {
       setAddToWishlistLoading(false);
       return toast.error(t("add_to_wl_fail"), {
         description: t("add_to_wl_fail_desc_2"),
-        position: "top-right",
       });
     }
   };

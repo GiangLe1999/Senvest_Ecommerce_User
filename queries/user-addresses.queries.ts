@@ -9,7 +9,7 @@ export const getUserAddresses = async () => {
     const res = await axiosInstance("user-addresses");
     return res.data;
   } catch (error: AxiosError<any> | any) {
-    return error.response.data;
+    console.log("Failed to fetch user addresses");
   }
 };
 
@@ -18,6 +18,6 @@ export const getUserAddress = async (id: string) => {
     const res = await axiosInstance("user-addresses/" + id);
     return res.data;
   } catch (error: AxiosError<any> | any) {
-    return error.response.data;
+    console.log("Failed to user address");
   }
 };

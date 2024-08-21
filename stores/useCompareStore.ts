@@ -37,7 +37,6 @@ export const useCompareStore = create(
               description: isVi
                 ? "Vui lòng loại bỏ trước khi thêm vào so sánh."
                 : "Please remove it from compare first.",
-              position: "top-right",
             }
           );
           return;
@@ -61,7 +60,6 @@ export const useCompareStore = create(
                 }`;
               },
             },
-            position: "top-right",
           }
         );
       },
