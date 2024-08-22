@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { addNewProductToWishlist } from "@/actions/user-wishlist.actions";
 import { toast } from "sonner";
+import { useSession } from "next-auth/react";
 import { useRouter } from "@/configs/i18n-navigation";
 
 const btnClassname =
@@ -42,9 +43,22 @@ const ActionButtons: FC<Props> = ({
   addToCompareHandler,
 }): JSX.Element => {
   const [addToWishlistLoading, setAddToWishlistLoading] = useState(false);
+  const { data: session } = useSession();
   const router = useRouter();
 
   const addToWishlistHandler = async () => {
+    if (!session) {
+      return toast.error(t("add_to_wl_fail"), {
+        description: t("add_to_wl_fail_desc_1"),
+        action: {
+          label: t("login"),
+          onClick: () => {
+            router.push("/dang-nhap");
+          },
+        },
+      });
+    }
+
     try {
       setAddToWishlistLoading(true);
       const res = await addNewProductToWishlist({
@@ -69,13 +83,13 @@ const ActionButtons: FC<Props> = ({
       } else {
         setAddToWishlistLoading(false);
         return toast.error(t("add_to_wl_fail"), {
-          description: t("add_to_wl_fail_desc"),
+          description: t("add_to_wl_fail_desc_2"),
         });
       }
     } catch (error) {
       setAddToWishlistLoading(false);
       return toast.error(t("add_to_wl_fail"), {
-        description: t("add_to_wl_fail_desc_2"),
+        description: t("add_to_wl_fail_desc_3"),
       });
     }
   };

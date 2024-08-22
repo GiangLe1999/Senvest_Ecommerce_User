@@ -27,16 +27,19 @@ const CartItem: FC<Props> = ({ cartItem, t, isCartPage }): JSX.Element => {
   const { removeFromCart } = useCartStore((state) => state);
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-4 mb-4">
       <div className="flex items-center gap-4 w-[40%]">
         <div className="border rounded-sm">
-          <Image
-            src={cartItem?.image || ""}
-            alt={(isVi ? cartItem?.name?.vi : cartItem?.name?.en) || ""}
-            width={100}
-            height={100}
-            className="rounded-sm"
-          />
+          <div className="w-[100px] h-[100px] rounded-sm relative">
+            <Image
+              src={cartItem?.image || ""}
+              alt={(isVi ? cartItem?.name?.vi : cartItem?.name?.en) || ""}
+              fill
+              sizes="100vw"
+              style={{ objectFit: "cover" }}
+              className="rounded-sm"
+            />
+          </div>
         </div>
         <div className="space-y-2 text-left">
           <p className="font-bold text-sm">

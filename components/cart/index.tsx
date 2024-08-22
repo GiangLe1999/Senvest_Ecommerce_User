@@ -68,7 +68,7 @@ export const Cart: FC<Props> = () => {
                       )
                     }
                     key={item.variant_id}
-                    className="w-full"
+                    className="w-full mb-4"
                   >
                     <CartItem cartItem={item} t={t} />
                   </DrawerClose>
