@@ -11,14 +11,30 @@ import { Separator } from "../ui/separator";
 import { CreditCardIcon, ShoppingCartIcon } from "lucide-react";
 import { Button } from "../ui/button";
 import { useRouter } from "@/configs/i18n-navigation";
+import { toast } from "sonner";
 
 interface Props {
   totalPrice: number;
   t: any;
+  totalItems: number | undefined;
 }
 
-const TotalCalculation: FC<Props> = ({ totalPrice, t }): JSX.Element => {
+const TotalCalculation: FC<Props> = ({
+  totalPrice,
+  t,
+  totalItems,
+}): JSX.Element => {
   const router = useRouter();
+
+  const goToCheckout = () => {
+    if (totalItems === undefined || totalItems === 0) {
+      return toast.error(t("cart_is_empty"), {
+        description: t("cart_is_empty_desc"),
+      });
+    }
+
+    router.push("/thanh-toan");
+  };
 
   return (
     <>
@@ -57,10 +73,7 @@ const TotalCalculation: FC<Props> = ({ totalPrice, t }): JSX.Element => {
 
       <DrawerFooter className="p-5 space-y-2">
         <DrawerClose>
-          <Button
-            className="hover:bg-primary w-full"
-            onClick={() => router.push("/thanh-toan")}
-          >
+          <Button className="hover:bg-primary w-full" onClick={goToCheckout}>
             {t("checkout")} <CreditCardIcon className="w-4 h-4 ml-1" />
           </Button>
         </DrawerClose>

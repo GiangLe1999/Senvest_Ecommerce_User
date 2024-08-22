@@ -1,15 +1,33 @@
 import { Button } from "@/components/ui/button";
-import { Link } from "@/configs/i18n-navigation";
+import { Link, useRouter } from "@/configs/i18n-navigation";
 import { formatCurrencyVND } from "@/lib/utils";
 import { CreditCardIcon, ShoppingCartIcon } from "lucide-react";
 import { FC } from "react";
+import { toast } from "sonner";
 
 interface Props {
   totalPrice: number;
   t: any;
+  totalItems: number;
 }
 
-const TotalCalculation: FC<Props> = ({ totalPrice, t }): JSX.Element => {
+const TotalCalculation: FC<Props> = ({
+  totalPrice,
+  t,
+  totalItems,
+}): JSX.Element => {
+  const router = useRouter();
+
+  const goToCheckout = () => {
+    if (totalItems === undefined || totalItems === 0) {
+      return toast.error(t("cart_is_empty"), {
+        description: t("cart_is_empty_desc"),
+      });
+    }
+
+    router.push("/thanh-toan");
+  };
+
   return (
     <div className="px-4 pb-5">
       <div className="flex items-center justify-between text-xs mb-2">
@@ -37,12 +55,9 @@ const TotalCalculation: FC<Props> = ({ totalPrice, t }): JSX.Element => {
       </div>
 
       <div className="grid grid-cols-2 gap-4">
-        <Link
-          href="/thanh-toan"
-          className="flex items-center justify-center px-4 w-full h-10 bg-primary text-white rounded-sm"
-        >
+        <Button onClick={goToCheckout} className="w-full h-10 hover:bg-primary">
           {t("checkout")} <CreditCardIcon className="w-4 h-4 ml-1" />
-        </Link>
+        </Button>
         <Link
           href="/gio-hang"
           className="flex bg-background items-center justify-center px-4 w-full h-10 text-white rounded-sm"

@@ -69,7 +69,11 @@ const CartItem: FC<Props> = (props): JSX.Element => {
               <Separator className="mt-3 mb-4" />
             </div>
 
-            <TotalCalculation totalPrice={cartState?.totalPrice || 0} t={t} />
+            <TotalCalculation
+              totalPrice={cartState?.totalPrice || 0}
+              t={t}
+              totalItems={cartState?.totalItems || 0}
+            />
           </HybridTooltipContent>
         </HybridTooltip>
       </TouchProvider>

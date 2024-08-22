@@ -78,7 +78,11 @@ export const Cart: FC<Props> = () => {
           </div>
 
           <div className="w-[30%] bg-[#F5F5F6]">
-            <TotalCalculation totalPrice={cartState?.totalPrice || 0} t={t} />
+            <TotalCalculation
+              totalPrice={cartState?.totalPrice || 0}
+              t={t}
+              totalItems={cartState?.totalItems}
+            />
           </div>
         </div>
       </DrawerContent>

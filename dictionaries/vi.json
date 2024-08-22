@@ -396,7 +396,9 @@
     "free_returns": "Đổi trả miễn phí và dễ dàng",
     "free_returns_desc": "Bạn có thể đổi hoặc trả đơn hàng trong vòng 30 ngày. Chúng tôi có thể đến thu hồi từ địa chỉ nhà hoặc nơi làm việc của bạn",
     "packaging": "Bao bì",
-    "packaging_desc": "Bao bì hiện đại và thân thiện với môi trường với chất liệu cao cấp"
+    "packaging_desc": "Bao bì hiện đại và thân thiện với môi trường với chất liệu cao cấp",
+    "cart_is_empty": "Không thể tới trang Thanh toán.",
+    "cart_is_empty_desc": "Vì giỏ hàng của bạn không có sản phẩm nào."
   },
   "checkout_page": {
     "breadcrumb_1": "Giỏ hàng",

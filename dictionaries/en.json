@@ -396,7 +396,9 @@
     "free_returns": "Free and easy returns",
     "free_returns_desc": "You can exchange or return your order within 30 days. And we can collect it from your home or work address",
     "packaging": "Packaging",
-    "packaging_desc": "Contemporary and eco-friendly wrapping with high quality materials"
+    "packaging_desc": "Contemporary and eco-friendly wrapping with high quality materials",
+    "cart_is_empty": "Can not go to checkoutpage.",
+    "cart_is_empty_desc": "Because your shopping cart is empty."
   },
   "checkout_page": {
     "breadcrumb_1": "Shopping cart",

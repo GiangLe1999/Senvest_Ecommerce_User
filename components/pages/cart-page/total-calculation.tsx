@@ -1,13 +1,11 @@
 import { FC } from "react";
 import { formatCurrencyVND } from "@/lib/utils";
-import {
-  CreditCardIcon,
-  MoveLeftIcon,
-} from "lucide-react";
+import { CreditCardIcon, MoveLeftIcon } from "lucide-react";
 import { Link, useRouter } from "@/configs/i18n-navigation";
 import Features from "./features";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { toast } from "sonner";
 
 interface Props {
   totalPrice: number;
@@ -21,6 +19,16 @@ const TotalCalculation: FC<Props> = ({
   t,
 }): JSX.Element => {
   const router = useRouter();
+
+  const goToCheckout = () => {
+    if (totalItems === undefined || totalItems === 0) {
+      return toast.error(t("cart_is_empty"), {
+        description: t("cart_is_empty_desc"),
+      });
+    }
+
+    router.push("/thanh-toan");
+  };
 
   return (
     <>
@@ -60,10 +68,7 @@ const TotalCalculation: FC<Props> = ({
       </div>
 
       <div className="px-5 py-6 space-y-4">
-        <Button
-          className="hover:bg-primary w-full"
-          onClick={() => router.push("/thanh-toan")}
-        >
+        <Button className="hover:bg-primary w-full" onClick={goToCheckout}>
           <CreditCardIcon className="w-4 h-4 mr-1" />
           {t("proceed_to_checkout")}
         </Button>
