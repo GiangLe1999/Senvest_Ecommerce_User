@@ -68,18 +68,13 @@ const ProductCard: FC<Props> = ({ product }): JSX.Element => {
       onMouseEnter={() => setShowAddToCartBtn(true)}
       onMouseLeave={() => setShowAddToCartBtn(false)}
     >
-      <Link
-        // onClick={() =>
-        //   router.push(
-        //     `/san-pham/${
-        //       locale === "vi" ? product.slug.vi : product.slug.en
-        //     }` as any
-        //   )
-        // }
-        href={
-          `/san-pham/${
-            locale === "vi" ? product.slug.vi : product.slug.en
-          }` as any
+      <div
+        onClick={() =>
+          router.push(
+            `/san-pham/${
+              locale === "vi" ? product.slug.vi : product.slug.en
+            }` as any
+          )
         }
         className="block relative bg-white rounded-sm cursor-pointer"
       >
@@ -117,7 +112,7 @@ const ProductCard: FC<Props> = ({ product }): JSX.Element => {
         {isDiscounted(activeVariant) && (
           <SalesBadge activeVariant={activeVariant} />
         )}
-      </Link>
+      </div>
 
       {/* Pruduct variants */}
       <div className="mt-5 mb-4">
