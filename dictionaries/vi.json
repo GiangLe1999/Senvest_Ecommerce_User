@@ -444,6 +444,16 @@
     "pending_item_4_1": "Nếu bạn có bất kỳ lo ngại hoặc câu hỏi nào, vui lòng liên hệ với chúng tôi ",
     "pending_item_4_2": "để được hỗ trợ thêm."
   },
+  "cancel_payment_page": {
+    "heading": "Thanh toán của bạn đã bị hủy",
+    "sub_heading": "Có vẻ như bạn đã hủy quá trình thanh toán. Bạn nên làm gì tiếp theo?",
+    "item_1": "Nếu điều này là vô ý, bạn có thể bắt đầu lại quá trình thanh toán bằng cách nhấn nút “Quay lại trang thanh toán”.",
+    "item_2": "Đơn hàng của bạn sẽ được đánh dấu là đã hủy.",
+    "item_3": "Nếu bạn không muốn tiếp tục mua hàng này, không cần thực hiện thêm hành động nào.",
+    "item_4_1": "Nếu bạn có bất kỳ câu hỏi nào hoặc cần hỗ trợ, xin vui lòng liên hệ với chúng tôi ",
+    "item_4_2": "và chúng tôi sẽ sẵn lòng giúp đỡ.",
+    "back_to_checkout": "Quay lại trang thanh toán"
+  },
   "new_payment_notification": {
     "new_order_by": "Đơn hàng mới bởi",
     "phone": "Điện thoại",

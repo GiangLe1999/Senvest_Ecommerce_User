@@ -47,7 +47,7 @@ const PaymentProcess: FC<Props> = ({
         amount: totalPrice,
         description: "TT nen thom KHC",
         cancelUrl: `${process.env.NEXT_PUBLIC_APP_URL}/${locale}/${
-          locale === "vi" ? "thanh-toan" : "checkout"
+          locale === "vi" ? "huy-thanh-toan" : "cancel-payment"
         }`,
         returnUrl: `${process.env.NEXT_PUBLIC_APP_URL}/${locale}/${
           locale === "vi" ? "cam-on" : "thank-you"

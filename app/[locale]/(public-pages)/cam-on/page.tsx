@@ -16,7 +16,7 @@ interface Props {
   };
 }
 
-const CheckoutPage: NextPage<Props> = async ({
+const ThankyouPage: NextPage<Props> = async ({
   params: { locale },
   searchParams: { orderCode },
 }: Props) => {
@@ -39,4 +39,4 @@ const CheckoutPage: NextPage<Props> = async ({
   return <PendingPayment />;
 };
 
-export default CheckoutPage;
+export default ThankyouPage;

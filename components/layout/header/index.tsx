@@ -13,6 +13,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import SmallSectionContainer from "@/components/small-section-container";
 import { getProductSlugsMappings } from "@/queries/products.queries";
+import { getUserWishlistLength } from "@/queries/user-wishlist.queries";
 
 interface Props {}
 
@@ -23,6 +24,8 @@ const Header: FC<Props> = async (props): Promise<JSX.Element> => {
       getProductSlugsMappings(),
       getServerSession(authOptions),
     ]);
+
+  const { wishlistLength } = session ? await getUserWishlistLength() : 0;
 
   return (
     <header className="border-b">
@@ -51,9 +54,12 @@ const Header: FC<Props> = async (props): Promise<JSX.Element> => {
             <Navigation />
           </div>
           <div className="col-span-2 grid grid-cols-4 gap-1 ml-auto">
-            <PersonalItems session={session} />
+            <PersonalItems
+              session={session}
+              wishlistLength={wishlistLength || 0}
+            />
             <CartItem />
-            <WishlistItem />
+            <WishlistItem wishlistLength={wishlistLength || 0} />
             <SearchItem />
           </div>
         </SmallSectionContainer>

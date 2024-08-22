@@ -23,3 +23,18 @@ export const createPaymentLink = async (data: {
     } else throw new Error("Failed to create payment link");
   }
 };
+
+export const cancelPaymentLink = async ({
+  orderCode,
+}: {
+  orderCode: string;
+}) => {
+  try {
+    const res = await axiosInstance.put("payments/cancel", { orderCode });
+    return res.data;
+  } catch (error: AxiosError<any> | any) {
+    if (error.response?.status === 400) {
+      return error.response.data;
+    } else console.log("Failed to cancel payment link");
+  }
+};

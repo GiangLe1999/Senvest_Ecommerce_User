@@ -40,7 +40,7 @@ import {
 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import { PriorityEnum } from "@/entities/wishlist-item.entity";
 import { Input } from "@/components/ui/input";
@@ -49,6 +49,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "@/configs/i18n-navigation";
 import { getChangedFields, getPriceForVariant } from "@/lib/utils";
 import { useCartStore } from "@/stores/useCartStore";
+import SalesBadge from "@/components/product-card/sales-badge";
 
 interface Props {
   item: Wishlist["items"][0];
@@ -169,14 +170,26 @@ const WishlistItem: FC<Props> = ({ item }): JSX.Element => {
     }
   };
 
+  const activeVariant = {
+    price: item.variant_id.price,
+    discountedPrice: item.variant_id.discountedPrice,
+    stock: item.variant_id.stock,
+    fragrance: item.variant_id.fragrance,
+    images: item.variant_id.images,
+    discountedFrom: item.variant_id.discountedFrom,
+    discountedTo: item.variant_id.discountedTo,
+    _id: item.variant_id._id,
+  };
+
   useEffect(() => {
     form.setValue("priority", item.priority || PriorityEnum.medium);
     form.setValue("quantity", item.quantity.toString());
   }, [item.priority, item.quantity, form]);
 
   return (
-    // href={`/san-pham/${isVi ? item._id.slug.vi : item._id.slug.en}` as any}
     <article className="rounded-sm transition custom-card-shadow relative">
+      <SalesBadge activeVariant={activeVariant} />
+
       <TooltipProvider delayDuration={0}>
         <Tooltip>
           <TooltipTrigger
@@ -229,18 +242,7 @@ const WishlistItem: FC<Props> = ({ item }): JSX.Element => {
         </p>
         <div className="flex items-baseline gap-2 mb-2">
           <strong className="text-muted">{t("price")}:</strong>{" "}
-          <Price
-            activeVariant={{
-              price: item.variant_id.price,
-              discountedPrice: item.variant_id.discountedPrice,
-              stock: "0",
-              fragrance: item.variant_id.fragrance,
-              images: item.variant_id.images,
-              discountedFrom: item.variant_id.discountedFrom,
-              discountedTo: item.variant_id.discountedTo,
-              _id: item.variant_id._id,
-            }}
-          />
+          <Price activeVariant={activeVariant} />
         </div>
 
         <Form {...form}>

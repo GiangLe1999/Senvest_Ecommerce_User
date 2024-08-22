@@ -22,14 +22,26 @@ export const useCompareStore = create(
     (set, get) => ({
       items: INITIAL_STATE.items,
       addToCompare: (item: CompareProduct) => {
+        const isVi = item.locale === "vi";
+
         const items = get().items;
+        if (items.length >= 3) {
+          return toast.error(
+            isVi ? "Không thể thêm được nữa" : "Can not add anymore",
+            {
+              description: isVi
+                ? "Chỉ có thể thêm tối đa 3 sản phẩm để so sánh."
+                : "Can not add more than 3 items to compare.",
+            }
+          );
+        }
+
         const compareItem = items.find(
           (i) => i._id === item._id && i.variant_id === item.variant_id
         );
-        const isVi = item.locale === "vi";
 
         if (compareItem) {
-          toast.error(
+          return toast.error(
             isVi
               ? "Sản phẩm này đã có trong so sánh rồi"
               : "This item is already in comparison",
@@ -39,7 +51,6 @@ export const useCompareStore = create(
                 : "Please remove it from compare first.",
             }
           );
-          return;
         }
 
         set((state) => ({

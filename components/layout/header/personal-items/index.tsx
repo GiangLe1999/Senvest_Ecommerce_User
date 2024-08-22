@@ -13,16 +13,20 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/configs/i18n-navigation";
 import { Session } from "next-auth";
 import { signOut } from "next-auth/react";
+import useFromStore from "@/hooks/useFromStore";
+import { useCompareStore } from "@/stores/useCompareStore";
 
 interface Props {
   session: Session | null;
+  wishlistLength: number;
 }
 
 const itemClassname =
   "block w-full py-2 hover:text-primary transition-colors text-left";
 
-const PersonalItems: FC<Props> = ({ session }): JSX.Element => {
+const PersonalItems: FC<Props> = ({ session, wishlistLength }): JSX.Element => {
   const t = useTranslations("navigation");
+  const items = useFromStore(useCompareStore, (state) => state.items);
 
   return (
     <TooltipProvider>
@@ -40,13 +44,13 @@ const PersonalItems: FC<Props> = ({ session }): JSX.Element => {
                 {!session ? (
                   <>
                     <li>
-                      <Link className={itemClassname} href="/dang-ki">
-                        {t("register")}
+                      <Link className={itemClassname} href="/dang-nhap">
+                        {t("sign_in")}
                       </Link>
                     </li>
                     <li>
-                      <Link className={itemClassname} href="/dang-nhap">
-                        {t("sign_in")}
+                      <Link className={itemClassname} href="/dang-ki">
+                        {t("register")}
                       </Link>
                     </li>
                   </>
@@ -63,16 +67,16 @@ const PersonalItems: FC<Props> = ({ session }): JSX.Element => {
                     className={itemClassname}
                     href="/tai-khoan/san-pham-yeu-thich"
                   >
-                    {t("wishlist")} (0)
+                    {t("wishlist")} ({wishlistLength})
                   </Link>
                 </li>
                 <li>
-                  <Link className={itemClassname} href="/faqs">
-                    {t("compare")} (0)
+                  <Link className={itemClassname} href="/so-sanh">
+                    {t("compare")} ({items?.length || 0})
                   </Link>
                 </li>
                 <li>
-                  <Link className={itemClassname} href="/faqs">
+                  <Link className={itemClassname} href="/thanh-toan">
                     {t("checkout")}
                   </Link>
                 </li>
