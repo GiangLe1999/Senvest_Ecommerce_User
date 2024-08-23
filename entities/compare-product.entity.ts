@@ -7,7 +7,12 @@ export interface CompareProduct {
   image: string;
   variant_id: string;
   scent: string;
+  stock: string;
   price: string;
+  discountedPrice?: string;
+  discountedFrom?: Date;
+  discountedTo?: Date;
   description: LocalizedString;
   locale: string;
+  rating: string;
 }

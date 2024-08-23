@@ -19,7 +19,6 @@ import { useTranslations } from "next-intl";
 import { Dispatch, FC, SetStateAction } from "react";
 import NoAccountAddresses from "../account-addresses-page/no-account-addresses";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import AccountAddress from "../account-addresses-page/account-address";
 

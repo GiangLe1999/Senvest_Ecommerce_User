@@ -488,6 +488,9 @@
     "failed_desc_2": " products"
   },
   "comparison_page": {
-    "heading": "Products comparison"
+    "heading": "Products comparison",
+    "add_item": "Add product to comparison",
+    "remove": "Remove from comparison",
+    "add_to_cart": "Add to cart"
   }
 }

@@ -9,7 +9,13 @@ interface State {
 
 interface Actions {
   addToCompare: (item: CompareProduct) => void;
-  removeFromCompare: (item: CompareProduct) => void;
+  removeFromCompare: ({
+    _id,
+    variant_id,
+  }: {
+    _id: string;
+    variant_id: string;
+  }) => void;
   clearCompare: () => void;
 }
 
@@ -25,13 +31,13 @@ export const useCompareStore = create(
         const isVi = item.locale === "vi";
 
         const items = get().items;
-        if (items.length >= 3) {
+        if (items.length >= 5) {
           return toast.error(
             isVi ? "Không thể thêm được nữa" : "Can not add anymore",
             {
               description: isVi
-                ? "Chỉ có thể thêm tối đa 3 sản phẩm để so sánh."
-                : "Can not add more than 3 items to compare.",
+                ? "Chỉ có thể thêm tối đa 5 sản phẩm để so sánh."
+                : "Can not add more than 5 items to compare.",
             }
           );
         }
@@ -74,10 +80,16 @@ export const useCompareStore = create(
           }
         );
       },
-      removeFromCompare: (item: CompareProduct) => {
+      removeFromCompare: ({
+        _id,
+        variant_id,
+      }: {
+        _id: string;
+        variant_id: string;
+      }) => {
         set((state) => ({
           items: state.items.filter(
-            (i) => i._id !== item._id || i.variant_id !== item.variant_id
+            (i) => i._id !== _id || i.variant_id !== variant_id
           ),
         }));
       },

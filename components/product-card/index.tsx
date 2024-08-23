@@ -53,12 +53,17 @@ const ProductCard: FC<Props> = ({ product }): JSX.Element => {
     addToCompare({
       _id: product._id,
       variant_id: activeVariant._id,
-      price: getPriceForVariant(activeVariant),
+      price: activeVariant.price,
+      discountedPrice: activeVariant?.discountedPrice,
+      discountedFrom: activeVariant?.discountedFrom,
+      discountedTo: activeVariant?.discountedTo,
       image: activeVariant.images[0],
       name: product.name,
       scent: activeVariant.fragrance,
+      stock: activeVariant.stock,
       slug: product.slug,
       description: product.description,
+      rating: product.rating,
       locale,
     });
   };

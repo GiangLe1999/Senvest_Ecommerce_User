@@ -47,7 +47,11 @@ import { Input } from "@/components/ui/input";
 import CustomLoadingButton from "@/components/custom-loading-button";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/configs/i18n-navigation";
-import { getChangedFields, getPriceForVariant } from "@/lib/utils";
+import {
+  getChangedFields,
+  getPriceForVariant,
+  isDiscounted,
+} from "@/lib/utils";
 import { useCartStore } from "@/stores/useCartStore";
 import SalesBadge from "@/components/product-card/sales-badge";
 
@@ -188,7 +192,9 @@ const WishlistItem: FC<Props> = ({ item }): JSX.Element => {
 
   return (
     <article className="rounded-sm transition custom-card-shadow relative">
-      <SalesBadge activeVariant={activeVariant} />
+      {isDiscounted(activeVariant) && (
+        <SalesBadge activeVariant={activeVariant} />
+      )}
 
       <TooltipProvider delayDuration={0}>
         <Tooltip>
