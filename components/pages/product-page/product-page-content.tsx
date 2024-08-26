@@ -22,6 +22,8 @@ const ProductPageContent: FC<Props> = ({ product }): JSX.Element => {
   const [activeVariantIndex, setActiveVariantIndex] = useState(0);
   const activeVariant = product.variants[activeVariantIndex];
 
+  const [shownContent, setShownContent] = useState<"desc" | "reviews">("desc");
+
   return (
     <>
       <SmallSectionContainer className="mt-12">
@@ -62,6 +64,8 @@ const ProductPageContent: FC<Props> = ({ product }): JSX.Element => {
               activeVariant={activeVariant}
               activeVariantIndex={activeVariantIndex}
               setActiveVariantIndex={setActiveVariantIndex}
+              shownContent={shownContent}
+              setShownContent={setShownContent}
             />
           </div>
         </div>
@@ -75,6 +79,8 @@ const ProductPageContent: FC<Props> = ({ product }): JSX.Element => {
             product_id={product._id}
             product_name={product.name}
             variants={product.variants}
+            shownContent={shownContent}
+            setShownContent={setShownContent}
           />
         </SmallSectionContainer>
       </div>

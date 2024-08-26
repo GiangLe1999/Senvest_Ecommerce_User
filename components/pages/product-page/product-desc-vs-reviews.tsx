@@ -12,6 +12,8 @@ interface Props {
   product_id: string;
   product_name: LocalizedString;
   variants: Variant[];
+  shownContent: string;
+  setShownContent: React.Dispatch<React.SetStateAction<"desc" | "reviews">>;
 }
 
 const ProductDescVsReviews: FC<Props> = ({
@@ -21,8 +23,9 @@ const ProductDescVsReviews: FC<Props> = ({
   product_id,
   product_name,
   variants,
+  shownContent,
+  setShownContent,
 }): JSX.Element => {
-  const [shownContent, setShownContent] = useState("desc");
   return (
     <div className="relative">
       <div className="font-grey_qo flex items-center bg-white rounded-[40px] text-4xl absolute -top-10 left-1/2 -translate-x-1/2 w-fit shadow-[0px_10px_20px_0px_rgba(0,0,0,0.1)]">

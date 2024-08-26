@@ -2,7 +2,7 @@ import Price from "@/components/product-card/price";
 import { Rating } from "@/components/rating";
 import { Product } from "@/entities/product.entity";
 import { Variant } from "@/entities/variant.entity";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import parse from "html-react-parser";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
@@ -27,6 +27,8 @@ interface Props {
   activeVariant: Variant;
   activeVariantIndex: number;
   setActiveVariantIndex: React.Dispatch<React.SetStateAction<number>>;
+  shownContent: "desc" | "reviews";
+  setShownContent: React.Dispatch<React.SetStateAction<"desc" | "reviews">>;
 }
 
 const ProductMainInfo: FC<Props> = ({
@@ -36,10 +38,36 @@ const ProductMainInfo: FC<Props> = ({
   activeVariant,
   activeVariantIndex,
   setActiveVariantIndex,
+  shownContent,
+  setShownContent,
 }): JSX.Element => {
   const { cart } = useCartStore((state) => state);
   const router = useRouter();
   const rating = parseFloat(product.rating);
+
+  const [scrollToSection, setScrollToSection] = useState<
+    null | "reviews" | "add-review"
+  >(null);
+
+  const readReviewBtnClickHandler = () => {
+    setShownContent("reviews");
+    setScrollToSection("reviews");
+  };
+
+  const writeReviewBtnClickHandler = () => {
+    setShownContent("reviews");
+    setScrollToSection("add-review");
+  };
+
+  useEffect(() => {
+    if (scrollToSection) {
+      const section = document.getElementById(scrollToSection);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+      setScrollToSection(null);
+    }
+  }, [shownContent, scrollToSection]);
 
   return (
     <div>
@@ -58,6 +86,7 @@ const ProductMainInfo: FC<Props> = ({
           <button
             type="button"
             className="hover:text-primary transition-colors"
+            onClick={readReviewBtnClickHandler}
           >
             {t("read_reviews")}
           </button>
@@ -65,6 +94,7 @@ const ProductMainInfo: FC<Props> = ({
           <button
             type="button"
             className="hover:text-primary transition-colors"
+            onClick={writeReviewBtnClickHandler}
           >
             {t("write_a_review")}
           </button>
