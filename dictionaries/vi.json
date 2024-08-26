@@ -486,5 +486,11 @@
     "failed": "Số lượng thêm đã vượt quá tồn kho",
     "failed_desc_1": "Bạn chỉ có thể thêm tối đa ",
     "failed_desc_2": " sản phẩm"
+  },
+  "comparison_page": {
+    "heading": "So sánh sản phẩm",
+    "add_item": "Thêm sản phẩm vào so sánh",
+    "remove": "Xóa khỏi so sánh",
+    "add_to_cart": "Thêm vào giỏ hàng"
   }
 }

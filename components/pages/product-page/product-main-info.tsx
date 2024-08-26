@@ -39,6 +39,7 @@ const ProductMainInfo: FC<Props> = ({
 }): JSX.Element => {
   const { cart } = useCartStore((state) => state);
   const router = useRouter();
+  const rating = parseFloat(product.rating);
 
   return (
     <div>
@@ -50,12 +51,15 @@ const ProductMainInfo: FC<Props> = ({
 
         {/* Reviews */}
         <div className="flex items-center gap-6 text-sm text-muted">
-          <Rating value={parseFloat(product.rating)} readonly={true} />
+          <div className="flex items-center gap-1">
+            <Rating value={rating} readonly={true} /> ({rating.toFixed(1)})
+          </div>
+          <div className="h-4 bg-border w-[1px]"></div>
           <button
             type="button"
             className="hover:text-primary transition-colors"
           >
-            {t("read_reviews")}(0)
+            {t("read_reviews")}
           </button>
           <div className="h-4 bg-border w-[1px]"></div>
           <button
@@ -200,9 +204,7 @@ const ProductMainInfo: FC<Props> = ({
 
           <div className="flex items-center gap-4">
             <span className="uppercase">{t("brand")}: </span>{" "}
-            <span className="font-bold">
-              {activeVariant.stock} Kindle Hope Candles
-            </span>
+            <span className="font-bold">Kindle Hope Candles</span>
           </div>
         </div>
       </div>
