@@ -6,8 +6,8 @@ import "@smastrom/react-rating/style.css";
 
 const myStyles = {
   itemShapes: ThinStar,
-  activeFillColor: "#B26C53",
-  inactiveFillColor: "#fad2c1",
+  activeFillColor: "#F7BC2F",
+  inactiveFillColor: "#D5D5D5",
 };
 
 interface Props {

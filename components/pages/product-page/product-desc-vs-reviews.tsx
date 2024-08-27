@@ -1,5 +1,5 @@
 import { LocalizedString } from "@/entities/common.entity";
-import { FC, useState } from "react";
+import { FC } from "react";
 import ProductDesc from "./product-desc";
 import ProductReviews from "./product-reviews";
 import { cn } from "@/lib/utils";
@@ -12,6 +12,8 @@ interface Props {
   product_id: string;
   product_name: LocalizedString;
   variants: Variant[];
+  nums_of_reviews: number;
+  rating: string;
   shownContent: string;
   setShownContent: React.Dispatch<React.SetStateAction<"desc" | "reviews">>;
 }
@@ -23,6 +25,8 @@ const ProductDescVsReviews: FC<Props> = ({
   product_id,
   product_name,
   variants,
+  rating,
+  nums_of_reviews,
   shownContent,
   setShownContent,
 }): JSX.Element => {
@@ -60,7 +64,9 @@ const ProductDescVsReviews: FC<Props> = ({
           <ProductReviews
             t={t}
             product_id={product_id}
+            nums_of_reviews={nums_of_reviews}
             product_name={product_name}
+            rating={rating}
             variants={variants}
           />
         )}

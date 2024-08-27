@@ -12,4 +12,5 @@ export interface Product {
   totalSales: number;
   totalQuantitySold: number;
   rating: string;
+  nums_of_reviews: number;
 }

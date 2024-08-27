@@ -43,7 +43,6 @@ const ProductMainInfo: FC<Props> = ({
 }): JSX.Element => {
   const { cart } = useCartStore((state) => state);
   const router = useRouter();
-  const rating = parseFloat(product.rating);
 
   const [scrollToSection, setScrollToSection] = useState<
     null | "reviews" | "add-review"
@@ -73,14 +72,15 @@ const ProductMainInfo: FC<Props> = ({
     <div>
       <div className="space-y-3">
         {/* Name */}
-        <h1 className="text-4xl font-bold text-primary capitalize line-clamp-2">
+        <h1 className="text-4xl font-bold capitalize line-clamp-2">
           {isVi ? product.name.vi : product.name.en}
         </h1>
 
         {/* Reviews */}
         <div className="flex items-center gap-6 text-sm text-muted">
           <div className="flex items-center gap-1">
-            <Rating value={rating} readonly={true} /> ({rating.toFixed(1)})
+            <Rating value={parseFloat(product.rating)} readonly={true} /> (
+            {product.rating})
           </div>
           <div className="h-4 bg-border w-[1px]"></div>
           <button

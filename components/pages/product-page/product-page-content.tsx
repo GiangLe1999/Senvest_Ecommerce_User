@@ -22,7 +22,9 @@ const ProductPageContent: FC<Props> = ({ product }): JSX.Element => {
   const [activeVariantIndex, setActiveVariantIndex] = useState(0);
   const activeVariant = product.variants[activeVariantIndex];
 
-  const [shownContent, setShownContent] = useState<"desc" | "reviews">("desc");
+  const [shownContent, setShownContent] = useState<"desc" | "reviews">(
+    "reviews"
+  );
 
   return (
     <>
@@ -78,6 +80,8 @@ const ProductPageContent: FC<Props> = ({ product }): JSX.Element => {
             description={product.description}
             product_id={product._id}
             product_name={product.name}
+            nums_of_reviews={product.nums_of_reviews}
+            rating={product.rating}
             variants={product.variants}
             shownContent={shownContent}
             setShownContent={setShownContent}

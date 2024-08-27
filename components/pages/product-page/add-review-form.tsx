@@ -110,6 +110,7 @@ const AddReviewForm: FC<Props> = ({
         setLoading(false);
         setOpenSuccessfulDialog(true);
         form.reset();
+        changeRating(0);
       } else {
         setLoading(false);
         return toast.error(t("create_review_fail_1"), {
