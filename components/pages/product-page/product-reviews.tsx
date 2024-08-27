@@ -9,6 +9,8 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getProductReviews } from "@/queries/reviews.queries";
 import { Review } from "@/entities/review.entity";
 import { Rating } from "@/components/rating";
+import { Separator } from "@/components/ui/separator";
+import ReviewCard from "./review-card";
 
 interface Props {
   t: any;
@@ -73,7 +75,7 @@ const ProductReviews: FC<Props> = ({
     <div>
       <section id="reviews" className="mb-10">
         <h2 className="text-2xl font-bold mb-2">{t("reviews")}</h2>
-        <div className="grid grid-cols-3 mt-4">
+        <div className="grid grid-cols-3 mt-4 mb-12">
           <div className="pr-8 border-r">
             <h3 className="text-lg font-bold text-muted mb-1">Total Reviews</h3>
             <span className="text-2xl font-bold">{nums_of_reviews}</span>
@@ -119,8 +121,14 @@ const ProductReviews: FC<Props> = ({
           </div>
         </div>
 
+        <Separator />
+
         {data?.reviews?.length ? (
-          <div></div>
+          <>
+            {data?.reviews?.map((review: Review) => (
+              <ReviewCard key={review._id} review={review} />
+            ))}
+          </>
         ) : (
           <>
             <Empty />

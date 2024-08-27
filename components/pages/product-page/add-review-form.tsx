@@ -148,7 +148,7 @@ const AddReviewForm: FC<Props> = ({
           {t("review_note")} <span className="text-red-500 font-bold">*</span>
         </p>
 
-        <Separator className="my-5" />
+        <div className="my-5 bg-border h-[0.5px]" />
 
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
