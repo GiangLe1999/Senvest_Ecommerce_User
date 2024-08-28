@@ -26,7 +26,7 @@ const style = {
   copyUrl: {
     fontSize: "14px",
     color: "#374151",
-    fontFamily: "__Philosopher_90e303",
+    fontFamily: "math",
   },
   copyIcon: {
     fontSize: "14px",
@@ -36,7 +36,7 @@ const style = {
     placeItems: "center",
     color: "white",
     borderRadius: "0 2px 2px 0",
-    fontFamily: "__Philosopher_90e303",
+    fontFamily: "math",
   },
   copyContainer: {
     border: "1px solid #F7F0ED",
