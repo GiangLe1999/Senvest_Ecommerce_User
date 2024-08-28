@@ -24,9 +24,10 @@ const style = {
     paddingTop: 0,
   },
   copyUrl: {
-    fontSize: "14px",
+    fontSize: "12px",
     color: "#374151",
     fontFamily: "math",
+    overFlow: "hidden",
   },
   copyIcon: {
     fontSize: "14px",
