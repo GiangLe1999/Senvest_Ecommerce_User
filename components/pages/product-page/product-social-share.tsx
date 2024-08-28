@@ -28,6 +28,7 @@ const style = {
     color: "#374151",
     fontFamily: "math",
     overFlow: "hidden",
+    paddingRight: "4px",
   },
   copyIcon: {
     fontSize: "14px",
