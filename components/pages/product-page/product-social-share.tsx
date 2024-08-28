@@ -26,7 +26,7 @@ const style = {
   copyUrl: {
     fontSize: "14px",
     color: "#374151",
-    overFlowX: "hidden",
+    overflow: "hidden",
     paddingRight: "4px",
   },
   copyIcon: {
