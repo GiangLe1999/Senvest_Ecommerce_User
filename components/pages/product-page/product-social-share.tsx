@@ -18,7 +18,7 @@ interface Props {
 const style = {
   root: {
     padding: 0,
-    paddingBottom: "20px",
+    paddingBottom: "10px",
   },
   iconContainer: {
     paddingTop: 0,
