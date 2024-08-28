@@ -8,7 +8,6 @@ const avatarBackgroundColors = [
   "#FF5733",
   "#3357FF",
   "#FF33A1",
-  "#FFD633",
   "#0eaca1",
   "#8E44AD",
   "#F39C12",

@@ -40,6 +40,7 @@ interface Props {
   product_id: string;
   product_name: LocalizedString;
   variants: Variant[];
+  nums_of_reviews: number;
 }
 
 const AddReviewForm: FC<Props> = ({
@@ -47,6 +48,7 @@ const AddReviewForm: FC<Props> = ({
   product_id,
   product_name,
   variants,
+  nums_of_reviews,
 }): JSX.Element => {
   const [loading, setLoading] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false);
@@ -138,17 +140,15 @@ const AddReviewForm: FC<Props> = ({
 
   return (
     <>
-      {" "}
       <div>
         <p className="text-2xl font-bold mb-2">
-          {t("be_the_first")} “{isVi ? product_name.vi : product_name.en}”
+          {nums_of_reviews > 0 ? t("leave_a_review") : t("be_the_first")} “
+          {isVi ? product_name.vi : product_name.en}”
         </p>
 
-        <p>
+        <p className="mb-8 text-muted">
           {t("review_note")} <span className="text-red-500 font-bold">*</span>
         </p>
-
-        <div className="my-5 bg-border h-[0.5px]" />
 
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">

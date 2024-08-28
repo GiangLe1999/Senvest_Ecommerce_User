@@ -486,6 +486,7 @@
     "reviews": "Reviews",
     "name_rule": "Only letters and the dot (.) character, followed by a space, are allowed.",
     "be_the_first": "Be the first to review ",
+    "leave_a_review": "Leave a review of ",
     "review_note": "Your email address will not be published. Required fields are marked",
     "your_rating": "Your Rating",
     "your_comment": "Your Comment",
@@ -502,7 +503,12 @@
     "create_review_fail_1": "You submitted a review already",
     "create_review_fail_1_desc": "Only one review is allowed per product",
     "create_review_fail_2": "Your review could not be submitted",
-    "create_review_fail_2_desc": "Please try again later"
+    "create_review_fail_2_desc": "Please try again later",
+    "total_reviews": "Total Reviews",
+    "total_reviews_desc": "Reviews from genuine customers",
+    "average_rating": "Average Rating",
+    "average_rating_desc_1": "Based on ",
+    "average_rating_desc_2": " reviews"
   },
   "change_product_quantity": {
     "failed": "The quantity added has exceeded the stock",

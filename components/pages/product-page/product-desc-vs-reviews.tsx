@@ -32,7 +32,7 @@ const ProductDescVsReviews: FC<Props> = ({
 }): JSX.Element => {
   return (
     <div className="relative">
-      <div className="font-grey_qo flex items-center bg-white rounded-[40px] text-4xl absolute -top-10 left-1/2 -translate-x-1/2 w-fit shadow-[0px_10px_20px_0px_rgba(0,0,0,0.1)]">
+      <div className="flex items-center bg-white rounded-[40px] text-xl font-bold absolute -top-10 left-1/2 -translate-x-1/2 w-fit shadow-[0px_10px_20px_0px_rgba(0,0,0,0.1)]">
         <button
           className={cn(
             "py-[18px] px-[50px] transition rounded-l-[40px]",
@@ -53,7 +53,7 @@ const ProductDescVsReviews: FC<Props> = ({
           )}
           onClick={() => setShownContent("reviews")}
         >
-          {t("reviews")}(0)
+          {t("reviews")} ({nums_of_reviews})
         </button>
       </div>
 

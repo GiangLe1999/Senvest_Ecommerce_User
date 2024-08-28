@@ -78,17 +78,14 @@ const ProductMainInfo: FC<Props> = ({
 
         {/* Reviews */}
         <div className="flex items-center gap-6 text-sm text-muted">
-          <div className="flex items-center gap-1">
-            <Rating value={parseFloat(product.rating)} readonly={true} /> (
-            {product.rating})
-          </div>
+          <Rating value={parseFloat(product.rating)} readonly={true} />
           <div className="h-4 bg-border w-[1px]"></div>
           <button
             type="button"
             className="hover:text-primary transition-colors"
             onClick={readReviewBtnClickHandler}
           >
-            {t("read_reviews")}
+            {t("read_reviews")} ({product.nums_of_reviews})
           </button>
           <div className="h-4 bg-border w-[1px]"></div>
           <button

@@ -2,10 +2,7 @@ import { LocalizedString } from "@/entities/common.entity";
 import { Variant } from "@/entities/variant.entity";
 import { FC } from "react";
 import AddReviewForm from "./add-review-form";
-import Empty from "@/components/empty";
-import { Button } from "@/components/ui/button";
-import { PencilLineIcon } from "lucide-react";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { getProductReviews } from "@/queries/reviews.queries";
 import { Review } from "@/entities/review.entity";
 import { Rating } from "@/components/rating";
@@ -37,17 +34,10 @@ const ProductReviews: FC<Props> = ({
   variants,
   rating,
 }): JSX.Element => {
-  const { data, isLoading } = useQuery({
+  const { data } = useQuery({
     queryKey: ["product_reviews_" + product_id],
     queryFn: () => getProductReviews({ product_id, page: 1, limit: 10 }),
   });
-
-  const writeReviewBtnClickHandler = () => {
-    const section = document.getElementById("add-review");
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   const overviewData = ratings.map((rating) => {
     const t = data?.overview?.find(
@@ -73,27 +63,23 @@ const ProductReviews: FC<Props> = ({
 
   return (
     <div>
-      <section id="reviews" className="mb-10">
-        <h2 className="text-2xl font-bold mb-2">{t("reviews")}</h2>
-        <div className="grid grid-cols-3 mt-4 mb-12">
+      <section id="reviews">
+        <div className="grid grid-cols-3 mt-4 mb-20">
           <div className="pr-8 border-r">
-            <h3 className="text-lg font-bold text-muted mb-1">Total Reviews</h3>
+            <h2 className="text-lg font-bold mb-1">{t("total_reviews")}</h2>
             <span className="text-2xl font-bold">{nums_of_reviews}</span>
-            <p className="text-muted/80 text-sm mt-2">
-              Reviews from genuine customers
-            </p>
+            <p className="text-muted text-sm mt-2">{t("total_reviews_desc")}</p>
           </div>
 
           <div className="px-8 border-r">
-            <h3 className="text-lg font-bold text-muted mb-1">
-              Average Rating
-            </h3>
+            <h2 className="text-lg font-bold mb-1">{t("average_rating")}</h2>
             <div className="text-2xl font-bold flex items-center gap-3">
               {rating}
               <Rating value={parseFloat(rating)} readonly />
             </div>
-            <p className="text-muted/80 text-sm mt-2">
-              Based on {nums_of_reviews} reviews
+            <p className="text-muted text-sm mt-2">
+              {t("average_rating_desc_1")} {nums_of_reviews}{" "}
+              {t("average_rating_desc_2")}
             </p>
           </div>
 
@@ -123,30 +109,24 @@ const ProductReviews: FC<Props> = ({
 
         <Separator />
 
-        {data?.reviews?.length ? (
+        {nums_of_reviews ? (
           <>
             {data?.reviews?.map((review: Review) => (
               <ReviewCard key={review._id} review={review} />
             ))}
           </>
         ) : (
-          <>
-            <Empty />
-            <div className="text-center mt-4">
-              <Button className="mb-20" onClick={writeReviewBtnClickHandler}>
-                {t("no_reviews")} <PencilLineIcon className="w-4 h-4 ml-2" />
-              </Button>
-            </div>
-          </>
+          <></>
         )}
       </section>
 
-      <section id="add-review">
+      <section id="add-review" className="mt-20">
         <AddReviewForm
           t={t}
           product_id={product_id}
           product_name={product_name}
           variants={variants}
+          nums_of_reviews={nums_of_reviews}
         />
       </section>
     </div>
