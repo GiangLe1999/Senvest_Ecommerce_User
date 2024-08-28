@@ -15,6 +15,7 @@ import { useTranslations } from "next-intl";
 import { FC, useState } from "react";
 import { toast } from "sonner";
 import ProductSocialShare from "./product-social-share";
+import ProductAskQuestion from "./product-ask-question";
 
 interface Props {
   t: any;
@@ -37,6 +38,7 @@ const ProductActionBtns: FC<Props> = ({
   const router = useRouter();
 
   const [showShare, setShowShare] = useState(false);
+  const [showAskQuestion, setShowAskQuestion] = useState(false);
 
   const addToWishlistHandler = async () => {
     if (!session) {
@@ -133,6 +135,7 @@ const ProductActionBtns: FC<Props> = ({
         </button>
         <button
           type="button"
+          onClick={() => setShowAskQuestion(true)}
           className="flex items-center gap-2 px-6 border-r hover:text-primary transition-colors"
         >
           <CircleHelpIcon className="w-4 h-4" /> {t("ask_question")}
@@ -155,6 +158,12 @@ const ProductActionBtns: FC<Props> = ({
             product.slug[isVi ? "vi" : "en"]
           }`
         }
+      />
+
+      <ProductAskQuestion
+        open={showAskQuestion}
+        setOpen={setShowAskQuestion}
+        session={session}
       />
     </>
   );

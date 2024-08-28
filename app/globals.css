@@ -126,12 +126,3 @@
 .product-images-gallery .carousel .thumb.selected {
   @apply !border-primary !border-[3px];
 }
-
-/* Share socials */
-.makeStyles-copyUrl-6 {
-  @apply font-philosopher !text-sm !text-gray-700;
-}
-
-.makeStyles-copyIcon-7 {
-  @apply font-philosopher !text-sm bg-primary h-10 grid place-items-center !text-white rounded-r-sm;
-}

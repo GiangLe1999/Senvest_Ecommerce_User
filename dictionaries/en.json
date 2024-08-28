@@ -520,5 +520,9 @@
     "add_item": "Add product to comparison",
     "remove": "Remove from comparison",
     "add_to_cart": "Add to cart"
+  },
+  "share_socials_dialog": {
+    "share_product": "Share this product",
+    "share_product_desc": "Choose the social media you want to share this product."
   }
 }

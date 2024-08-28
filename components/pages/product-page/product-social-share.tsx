@@ -7,6 +7,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { ReactShareSocial } from "react-share-social";
+import { useTranslations } from "next-intl";
 
 interface Props {
   open: boolean;
@@ -22,6 +23,21 @@ const style = {
   iconContainer: {
     paddingTop: 0,
   },
+  copyUrl: {
+    fontSize: "14px",
+    color: "#374151",
+    fontFamily: "__Philosopher_90e303",
+  },
+  copyIcon: {
+    fontSize: "14px",
+    backgroundColor: "#B26C53",
+    height: "44px",
+    display: "grid",
+    placeItems: "center",
+    color: "white",
+    borderRadius: "0 2px 2px 0",
+    fontFamily: "__Philosopher_90e303",
+  },
   copyContainer: {
     border: "1px solid #F7F0ED",
     background: "#F7F0ED",
@@ -31,16 +47,15 @@ const style = {
 };
 
 const ProductSocialShare: FC<Props> = ({ open, setOpen, url }): JSX.Element => {
+  const t = useTranslations("share_socials_dialog");
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="text-primary mb-2 font-bold">
-            Share this product
+          <DialogTitle className="text-primary mb-1 font-bold">
+            {t("share_product")}
           </DialogTitle>
-          <DialogDescription>
-            Choose the social media you want to share this product.
-          </DialogDescription>
+          <DialogDescription>{t("share_product_desc")}</DialogDescription>
         </DialogHeader>
 
         <ReactShareSocial
