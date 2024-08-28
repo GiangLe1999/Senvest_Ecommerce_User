@@ -24,14 +24,14 @@ const style = {
     paddingTop: 0,
   },
   copyUrl: {
-    fontSize: "12px",
+    fontSize: "13px",
     color: "#374151",
     fontFamily: "math",
     overFlow: "hidden",
     paddingRight: "4px",
   },
   copyIcon: {
-    fontSize: "14px",
+    fontSize: "13px",
     backgroundColor: "#B26C53",
     height: "44px",
     display: "grid",
@@ -39,6 +39,7 @@ const style = {
     color: "white",
     borderRadius: "0 2px 2px 0",
     fontFamily: "math",
+    fontWeight: "normal",
   },
   copyContainer: {
     border: "1px solid #F7F0ED",
