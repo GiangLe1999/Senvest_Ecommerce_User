@@ -50,13 +50,14 @@ const Item: FC<Props> = ({ cartState, cartItem, t }): JSX.Element => {
 
   return (
     <div className="flex items-start gap-4 relative mb-4">
-      <div className="rounded-sm border">
+      <div className="rounded-sm border relative w-[100px] h-[100px]">
         <Image
           src={cartItem?.image || ""}
           alt={(isVi ? cartItem?.name?.vi : cartItem?.name?.en) || ""}
-          width={100}
-          height={100}
           className="rounded-sm"
+          fill
+          sizes="100vw"
+          style={{ objectFit: "cover" }}
         />
       </div>
       <div className="space-y-1 flex-1">

@@ -20,6 +20,7 @@ const config = {
     extend: {
       fontFamily: {
         grey_qo: ["var(--font-grey-qo)"],
+        philosopher: ["var(--font-philosopher)"],
       },
       colors: {
         border: "hsl(var(--border))",

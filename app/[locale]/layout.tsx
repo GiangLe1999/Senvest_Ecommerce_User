@@ -13,6 +13,7 @@ import NewPaymentNotification from "@/components/new-payment-notification";
 const philosopher = Philosopher({
   subsets: ["vietnamese"],
   weight: ["400", "700"],
+  variable: "--font-philosopher",
 });
 
 const grey_qo = Grey_Qo({
@@ -61,7 +62,12 @@ export default function RootLayout({
       /> */}
       <Providers locale={locale}>
         <body
-          className={cn(grey_qo.variable, philosopher.className, "relative")}
+          className={cn(
+            grey_qo.variable,
+            philosopher.className,
+            philosopher.variable,
+            "relative"
+          )}
         >
           <Header />
           {children}

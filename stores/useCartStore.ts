@@ -65,12 +65,12 @@ export const useCartStore = create(
             totalPrice: state.totalPrice + parseFloat(product.price),
           }));
 
-          toast.success(isVi ? "Đã thêm vào giỏ hãng" : "Item added to cart", {
+          toast.success(isVi ? "Đã thêm vào giỏ hàng" : "Item added to cart", {
             description: isVi
-              ? "Kiểm tra giỏ hãng của bạn ngay."
+              ? "Kiểm tra giỏ hàng của bạn ngay."
               : "Check your cart now.",
             action: {
-              label: isVi ? "Xem giỏ hãng" : "Go to cart",
+              label: isVi ? "Xem giỏ hàng" : "Go to cart",
               onClick: () =>
                 (window.location.href = `/${product.locale}/${
                   isVi ? "gio-hang" : "cart"
@@ -112,12 +112,12 @@ export const useCartStore = create(
               parseFloat(product.price) * quantity,
           }));
 
-          toast.success(isVi ? "Đã thêm vào giỏ hãng" : "Item added to cart", {
+          toast.success(isVi ? "Đã thêm vào giỏ hàng" : "Item added to cart", {
             description: isVi
-              ? "Kiểm tra giỏ hãng của bạn ngay."
+              ? "Kiểm tra giỏ hàng của bạn ngay."
               : "Check your cart now.",
             action: {
-              label: isVi ? "Xem giỏ hãng" : "Go to cart",
+              label: isVi ? "Xem giỏ hàng" : "Go to cart",
               onClick: () =>
                 (window.location.href = `/${product.locale}/${
                   isVi ? "gio-hang" : "cart"

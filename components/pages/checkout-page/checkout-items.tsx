@@ -39,15 +39,16 @@ const CheckoutItems: FC<Props> = ({
             >
               <div className="flex gap-4">
                 <div className="flex items-center gap-4 w-[70%]">
-                  <div className="border rounded-sm">
+                  <div className="rounded-sm border relative w-[50px] h-[50px]">
                     <Image
                       src={cartItem?.image || ""}
                       alt={
                         (isVi ? cartItem?.name?.vi : cartItem?.name?.en) || ""
                       }
-                      width={50}
-                      height={50}
                       className="rounded-sm"
+                      fill
+                      sizes="100vw"
+                      style={{ objectFit: "cover" }}
                     />
                   </div>
                   <div className="space-y-1">

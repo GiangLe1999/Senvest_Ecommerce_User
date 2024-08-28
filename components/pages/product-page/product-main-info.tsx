@@ -19,6 +19,7 @@ import {
 import ChangeProductQuantity from "@/components/change-product-quantity";
 import { useCartStore } from "@/stores/useCartStore";
 import { useRouter } from "@/configs/i18n-navigation";
+import ProductActionBtns from "./product-action-btns";
 
 interface Props {
   t: any;
@@ -139,33 +140,12 @@ const ProductMainInfo: FC<Props> = ({
         </div>
 
         {/* Actions */}
-        <div className="flex items-center !my-6 text-sm">
-          <button
-            type="button"
-            className="flex items-center gap-2 pr-6 border-r hover:text-primary transition-colors"
-          >
-            <HeartIcon className="w-4 h-4" />
-            {t("wishlist")}
-          </button>
-          <button
-            type="button"
-            className="flex items-center gap-2 px-6 border-r hover:text-primary transition-colors"
-          >
-            <ChartColumnIncreasingIcon className="w-4 h-4" /> {t("compare")}
-          </button>
-          <button
-            type="button"
-            className="flex items-center gap-2 px-6 border-r hover:text-primary transition-colors"
-          >
-            <CircleHelpIcon className="w-4 h-4" /> {t("ask_question")}
-          </button>
-          <button
-            type="button"
-            className="flex items-center gap-2 px-6 hover:text-primary transition-colors"
-          >
-            <Share2 className="w-4 h-4" /> {t("share")}
-          </button>
-        </div>
+        <ProductActionBtns
+          t={t}
+          product={product}
+          activeVariant={activeVariant}
+          isVi={isVi}
+        />
 
         {/* Cart Buttons */}
         <div className="flex items-center gap-4">
