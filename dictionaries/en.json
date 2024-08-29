@@ -508,7 +508,20 @@
     "total_reviews_desc": "Reviews from genuine customers",
     "average_rating": "Average Rating",
     "average_rating_desc_1": "Based on ",
-    "average_rating_desc_2": " reviews"
+    "average_rating_desc_2": " reviews",
+    "phone": "Phone number",
+    "phone_rule": "Phone number is required.",
+    "question": "Your question",
+    "question_rule": "Your question about the product is required",
+    "phone_optional": "Phone number is optional.",
+    "create_question_success": "Your question has been submitted successfully",
+    "create_question_success_desc": "We will answer your question as soon as possible",
+    "create_question_fail_1": "You submitted a question about this product already",
+    "create_question_fail_1_desc": "Only one question is allowed per product",
+    "create_question_fail_2": "Your question could not be submitted",
+    "create_question_fail_2_desc": "Please try again later",
+    "ask_question_about_product": "Ask about this product",
+    "ask_question_about_product_desc": "We will get back to you as soon as possible"
   },
   "change_product_quantity": {
     "failed": "The quantity added has exceeded the stock",

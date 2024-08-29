@@ -15,6 +15,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { DotIcon, SquareArrowOutUpRightIcon } from "lucide-react";
+import { useRouter } from "@/configs/i18n-navigation";
 
 interface Props {
   open: boolean;
@@ -36,6 +37,12 @@ const QuickView: FC<Props> = ({
   setActiveVariantIndex,
 }): JSX.Element => {
   const t = useTranslations("product_card");
+  const router = useRouter();
+
+  const goToProductPage = () => {
+    setOpen(false);
+    router.push(`/san-pham/${isVi ? product.slug.vi : product.slug.en}` as any);
+  };
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -100,7 +107,11 @@ const QuickView: FC<Props> = ({
             />
           </div>
 
-          <Button variant="link" className="text-primary p-0 font-bold">
+          <Button
+            variant="link"
+            className="text-primary p-0 font-bold"
+            onClick={goToProductPage}
+          >
             {t("go_to_product")}
             <SquareArrowOutUpRightIcon className="w-3 h-3 ml-1" />
           </Button>

@@ -164,6 +164,8 @@ const ProductActionBtns: FC<Props> = ({
         open={showAskQuestion}
         setOpen={setShowAskQuestion}
         session={session}
+        t={t}
+        product_id={product._id}
       />
     </>
   );
