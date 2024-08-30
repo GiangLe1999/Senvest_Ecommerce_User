@@ -508,7 +508,22 @@
     "total_reviews_desc": "Đánh giá từ khách hàng thực sự",
     "average_rating": "Đánh giá trung bình",
     "average_rating_desc_1": "Dựa trên ",
-    "average_rating_desc_2": " đánh giá"
+    "average_rating_desc_2": " đánh giá",
+    "phone": "Số điện thoại",
+    "phone_rule": "Số điện thoại là bắt buộc.",
+    "question": "Câu hỏi của bạn",
+    "question_rule": "Câu hỏi của bạn về sản phẩm là bắt buộc",
+    "phone_optional": "Số điện thoại là tùy chọn.",
+    "create_question_success": "Câu hỏi của bạn đã được gửi thành công",
+    "create_question_success_desc": "Chúng tôi sẽ trả lời câu hỏi của bạn sớm nhất có thể",
+    "create_question_fail_1": "Bạn đã gửi một câu hỏi về sản phẩm này rồi",
+    "create_question_fail_1_desc": "Chỉ được phép gửi một câu hỏi cho mỗi sản phẩm",
+    "create_question_fail_2": "Câu hỏi của bạn không thể được gửi",
+    "create_question_fail_2_desc": "Vui lòng thử lại sau",
+    "ask_question_about_product": "Hỏi về sản phẩm này",
+    "ask_question_about_product_desc": "Chúng tôi sẽ phản hồi câu hỏi của bạn sớm nhất có thể",
+    "cart_is_empty": "Không thể vào trang thanh toán.",
+    "cart_is_empty_desc": "Vì giỏ hàng của bạn đang trống."
   },
   "change_product_quantity": {
     "failed": "Số lượng thêm đã vượt quá tồn kho",
@@ -520,5 +535,9 @@
     "add_item": "Thêm sản phẩm vào so sánh",
     "remove": "Xóa khỏi so sánh",
     "add_to_cart": "Thêm vào giỏ hàng"
+  },
+  "share_socials_dialog": {
+    "share_product": "Chia sẻ sản phẩm này",
+    "share_product_desc": "Chọn mạng xã hội bạn muốn chia sẻ sản phẩm này."
   }
 }

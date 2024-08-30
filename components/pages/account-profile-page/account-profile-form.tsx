@@ -34,7 +34,6 @@ import { cn, getChangedFields } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { updateUserProfile } from "@/actions/user.actions";
 import { vi, enUS } from "date-fns/locale";
-import { Link } from "@/configs/i18n-navigation";
 import { nameRegex } from "@/data/regexes";
 
 interface Props {

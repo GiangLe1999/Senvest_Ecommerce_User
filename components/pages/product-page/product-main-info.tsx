@@ -20,6 +20,7 @@ import ChangeProductQuantity from "@/components/change-product-quantity";
 import { useCartStore } from "@/stores/useCartStore";
 import { useRouter } from "@/configs/i18n-navigation";
 import ProductActionBtns from "./product-action-btns";
+import { toast } from "sonner";
 
 interface Props {
   t: any;
@@ -57,6 +58,16 @@ const ProductMainInfo: FC<Props> = ({
   const writeReviewBtnClickHandler = () => {
     setShownContent("reviews");
     setScrollToSection("add-review");
+  };
+
+  const goToCheckout = () => {
+    if (cart.length === 0) {
+      return toast.error(t("cart_is_empty"), {
+        description: t("cart_is_empty_desc"),
+      });
+    }
+
+    router.push("/thanh-toan");
   };
 
   useEffect(() => {
@@ -181,7 +192,7 @@ const ProductMainInfo: FC<Props> = ({
             variant="outline"
             size="lg"
             className="text-white"
-            onClick={() => router.push("/thanh-toan")}
+            onClick={goToCheckout}
           >
             <CreditCardIcon className="w-5 h-5 mr-2" /> {t("buy_now")}
           </Button>

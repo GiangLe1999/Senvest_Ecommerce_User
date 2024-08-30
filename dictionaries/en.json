@@ -397,7 +397,7 @@
     "free_returns_desc": "You can exchange or return your order within 30 days. And we can collect it from your home or work address",
     "packaging": "Packaging",
     "packaging_desc": "Contemporary and eco-friendly wrapping with high quality materials",
-    "cart_is_empty": "Can not go to checkoutpage.",
+    "cart_is_empty": "Can not go to checkout page.",
     "cart_is_empty_desc": "Because your shopping cart is empty."
   },
   "checkout_page": {
@@ -521,7 +521,9 @@
     "create_question_fail_2": "Your question could not be submitted",
     "create_question_fail_2_desc": "Please try again later",
     "ask_question_about_product": "Ask about this product",
-    "ask_question_about_product_desc": "We will get back to you as soon as possible"
+    "ask_question_about_product_desc": "We will get back to you as soon as possible",
+    "cart_is_empty": "Can not go to checkout page.",
+    "cart_is_empty_desc": "Because your shopping cart is empty."
   },
   "change_product_quantity": {
     "failed": "The quantity added has exceeded the stock",

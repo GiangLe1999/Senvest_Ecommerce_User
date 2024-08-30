@@ -17,6 +17,9 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    esmExternals: false,
+  },
 };
 
 module.exports = withNextIntl(nextConfig);
