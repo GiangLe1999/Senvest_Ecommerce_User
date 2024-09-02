@@ -89,9 +89,9 @@ export const pathnames = {
     vi: "/tai-khoan/dia-chi/tao-moi",
     en: "/account/addresses/add",
   },
-  "/tai-khoan/dia-chi/cap-nhat/[addressId]": {
-    vi: "/tai-khoan/dia-chi/cap-nhat",
-    en: "/account/addresses/update",
+  "/tai-khoan/dia-chi/cap-nhat/[id]": {
+    vi: "/tai-khoan/dia-chi/cap-nhat/[id]",
+    en: "/account/addresses/update/[id]",
   },
   "/tai-khoan/lich-su-mua-hang": {
     vi: "/tai-khoan/lich-su-mua-hang",

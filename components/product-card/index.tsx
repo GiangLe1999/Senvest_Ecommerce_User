@@ -137,7 +137,6 @@ const ProductCard: FC<Props> = ({ product }): JSX.Element => {
 
       {/* Product price */}
       <PriceOrAddToCart
-        product={product}
         activeVariant={activeVariant}
         t={t}
         showAddToCartBtn={showAddToCartBtn}

@@ -539,5 +539,27 @@
   "share_socials_dialog": {
     "share_product": "Share this product",
     "share_product_desc": "Choose the social media you want to share this product."
+  },
+  "listing_page": {
+    "filters": "Filters",
+    "availability": "Availability",
+    "in_stock": "In stock",
+    "out_of_stock": "Out of stock",
+    "price": "Price",
+    "lowest_price": "Lowest price",
+    "highest_price": "Highest price",
+    "scent": "Scent",
+    "sales": "Sales",
+    "sort_by": "Sort by",
+    "best_selling": "Best Selling",
+    "a_to_z": "Alphabetically, A-Z",
+    "z_to_a": "Alphabetically, Z-A",
+    "price_low_to_high": "Price, Low to High",
+    "price_high_to_low": "Price, High to Low",
+    "date_new_to_old": "Date, New to Old",
+    "date_old_to_new": "Date, Old to New",
+    "rate_high_to_low": "Rating, High to Low",
+    "rate_low_to_high": "Rating, Low to High",
+    "reset_filters": "Reset filters"
   }
 }

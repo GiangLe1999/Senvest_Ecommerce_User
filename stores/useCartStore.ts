@@ -84,6 +84,19 @@ export const useCartStore = create(
             totalItems: state.totalItems + 1,
             totalPrice: state.totalPrice + parseFloat(product.price),
           }));
+
+          toast.success(isVi ? "Đã thêm vào giỏ hàng" : "Item added to cart", {
+            description: isVi
+              ? "Kiểm tra giỏ hàng của bạn ngay."
+              : "Check your cart now.",
+            action: {
+              label: isVi ? "Xem giỏ hàng" : "Go to cart",
+              onClick: () =>
+                (window.location.href = `/${product.locale}/${
+                  isVi ? "gio-hang" : "cart"
+                }`),
+            },
+          });
         }
       },
       addMultipleToCart: (product: CartProduct, quantity: number) => {

@@ -126,3 +126,16 @@
 .product-images-gallery .carousel .thumb.selected {
   @apply !border-primary !border-[3px];
 }
+
+/* Slider range */
+#price-range .range-slider__range {
+  @apply bg-primary;
+}
+
+#price-range .range-slider__thumb {
+  @apply bg-primary w-5 h-5;
+}
+
+#price-range.range-slider {
+  @apply bg-secondary;
+}
