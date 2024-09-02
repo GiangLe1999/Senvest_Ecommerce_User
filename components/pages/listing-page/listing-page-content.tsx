@@ -7,6 +7,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { FC, useState } from "react";
 import Filters from "./filters";
 import { getPriceForVariant, isDiscounted } from "@/lib/utils";
+import ProductList from "./product-list";
 
 interface Props {
   category?: Category;
@@ -98,9 +99,7 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
       <div className="flex gap-16">
         <div className="w-[25%]">
           <Filters
-            products={category?.products}
             categoryName={isVi ? category?.name.vi : category?.name.en}
-            productVariants={productVariants}
             t={t}
             // For price filter
             lowestPrice={lowestPrice}
@@ -121,6 +120,16 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
             atFullPriceCount={atFullPriceCount}
             filterSales={filterSales}
             setFilterSales={setFilterSales}
+          />
+        </div>
+
+        <div className="flex-1">
+          <ProductList
+            categoryName={isVi ? category?.name.vi : category?.name.en}
+            categoryDesc={
+              isVi ? category?.description.vi : category?.description.en
+            }
+            t={t}
           />
         </div>
       </div>

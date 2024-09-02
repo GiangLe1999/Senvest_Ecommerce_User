@@ -41,9 +41,7 @@ interface Props {
 }
 
 const Filters: FC<Props> = ({
-  products,
   categoryName,
-  productVariants,
   t,
   inStockCount,
   outStockCount,
@@ -70,7 +68,7 @@ const Filters: FC<Props> = ({
 
   return (
     <div>
-      <h2 className="font-bold text-2xl text-primary mb-2"> {t("filters")}</h2>
+      <h2 className="font-bold text-2xl text-primary mb-2">{t("filters")}</h2>
       <p className="text-sm text-muted mb-4">
         Show 15 results for “{categoryName}”
       </p>
