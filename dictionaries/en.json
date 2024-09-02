@@ -550,6 +550,8 @@
     "highest_price": "Highest price",
     "scent": "Scent",
     "sales": "Sales",
+    "on_sale": "On sale",
+    "at_full_price": "At full price",
     "sort_by": "Sort by",
     "best_selling": "Best Selling",
     "a_to_z": "Alphabetically, A-Z",

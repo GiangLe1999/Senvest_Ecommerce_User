@@ -6,8 +6,8 @@ import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
 
 interface Props {
-  range: (number | undefined)[];
-  setRange: React.Dispatch<React.SetStateAction<(number | undefined)[]>>;
+  range: number[];
+  setRange: React.Dispatch<React.SetStateAction<number[]>>;
   t: any;
 }
 
@@ -17,7 +17,7 @@ const PriceFilter: FC<Props> = ({ t, range, setRange }): JSX.Element => {
   };
 
   const setLowestPrice = (value: number) => {
-    if (range[1] && value > range[1]) {
+    if (value > range[1]) {
       setRange([range[1], range[1]]);
       return;
     }

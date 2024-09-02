@@ -1,28 +1,27 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { Product } from "@/entities/product.entity";
 import { FC } from "react";
 
 interface Props {
   t: any;
-  inStockCount: number;
-  outStockCount: number;
-  filterStock: string[];
-  setFilterStock: React.Dispatch<React.SetStateAction<string[]>>;
+  salesCount: number;
+  atFullPriceCount: number;
+  filterSales: string[];
+  setFilterSales: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-const AvailabilityFilter: FC<Props> = ({
+const SaleFilter: FC<Props> = ({
   t,
-  inStockCount,
-  outStockCount,
-  filterStock,
-  setFilterStock,
+  salesCount,
+  atFullPriceCount,
+  filterSales,
+  setFilterSales,
 }): JSX.Element => {
   const toggleFilter = (value: string) => {
-    if (filterStock.includes(value)) {
-      setFilterStock(filterStock.filter((item) => item !== value));
+    if (filterSales.includes(value)) {
+      setFilterSales(filterSales.filter((item) => item !== value));
     } else {
-      setFilterStock([...filterStock, value]);
+      setFilterSales([...filterSales, value]);
     }
   };
 
@@ -30,36 +29,36 @@ const AvailabilityFilter: FC<Props> = ({
     <ul className="space-y-4">
       <li className="flex items-center space-x-2">
         <Checkbox
-          id="in_stock"
-          name="filter_stock"
-          checked={filterStock.includes("in_stock")}
-          onClick={() => toggleFilter("in_stock")}
+          id="on_sale"
+          name="filter_sales"
+          checked={filterSales.includes("on_sale")}
+          onClick={() => toggleFilter("on_sale")}
         />
         <Label
-          htmlFor="in_stock"
+          htmlFor="on_sale"
           className="cursor-pointer flex items-center justify-between w-full"
         >
-          {t("in_stock")}{" "}
+          {t("on_sale")}{" "}
           <span className="w-4 h-4 text-[10px] grid place-items-center bg-primary text-white rounded-sm shadow-md">
-            {inStockCount}
+            {salesCount}
           </span>
         </Label>
       </li>
 
       <li className="flex items-center space-x-2">
         <Checkbox
-          id="out_of_stock"
-          name="filter_stock"
-          checked={filterStock.includes("out_of_stock")}
-          onClick={() => toggleFilter("out_of_stock")}
+          id="at_full_price"
+          name="filter_sales"
+          checked={filterSales.includes("at_full_price")}
+          onClick={() => toggleFilter("at_full_price")}
         />
         <Label
-          htmlFor="out_of_stock"
+          htmlFor="at_full_price"
           className="cursor-pointer flex items-center justify-between w-full"
         >
-          {t("out_of_stock")}
+          {t("at_full_price")}
           <span className="w-4 h-4 text-[10px] grid place-items-center bg-primary text-white rounded-sm shadow-md">
-            {outStockCount}
+            {atFullPriceCount}
           </span>
         </Label>
       </li>
@@ -67,4 +66,4 @@ const AvailabilityFilter: FC<Props> = ({
   );
 };
 
-export default AvailabilityFilter;
+export default SaleFilter;
