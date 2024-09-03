@@ -85,7 +85,7 @@ const QuickView: FC<Props> = ({
             {isVi ? product?.name?.vi : product?.name?.en}
           </p>
 
-          <p className="text-muted">
+          <p className="text-muted line-clamp-6">
             {isVi
               ? parse(product?.description?.vi)
               : parse(product?.description?.en)}

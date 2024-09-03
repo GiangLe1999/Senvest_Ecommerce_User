@@ -33,6 +33,7 @@ const SaleFilter: FC<Props> = ({
           name="filter_sales"
           checked={filterSales.includes("on_sale")}
           onClick={() => toggleFilter("on_sale")}
+          disabled={salesCount === 0}
         />
         <Label
           htmlFor="on_sale"
@@ -51,6 +52,7 @@ const SaleFilter: FC<Props> = ({
           name="filter_sales"
           checked={filterSales.includes("at_full_price")}
           onClick={() => toggleFilter("at_full_price")}
+          disabled={atFullPriceCount === 0}
         />
         <Label
           htmlFor="at_full_price"

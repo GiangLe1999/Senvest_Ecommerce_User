@@ -34,6 +34,7 @@ const AvailabilityFilter: FC<Props> = ({
           name="filter_stock"
           checked={filterStock.includes("in_stock")}
           onClick={() => toggleFilter("in_stock")}
+          disabled={inStockCount === 0}
         />
         <Label
           htmlFor="in_stock"
@@ -52,6 +53,7 @@ const AvailabilityFilter: FC<Props> = ({
           name="filter_stock"
           checked={filterStock.includes("out_of_stock")}
           onClick={() => toggleFilter("out_of_stock")}
+          disabled={outStockCount === 0}
         />
         <Label
           htmlFor="out_of_stock"

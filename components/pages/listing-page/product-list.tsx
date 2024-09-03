@@ -1,20 +1,17 @@
+import ProductCard from "@/components/product-card";
+import { Product } from "@/entities/product.entity";
 import { FC } from "react";
 
 interface Props {
-  categoryName?: string;
-  categoryDesc?: string;
-  t: any;
+  renderProducts: Product[];
 }
 
-const ProductList: FC<Props> = ({
-  categoryName,
-  categoryDesc,
-  t,
-}): JSX.Element => {
+const ProductList: FC<Props> = ({ renderProducts }): JSX.Element => {
   return (
-    <div>
-      <h1 className="font-bold text-2xl text-primary mb-2">{categoryName}</h1>
-      <p className="text-sm text-muted mb-4">{categoryDesc}</p>
+    <div className="grid grid-cols-3 gap-10 mt-12">
+      {renderProducts.map((product) => (
+        <ProductCard key={product._id} product={product} isProductListPage />
+      ))}
     </div>
   );
 };

@@ -155,7 +155,7 @@ const Filters: FC<Props> = ({
         </Button>
       )}
 
-      <div className="rounded-sm border-t">
+      <div className="border-t">
         <Accordion
           type="multiple"
           className="w-full"

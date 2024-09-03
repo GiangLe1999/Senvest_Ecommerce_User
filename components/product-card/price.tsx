@@ -23,7 +23,7 @@ const Price: FC<Props> = ({ activeVariant, isDetailPage }): JSX.Element => {
           <span
             className={cn(
               "font-bold",
-              isDetailPage ? "text-3xl" : "text-xl text-primary"
+              isDetailPage ? "text-3xl text-primary" : "text-xl text-primary"
             )}
           >
             {formatCurrencyVND(activeVariant.discountedPrice as string)}
@@ -32,7 +32,7 @@ const Price: FC<Props> = ({ activeVariant, isDetailPage }): JSX.Element => {
       ) : (
         <p
           className={cn(
-            "text-left text-primary font-bold",
+            "text-left font-bold text-primary",
             isDetailPage ? "text-3xl" : "text-xl"
           )}
         >

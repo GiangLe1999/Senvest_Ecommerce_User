@@ -8,6 +8,7 @@ interface Props {
   activeVariant: Product["variants"][0];
   showAddToCartBtn: boolean;
   addToCartHandler: () => void;
+  isProductListPage?: boolean;
 }
 
 const PriceOrAddToCart: FC<Props> = ({
@@ -15,9 +16,12 @@ const PriceOrAddToCart: FC<Props> = ({
   t,
   showAddToCartBtn,
   addToCartHandler,
+  isProductListPage,
 }): JSX.Element => {
   return (
-    <div className="relative w-[150px]">
+    <div
+      className={cn("relative w-full", isProductListPage && "overflow-hidden")}
+    >
       <div
         className={cn(
           "text-sm !leading-7 transition-all duration-500 absolute z-10 inset-0 p-0 cursor-pointer h-[28px] hover:text-primary hover:underline text-muted text-left",

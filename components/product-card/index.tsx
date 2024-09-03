@@ -16,9 +16,13 @@ import { useCompareStore } from "@/stores/useCompareStore";
 
 interface Props {
   product: Product;
+  isProductListPage?: boolean;
 }
 
-const ProductCard: FC<Props> = ({ product }): JSX.Element => {
+const ProductCard: FC<Props> = ({
+  product,
+  isProductListPage,
+}): JSX.Element => {
   const t = useTranslations("product_card");
   const locale = useLocale();
   const isVi = locale === "vi";
@@ -72,6 +76,7 @@ const ProductCard: FC<Props> = ({ product }): JSX.Element => {
     <article
       onMouseEnter={() => setShowAddToCartBtn(true)}
       onMouseLeave={() => setShowAddToCartBtn(false)}
+      className={isProductListPage ? "border rounded-sm shadow-sm" : ""}
     >
       <div
         onClick={() =>
@@ -119,29 +124,32 @@ const ProductCard: FC<Props> = ({ product }): JSX.Element => {
         )}
       </div>
 
-      {/* Pruduct variants */}
-      <div className="mt-5 mb-4">
-        <Variants
-          product={product}
-          activeVariantIndex={activeVariantIndex}
-          setActiveVariantIndex={setActiveVariantIndex}
+      <div className={isProductListPage ? "px-4 pt-0 pb-3" : ""}>
+        {/* Pruduct variants */}
+        <div className="mt-5 mb-4">
+          <Variants
+            product={product}
+            activeVariantIndex={activeVariantIndex}
+            setActiveVariantIndex={setActiveVariantIndex}
+          />
+        </div>
+
+        {/* Product name */}
+        <h4 className="mb-2 text-lg line-clamp-1">
+          <Link href={"/"} className="hover:text-primary transition-colors">
+            {isVi ? product.name.vi : product.name.en}
+          </Link>
+        </h4>
+
+        {/* Product price */}
+        <PriceOrAddToCart
+          activeVariant={activeVariant}
+          t={t}
+          showAddToCartBtn={showAddToCartBtn}
+          addToCartHandler={addToCartHandler}
+          isProductListPage={isProductListPage}
         />
       </div>
-
-      {/* Product name */}
-      <h4 className="mb-2 text-lg line-clamp-1">
-        <Link href={"/"} className="hover:text-primary transition-colors">
-          {isVi ? product.name.vi : product.name.en}
-        </Link>
-      </h4>
-
-      {/* Product price */}
-      <PriceOrAddToCart
-        activeVariant={activeVariant}
-        t={t}
-        showAddToCartBtn={showAddToCartBtn}
-        addToCartHandler={addToCartHandler}
-      />
 
       {/* QuickView */}
       <QuickView
