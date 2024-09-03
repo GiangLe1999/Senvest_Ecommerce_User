@@ -1,7 +1,7 @@
 "use client";
 
 import { Product } from "@/entities/product.entity";
-import { FC, useState } from "react";
+import { FC } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -11,8 +11,6 @@ import {
 import { Button } from "@/components/ui/button";
 import PriceFilter from "./price-filter";
 import AvailabilityFilter from "./availability-filter";
-import { formatCurrencyVND } from "@/lib/utils";
-import FilterTag from "./filter-tag";
 import ScentFilter from "./scent-filter";
 import { VariantCount } from "../listing-page-content";
 import SaleFilter from "./sale-filter";
@@ -29,15 +27,15 @@ interface Props {
   setRange: React.Dispatch<React.SetStateAction<number[]>>;
   inStockCount: number;
   outStockCount: number;
-  filterStock: string[];
-  setFilterStock: React.Dispatch<React.SetStateAction<string[]>>;
+  filterStock: string;
+  setFilterStock: React.Dispatch<React.SetStateAction<string>>;
   variantsCount: VariantCount[];
-  filterScent: string[];
-  setFilterScent: React.Dispatch<React.SetStateAction<string[]>>;
+  filterScent: string;
+  setFilterScent: React.Dispatch<React.SetStateAction<string>>;
   salesCount: number;
   atFullPriceCount: number;
-  filterSales: string[];
-  setFilterSales: React.Dispatch<React.SetStateAction<string[]>>;
+  filterSales: string;
+  setFilterSales: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const Filters: FC<Props> = ({
@@ -61,99 +59,17 @@ const Filters: FC<Props> = ({
 }): JSX.Element => {
   const resetFilter = () => {
     setRange([lowestPrice, highestPrice]);
-    setFilterStock([]);
-    setFilterScent([]);
-    setFilterSales([]);
+    setFilterStock("");
+    setFilterScent("");
+    setFilterSales("");
   };
 
   return (
     <div>
       <h2 className="font-bold text-2xl text-primary mb-2">{t("filters")}</h2>
-      <p className="text-sm text-muted mb-4">
+      <p className="text-sm text-muted mb-6">
         Show 15 results for “{categoryName}”
       </p>
-
-      <div className="flex flex-wrap text-xs text-muted/80 mb-2 gap-2">
-        {/* Filter price tag */}
-        {(range[0] !== lowestPrice || range[1] !== highestPrice) && (
-          <FilterTag
-            content={`${formatCurrencyVND(range[0])} - ${formatCurrencyVND(
-              range[1]
-            )}`}
-            onClick={() => setRange([lowestPrice, highestPrice])}
-          />
-        )}
-
-        {/* Filter stock tag */}
-        {filterStock.length > 0 && (
-          <>
-            {filterStock.map((value) => (
-              <FilterTag
-                key={value}
-                content={
-                  value === "in_stock" ? t("in_stock") : t("out_of_stock")
-                }
-                onClick={() =>
-                  setFilterStock((prev) =>
-                    prev.filter((item) => item !== value)
-                  )
-                }
-              />
-            ))}
-          </>
-        )}
-
-        {/* Filter scent tags */}
-        {filterScent.length > 0 && (
-          <>
-            {filterScent.map((value) => (
-              <FilterTag
-                key={value}
-                content={value}
-                onClick={() =>
-                  setFilterScent((prev) =>
-                    prev.filter((item) => item !== value)
-                  )
-                }
-              />
-            ))}
-          </>
-        )}
-
-        {/* Filter stock tag */}
-        {filterSales.length > 0 && (
-          <>
-            {filterSales.map((value) => (
-              <FilterTag
-                key={value}
-                content={
-                  value === "on_sale" ? t("on_sale") : t("at_full_price")
-                }
-                onClick={() =>
-                  setFilterSales((prev) =>
-                    prev.filter((item) => item !== value)
-                  )
-                }
-              />
-            ))}
-          </>
-        )}
-      </div>
-
-      {/* Reset filters */}
-      {(range[0] !== lowestPrice ||
-        range[1] !== highestPrice ||
-        filterStock.length > 0 ||
-        filterScent.length > 0 ||
-        filterSales.length > 0) && (
-        <Button
-          className="pl-0 text-foreground underline font-bold mb-6"
-          variant="link"
-          onClick={resetFilter}
-        >
-          {t("reset_filters")}
-        </Button>
-      )}
 
       <div className="border-t">
         <Accordion

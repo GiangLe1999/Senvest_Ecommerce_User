@@ -11,7 +11,6 @@ import ProductList from "./product-list";
 import Sort from "./sort";
 import { PaginationWithLinks } from "@/components/pagination-with-links";
 import { Variant } from "@/entities/variant.entity";
-import { Product } from "@/entities/product.entity";
 
 interface Props {
   category?: Category;
@@ -56,7 +55,7 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
       }
     })?.length || 0;
   const inStockCount = (category?.products?.length || 0) - (outStockCount || 0);
-  const [filterStock, setFilterStock] = useState<string[]>([]);
+  const [filterStock, setFilterStock] = useState<string>("");
 
   // For scent filter
   const variantsCount: VariantCount[] = [];
@@ -71,7 +70,7 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
       variantsCount[variantScentIndex].count += 1;
     }
   });
-  const [filterScent, setFilterScent] = useState<string[]>([]);
+  const [filterScent, setFilterScent] = useState<string>("");
 
   // For sales filter
   const salesCount =
@@ -86,31 +85,26 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
     })?.length || 0;
   const atFullPriceCount =
     (category?.products?.length || 0) - (salesCount || 0);
-  const [filterSales, setFilterSales] = useState<string[]>([]);
+  const [filterSales, setFilterSales] = useState<string>("");
 
   // For sort filter
   const [sort, setSort] = useState<string>("");
 
+  // Product list
   const initialProducts = [...category?.products!];
-
   const [renderedProducts, setRenderedProducts] = useState(initialProducts);
 
   // Check scent condition
   useEffect(() => {
-    if (filterScent.length > 0) {
+    if (filterScent) {
       setRenderedProducts((prev) => {
-        const isFilteredBefore =
-          filterStock.length > 0 || filterSales.length > 0;
-
         let products = [...prev];
-        (isFilteredBefore ? prev : initialProducts).forEach((product) => {
+        initialProducts.forEach((product) => {
           const isScentIncluded = product.variants.some((variant: Variant) => {
             return filterScent.includes(variant.fragrance);
           });
 
-          const productIndex = renderedProducts.findIndex(
-            (p) => p._id === product._id
-          );
+          const productIndex = products.findIndex((p) => p._id === product._id);
 
           if (isScentIncluded) {
             if (productIndex === -1) {
@@ -123,29 +117,22 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
           }
         });
 
+        console.log(products);
+
         return products;
       });
     }
-  }, [filterScent, filterStock, filterSales]);
+  }, [filterScent]);
 
   // Check stock condition
   useEffect(() => {
-    if (filterStock.length > 0) {
+    if (filterStock) {
       setRenderedProducts((prev) => {
         let products = [...prev];
+        initialProducts.forEach((product) => {
+          const productIndex = products.findIndex((p) => p._id === product._id);
 
-        const isFilteredBefore =
-          filterScent.length > 0 || filterSales.length > 0;
-
-        (isFilteredBefore ? prev : initialProducts).forEach((product) => {
-          const productIndex = renderedProducts.findIndex(
-            (p) => p._id === product._id
-          );
-
-          if (
-            filterStock.includes("in_stock") &&
-            !filterStock.includes("out_of_stock")
-          ) {
+          if (filterStock === "in_stock") {
             const isInStockIncluded = product.variants.some(
               (variant: Variant) => {
                 return variant.stock !== "0";
@@ -163,10 +150,7 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
             }
           }
 
-          if (
-            filterStock.includes("out_of_stock") &&
-            !filterStock.includes("in_stock")
-          ) {
+          if (filterStock === "out_of_stock") {
             const isOutOfStockIncluded = product.variants.every(
               (variant: Variant) => {
                 return variant.stock === "0";
@@ -180,35 +164,6 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
             } else {
               if (productIndex !== -1) {
                 products = products.filter((p) => p._id !== product._id);
-              }
-            }
-          }
-
-          if (
-            filterStock.includes("out_of_stock") &&
-            filterStock.includes("in_stock")
-          ) {
-            const isInStockIncluded = product.variants.some(
-              (variant: Variant) => {
-                return variant.stock !== "0";
-              }
-            );
-
-            const isOutOfStockIncluded = product.variants.every(
-              (variant: Variant) => {
-                return variant.stock === "0";
-              }
-            );
-
-            if (isOutOfStockIncluded) {
-              if (productIndex === -1) {
-                products.push(product);
-              }
-            }
-
-            if (isInStockIncluded) {
-              if (productIndex === -1) {
-                products.push(product);
               }
             }
           }
@@ -217,26 +172,20 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
         return products;
       });
     }
-  }, [filterStock, filterScent, filterSales]);
+  }, [filterStock]);
 
   // Check sale condition
   useEffect(() => {
-    if (filterSales.length > 0) {
+    if (filterSales) {
       setRenderedProducts((prev) => {
         let products = [...prev];
 
-        const isFilteredBefore =
-          filterStock.length > 0 || filterScent.length > 0;
-
-        (isFilteredBefore ? prev : initialProducts).forEach((product) => {
+        initialProducts.forEach((product) => {
           const productIndex = renderedProducts.findIndex(
             (p) => p._id === product._id
           );
 
-          if (
-            filterSales.includes("on_sale") &&
-            !filterSales.includes("at_full_price")
-          ) {
+          if (filterSales === "on_sale") {
             const isSalesIncluded = product.variants.some(
               (variant: Variant) => {
                 return isDiscounted(variant);
@@ -254,10 +203,7 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
             }
           }
 
-          if (
-            filterSales.includes("at_full_price") &&
-            !filterSales.includes("on_sale")
-          ) {
+          if (filterSales === "at_full_price") {
             const isAtFullPriceIncluded = product.variants.every(
               (variant: Variant) => {
                 return !isDiscounted(variant);
@@ -271,35 +217,6 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
             } else {
               if (productIndex !== -1) {
                 products = products.filter((p) => p._id !== product._id);
-              }
-            }
-          }
-
-          if (
-            filterSales.includes("at_full_price") &&
-            filterSales.includes("on_sale")
-          ) {
-            const isSalesIncluded = product.variants.some(
-              (variant: Variant) => {
-                return isDiscounted(variant);
-              }
-            );
-
-            const isAtFullPriceIncluded = product.variants.every(
-              (variant: Variant) => {
-                return !isDiscounted(variant);
-              }
-            );
-
-            if (isSalesIncluded) {
-              if (productIndex === -1) {
-                products.push(product);
-              }
-            }
-
-            if (isAtFullPriceIncluded) {
-              if (productIndex === -1) {
-                products.push(product);
               }
             }
           }
@@ -308,14 +225,10 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
         return products;
       });
     }
-  }, [filterStock, filterScent, filterSales]);
+  }, [filterSales]);
 
   useEffect(() => {
-    if (
-      filterStock.length === 0 &&
-      filterScent.length === 0 &&
-      filterSales.length === 0
-    ) {
+    if (!filterStock && !filterScent && !filterSales) {
       setRenderedProducts(initialProducts);
     }
   }, [filterStock, filterScent, filterSales]);
