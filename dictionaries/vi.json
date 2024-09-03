@@ -5,7 +5,9 @@
     "loading": "Đang xử lý...",
     "empty_heading": "Ôi!",
     "empty_description": "Xin lỗi, chúng tôi không tìm thấy kết quả nào",
-    "cancel": "Hủy"
+    "cancel": "Hủy",
+    "previous": "Trước",
+    "next": "Sau"
   },
   "navigation": {
     "home": "Trang chủ",

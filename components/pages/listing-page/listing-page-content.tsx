@@ -26,44 +26,33 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
   const isVi = useLocale() === "vi";
 
   const productVariants = category?.products
-    ?.map((product) => {
-      return product.variants;
-    })
+    ?.map((product) => product.variants)
     .flat();
 
-  // Page
   const [page, setPage] = useState(1);
 
-  // For price filter
-  const variantsPrice = productVariants?.map((variant) => {
-    const variantPrice = parseFloat(getPriceForVariant(variant));
-    return variantPrice;
-  });
+  // Price range
+  const variantsPrice = productVariants?.map((variant) =>
+    parseFloat(getPriceForVariant(variant))
+  );
   const lowestPrice = Math.min(...variantsPrice!);
   const highestPrice = Math.max(...variantsPrice!);
   const [range, setRange] = useState([lowestPrice, highestPrice]);
 
-  // For availability filter
+  // Availability filter
   const outStockCount =
-    category?.products?.filter((product) => {
-      for (const variant of product.variants) {
-        if (variant.quantity === "0") {
-          return true;
-        } else {
-          return false;
-        }
-      }
-    })?.length || 0;
-  const inStockCount = (category?.products?.length || 0) - (outStockCount || 0);
+    category?.products?.filter((product) =>
+      product.variants.every((variant: Variant) => variant.stock === "0")
+    ).length || 0;
+  const inStockCount = (category?.products?.length || 0) - outStockCount;
   const [filterStock, setFilterStock] = useState<string>("");
 
-  // For scent filter
+  // Scent filter
   const variantsCount: VariantCount[] = [];
   productVariants?.forEach((variant) => {
     const variantScentIndex = variantsCount.findIndex(
       (v) => v.scent === variant.fragrance
     );
-
     if (variantScentIndex === -1) {
       variantsCount.push({ scent: variant.fragrance, count: 1 });
     } else {
@@ -72,166 +61,185 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
   });
   const [filterScent, setFilterScent] = useState<string>("");
 
-  // For sales filter
+  // Sales filter
   const salesCount =
-    category?.products?.filter((product) => {
-      for (const variant of product.variants) {
-        if (isDiscounted(variant)) {
-          return true;
-        } else {
-          return false;
-        }
-      }
-    })?.length || 0;
-  const atFullPriceCount =
-    (category?.products?.length || 0) - (salesCount || 0);
+    category?.products?.filter((product) =>
+      product.variants.some((variant: Variant) => isDiscounted(variant))
+    ).length || 0;
+  const atFullPriceCount = (category?.products?.length || 0) - salesCount;
   const [filterSales, setFilterSales] = useState<string>("");
 
-  // For sort filter
+  // Sort filter
   const [sort, setSort] = useState<string>("");
 
   // Product list
-  const initialProducts = [...category?.products!];
-  const [renderedProducts, setRenderedProducts] = useState(initialProducts);
+  const [renderedProducts, setRenderedProducts] = useState([
+    ...category?.products!,
+  ]);
 
-  // Check scent condition
   useEffect(() => {
+    let filteredProducts = [...category?.products!];
+
+    // Apply scent filter
     if (filterScent) {
-      setRenderedProducts((prev) => {
-        let products = [...prev];
-        initialProducts.forEach((product) => {
-          const isScentIncluded = product.variants.some((variant: Variant) => {
-            return filterScent.includes(variant.fragrance);
+      filteredProducts = filteredProducts.filter((product) =>
+        product.variants.some(
+          (variant: Variant) => variant.fragrance === filterScent
+        )
+      );
+    }
+
+    // Apply stock filter
+    if (filterStock) {
+      if (filterStock === "in_stock") {
+        filteredProducts = filteredProducts.filter((product) =>
+          product.variants.some((variant: Variant) => variant.stock !== "0")
+        );
+      } else if (filterStock === "out_of_stock") {
+        filteredProducts = filteredProducts.filter((product) =>
+          product.variants.every((variant: Variant) => variant.stock === "0")
+        );
+      }
+    }
+
+    // Apply sales filter
+    if (filterSales) {
+      if (filterSales === "on_sale") {
+        filteredProducts = filteredProducts.filter((product) =>
+          product.variants.some((variant: Variant) => isDiscounted(variant))
+        );
+      } else if (filterSales === "at_full_price") {
+        filteredProducts = filteredProducts.filter((product) =>
+          product.variants.every((variant: Variant) => !isDiscounted(variant))
+        );
+      }
+    }
+
+    // Apply price filter
+    filteredProducts = filteredProducts.filter((product) =>
+      product.variants.some((variant: Variant) => {
+        const price = parseFloat(getPriceForVariant(variant));
+        return price >= range[0] && price <= range[1];
+      })
+    );
+
+    // Apply sort filter
+    if (sort) {
+      if (sort === "best_selling") {
+        filteredProducts = filteredProducts.sort((a, b) => {
+          const soldA = a.totalQuantitySold;
+          const soldB = b.totalQuantitySold;
+          return soldB - soldA;
+        });
+      } else if (sort === "a_to_z") {
+        filteredProducts = filteredProducts.sort((a, b) => {
+          const nameA = isVi
+            ? a.name.vi.toUpperCase()
+            : a.name.en.toUpperCase();
+          const nameB = isVi
+            ? b.name.vi.toUpperCase()
+            : b.name.en.toUpperCase();
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+          return 0;
+        });
+      } else if (sort === "z_to_a") {
+        filteredProducts = filteredProducts.sort((a, b) => {
+          const nameA = isVi
+            ? a.name.vi.toUpperCase()
+            : a.name.en.toUpperCase();
+          const nameB = isVi
+            ? b.name.vi.toUpperCase()
+            : b.name.en.toUpperCase();
+          if (nameA < nameB) {
+            return 1;
+          }
+          if (nameA > nameB) {
+            return -1;
+          }
+          return 0;
+        });
+      } else if (sort === "price_low_to_high") {
+        filteredProducts = filteredProducts.sort((a, b) => {
+          let aIndex = 0;
+          a.variants.forEach((v: Variant, index: number) => {
+            if (
+              getPriceForVariant(v) < getPriceForVariant(a.variants[aIndex])
+            ) {
+              aIndex = index;
+            }
           });
 
-          const productIndex = products.findIndex((p) => p._id === product._id);
+          let bIndex = 0;
+          b.variants.forEach((v: Variant, index: number) => {
+            if (
+              getPriceForVariant(v) < getPriceForVariant(b.variants[bIndex])
+            ) {
+              bIndex = index;
+            }
+          });
 
-          if (isScentIncluded) {
-            if (productIndex === -1) {
-              products.push(product);
-            }
-          } else {
-            if (productIndex !== -1) {
-              products = products.filter((p) => p._id !== product._id);
-            }
-          }
+          const priceA = parseFloat(getPriceForVariant(a.variants[aIndex]));
+          const priceB = parseFloat(getPriceForVariant(b.variants[bIndex]));
+          return priceA - priceB;
         });
-
-        console.log(products);
-
-        return products;
-      });
-    }
-  }, [filterScent]);
-
-  // Check stock condition
-  useEffect(() => {
-    if (filterStock) {
-      setRenderedProducts((prev) => {
-        let products = [...prev];
-        initialProducts.forEach((product) => {
-          const productIndex = products.findIndex((p) => p._id === product._id);
-
-          if (filterStock === "in_stock") {
-            const isInStockIncluded = product.variants.some(
-              (variant: Variant) => {
-                return variant.stock !== "0";
-              }
-            );
-
-            if (isInStockIncluded) {
-              if (productIndex === -1) {
-                products.push(product);
-              }
-            } else {
-              if (productIndex !== -1) {
-                products = products.filter((p) => p._id !== product._id);
-              }
+      } else if (sort === "price_high_to_low") {
+        filteredProducts = filteredProducts.sort((a, b) => {
+          let aIndex = 0;
+          a.variants.forEach((v: Variant, index: number) => {
+            if (
+              getPriceForVariant(v) > getPriceForVariant(a.variants[aIndex])
+            ) {
+              aIndex = index;
             }
-          }
+          });
 
-          if (filterStock === "out_of_stock") {
-            const isOutOfStockIncluded = product.variants.every(
-              (variant: Variant) => {
-                return variant.stock === "0";
-              }
-            );
-
-            if (isOutOfStockIncluded) {
-              if (productIndex === -1) {
-                products.push(product);
-              }
-            } else {
-              if (productIndex !== -1) {
-                products = products.filter((p) => p._id !== product._id);
-              }
+          let bIndex = 0;
+          b.variants.forEach((v: Variant, index: number) => {
+            if (
+              getPriceForVariant(v) > getPriceForVariant(b.variants[bIndex])
+            ) {
+              bIndex = index;
             }
-          }
+          });
+
+          const priceA = parseFloat(getPriceForVariant(a.variants[aIndex]));
+          const priceB = parseFloat(getPriceForVariant(b.variants[bIndex]));
+          return priceB - priceA;
         });
-
-        return products;
-      });
-    }
-  }, [filterStock]);
-
-  // Check sale condition
-  useEffect(() => {
-    if (filterSales) {
-      setRenderedProducts((prev) => {
-        let products = [...prev];
-
-        initialProducts.forEach((product) => {
-          const productIndex = renderedProducts.findIndex(
-            (p) => p._id === product._id
-          );
-
-          if (filterSales === "on_sale") {
-            const isSalesIncluded = product.variants.some(
-              (variant: Variant) => {
-                return isDiscounted(variant);
-              }
-            );
-
-            if (isSalesIncluded) {
-              if (productIndex === -1) {
-                products.push(product);
-              }
-            } else {
-              if (productIndex !== -1) {
-                products = products.filter((p) => p._id !== product._id);
-              }
-            }
-          }
-
-          if (filterSales === "at_full_price") {
-            const isAtFullPriceIncluded = product.variants.every(
-              (variant: Variant) => {
-                return !isDiscounted(variant);
-              }
-            );
-
-            if (isAtFullPriceIncluded) {
-              if (productIndex === -1) {
-                products.push(product);
-              }
-            } else {
-              if (productIndex !== -1) {
-                products = products.filter((p) => p._id !== product._id);
-              }
-            }
-          }
+      } else if (sort === "date_new_to_old") {
+        filteredProducts = filteredProducts.sort((a, b) => {
+          const dateA = new Date(a.createdAt);
+          const dateB = new Date(b.createdAt);
+          return dateB.getTime() - dateA.getTime();
         });
-
-        return products;
-      });
+      } else if (sort === "date_old_to_new") {
+        filteredProducts = filteredProducts.sort((a, b) => {
+          const dateA = new Date(a.createdAt);
+          const dateB = new Date(b.createdAt);
+          return dateA.getTime() - dateB.getTime();
+        });
+      } else if (sort === "rate_high_to_low") {
+        filteredProducts = filteredProducts.sort((a, b) => {
+          const rateA = parseFloat(a.rating);
+          const rateB = parseFloat(b.rating);
+          return rateB - rateA;
+        });
+      } else if (sort === "rate_low_to_high") {
+        filteredProducts = filteredProducts.sort((a, b) => {
+          const rateA = parseFloat(a.rating);
+          const rateB = parseFloat(b.rating);
+          return rateA - rateB;
+        });
+      }
     }
-  }, [filterSales]);
 
-  useEffect(() => {
-    if (!filterStock && !filterScent && !filterSales) {
-      setRenderedProducts(initialProducts);
-    }
-  }, [filterStock, filterScent, filterSales]);
+    setRenderedProducts(filteredProducts);
+  }, [filterScent, filterStock, filterSales, range, category?.products, sort]);
 
   return (
     <SmallSectionContainer className="mt-12">
@@ -244,30 +252,28 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
             },
           ]}
         />
-      ) : (
-        <></>
-      )}
+      ) : null}
 
       <div className="flex gap-16">
         <div className="w-[25%]">
           <Filters
             categoryName={isVi ? category?.name.vi : category?.name.en}
             t={t}
-            // For price filter
+            // Price filter
             lowestPrice={lowestPrice}
             highestPrice={highestPrice}
             range={range}
             setRange={setRange}
-            // For availability filter
+            // Availability filter
             inStockCount={inStockCount}
             outStockCount={outStockCount}
             filterStock={filterStock}
             setFilterStock={setFilterStock}
-            // For scent filter
+            // Scent filter
             variantsCount={variantsCount}
             filterScent={filterScent}
             setFilterScent={setFilterScent}
-            // For sales filter
+            // Sales filter
             salesCount={salesCount}
             atFullPriceCount={atFullPriceCount}
             filterSales={filterSales}
@@ -292,12 +298,12 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
           <ProductList renderProducts={renderedProducts} />
 
           {/* Pagination */}
-          <div className="mt-8">
+          <div className="mt-12">
             <PaginationWithLinks
               page={page}
               pageSize={10}
               setPage={setPage}
-              totalCount={500}
+              totalCount={renderedProducts.length}
             />
           </div>
         </div>

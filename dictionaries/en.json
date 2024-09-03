@@ -5,7 +5,9 @@
     "loading": "Loading...",
     "empty_heading": "Oops!",
     "empty_description": "Sorry, we could not find any results",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "previous": "Previous",
+    "next": "Next"
   },
   "navigation": {
     "home": "Home",
