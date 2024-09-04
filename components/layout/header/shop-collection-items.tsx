@@ -52,7 +52,7 @@ const ShopCollectionItems: FC<Props> = ({
             <Link href="/bo-suu-tap/ban-chay">{t("best_sellers")}</Link>
           </li>
           <li className="py-1 my-1 hover:text-primary transition-colors">
-            <Link href="/bo-suu-tap/ban-chay">{t("the_sale_room")}</Link>
+            <Link href="/bo-suu-tap/khuyen-mai">{t("the_sale_room")}</Link>
           </li>
         </ul>
       </div>

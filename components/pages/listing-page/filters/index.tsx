@@ -36,6 +36,7 @@ interface Props {
   atFullPriceCount: number;
   filterSales: string;
   setFilterSales: React.Dispatch<React.SetStateAction<string>>;
+  productsCount: number;
 }
 
 const Filters: FC<Props> = ({
@@ -56,6 +57,7 @@ const Filters: FC<Props> = ({
   setFilterSales,
   salesCount,
   atFullPriceCount,
+  productsCount,
 }): JSX.Element => {
   const resetFilter = () => {
     setRange([lowestPrice, highestPrice]);
@@ -68,7 +70,7 @@ const Filters: FC<Props> = ({
     <div>
       <h2 className="font-bold text-2xl text-primary mb-2">{t("filters")}</h2>
       <p className="text-sm text-muted mb-6">
-        Show 15 results for “{categoryName}”
+        Show {productsCount} results for “{categoryName}”
       </p>
 
       <div className="border-t">

@@ -70,8 +70,8 @@ const BannerCarousel: FC<Props> = ({ banners }): JSX.Element => {
               </Button>
             </div>
 
-            <CarouselPrevious className="absolute opacity-0 top-1/2 left-10 -translate-y-1/2 bg-white border-none group-hover:opacity-100 group-hover:left-8 transition-all" />
-            <CarouselNext className="absolute opacity-0 top-1/2 right-10 -translate-y-1/2 bg-white border-none group-hover:opacity-100 group-hover:right-8 transition-all" />
+            <CarouselPrevious className="absolute text-foreground opacity-0 top-1/2 left-10 -translate-y-1/2 bg-white border-none group-hover:opacity-100 group-hover:left-8 transition-all" />
+            <CarouselNext className="absolute text-foreground opacity-0 top-1/2 right-10 -translate-y-1/2 bg-white border-none group-hover:opacity-100 group-hover:right-8 transition-all" />
           </CarouselItem>
         ))}
       </CarouselContent>

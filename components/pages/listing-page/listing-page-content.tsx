@@ -26,6 +26,7 @@ const LIMIT = 6;
 const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
   const t = useTranslations("listing_page");
   const isVi = useLocale() === "vi";
+  console.log(isVi);
 
   const productVariants = category?.products
     ?.map((product) => product.variants)
@@ -78,6 +79,8 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
   const [renderedProducts, setRenderedProducts] = useState([
     ...category?.products!,
   ]);
+
+  const [productsCount, setProductsCount] = useState(0);
 
   useEffect(() => {
     let filteredProducts = [...category?.products!];
@@ -194,7 +197,7 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
           let aIndex = 0;
           a.variants.forEach((v: Variant, index: number) => {
             if (
-              getPriceForVariant(v) > getPriceForVariant(a.variants[aIndex])
+              getPriceForVariant(v) < getPriceForVariant(a.variants[aIndex])
             ) {
               aIndex = index;
             }
@@ -203,7 +206,7 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
           let bIndex = 0;
           b.variants.forEach((v: Variant, index: number) => {
             if (
-              getPriceForVariant(v) > getPriceForVariant(b.variants[bIndex])
+              getPriceForVariant(v) < getPriceForVariant(b.variants[bIndex])
             ) {
               bIndex = index;
             }
@@ -243,6 +246,7 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
     setRenderedProducts(
       filteredProducts.slice((page - 1) * LIMIT, page * LIMIT)
     );
+    setProductsCount(filteredProducts.length);
   }, [
     filterScent,
     filterStock,
@@ -291,6 +295,7 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
             atFullPriceCount={atFullPriceCount}
             filterSales={filterSales}
             setFilterSales={setFilterSales}
+            productsCount={productsCount}
           />
         </div>
 
@@ -298,7 +303,7 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
           <h1 className="font-bold text-2xl text-primary mb-2">
             {isVi ? category?.name.vi : category?.name.en}
           </h1>
-          <p className="text-sm text-muted mb-4">
+          <p className="text-sm text-muted mb-4 line-clamp-1">
             {isVi ? category?.description.vi : category?.description.en}
           </p>
 
@@ -312,12 +317,14 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
 
           {/* Pagination */}
           <div className="mt-12">
-            <PaginationWithLinks
-              page={page}
-              pageSize={6}
-              setPage={setPage}
-              totalCount={category?.products.length || 0}
-            />
+            {category?.products && category.products.length > 0 && (
+              <PaginationWithLinks
+                page={page}
+                pageSize={6}
+                setPage={setPage}
+                totalCount={productsCount}
+              />
+            )}
           </div>
         </div>
       </div>
