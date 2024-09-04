@@ -10,6 +10,7 @@ import ProductMainInfo from "./product-main-info";
 import { isDiscounted } from "@/lib/utils";
 import SalesBadge from "@/components/product-card/sales-badge";
 import ProductDescVsReviews from "./product-desc-vs-reviews";
+import RelatedProducts from "./related-products";
 
 interface Props {
   product: Product;
@@ -83,6 +84,16 @@ const ProductPageContent: FC<Props> = ({ product }): JSX.Element => {
             variants={product.variants}
             shownContent={shownContent}
             setShownContent={setShownContent}
+          />
+        </SmallSectionContainer>
+      </div>
+
+      <div className="mt-20">
+        <SmallSectionContainer>
+          <RelatedProducts
+            product_id={product._id}
+            category_id={product.category._id}
+            t={t}
           />
         </SmallSectionContainer>
       </div>

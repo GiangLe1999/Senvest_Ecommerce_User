@@ -114,3 +114,51 @@ export const getSaleProducts = async () => {
     console.log("Failed to fetch sale products");
   }
 };
+
+export const getAllProducts = async () => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/products/all-products`,
+      {
+        next: { revalidate: 20 },
+      }
+    );
+
+    if (!res.ok) {
+      console.log("Failed to fetch sale products");
+    }
+
+    return await res.json();
+  } catch (error) {
+    console.log("Failed to fetch sale products");
+  }
+};
+
+export const getRelatedProducts = async ({
+  _id,
+  category_id,
+}: {
+  _id: string;
+  category_id: string;
+}) => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/products/related-products`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ _id, category_id }),
+      }
+    );
+
+    if (!res.ok) {
+      console.log("Failed to fetch related products");
+    }
+
+    return await res.json();
+  } catch (error) {
+    console.log("Failed to fetch related products");
+  }
+};

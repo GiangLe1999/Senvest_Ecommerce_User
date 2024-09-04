@@ -1,5 +1,6 @@
 import ListingPageContent from "@/components/pages/listing-page/listing-page-content";
 import {
+  getAllProducts,
   getBestSellingProducts,
   getNewArrivalsProducts,
   getSaleProducts,
@@ -23,7 +24,9 @@ const CollectionPage: NextPage<Props> = async ({
       ? await getNewArrivalsProducts()
       : collectionSlug === "ban-chay"
       ? await getBestSellingProducts()
-      : await getSaleProducts();
+      : collectionSlug === "khuyen-mai"
+      ? await getSaleProducts()
+      : await getAllProducts();
 
   return <ListingPageContent category={category} />;
 };
