@@ -525,7 +525,8 @@
     "ask_question_about_product": "Hỏi về sản phẩm này",
     "ask_question_about_product_desc": "Chúng tôi sẽ phản hồi câu hỏi của bạn sớm nhất có thể",
     "cart_is_empty": "Không thể vào trang thanh toán.",
-    "cart_is_empty_desc": "Vì giỏ hàng của bạn đang trống."
+    "cart_is_empty_desc": "Vì giỏ hàng của bạn đang trống.",
+    "suggest_for_you": "Gợi ý cho bạn"
   },
   "change_product_quantity": {
     "failed": "Số lượng thêm đã vượt quá tồn kho",
@@ -541,5 +542,35 @@
   "share_socials_dialog": {
     "share_product": "Chia sẻ sản phẩm này",
     "share_product_desc": "Chọn mạng xã hội bạn muốn chia sẻ sản phẩm này."
+  },
+  "listing_page": {
+    "filters": "Bộ lọc",
+    "availability": "Tình trạng hàng hóa",
+    "in_stock": "Còn hàng",
+    "out_of_stock": "Hết hàng",
+    "price": "Giá",
+    "lowest_price": "Giá thấp nhất",
+    "highest_price": "Giá cao nhất",
+    "scent": "Mùi hương",
+    "sales": "Giảm giá",
+    "on_sale": "Đang giảm giá",
+    "at_full_price": "Giá đầy đủ",
+    "sort_by": "Sắp xếp theo",
+    "sort_by_placeholder": "Chọn một tùy chọn sắp xếp",
+    "sort_by_sales": "Sắp xếp theo doanh số",
+    "best_selling": "Bán chạy nhất",
+    "sort_by_name": "Sắp xếp theo tên",
+    "a_to_z": "Theo bảng chữ cái, A-Z",
+    "z_to_a": "Theo bảng chữ cái, Z-A",
+    "sort_by_price": "Sắp xếp theo giá",
+    "price_low_to_high": "Giá, Thấp đến Cao",
+    "price_high_to_low": "Giá, Cao đến Thấp",
+    "sort_by_date": "Sắp xếp theo ngày",
+    "date_new_to_old": "Ngày, Mới đến Cũ",
+    "date_old_to_new": "Ngày, Cũ đến Mới",
+    "sort_by_rating": "Sắp xếp theo đánh giá",
+    "rate_high_to_low": "Đánh giá, Cao đến Thấp",
+    "rate_low_to_high": "Đánh giá, Thấp đến Cao",
+    "reset_filters": "Đặt lại bộ lọc"
   }
 }

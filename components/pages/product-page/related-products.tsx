@@ -29,9 +29,9 @@ const RelatedProducts: FC<Props> = ({
   return (
     <div>
       <div className="text-center">
-        <span className="font-grey_qo text-3xl">Maybe you like</span>
+        <span className="font-grey_qo text-3xl">{t("suggest_for_you")}</span>
         <h3 className="text-2xl font-bold text-primary mt-3">
-          Related Products
+          {t("related_products")}
         </h3>
         <div className="w-[100px] h-[1.5px] bg-primary/60 mx-auto mt-2"></div>
       </div>
