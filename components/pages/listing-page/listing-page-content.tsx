@@ -21,6 +21,8 @@ export interface VariantCount {
   count: number;
 }
 
+const LIMIT = 6;
+
 const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
   const t = useTranslations("listing_page");
   const isVi = useLocale() === "vi";
@@ -238,8 +240,19 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
       }
     }
 
-    setRenderedProducts(filteredProducts);
-  }, [filterScent, filterStock, filterSales, range, category?.products, sort]);
+    setRenderedProducts(
+      filteredProducts.slice((page - 1) * LIMIT, page * LIMIT)
+    );
+  }, [
+    filterScent,
+    filterStock,
+    filterSales,
+    range,
+    category?.products,
+    sort,
+    page,
+    isVi,
+  ]);
 
   return (
     <SmallSectionContainer className="mt-12">
@@ -301,9 +314,9 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
           <div className="mt-12">
             <PaginationWithLinks
               page={page}
-              pageSize={10}
+              pageSize={6}
               setPage={setPage}
-              totalCount={renderedProducts.length}
+              totalCount={category?.products.length || 0}
             />
           </div>
         </div>

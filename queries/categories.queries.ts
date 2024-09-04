@@ -19,7 +19,10 @@ export const getCategoriesForNavigation = async () => {
 export const getCategoryProducts = async (slug: string) => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/categories/${slug}`
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/categories/${slug}`,
+      {
+        next: { revalidate: 20 },
+      }
     );
 
     if (!res.ok) {
