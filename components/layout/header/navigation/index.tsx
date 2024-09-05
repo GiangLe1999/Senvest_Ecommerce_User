@@ -59,7 +59,10 @@ const Navigation: FC<Props> = (props): JSX.Element => {
         </li>
 
         <li className="h-full">
-          <Link href="/blog" className={navItemClassname}>
+          <Link
+            href={"http://blog.kindlehopecandles.com" as any}
+            className={navItemClassname}
+          >
             {t("blogs")}
           </Link>
         </li>
