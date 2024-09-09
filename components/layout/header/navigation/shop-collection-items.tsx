@@ -7,7 +7,7 @@ import { getCategoriesForNavigation } from "@/queries/categories.queries";
 import { useQuery } from "@tanstack/react-query";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
-import { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
 
 interface Props {
   showShopCollectionItems: boolean;

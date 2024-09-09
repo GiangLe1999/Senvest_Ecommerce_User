@@ -12,10 +12,6 @@ const navItems = [
     url: "/ve-chung-toi",
   },
   {
-    title: "store_location",
-    url: "/vi-tri-cua-hang",
-  },
-  {
     title: "contact_us",
     url: "/lien-he",
   },

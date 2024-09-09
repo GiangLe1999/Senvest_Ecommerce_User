@@ -294,7 +294,15 @@ const WishlistItem: FC<Props> = ({ item }): JSX.Element => {
                   >
                     <FormControl className="!mt-1">
                       <SelectTrigger className="h-10">
-                        <SelectValue placeholder={t("priority_desc")} />
+                        {form.watch("priority") === PriorityEnum.high ? (
+                          t("high")
+                        ) : form.watch("priority") === PriorityEnum.low ? (
+                          t("low")
+                        ) : form.watch("priority") === PriorityEnum.medium ? (
+                          t("medium")
+                        ) : (
+                          <SelectValue placeholder={t("priority_desc")} />
+                        )}
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>

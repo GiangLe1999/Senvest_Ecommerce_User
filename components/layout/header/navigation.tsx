@@ -4,7 +4,8 @@ import { Link } from "@/configs/i18n-navigation";
 import { ChevronDown } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { FC, useState } from "react";
-import ShopCollectionItems from "./shop-collection-items";
+import ShopCollectionItems from "./navigation/shop-collection-items";
+import MissionItems from "./navigation/mission-items";
 
 interface Props {}
 
@@ -14,6 +15,7 @@ const navItemClassname =
 const Navigation: FC<Props> = (props): JSX.Element => {
   const t = useTranslations("navigation");
   const [showShopCollectionItems, setShowShopCollectionItems] = useState(false);
+  const [showMissionItems, setShowMissionItems] = useState(false);
 
   return (
     <nav className="h-full relative z-[10]">
@@ -53,11 +55,20 @@ const Navigation: FC<Props> = (props): JSX.Element => {
           </Link>
         </li>
 
-        <li className="h-full">
+        <li
+          className="h-full relative"
+          onMouseEnter={() => setShowMissionItems(true)}
+          onMouseLeave={() => setShowMissionItems(false)}
+        >
           <Link href="/su-menh" className={navItemClassname}>
             {t("mission")}
             <ChevronDown className="ml-2 w-3.5 h-3.5" />
           </Link>
+
+          <MissionItems
+            showMissionItems={showMissionItems}
+            setShowMissionItems={setShowMissionItems}
+          />
         </li>
 
         <li className="h-full">

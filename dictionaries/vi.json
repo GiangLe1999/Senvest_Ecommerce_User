@@ -84,6 +84,7 @@
     "password": "Mật khẩu",
     "email_desc": "Email phải là một địa chỉ email hợp lệ.",
     "password_desc": "Mật khẩu phải có ít nhất 6 ký tự và phải có ít nhất một ký tự đặc biệt.",
+    "email_rule": "Email phải là một địa chỉ email hợp lệ.",
     "password_rule_1": "Mật khẩu phải có ít nhất 6 ký tự.",
     "password_rule_2": "Mật khẩu phải có ít nhất một ký tự đặc biệt.",
     "create_one": " Tạo tài khoản tại đây",
@@ -333,7 +334,6 @@
   },
   "footer": {
     "about_us": "Về Chúng Tôi",
-    "store_location": "Địa Điểm Cửa Hàng",
     "contact_us": "Liên Hệ",
     "delivery": "Giao Hàng",
     "terms": "Điều Khoản và Điều Kiện",
@@ -711,7 +711,7 @@
     "question_6": "Kindle Hope Candles có chương trình ưu đãi hoặc khuyến mãi nào không?",
     "answer_6": "Chúng tôi thường xuyên có các chương trình khuyến mãi hấp dẫn, đặc biệt vào các dịp lễ lớn. Bạn cũng có thể đăng ký nhận bản tin để cập nhật thông tin ưu đãi mới nhất và nhận mã giảm giá độc quyền dành cho khách hàng thân thiết.",
     "question_7": "Làm thế nào để tôi đặt hàng nến thơm của Kindle Hope Candles?",
-    "anwser_7": "Bạn có thể dễ dàng đặt hàng qua website của chúng tôi hoặc thông qua các trang mạng xã hội chính thức. Chỉ cần chọn sản phẩm bạn yêu thích, thêm vào giỏ hàng, thanh toán và chờ đợi chúng tôi giao hàng nhanh chóng đến tận tay bạn.",
+    "answer_7": "Bạn có thể dễ dàng đặt hàng qua website của chúng tôi hoặc thông qua các trang mạng xã hội chính thức. Chỉ cần chọn sản phẩm bạn yêu thích, thêm vào giỏ hàng, thanh toán và chờ đợi chúng tôi giao hàng nhanh chóng đến tận tay bạn.",
     "question_8": "Chính sách đổi trả hàng của Kindle Hope Candles như thế nào?",
     "answer_8": "Chúng tôi luôn đảm bảo chất lượng sản phẩm và sự hài lòng của khách hàng. Nếu có bất kỳ vấn đề nào về sản phẩm, bạn có thể liên hệ với chúng tôi trong vòng 7 ngày kể từ ngày nhận hàng để được hỗ trợ đổi hoặc trả sản phẩm theo chính sách của chúng tôi."
   },

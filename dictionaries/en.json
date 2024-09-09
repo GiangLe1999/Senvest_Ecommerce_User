@@ -83,6 +83,7 @@
     "email": "Email",
     "password": "Password",
     "email_desc": "Email must be a valid email address.",
+    "email_rule": "Invalid email address.",
     "password_desc": "Password must be at least 6 characters and must have at least one special character.",
     "password_rule_1": "Password must be at least 6 characters.",
     "password_rule_2": "Password must have at least one special character.",
@@ -333,7 +334,6 @@
   },
   "footer": {
     "about_us": "About Us",
-    "store_location": "Store Location",
     "contact_us": "Contact Us",
     "delivery": "Delivery",
     "terms": "Terms and Conditions",
@@ -738,5 +738,11 @@
     "p_6_content_2": "Kindle Hope Candles sincerely thanks all customers, partners, and everyone who has accompanied us throughout this journey. We are committed to continually striving to provide the best products and contribute more to the community.",
     "p_7_heading": "Contact us",
     "p_7_content": "If you want to learn more about our products or the charitable activities we are involved in, don't hesitate to reach out to Kindle Hope Candles. We are always ready to listen to your feedback and suggestions to improve our services and products every day."
+  },
+  "donate_page": {
+    "heading": "Donate",
+    "comment_checkbox": "Leave a message for this donation",
+    "comment_placeholder": "Something you want to say?",
+    "comment_note": "Once you've donated, your message will be sent to our community."
   }
 }
