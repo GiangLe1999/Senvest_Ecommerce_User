@@ -25,7 +25,7 @@ const navItems = [
   },
   {
     title: "terms",
-    url: "/dieu-kien-dieu-khoan",
+    url: "/dieu-khoan-va-dieu-kien",
   },
   {
     title: "privacy_policy",

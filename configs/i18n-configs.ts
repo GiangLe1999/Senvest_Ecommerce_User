@@ -137,17 +137,17 @@ export const pathnames = {
     vi: "/vi-tri-cua-hang",
     en: "/store-location",
   },
-  "/dieu-kien-dieu-khoan": {
-    vi: "/dieu-kien-dieu-khoan",
+  "/dieu-khoan-va-dieu-kien": {
+    vi: "/dieu-kien-va-dieu-kien",
     en: "/terms-and-conditions",
   },
   "/chinh-sach-bao-mat": {
     vi: "/chinh-sach-bao-mat",
     en: "/privacy-policy",
   },
-  "/van-chuyen": {
-    vi: "/van-chuyen",
-    en: "/delivery",
+  "/chinh-sach-van-chuyen": {
+    vi: "/chinh-sach-van-chuyen",
+    en: "/delivery-policy",
   },
 } satisfies Pathnames<typeof locales>;
 
