@@ -21,7 +21,7 @@ const navItems = [
   },
   {
     title: "delivery",
-    url: "/van-chuyen",
+    url: "/chinh-sach-van-chuyen",
   },
   {
     title: "terms",

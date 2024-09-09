@@ -1,4 +1,4 @@
-import TermsAndConditionsPageContent from "@/components/pages/delivery-policy-page/delivery-policy-page-content";
+import TermsAndConditionsPageContent from "@/components/pages/terms-and-conditions-page/terms-and-conditions-page-content";
 import { NextPage } from "next";
 import { unstable_setRequestLocale } from "next-intl/server";
 

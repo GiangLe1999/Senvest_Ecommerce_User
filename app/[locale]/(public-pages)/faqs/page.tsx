@@ -1,4 +1,4 @@
-import FAQPageContent from "@/components/pages/privacy-policy-page/privacy-policy-page-content";
+import FAQPageContent from "@/components/pages/faq-page/faq-page-content";
 import { NextPage } from "next";
 import { unstable_setRequestLocale } from "next-intl/server";
 
