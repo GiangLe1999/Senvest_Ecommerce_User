@@ -66,7 +66,6 @@ const CheckoutInput: FC<Props> = ({
   const [loading, setLoading] = useState(false);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(enteredAmount);
     const minimumAmount =
       selectedCurrency === "VND" ? 1000 : selectedCurrency === "USD" ? 1 : 0;
 
@@ -113,7 +112,6 @@ const CheckoutInput: FC<Props> = ({
         });
       }
     } catch (error) {
-      console.log(error);
       setLoading(false);
       return toast.error(t("create_link_fail"), {
         description: t("please_try_again"),
