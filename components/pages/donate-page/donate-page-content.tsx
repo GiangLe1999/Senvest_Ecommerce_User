@@ -32,12 +32,15 @@ const DonatePageContent: FC<Props> = (props): JSX.Element => {
             <Logo />
 
             <p className="text-2xl font-semibold leading-none tracking-tight mb-2 mt-6">
-              Your donation will make a difference
+              {t("title")}
             </p>
-            <p className="text-sm text-muted-foreground">
-              Thank you for your support, trust, and belief in universal access
-              to safe water. Every dollar you give will create real change.
-            </p>
+            <p className="text-sm text-muted-foreground">{t("desc")}</p>
+
+            <p className="text-sm font-bold mt-4 mb-1">{t("question_1")}</p>
+            <p className="text-sm text-muted-foreground">{t("answer_1")}</p>
+
+            <p className="text-sm font-bold mt-4 mb-1">{t("question_2")}</p>
+            <p className="text-sm text-muted-foreground">{t("answer_2")}</p>
           </div>
         </div>
 

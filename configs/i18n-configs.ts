@@ -133,6 +133,14 @@ export const pathnames = {
     vi: "/huy-thanh-toan",
     en: "/cancel-payment",
   },
+  "/cam-on-da-dong-gop": {
+    vi: "/cam-on-da-dong-gop",
+    en: "/thank-you-for-your-donation",
+  },
+  "/huy-dong-gop": {
+    vi: "/huy-dong-gop",
+    en: "/cancel-donation",
+  },
   "/vi-tri-cua-hang": {
     vi: "/vi-tri-cua-hang",
     en: "/store-location",

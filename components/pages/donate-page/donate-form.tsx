@@ -5,7 +5,7 @@ import SecureDonation from "./secure-donation";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import CheckoutInput from "./checkout-input";
-import CommentInput from "./comment-input";
+import { useTranslations } from "next-intl";
 
 interface Props {}
 
@@ -38,6 +38,7 @@ const intialVNDValue = donateChoices.VND.choices[4].value;
 const intialUSDValue = donateChoices.USD.choices[4].value;
 
 const DonateForm: FC<Props> = (props): JSX.Element => {
+  const t = useTranslations("donate_page");
   const [selectedCurrency, setSelectedCurrency] = useState<"VND" | "USD">(
     "VND"
   );
@@ -55,17 +56,17 @@ const DonateForm: FC<Props> = (props): JSX.Element => {
   }, [selectedCurrency]);
 
   return (
-    <div className="px-6 py-7 flex flex-col justify-between h-full">
-      <div>
+    <div className="px-6 py-7 h-full">
+      <div className="h-full flex flex-col">
         <h1 className="text-2xl font-semibold leading-none tracking-tight flex items-center justify-center gap-x-2">
           <SecureDonation className="text-primary" />
-          Secure donation
+          {t("secure_donation")}
         </h1>
         <p className="text-sm text-muted-foreground text-center mt-2">
-          Your donation supports our mission
+          {t("secure_donation_sub")}
         </p>
 
-        <div className="mt-6">
+        <div className="mt-6 flex-1 flex flex-col">
           <div className="grid grid-cols-3 gap-3">
             {donateChoices[selectedCurrency as "USD" | "VND"]?.choices?.map(
               (choice) => (
@@ -92,13 +93,11 @@ const DonateForm: FC<Props> = (props): JSX.Element => {
             setEnteredAmount={setEnteredAmount}
             invalidAmount={invalidAmount}
             setInvalidAmount={setInvalidAmount}
+            comment={comment}
+            setComment={setComment}
           />
-
-          <CommentInput comment={comment} setComment={setComment} />
         </div>
       </div>
-
-      <Button className="w-full mt-10 text-lg h-12">Donate</Button>
     </div>
   );
 };
