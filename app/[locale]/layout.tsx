@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import Footer from "@/components/layout/footer";
 import { Cart } from "@/components/cart";
 import NewPaymentNotification from "@/components/new-payment-notification";
+import NewDonationNotification from "@/components/new-donation-notification";
 
 const philosopher = Philosopher({
   subsets: ["vietnamese"],
@@ -74,6 +75,7 @@ export default function RootLayout({
           <Footer />
           <Cart />
           <NewPaymentNotification />
+          <NewDonationNotification />
         </body>
       </Providers>
     </html>

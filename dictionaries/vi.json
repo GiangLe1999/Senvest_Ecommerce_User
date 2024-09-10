@@ -795,5 +795,11 @@
     "pending_item_3": "Nếu thanh toán của bạn không được xác nhận trong một khoảng thời gian nhất định, chúng tôi sẽ gửi thêm hướng dẫn qua email.",
     "pending_item_4_1": "Nếu bạn có bất kỳ mối quan tâm hoặc câu hỏi nào, đừng ngần ngại liên hệ với chúng tôi ",
     "pending_item_4_2": "để được hỗ trợ thêm."
+  },
+  "new_donation_notification": {
+    "new_order_by": "Quyên góp mới bởi",
+    "phone": "Số điện thoại",
+    "amount": "Tổng số tiền",
+    "comment": "Lời nhắn"
   }
 }
