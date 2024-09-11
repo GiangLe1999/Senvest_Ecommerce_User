@@ -11,6 +11,7 @@ import ProductList from "./product-list";
 import Sort from "./sort";
 import { PaginationWithLinks } from "@/components/pagination-with-links";
 import { Variant } from "@/entities/variant.entity";
+import { useSearchParams } from "next/navigation";
 
 interface Props {
   category?: Category;
@@ -24,6 +25,9 @@ export interface VariantCount {
 const LIMIT = 6;
 
 const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
+  const searchParams = useSearchParams();
+  const scent = searchParams.get("scent");
+
   const t = useTranslations("listing_page");
   const isVi = useLocale() === "vi";
   console.log(isVi);
@@ -62,7 +66,7 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
       variantsCount[variantScentIndex].count += 1;
     }
   });
-  const [filterScent, setFilterScent] = useState<string>("");
+  const [filterScent, setFilterScent] = useState<string>(scent ? scent : "");
 
   // Sales filter
   const salesCount =

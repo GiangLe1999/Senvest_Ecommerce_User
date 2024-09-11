@@ -14,6 +14,8 @@ interface Props {
   setShowShopCollectionItems: Dispatch<SetStateAction<boolean>>;
 }
 
+const scents = ["Woody", "Lavender", "Floral", "Citrus", "Fresh"];
+
 const ShopCollectionItems: FC<Props> = ({
   showShopCollectionItems,
   setShowShopCollectionItems,
@@ -91,10 +93,16 @@ const ShopCollectionItems: FC<Props> = ({
       <div>
         <p className="font-bold">{t("shop_by_scent")}</p>
         <ul className="text-muted text-[13px] mt-2">
-          <Skeleton className="h-6 w-full mb-2" />
-          <Skeleton className="h-6 w-full mb-2" />
-          <Skeleton className="h-6 w-full mb-2" />
-          <Skeleton className="h-6 w-full mb-2" />
+          {scents.map((scent) => (
+            <li
+              className="py-1 my-1 hover:text-primary transition-colors capitalize"
+              key={scent}
+            >
+              <Link href={`/bo-suu-tap/tat-ca?scent=${scent}` as any}>
+                {scent}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
 
