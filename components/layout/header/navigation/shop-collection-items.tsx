@@ -27,13 +27,16 @@ const ShopCollectionItems: FC<Props> = ({
 
   const t = useTranslations("navigation");
   const locale = useLocale();
+  const isVi = locale === "vi";
 
   const { visible, handleAnimationEnd } = useMountAnimation({
     show: showShopCollectionItems,
   });
 
   const moveToScentPage = (scent: string) => {
-    const url = `${window.location.pathname}?scent=${scent}`;
+    const url = `${process.env.NEXT_PUBLIC_APP_URL}/${locale}/${
+      isVi ? "bo-suu-tap" : "collections"
+    }/${isVi ? "tat-ca" : "all"}?scent=${scent}`;
     window.location.href = url;
   };
 
