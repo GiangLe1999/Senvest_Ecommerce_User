@@ -26,12 +26,16 @@ const ShopCollectionItems: FC<Props> = ({
   });
 
   const t = useTranslations("navigation");
-
   const locale = useLocale();
 
   const { visible, handleAnimationEnd } = useMountAnimation({
     show: showShopCollectionItems,
   });
+
+  const moveToScentPage = (scent: string) => {
+    const url = `${window.location.pathname}?scent=${scent}`;
+    window.location.href = url;
+  };
 
   return (
     <nav
@@ -95,12 +99,11 @@ const ShopCollectionItems: FC<Props> = ({
         <ul className="text-muted text-[13px] mt-2">
           {scents.map((scent) => (
             <li
-              className="py-1 my-1 hover:text-primary transition-colors capitalize"
+              className="py-1 my-1 hover:text-primary transition-colors capitalize cursor-pointer"
               key={scent}
+              onClick={() => moveToScentPage(scent)}
             >
-              <Link href={`/bo-suu-tap/tat-ca?scent=${scent}` as any}>
-                {scent}
-              </Link>
+              {scent}
             </li>
           ))}
         </ul>
