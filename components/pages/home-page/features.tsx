@@ -34,14 +34,15 @@ const Features: FC<Props> = (props): JSX.Element => {
 
   return (
     <section>
-      <SmallSectionContainer className="py-[90px]">
-        <div className="grid grid-cols-4">
+      <SmallSectionContainer className="lg:py-[90px] py-[40px]">
+        <div className="grid lg:grid-cols-4 grid-cols-2">
           {data.map((feature, index) => (
             <div
               key={feature.heading}
               className={cn(
                 "flex flex-col items-center gap-2",
-                index !== 0 && " border-l"
+                index !== 0 && "border-l",
+                index === 0 || index === 2 ? "pr-4" : "pl-4"
               )}
             >
               <div className="h-[60px]">
@@ -50,12 +51,24 @@ const Features: FC<Props> = (props): JSX.Element => {
                   alt={feature.heading}
                   width={51}
                   height={61}
-                  className="rounded-sm"
+                  className={cn(
+                    "rounded-sm",
+                    index === 2 || index === 3 ? "lg:mt-0 mt-10" : ""
+                  )}
                 />
               </div>
               <div className="text-center">
-                <h3 className="text-xl mb-1">{t(feature.heading)}</h3>
-                <p className="text-muted">{t(feature.description)}</p>
+                <h3
+                  className={cn(
+                    "lg:text-xl text-lg mb-1",
+                    index === 2 || index === 3 ? "lg:mt-0 mt-10" : ""
+                  )}
+                >
+                  {t(feature.heading)}
+                </h3>
+                <p className="lg:text-base text-sm text-muted">
+                  {t(feature.description)}
+                </p>
               </div>
             </div>
           ))}

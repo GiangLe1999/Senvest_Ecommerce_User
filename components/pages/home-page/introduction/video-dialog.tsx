@@ -16,13 +16,16 @@ const VideoDialog: FC<Props> = (props): JSX.Element => {
         className="relative cursor-pointer group"
         onClick={() => setOpen(true)}
       >
-        <Image
-          src="/home-page/section-2-video-bg.webp"
-          alt="Video background"
-          width={660}
-          height={660}
-          className="rounded-sm group-hover:brightness-90 transition-all duration-500"
-        />
+        <div className="relative w-full aspect-square">
+          <Image
+            src="/home-page/section-2-video-bg.webp"
+            alt="Video background"
+            fill
+            sizes="100vw"
+            style={{ objectFit: "cover" }}
+            className="rounded-sm group-hover:brightness-90 transition-all duration-500"
+          />
+        </div>
 
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <button

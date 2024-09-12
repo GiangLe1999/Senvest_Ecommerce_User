@@ -53,7 +53,7 @@ const BannerCarousel: FC<Props> = ({ banners }): JSX.Element => {
               priority={index === 0}
             />
 
-            <div className="absolute top-[25%] left-[12.5%]">
+            <div className="absolute top-[25%] left-[12.5%] xl:block hidden">
               <p className="font-grey_qo text-primary text-5xl mb-6">
                 {t("sub_heading")}
               </p>

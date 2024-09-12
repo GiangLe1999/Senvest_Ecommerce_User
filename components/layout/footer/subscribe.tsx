@@ -68,10 +68,12 @@ const Subscribe: FC<Props> = (props): JSX.Element => {
   }
 
   return (
-    <div className="py-[60px] flex flex-col gap-4 items-center border-b">
+    <div className="lg:py-[60px] py-[40px] flex flex-col gap-4 items-center border-b">
       <MailPlusIcon className="text-primary w-12 h-12" />
-      <h3 className="text-3xl">{t("subscribe")}</h3>
-      <h4 className="text-muted">{t("subscribe_description")}</h4>
+      <h3 className="lg:text-3xl text-2xl">{t("subscribe")}</h3>
+      <h4 className="text-muted lg:text-base text-sm lg:text-left text-center">
+        {t("subscribe_description")}
+      </h4>
 
       <Form {...form}>
         <form

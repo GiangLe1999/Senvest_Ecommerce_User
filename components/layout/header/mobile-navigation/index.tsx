@@ -64,7 +64,7 @@ const MobileNavigation: FC<Props> = ({ session }): JSX.Element => {
         <ScrollArea className="flex flex-col justify-between flex-1 pr-8">
           <Accordion type="single" collapsible className="mt-6">
             <AccordionItem value="shop">
-              <AccordionTrigger className="hover:no-underline font-bold justify-between gap-x-3 py-2.5">
+              <AccordionTrigger className="hover:no-underline hover:text-primary transition font-bold justify-between gap-x-3 py-2.5">
                 <Link
                   href="/bo-suu-tap/tat-ca"
                   className="flex items-center gap-x-1"
@@ -82,7 +82,7 @@ const MobileNavigation: FC<Props> = ({ session }): JSX.Element => {
 
             <AccordionItem value="new">
               <AccordionTrigger
-                className="hover:no-underline font-bold justify-between gap-x-3 py-2.5"
+                className="hover:no-underline hover:text-primary transition font-bold justify-between gap-x-3 py-2.5"
                 showIcon={false}
               >
                 <Link
@@ -99,7 +99,7 @@ const MobileNavigation: FC<Props> = ({ session }): JSX.Element => {
 
             <AccordionItem value="best_sellers">
               <AccordionTrigger
-                className="hover:no-underline font-bold justify-between gap-x-3 py-2.5"
+                className="hover:no-underline hover:text-primary transition font-bold justify-between gap-x-3 py-2.5"
                 showIcon={false}
               >
                 <Link
@@ -116,7 +116,7 @@ const MobileNavigation: FC<Props> = ({ session }): JSX.Element => {
 
             <AccordionItem value="sale">
               <AccordionTrigger
-                className="hover:no-underline font-bold justify-between gap-x-3 py-2.5"
+                className="hover:no-underline hover:text-primary transition font-bold justify-between gap-x-3 py-2.5"
                 showIcon={false}
               >
                 <Link
@@ -134,7 +134,7 @@ const MobileNavigation: FC<Props> = ({ session }): JSX.Element => {
             {session && (
               <AccordionItem value="wishlist">
                 <AccordionTrigger
-                  className="hover:no-underline font-bold justify-between gap-x-3 py-2.5"
+                  className="hover:no-underline hover:text-primary transition font-bold justify-between gap-x-3 py-2.5"
                   showIcon={false}
                 >
                   <Link
@@ -151,7 +151,7 @@ const MobileNavigation: FC<Props> = ({ session }): JSX.Element => {
             )}
 
             <AccordionItem value="mission">
-              <AccordionTrigger className="hover:no-underline font-bold justify-between gap-x-3 py-2.5">
+              <AccordionTrigger className="hover:no-underline hover:text-primary transition font-bold justify-between gap-x-3 py-2.5">
                 <Link href="/su-menh" className="flex items-center gap-x-1">
                   <div className="w-8 h-8 grid place-content-center">
                     <HeartHandshakeIcon className="w-4 h-4" />
@@ -166,7 +166,7 @@ const MobileNavigation: FC<Props> = ({ session }): JSX.Element => {
 
             <AccordionItem value="blogs">
               <AccordionTrigger
-                className="hover:no-underline font-bold justify-between gap-x-3 py-2.5"
+                className="hover:no-underline hover:text-primary transition font-bold justify-between gap-x-3 py-2.5"
                 showIcon={false}
               >
                 <Link

@@ -32,10 +32,10 @@ const Ingredients: FC<Props> = (props): JSX.Element => {
   const t = useTranslations("home_page.ingredients");
 
   return (
-    <section className="py-[90px]">
-      <SmallSectionContainer className="grid grid-cols-2 gap-[30px]">
+    <section className="lg:py-[90px] py-[60px]">
+      <SmallSectionContainer className="grid lg:grid-cols-2 grid-cols-1 gap-[30px]">
         <div>
-          <h2 className="text-4xl mb-10">
+          <h2 className="lg:text-4xl text-3xl mb-10">
             {t("heading_line_1")} <br /> {t("heading_line_2")}
           </h2>
           <ul className="space-y-8">
@@ -49,7 +49,9 @@ const Ingredients: FC<Props> = (props): JSX.Element => {
                   className="rounded-sm"
                 />
                 <div>
-                  <h3 className="text-2xl">{t(ingredient.heading)}</h3>
+                  <h3 className="lg:text-2xl text-xl">
+                    {t(ingredient.heading)}
+                  </h3>
                   <p className="text-muted">{t(ingredient.description)}</p>
                 </div>
               </li>
@@ -61,7 +63,7 @@ const Ingredients: FC<Props> = (props): JSX.Element => {
           alt="Section 4 image"
           width={640}
           height={640}
-          className="-mt-12"
+          className="xl:-mt-12 mx-auto"
         />
       </SmallSectionContainer>
     </section>

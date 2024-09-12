@@ -40,11 +40,11 @@ const Footer: FC<Props> = (props): JSX.Element => {
     <footer className="bg-secondary mt-16">
       <SmallSectionContainer>
         <nav className="border-b">
-          <ul className="flex items-center justify-center gap-2">
+          <ul className="flex flex-wrap items-center justify-center gap-2">
             {navItems.map((item) => (
               <li key={item.title}>
                 <Link
-                  className="py-10 px-4 block hover:text-primary transition-colors"
+                  className="lg:py-10 py-4 px-4 block hover:text-primary transition-colors"
                   href={item.url as any}
                 >
                   {t(item.title)}
@@ -55,7 +55,7 @@ const Footer: FC<Props> = (props): JSX.Element => {
         </nav>
         <Subscribe />
 
-        <div className="py-10 text-sm text-muted flex items-center justify-center gap-3">
+        <div className="lg:py-10 py-4 text-sm text-muted flex flex-wrap items-center justify-center gap-3 sm:text-left text-center">
           {t("copyright")} <span className="text-gray-300">|</span>{" "}
           <a
             href="tel:+84962334807"

@@ -10,12 +10,14 @@ const Testimonials: FC<Props> = (props): JSX.Element => {
 
   return (
     <section>
-      <div className="bg-[url('/home-page/section-5-bg.jpg')] bg-no-repeat bg-center py-[90px]">
+      <div className="bg-[url('/home-page/section-5-bg.jpg')] bg-no-repeat bg-center lg:py-[90px] py-[60px]">
         <SmallSectionContainer>
-          <p className="text-5xl text-primary text-center font-grey_qo mb-4">
+          <p className="lg:text-5xl text-4xl text-primary text-center font-grey_qo mb-4">
             {t("sub_heading")}
           </p>
-          <h2 className="text-4xl text-center mb-8">{t("heading")}</h2>
+          <h2 className="lg:text-4xl text-3xl text-center mb-8">
+            {t("heading")}
+          </h2>
           <TestimonialsCarousel />
         </SmallSectionContainer>
       </div>

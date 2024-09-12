@@ -42,7 +42,7 @@ const TestimonialsCarousel: React.FC<Props> = () => {
       <CarouselContent>
         {data.map((testimonial, index) => (
           <CarouselItem key={index}>
-            <p className="text-center max-w-[800px] mx-auto italic text-xl mb-4">
+            <p className="text-center max-w-[800px] mx-auto italic lg:text-xl text-lg mb-4">
               “{t(testimonial.content)}”
             </p>
             <p className="text-center text-muted">{t(testimonial.author)}</p>
