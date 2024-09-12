@@ -35,7 +35,7 @@ const PersonalItems: FC<Props> = ({ session, wishlistLength }): JSX.Element => {
         <TouchProvider>
           <HybridTooltip>
             <HybridTooltipTrigger className="h-full flex items-center hover:text-primary transition-colors px-2 font-bold text-sm">
-              <User className="w-5 h-5" />
+              <User className="sm:w-5 sm:h-5 w-4 h-4" />
             </HybridTooltipTrigger>
             <HybridTooltipContent
               align="end"

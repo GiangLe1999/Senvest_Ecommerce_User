@@ -33,7 +33,7 @@ const CartItem: FC<Props> = (props): JSX.Element => {
           <HybridTooltip>
             <HybridTooltipTrigger className="h-full flex items-center hover:text-primary transition-colors px-2 font-bold text-sm">
               <div className="relative">
-                <ShoppingBagIcon className="w-5 h-5" />
+                <ShoppingBagIcon className="sm:w-5 sm:h-5 w-4 h-4" />
                 <div className="bg-primary w-4 h-4 grid place-items-center leading-none text-[10px] rounded-full text-white absolute -top-2 -right-1">
                   {cartState?.totalItems || 0}
                 </div>

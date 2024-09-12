@@ -162,3 +162,22 @@ export const getRelatedProducts = async ({
     console.log("Failed to fetch related products");
   }
 };
+
+export const getSearchProducts = async (keyword: string) => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/products/search/${keyword}`,
+      {
+        next: { revalidate: 20 },
+      }
+    );
+
+    if (!res.ok) {
+      console.log("Failed to fetch search product results");
+    }
+
+    return await res.json();
+  } catch (error) {
+    console.log("Failed to fetch search product results");
+  }
+};

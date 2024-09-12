@@ -1,10 +1,10 @@
 import CustomBreadcrumb from "@/components/custom-breadcrumb";
-import Logo from "@/components/layout/header/logo";
 import SmallSectionContainer from "@/components/small-section-container";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { FC } from "react";
 import DonateForm from "./donate-form";
+import { Link } from "@/configs/i18n-navigation";
 
 interface Props {}
 
@@ -29,7 +29,15 @@ const DonatePageContent: FC<Props> = (props): JSX.Element => {
           </div>
 
           <div className="px-6 py-7">
-            <Logo />
+            <Link href="/" className="flex items-center h-full">
+              <Image
+                src="/logo.svg"
+                alt="Kindle Hope Candles Logo"
+                width={75}
+                height={56.25}
+                priority
+              />
+            </Link>
 
             <p className="text-2xl font-semibold leading-none tracking-tight mb-2 mt-6">
               {t("title")}

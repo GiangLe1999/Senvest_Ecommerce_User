@@ -14,6 +14,7 @@ import { authOptions } from "@/lib/auth";
 import SmallSectionContainer from "@/components/small-section-container";
 import { getProductSlugsMappings } from "@/queries/products.queries";
 import { getUserWishlistLength } from "@/queries/user-wishlist.queries";
+import MobileNavigation from "./mobile-navigation";
 
 interface Props {}
 
@@ -30,12 +31,12 @@ const Header: FC<Props> = async (props): Promise<JSX.Element> => {
   return (
     <header className="border-b">
       <div className="bg-primary">
-        <SmallSectionContainer className="grid grid-cols-12 h-10">
-          <div className="col-span-3" />
-          <div className="col-span-6">
+        <SmallSectionContainer className="grid grid-cols-12 h-10 xl:gap-x-0 gap-x-4">
+          <div className="xl:col-span-3 hidden xl:block" />
+          <div className="xl:col-span-6 col-span-8">
             <SloganCarousel slogans={slogansResponse.slogans as Slogan[]} />
           </div>
-          <div className="col-span-3">
+          <div className="xl:col-span-3 col-span-4">
             <LanguageSwitcher
               productSlugsMapping={
                 productSlugsMappingResponse.productSlugsMapping
@@ -47,13 +48,16 @@ const Header: FC<Props> = async (props): Promise<JSX.Element> => {
 
       <div>
         <SmallSectionContainer className="grid grid-cols-12 h-[88px] py-4">
-          <div className="col-span-2">
+          <div className="col-span-4 xl:hidden block">
+            <MobileNavigation />
+          </div>
+          <div className="xl:col-span-2 col-span-4">
             <Logo />
           </div>
-          <div className="col-span-8">
+          <div className="col-span-8 xl:block hidden">
             <Navigation />
           </div>
-          <div className="col-span-2 grid grid-cols-4 gap-1 ml-auto">
+          <div className="xl:col-span-2 col-span-4 grid xl:grid-cols-4 grid-cols-3 gap-1 ml-auto">
             <PersonalItems
               session={session}
               wishlistLength={wishlistLength || 0}

@@ -30,7 +30,6 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
 
   const t = useTranslations("listing_page");
   const isVi = useLocale() === "vi";
-  console.log(isVi);
 
   const productVariants = category?.products
     ?.map((product) => product.variants)

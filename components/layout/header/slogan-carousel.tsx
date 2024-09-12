@@ -35,7 +35,7 @@ const SloganCarousel: React.FC<Props> = ({ slogans }) => {
         {slogans?.map((slogan, index) => (
           <CarouselItem key={index}>
             <div className="p-1 flex items-center h-10 justify-center">
-              <p className="text-xs text-white text-center">
+              <p className="text-xs text-white text-center line-clamp-1">
                 {locale === "en" ? slogan.content.en : slogan.content.vi}
               </p>
             </div>

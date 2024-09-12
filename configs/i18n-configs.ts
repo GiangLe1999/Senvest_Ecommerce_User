@@ -157,6 +157,10 @@ export const pathnames = {
     vi: "/chinh-sach-van-chuyen",
     en: "/delivery-policy",
   },
+  "/tim-kiem/[keyword]": {
+    vi: "/tim-kiem/[keyword]",
+    en: "/search/[keyword]",
+  },
 } satisfies Pathnames<typeof locales>;
 
 export const localePrefix = undefined;
