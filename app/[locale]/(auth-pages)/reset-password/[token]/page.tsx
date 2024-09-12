@@ -1,11 +1,29 @@
 import ResetPasswordPageContent from "@/components/pages/reset-password-page/reset-password-page-content";
-import { NextPage } from "next";
+import { Metadata, NextPage } from "next";
 import { unstable_setRequestLocale } from "next-intl/server";
 
 interface Props {
   params: {
     locale: string;
     token: string;
+  };
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const isVi = params.locale === "vi";
+
+  return {
+    title: isVi
+      ? "Đặt Lại Mật Khẩu | Kindle Hope Candles"
+      : "Reset Password | Kindle Hope Candles",
+    description: isVi
+      ? "Tạo mật khẩu mới để bảo vệ tài khoản và tiếp tục khám phá các sản phẩm nến thơm tuyệt vời!"
+      : "Set a new password to secure your account and continue exploring our wonderful candle collection!",
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/${params.locale}/${
+        isVi ? "dang-ki" : "register"
+      }`,
+    },
   };
 }
 
