@@ -70,8 +70,8 @@ export const pathnames = {
     en: "/forgot-password",
   },
   "/reset-password/[token]": {
-    vi: "/reset-password",
-    en: "/reset-password",
+    vi: "/reset-password/[token]",
+    en: "/reset-password/[token]",
   },
   "/tai-khoan": {
     vi: "/tai-khoan",

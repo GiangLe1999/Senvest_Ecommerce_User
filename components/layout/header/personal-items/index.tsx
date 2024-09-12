@@ -48,7 +48,7 @@ const PersonalItems: FC<Props> = ({ session, wishlistLength }): JSX.Element => {
             >
               <nav>
                 <ul className="text-muted text-[13px]">
-                  {!session && (
+                  {!session ? (
                     <>
                       <li>
                         <Link className={itemClassname} href="/dang-nhap">
@@ -61,9 +61,7 @@ const PersonalItems: FC<Props> = ({ session, wishlistLength }): JSX.Element => {
                         </Link>
                       </li>
                     </>
-                  )}
-
-                  {session && (
+                  ) : (
                     <li>
                       <Link className={itemClassname} href="/tai-khoan">
                         {t("account")}
@@ -71,14 +69,17 @@ const PersonalItems: FC<Props> = ({ session, wishlistLength }): JSX.Element => {
                     </li>
                   )}
 
-                  <li>
-                    <Link
-                      className={itemClassname}
-                      href="/tai-khoan/san-pham-yeu-thich"
-                    >
-                      {t("wishlist")} ({wishlistLength})
-                    </Link>
-                  </li>
+                  {session && (
+                    <li>
+                      <Link
+                        className={itemClassname}
+                        href="/tai-khoan/san-pham-yeu-thich"
+                      >
+                        {t("wishlist")} ({wishlistLength})
+                      </Link>
+                    </li>
+                  )}
+
                   <li>
                     <Link className={itemClassname} href="/so-sanh">
                       {t("compare")} ({items?.length || 0})

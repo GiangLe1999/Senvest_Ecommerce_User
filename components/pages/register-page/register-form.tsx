@@ -211,7 +211,7 @@ const RegisterForm: FC<Props> = ({ setActiveForm, setCurrentEmail }) => {
             className="text-lg w-full !mt-8 h-12"
           />
 
-          <div className="text-sm flex items-center gap-1 justify-end">
+          <div className="text-sm flex items-center gap-1 sm:justify-end justify-start flex-wrap">
             <span className="text-muted">{t("already_have_an_account")}</span>
             <Link
               href="/dang-nhap"

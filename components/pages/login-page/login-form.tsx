@@ -158,7 +158,7 @@ const LoginForm: FC<Props> = () => {
             className="text-lg w-full !mt-8 h-12"
           />
 
-          <div className="text-sm flex items-center justify-between gap-1">
+          <div className="text-sm flex items-center justify-between gap-1 flex-wrap">
             <p>
               {t("no_account")}{" "}
               <Link

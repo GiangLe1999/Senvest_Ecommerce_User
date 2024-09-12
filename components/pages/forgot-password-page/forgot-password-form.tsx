@@ -73,7 +73,9 @@ const ForgotPasswordForm: FC<Props> = () => {
         {t("heading")}
       </h1>
 
-      <p className="text-center max-w-[70%] mx-auto mb-8">{t("description")}</p>
+      <p className="text-center sm:max-w-[70%] max-w-[95%] mx-auto mb-8">
+        {t("description")}
+      </p>
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
