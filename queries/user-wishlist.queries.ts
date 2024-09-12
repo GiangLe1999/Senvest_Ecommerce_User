@@ -14,7 +14,7 @@ export const getUserWishlist = async () => {
 
 export const getUserWishlistLength = async () => {
   try {
-    const res = await axiosInstance("user-w ishlist/length");
+    const res = await axiosInstance("user-wishlist/length");
     return res.data;
   } catch (error: AxiosError<any> | any) {
     console.log("Failed to fetch user wishlist");
