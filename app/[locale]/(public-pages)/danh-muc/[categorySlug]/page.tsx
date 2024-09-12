@@ -34,17 +34,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  const data = await getCategoriesForNavigation();
+  const data = (await getCategoriesForNavigation()) as any;
 
-  const viParams = data?.categories?.map((category: Category) => ({
+  const viParams = data.categories.map((category: Category) => ({
     locale: "vi",
     categorySlug: category.slug.vi,
   })) as { locale: string; categorySlug: string }[];
 
-  const enParams = data?.categories?.map((category: Category) => ({
+  const enParams = data.categories.map((category: Category) => ({
     locale: "en",
     categorySlug: category.slug.en,
   })) as { locale: string; categorySlug: string }[];
+
+  console.log([...viParams, ...enParams]);
 
   return [...viParams, ...enParams];
 }
