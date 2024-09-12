@@ -29,7 +29,7 @@ interface Props {
 const Sort: FC<Props> = ({ t, sort, setSort }): JSX.Element => {
   return (
     <div className="flex items-center justify-between gap-4">
-      <div></div>
+      <div className="lg:block hidden"></div>
       <div className="flex items-center gap-4">
         <span className="font-bold">{t("sort_by")}:</span>
 

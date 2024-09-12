@@ -545,6 +545,8 @@
   },
   "listing_page": {
     "filters": "Bộ lọc",
+    "open_filters": "Dùng bộ lọc",
+    "click_to_open": "Click để mở",
     "availability": "Tình trạng hàng hóa",
     "in_stock": "Còn hàng",
     "out_of_stock": "Hết hàng",

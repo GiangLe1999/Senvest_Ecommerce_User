@@ -545,6 +545,8 @@
   },
   "listing_page": {
     "filters": "Filters",
+    "open_filters": "Open filters",
+    "click_to_open": "Click to open",
     "availability": "Availability",
     "in_stock": "In stock",
     "out_of_stock": "Out of stock",

@@ -11,7 +11,7 @@ const ProductList: FC<Props> = ({ renderProducts }): JSX.Element => {
   return (
     <>
       {renderProducts && renderProducts.length > 0 ? (
-        <div className="grid grid-cols-3 gap-10 mt-12">
+        <div className="grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 xl:gap-10 gap-6 mt-12">
           {renderProducts.map((product) => (
             <ProductCard
               key={product._id}

@@ -12,6 +12,16 @@ import Sort from "./sort";
 import { PaginationWithLinks } from "@/components/pagination-with-links";
 import { Variant } from "@/entities/variant.entity";
 import { useSearchParams } from "next/navigation";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   category?: Category;
@@ -275,7 +285,7 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
       ) : null}
 
       <div className="flex gap-16">
-        <div className="w-[25%]">
+        <div className="w-[25%] lg:block hidden">
           <Filters
             categoryName={isVi ? category?.name.vi : category?.name.en}
             t={t}
@@ -311,6 +321,44 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
           </p>
 
           <div className="border-t mt-6 pt-6" />
+
+          {/* Mobile Filter */}
+          <Dialog>
+            <DialogTrigger asChild className="mb-6">
+              <div className="flex items-center gap-5">
+                <span className="font-bold">{t("open_filters")}:</span>{" "}
+                <Button className="block lg:hidden">
+                  {t("click_to_open")}
+                </Button>
+              </div>
+            </DialogTrigger>
+            <DialogContent>
+              <Filters
+                categoryName={isVi ? category?.name.vi : category?.name.en}
+                t={t}
+                // Price filter
+                lowestPrice={lowestPrice}
+                highestPrice={highestPrice}
+                range={range}
+                setRange={setRange}
+                // Availability filter
+                inStockCount={inStockCount}
+                outStockCount={outStockCount}
+                filterStock={filterStock}
+                setFilterStock={setFilterStock}
+                // Scent filter
+                variantsCount={variantsCount}
+                filterScent={filterScent}
+                setFilterScent={setFilterScent}
+                // Sales filter
+                salesCount={salesCount}
+                atFullPriceCount={atFullPriceCount}
+                filterSales={filterSales}
+                setFilterSales={setFilterSales}
+                productsCount={productsCount}
+              />
+            </DialogContent>
+          </Dialog>
 
           {/* Sort */}
           <Sort setSort={setSort} t={t} sort={sort} />
