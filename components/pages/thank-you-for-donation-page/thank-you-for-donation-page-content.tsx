@@ -22,8 +22,8 @@ const ThankYouForDonationPageContent: FC<Props> = (): JSX.Element => {
   return (
     <SmallSectionContainer>
       <main className="mt-12">
-        <div className="flex items-center gap-16">
-          <div className="relative w-[40%] aspect-[1.037]">
+        <div className="lg:flex items-center gap-16">
+          <div className="relative sm:w-[40%] w-[90%] mx-auto aspect-[1.037]">
             <Image
               src="/thank-you-page/congratulation.svg"
               alt="Congratulation"
@@ -35,12 +35,15 @@ const ThankYouForDonationPageContent: FC<Props> = (): JSX.Element => {
               priority
             />
           </div>
-          <div className="flex-1">
-            <h1 className="flex items-center gap-3 font-bold text-emerald-600 text-4xl mb-4">
-              <CircleCheckBigIcon className="w-8 h-8" /> {t("heading")}
+          <div className="flex-1 lg:mt-0 mt-12 lg:text-left text-center">
+            <h1 className="flex items-center lg:justify-start justify-center gap-3 font-bold text-emerald-600 lg:text-4xl text-2xl mb-4 flex-wrap">
+              <CircleCheckBigIcon className="lg:w-8 lg:h-8 w-6 h-6" />{" "}
+              {t("heading")}
             </h1>
-            <h2 className="text-xl font-bold mb-4">{t("sub_heading")}</h2>
-            <ul className="list-disc list-inside text-muted space-y-2 mb-7">
+            <h2 className="lg:text-xl text-base font-bold mb-4">
+              {t("sub_heading")}
+            </h2>
+            <ul className="lg:list-disc list-none list-inside text-muted space-y-2 mb-7 lg:text-base text-sm">
               <li>{t("item_1")}</li>
               <li>{t("item_2")}</li>
               <li>{t("item_3")} </li>
@@ -56,7 +59,7 @@ const ThankYouForDonationPageContent: FC<Props> = (): JSX.Element => {
             </ul>
             <Link
               href="/"
-              className="bg-primary hover:bg-background transition-none text-white px-6 py-3 rounded-sm flex items-center gap-2 w-fit"
+              className="bg-primary hover:bg-background transition-none text-white px-6 py-3 rounded-sm flex items-center gap-2 w-fit lg:mx-0 mx-auto"
             >
               <MoveLeftIcon className="w-4 h-4" /> {t("back_to_home")}
             </Link>

@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ? "Tham gia thành viên để nhận ưu đãi độc quyền, cập nhật sản phẩm mới và tận hưởng trải nghiệm nến thơm tuyệt vời!"
       : "Sign up to unlock exclusive offers, stay updated on new arrivals, and enjoy a premium candle experience!",
     alternates: {
-      canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/${params.locale}/${
+      canonical: `${process.env.NEXT_PUBLIC_APP_URL}/${params.locale}/${
         isVi ? "dang-ki" : "register"
       }`,
     },

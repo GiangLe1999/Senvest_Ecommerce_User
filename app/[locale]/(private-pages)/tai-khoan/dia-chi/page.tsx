@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ? "Xem và quản lý tất cả các địa chỉ giao hàng đã lưu trên tài khoản của bạn tại Kindle Hope Candles."
       : "View and manage all your saved shipping addresses on your Kindle Hope Candles account.",
     alternates: {
-      canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/${params.locale}/${
+      canonical: `${process.env.NEXT_PUBLIC_APP_URL}/${params.locale}/${
         isVi ? "tai-khoan/dia-chi" : "account/addresses"
       }`,
     },

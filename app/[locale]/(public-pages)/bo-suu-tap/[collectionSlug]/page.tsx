@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         ? "Tận hưởng các ưu đãi đặc biệt với các sản phẩm nến thơm đang khuyến mãi tại Kindle Hope Candles."
         : "Xem toàn bộ bộ sưu tập nến thơm độc đáo tại Kindle Hope Candles.",
       alternates: {
-        canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/${params.locale}/reset-password`,
+        canonical: `${process.env.NEXT_PUBLIC_APP_URL}/${params.locale}/reset-password`,
       },
     };
   } else {
@@ -59,8 +59,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         : "Browse the entire collection of unique scented candles at Kindle Hope Candles.",
       alternates: {
         canonical: isVi
-          ? `${process.env.NEXT_PUBLIC_BASE_URL}/vi/bo-suu-tap/${params.collectionSlug}`
-          : `${process.env.NEXT_PUBLIC_BASE_URL}/en/collections/${
+          ? `${process.env.NEXT_PUBLIC_APP_URL}/vi/bo-suu-tap/${params.collectionSlug}`
+          : `${process.env.NEXT_PUBLIC_APP_URL}/en/collections/${
               params.collectionSlug === "san-pham-moi"
                 ? "new-releases"
                 : params.collectionSlug === "ban-chay"
@@ -75,22 +75,31 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  const locales = ["vi", "en"];
-  const collections = [
+  const viCollectionsSlugs = [
     { slug: "san-pham-moi" },
     { slug: "ban-chay" },
     { slug: "khuyen-mai" },
     { slug: "tat-ca" },
   ];
 
-  const params = locales.flatMap((locale) =>
-    collections.map((collection) => ({
-      locale,
-      collectionSlug: collection.slug,
-    }))
-  );
+  const enCollectionsSlugs = [
+    { slug: "new-releases" },
+    { slug: "best-sellers" },
+    { slug: "sale" },
+    { slug: "all" },
+  ];
 
-  return params;
+  const viParams = viCollectionsSlugs.map((collection) => ({
+    locale: "vi",
+    categorySlug: collection.slug,
+  })) as { locale: string; categorySlug: string }[];
+
+  const enParams = enCollectionsSlugs.map((collection) => ({
+    locale: "en",
+    categorySlug: collection.slug,
+  })) as { locale: string; categorySlug: string }[];
+
+  return [...viParams, ...enParams];
 }
 
 const CollectionPage: NextPage<Props> = async ({

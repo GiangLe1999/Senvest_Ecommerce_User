@@ -12,11 +12,14 @@ const PendingDonation: FC<Props> = (): JSX.Element => {
   return (
     <SmallSectionContainer>
       <main className="mt-12 text-center">
-        <h1 className="flex items-center gap-3 font-bold text-yellow-700 text-4xl mb-4 justify-center">
-          <LoaderIcon className="w-8 h-8 animate-spin" /> {t("pending_heading")}
+        <h1 className="flex items-center gap-3 font-bold text-yellow-700 lg:text-4xl text-2xl mb-4 justify-center flex-wrap">
+          <LoaderIcon className="lg:w-8 lg:h-8 w-6 h-6 animate-spin" />{" "}
+          {t("pending_heading")}
         </h1>
-        <h2 className="text-xl font-bold mb-4">{t("pending_sub_heading")}</h2>
-        <ul className="text-muted space-y-2 mb-7">
+        <h2 className="lg:text-xl text-base font-bold mb-4">
+          {t("pending_sub_heading")}
+        </h2>
+        <ul className="text-muted space-y-2 mb-7 lg:text-base text-sm">
           <li>{t("pending_item_1")}</li>
           <li>{t("pending_item_2")}</li>
           <li>{t("pending_item_3")} </li>

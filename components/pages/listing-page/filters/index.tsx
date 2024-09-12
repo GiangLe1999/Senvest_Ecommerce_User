@@ -38,7 +38,7 @@ interface Props {
   filterSales: string;
   setFilterSales: React.Dispatch<React.SetStateAction<string>>;
   productsCount: number;
-  setPage: React.Dispatch<React.SetStateAction<number>>;
+  resetFilter: () => void;
 }
 
 const Filters: FC<Props> = ({
@@ -60,16 +60,8 @@ const Filters: FC<Props> = ({
   salesCount,
   atFullPriceCount,
   productsCount,
-  setPage,
+  resetFilter,
 }): JSX.Element => {
-  const resetFilter = () => {
-    setRange([lowestPrice, highestPrice]);
-    setFilterStock("");
-    setFilterScent("");
-    setFilterSales("");
-    setPage(1);
-  };
-
   return (
     <ScrollArea className="h-[80vh] pr-5">
       <h2 className="font-bold text-2xl text-primary mb-2">{t("filters")}</h2>

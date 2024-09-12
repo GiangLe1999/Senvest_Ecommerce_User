@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ? "Đăng nhập để khám phá bộ sưu tập nến thơm và trải nghiệm các ưu đãi đặc biệt dành riêng cho bạn!"
       : "Log in to explore our candle collection and enjoy exclusive offers made just for you!",
     alternates: {
-      canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/${params.locale}/${
+      canonical: `${process.env.NEXT_PUBLIC_APP_URL}/${params.locale}/${
         isVi ? "quen-mat-khau" : "forgot-password"
       }`,
     },

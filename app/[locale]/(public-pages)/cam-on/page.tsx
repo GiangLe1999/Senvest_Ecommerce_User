@@ -4,7 +4,7 @@ import ThankYouPageContent from "@/components/pages/thank-you-page/thank-you-pag
 import { redirect } from "@/configs/i18n-navigation";
 import { StatusEnum } from "@/entities/payment.entity";
 import { getPayment } from "@/queries/payment.queries";
-import { NextPage } from "next";
+import { Metadata, NextPage } from "next";
 import { unstable_setRequestLocale } from "next-intl/server";
 
 interface Props {
@@ -13,6 +13,19 @@ interface Props {
   };
   searchParams: {
     orderCode: string;
+  };
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const isVi = params.locale === "vi";
+
+  return {
+    title: isVi
+      ? "Cảm ơn bạn đã đặt hàng | Kindle Hope Candles"
+      : "Thank You for Your Order | Kindle Hope Candles",
+    description: isVi
+      ? "Cảm ơn bạn! Đơn hàng đã xác nhận. Nến sẽ sớm đến tay bạn!"
+      : "Thank you! Your order is confirmed. Your candles will be on their way soon!",
   };
 }
 

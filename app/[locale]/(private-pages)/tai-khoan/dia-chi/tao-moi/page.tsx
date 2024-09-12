@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ? "Thêm địa chỉ giao hàng mới vào tài khoản của bạn để mua sắm thuận tiện tại Kindle Hope Candles."
       : "Add a new shipping address to your account for seamless shopping at Kindle Hope Candles.",
     alternates: {
-      canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/${params.locale}/${
+      canonical: `${process.env.NEXT_PUBLIC_APP_URL}/${params.locale}/${
         isVi ? "tai-khoan/dia-chi/tao-moi" : "account/addresses/add"
       }`,
     },

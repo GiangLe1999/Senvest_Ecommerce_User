@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ? "Tạo mật khẩu mới để bảo vệ tài khoản và tiếp tục khám phá các sản phẩm nến thơm tuyệt vời!"
       : "Set a new password to secure your account and continue exploring our wonderful candle collection!",
     alternates: {
-      canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/${params.locale}/reset-password`,
+      canonical: `${process.env.NEXT_PUBLIC_APP_URL}/${params.locale}/reset-password`,
     },
   };
 }

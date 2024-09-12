@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ? "Quản lý thông tin cá nhân, đơn hàng và khám phá các ưu đãi độc quyền dành cho thành viên!"
       : "Manage your personal info, orders, and explore exclusive member offers!",
     alternates: {
-      canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/${params.locale}/${
+      canonical: `${process.env.NEXT_PUBLIC_APP_URL}/${params.locale}/${
         isVi ? "tai-khoan" : "account"
       }`,
     },

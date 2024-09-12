@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ? "Cập nhật và quản lý thông tin cá nhân của bạn tại Kindle Hope Candles."
       : "Update and manage your personal information on your Kindle Hope Candles account.",
     alternates: {
-      canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/${params.locale}/${
+      canonical: `${process.env.NEXT_PUBLIC_APP_URL}/${params.locale}/${
         isVi ? "tai-khoan/thong-tin" : "account/profile"
       }`,
     },

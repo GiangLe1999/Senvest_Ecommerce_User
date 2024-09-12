@@ -22,6 +22,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { EraserIcon, SquareArrowOutUpRightIcon } from "lucide-react";
 
 interface Props {
   category?: Category;
@@ -94,6 +95,15 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
   ]);
 
   const [productsCount, setProductsCount] = useState(0);
+
+  const resetFilter = () => {
+    setRange([lowestPrice, highestPrice]);
+    setFilterStock("");
+    setFilterScent("");
+    setFilterSales("");
+    setSort("");
+    setPage(1);
+  };
 
   useEffect(() => {
     // Reset page to 1 when a filter changes
@@ -314,8 +324,8 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
             filterSales={filterSales}
             setFilterSales={setFilterSales}
             productsCount={productsCount}
-            // Pagination
-            setPage={setPage}
+            // Reset filter
+            resetFilter={resetFilter}
           />
         </div>
 
@@ -331,14 +341,28 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
 
           {/* Mobile Filter */}
           <Dialog>
-            <DialogTrigger asChild className="mb-6">
-              <div className="flex items-center gap-5">
-                <span className="font-bold">{t("open_filters")}:</span>{" "}
-                <Button className="block lg:hidden">
-                  {t("click_to_open")}
+            <div className="flex items-center gap-5 mb-6 lg:hidden">
+              <DialogTrigger asChild>
+                <div className="flex items-center gap-5">
+                  <span className="font-bold">{t("open_filters")}:</span>{" "}
+                  <Button variant="secondary">
+                    {t("click_to_open")}{" "}
+                    <SquareArrowOutUpRightIcon className="w-[14px] h-[14px] ml-2" />
+                  </Button>
+                </div>
+              </DialogTrigger>
+
+              {filterScent ||
+              filterStock ||
+              filterSales ||
+              sort ||
+              range[0] !== lowestPrice ||
+              range[1] !== highestPrice ? (
+                <Button variant="destructive" onClick={resetFilter}>
+                  {t("reset_filters")} <EraserIcon className="w-4 h-4 ml-2" />
                 </Button>
-              </div>
-            </DialogTrigger>
+              ) : null}
+            </div>
             <DialogContent>
               <Filters
                 categoryName={isVi ? category?.name.vi : category?.name.en}
@@ -363,8 +387,8 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
                 filterSales={filterSales}
                 setFilterSales={setFilterSales}
                 productsCount={productsCount}
-                // Pagination
-                setPage={setPage}
+                // Reset filter
+                resetFilter={resetFilter}
               />
             </DialogContent>
           </Dialog>

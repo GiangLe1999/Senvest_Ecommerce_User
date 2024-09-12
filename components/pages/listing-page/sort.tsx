@@ -30,11 +30,11 @@ const Sort: FC<Props> = ({ t, sort, setSort }): JSX.Element => {
   return (
     <div className="flex items-center justify-between gap-4">
       <div className="lg:block hidden"></div>
-      <div className="flex items-center gap-4">
-        <span className="font-bold">{t("sort_by")}:</span>
+      <div className="flex items-center gap-4 sm:w-fit w-full">
+        <span className="font-bold w-max">{t("sort_by")}:</span>
 
         <Select value={sort} onValueChange={setSort}>
-          <SelectTrigger className="w-[280px]">
+          <SelectTrigger className="sm:w-[280px] flex-1">
             <SelectValue placeholder={t("sort_by_placeholder")} />
           </SelectTrigger>
           <SelectContent>
