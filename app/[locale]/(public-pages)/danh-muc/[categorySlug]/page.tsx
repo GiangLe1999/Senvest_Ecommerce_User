@@ -46,8 +46,6 @@ export async function generateStaticParams() {
     categorySlug: category.slug.en,
   })) as { locale: string; categorySlug: string }[];
 
-  console.log([...viParams, ...enParams]);
-
   return [...viParams, ...enParams];
 }
 
