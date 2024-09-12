@@ -26,7 +26,9 @@ const Header: FC<Props> = async (props): Promise<JSX.Element> => {
       getServerSession(authOptions),
     ]);
 
-  const { wishlistLength } = session ? await getUserWishlistLength() : 0;
+  const { wishlistLength } = session
+    ? await getUserWishlistLength()
+    : { wishlistLength: 0 };
 
   return (
     <header className="border-b">

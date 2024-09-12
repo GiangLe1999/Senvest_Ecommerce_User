@@ -221,7 +221,7 @@ const RegisterForm: FC<Props> = ({ setActiveForm, setCurrentEmail }) => {
             </Link>
             <span className="text-muted">{t("or")}</span>
             <Link
-              href="/dang-nhap"
+              href="/quen-mat-khau"
               className="font-semibold hover:text-primary hover:underline transition"
             >
               {t("forgot_password")}

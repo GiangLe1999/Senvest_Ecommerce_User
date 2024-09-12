@@ -32,12 +32,15 @@ const PersonalItems: FC<Props> = ({ session, wishlistLength }): JSX.Element => {
   const router = useRouter();
 
   return (
-    <div onClick={(e) => router.push("/tai-khoan")}>
+    <div>
       <TooltipProvider>
         <TouchProvider>
           <HybridTooltip>
             <HybridTooltipTrigger className="h-full flex items-center hover:text-primary transition-colors px-2 font-bold text-sm">
-              <User className="sm:w-5 sm:h-5 w-4 h-4" />
+              <User
+                className="sm:w-5 sm:h-5 w-4 h-4"
+                onClick={(e) => router.push("/tai-khoan")}
+              />
             </HybridTooltipTrigger>
             <HybridTooltipContent
               align="end"
@@ -45,7 +48,7 @@ const PersonalItems: FC<Props> = ({ session, wishlistLength }): JSX.Element => {
             >
               <nav>
                 <ul className="text-muted text-[13px]">
-                  {!session ? (
+                  {!session && (
                     <>
                       <li>
                         <Link className={itemClassname} href="/dang-nhap">
@@ -58,7 +61,9 @@ const PersonalItems: FC<Props> = ({ session, wishlistLength }): JSX.Element => {
                         </Link>
                       </li>
                     </>
-                  ) : (
+                  )}
+
+                  {session && (
                     <li>
                       <Link className={itemClassname} href="/tai-khoan">
                         {t("account")}
@@ -66,20 +71,17 @@ const PersonalItems: FC<Props> = ({ session, wishlistLength }): JSX.Element => {
                     </li>
                   )}
 
-                  {session && (
-                    <li>
-                      <Link
-                        className={itemClassname}
-                        href="/tai-khoan/san-pham-yeu-thich"
-                      >
-                        {t("wishlist")} ({wishlistLength})
-                      </Link>
-                    </li>
-                  )}
-
+                  <li>
+                    <Link
+                      className={itemClassname}
+                      href="/tai-khoan/san-pham-yeu-thich"
+                    >
+                      {t("wishlist")} ({wishlistLength})
+                    </Link>
+                  </li>
                   <li>
                     <Link className={itemClassname} href="/so-sanh">
-                      {t("compare")} ({items ? items?.length : 0})
+                      {t("compare")} ({items?.length || 0})
                     </Link>
                   </li>
 
