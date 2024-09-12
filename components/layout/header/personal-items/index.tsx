@@ -15,6 +15,7 @@ import { Session } from "next-auth";
 import { signOut } from "next-auth/react";
 import useFromStore from "@/hooks/useFromStore";
 import { useCompareStore } from "@/stores/useCompareStore";
+import { useCartStore } from "@/stores/useCartStore";
 
 interface Props {
   session: Session | null;
@@ -27,6 +28,7 @@ const itemClassname =
 const PersonalItems: FC<Props> = ({ session, wishlistLength }): JSX.Element => {
   const t = useTranslations("navigation");
   const items = useFromStore(useCompareStore, (state) => state.items);
+  const { totalItems } = useCartStore((state) => state);
   const router = useRouter();
 
   return (
@@ -64,24 +66,30 @@ const PersonalItems: FC<Props> = ({ session, wishlistLength }): JSX.Element => {
                     </li>
                   )}
 
-                  <li>
-                    <Link
-                      className={itemClassname}
-                      href="/tai-khoan/san-pham-yeu-thich"
-                    >
-                      {t("wishlist")} ({wishlistLength})
-                    </Link>
-                  </li>
+                  {session && (
+                    <li>
+                      <Link
+                        className={itemClassname}
+                        href="/tai-khoan/san-pham-yeu-thich"
+                      >
+                        {t("wishlist")} ({wishlistLength})
+                      </Link>
+                    </li>
+                  )}
+
                   <li>
                     <Link className={itemClassname} href="/so-sanh">
-                      {t("compare")} ({items?.length || 0})
+                      {t("compare")} ({items ? items?.length : 0})
                     </Link>
                   </li>
-                  <li>
-                    <Link className={itemClassname} href="/thanh-toan">
-                      {t("checkout")}
-                    </Link>
-                  </li>
+
+                  {totalItems > 0 && (
+                    <li>
+                      <Link className={itemClassname} href="/thanh-toan">
+                        {t("checkout")}
+                      </Link>
+                    </li>
+                  )}
 
                   {session && (
                     <li>

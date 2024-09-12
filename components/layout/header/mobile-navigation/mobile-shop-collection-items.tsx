@@ -2,24 +2,17 @@
 
 import { Skeleton } from "@/components/ui/skeleton";
 import { Link } from "@/configs/i18n-navigation";
-import useMountAnimation from "@/hooks/useMountAnimation";
 import { getCategoriesForNavigation } from "@/queries/categories.queries";
 import { useQuery } from "@tanstack/react-query";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
-import { Dispatch, FC, SetStateAction } from "react";
+import { FC } from "react";
+import { scents } from "../navigation/shop-collection-items";
+import { SheetClose } from "@/components/ui/sheet";
 
-interface Props {
-  showShopCollectionItems: boolean;
-  setShowShopCollectionItems: Dispatch<SetStateAction<boolean>>;
-}
+interface Props {}
 
-export const scents = ["Woody", "Lavender", "Floral", "Citrus", "Fresh"];
-
-const ShopCollectionItems: FC<Props> = ({
-  showShopCollectionItems,
-  setShowShopCollectionItems,
-}): JSX.Element => {
+const MobileShopCollectionItems: FC<Props> = (): JSX.Element => {
   const { isPending, data } = useQuery({
     queryKey: ["categories-for-navigation"],
     queryFn: getCategoriesForNavigation,
@@ -29,10 +22,6 @@ const ShopCollectionItems: FC<Props> = ({
   const locale = useLocale();
   const isVi = locale === "vi";
 
-  const { visible, handleAnimationEnd } = useMountAnimation({
-    show: showShopCollectionItems,
-  });
-
   const moveToScentPage = (scent: string) => {
     const url = `${process.env.NEXT_PUBLIC_APP_URL}/${locale}/${
       isVi ? "bo-suu-tap" : "collections"
@@ -41,32 +30,29 @@ const ShopCollectionItems: FC<Props> = ({
   };
 
   return (
-    <nav
-      className={`bg-white border shadow-md p-5 absolute top-full left-0 w-full grid grid-cols-4 gap-4 rounded-sm transition-opacity ${
-        showShopCollectionItems
-          ? "opacity-100 animate-fade-in"
-          : "opacity-0 animate-fade-out"
-      } ${visible ? "block" : "hidden"}`}
-      onMouseEnter={() => setShowShopCollectionItems(true)}
-      onMouseLeave={() => setShowShopCollectionItems(false)}
-      onAnimationEnd={handleAnimationEnd}
-    >
-      <div>
+    <nav>
+      <div className="mb-4">
         <p className="font-bold">{t("featured")}</p>
-        <ul className="text-muted text-[13px] space-y-1 mt-2">
+        <ul className="text-muted text-[13px] mt-2">
           <li className="py-1 my-1 hover:text-primary transition-colors">
-            <Link href="/bo-suu-tap/san-pham-moi">{t("new_arrivals")}</Link>
+            <SheetClose>
+              <Link href="/bo-suu-tap/san-pham-moi">{t("new_arrivals")}</Link>
+            </SheetClose>
           </li>
           <li className="py-1 my-1 hover:text-primary transition-colors">
-            <Link href="/bo-suu-tap/ban-chay">{t("best_sellers")}</Link>
+            <SheetClose>
+              <Link href="/bo-suu-tap/ban-chay">{t("best_sellers")}</Link>
+            </SheetClose>
           </li>
           <li className="py-1 my-1 hover:text-primary transition-colors">
-            <Link href="/bo-suu-tap/khuyen-mai">{t("the_sale_room")}</Link>
+            <SheetClose>
+              <Link href="/bo-suu-tap/khuyen-mai">{t("the_sale_room")}</Link>
+            </SheetClose>
           </li>
         </ul>
       </div>
 
-      <div>
+      <div className="mb-4">
         <p className="font-bold">{t("categories")}</p>
 
         {isPending ? (
@@ -82,15 +68,17 @@ const ShopCollectionItems: FC<Props> = ({
                 key={category._id}
                 className="py-1 my-1 hover:text-primary transition-colors capitalize"
               >
-                <Link
-                  href={
-                    `/danh-muc/${
-                      locale === "en" ? category.slug.en : category.slug.vi
-                    }` as any
-                  }
-                >
-                  {locale === "en" ? category.name.en : category.name.vi}
-                </Link>
+                <SheetClose>
+                  <Link
+                    href={
+                      `/danh-muc/${
+                        locale === "en" ? category.slug.en : category.slug.vi
+                      }` as any
+                    }
+                  >
+                    {locale === "en" ? category.name.en : category.name.vi}
+                  </Link>
+                </SheetClose>
               </li>
             ))}
           </ul>
@@ -106,23 +94,13 @@ const ShopCollectionItems: FC<Props> = ({
               key={scent}
               onClick={() => moveToScentPage(scent)}
             >
-              {scent}
+              <SheetClose>{scent}</SheetClose>
             </li>
           ))}
         </ul>
-      </div>
-
-      <div>
-        <Image
-          className="rounded-sm w-full aspect-square"
-          width={163}
-          height={163}
-          src="/layout/nav-menu-img.jpg"
-          alt="Kindle candle categories"
-        />
       </div>
     </nav>
   );
 };
 
-export default ShopCollectionItems;
+export default MobileShopCollectionItems;

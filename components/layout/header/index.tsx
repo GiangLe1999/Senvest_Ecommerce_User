@@ -49,7 +49,7 @@ const Header: FC<Props> = async (props): Promise<JSX.Element> => {
       <div>
         <SmallSectionContainer className="grid grid-cols-12 h-[88px] py-4">
           <div className="col-span-4 xl:hidden block">
-            <MobileNavigation />
+            <MobileNavigation session={session} />
           </div>
           <div className="xl:col-span-2 col-span-4">
             <Logo />
