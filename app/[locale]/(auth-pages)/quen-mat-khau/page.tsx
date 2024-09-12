@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       : "Log in to explore our candle collection and enjoy exclusive offers made just for you!",
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/${params.locale}/${
-        isVi ? "dang-ki" : "register"
+        isVi ? "quen-mat-khau" : "forgot-password"
       }`,
     },
   };

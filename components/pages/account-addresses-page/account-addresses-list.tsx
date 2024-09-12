@@ -21,7 +21,7 @@ const AccountAddressesList: FC<Props> = ({ addresses }): JSX.Element => {
 
       {addresses.length > 0 ? (
         <>
-          <div className="grid grid-cols-3 gap-[30px]">
+          <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-[30px]">
             {addresses.map((address, index) => (
               <AccountAddress
                 key={address._id}

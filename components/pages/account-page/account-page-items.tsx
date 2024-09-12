@@ -64,11 +64,11 @@ const AccountPageItems: FC<Props> = ({ session }): JSX.Element => {
         <strong className="text-primary">{session && session.user.name}</strong>
       </h1>
 
-      <div className="grid grid-cols-3 gap-[30px]">
+      <div className="grid lg:grid-cols-3 grid-cols-2 gap-[30px]">
         {itemList.map((item, index) => (
           <Link
             key={index}
-            className="rounded-sm text-muted shadow p-6 flex flex-col justify-center gap-3 items-center cursor-pointer group transition-all hover:text-white hover:border-primary hover:bg-primary"
+            className="text-center rounded-sm text-muted shadow p-6 flex flex-col justify-center gap-3 items-center cursor-pointer group transition-all hover:text-white hover:border-primary hover:bg-primary"
             href={item.link as any}
           >
             {item.icon}
