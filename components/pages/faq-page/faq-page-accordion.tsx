@@ -37,9 +37,9 @@ const FaqPageAccordion: FC<Props> = (props): JSX.Element => {
       <Accordion type="multiple" defaultValue={["question-1"]}>
         {icons.map(({ icon }, index) => (
           <AccordionItem value={`question-${index + 1}`} key={index}>
-            <AccordionTrigger className="hover:no-underline font-bold justify-between gap-x-3">
+            <AccordionTrigger className="hover:no-underline font-bold justify-between gap-x-3 text-left">
               <div className="flex items-center gap-x-3">
-                <div className="w-8 h-8 border rounded-md grid place-content-center shadow">
+                <div className="w-8 h-8 border rounded-md place-content-center shadow sm:grid hidden">
                   {icon}
                 </div>
                 {t(`question_${index + 1}`)}

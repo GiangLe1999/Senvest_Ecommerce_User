@@ -15,8 +15,8 @@ const DonatePageContent: FC<Props> = (props): JSX.Element => {
     <SmallSectionContainer className="mt-12 !max-w-5xl">
       <CustomBreadcrumb pages={[{ name: t("heading"), link: "/dong-gop" }]} />
 
-      <div className="flex gap-6 mt-10">
-        <div className="bg-white shadow-md rounded-md w-[55%]">
+      <div className="lg:flex gap-6 mt-10">
+        <div className="bg-white shadow-md rounded-md lg:w-[55%] w-full">
           <div className="w-full aspect-[1.78] relative rounded-t-sm">
             <Image
               src="/donate-page/left-donate-bg.jpeg"
@@ -52,7 +52,7 @@ const DonatePageContent: FC<Props> = (props): JSX.Element => {
           </div>
         </div>
 
-        <div className="flex-1 bg-white shadow-md rounded-md w-[55%] border-t border-[#eeeeee]">
+        <div className="lg:mt-0 mt-10 flex-1 bg-white shadow-md rounded-md border-t border-[#eeeeee]">
           <DonateForm />
         </div>
       </div>

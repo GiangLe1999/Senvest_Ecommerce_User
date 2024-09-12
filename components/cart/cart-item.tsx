@@ -27,10 +27,10 @@ const CartItem: FC<Props> = ({ cartItem, t, isCartPage }): JSX.Element => {
   const { removeFromCart } = useCartStore((state) => state);
 
   return (
-    <div className="flex items-center gap-4 mb-4">
-      <div className="flex items-center gap-4 w-[40%]">
+    <tr className="mb-4">
+      <td className="w-[13%] min-w-[250px] pt-5">
         <div className="border rounded-sm">
-          <div className="w-[100px] h-[100px] rounded-sm relative">
+          <div className="w-full aspect-square rounded-sm relative">
             <Image
               src={cartItem?.image || ""}
               alt={(isVi ? cartItem?.name?.vi : cartItem?.name?.en) || ""}
@@ -41,6 +41,9 @@ const CartItem: FC<Props> = ({ cartItem, t, isCartPage }): JSX.Element => {
             />
           </div>
         </div>
+      </td>
+
+      <td className="px-4 w-[42%] min-w-[250px] pt-5">
         <div className="space-y-2 text-left">
           <p className="font-bold text-sm">
             {isVi ? cartItem?.name?.vi : cartItem?.name?.en}
@@ -54,15 +57,14 @@ const CartItem: FC<Props> = ({ cartItem, t, isCartPage }): JSX.Element => {
             {formatCurrencyVND(cartItem?.price || 0)}
           </p>
         </div>
-      </div>
+      </td>
 
-      <div className="w-[20%]">
+      <td className="w-[20%] min-w-[250px] pt-5">
         <ChangeProductQuantity cartItem={cartItem} />
-      </div>
+      </td>
 
-      <div className="w-[25%]">
-        <p className="line-clamp-1">
-          <span className="text-sm text-muted">{t("total_price")}: </span>
+      <td className="w-[15%] min-w-[250px] pt-5">
+        <p className="line-clamp-1 text-center">
           <span className="font-bold">
             {formatCurrencyVND(
               parseFloat(cartItem?.price || "0") * (cartItem?.quantity || 0) ||
@@ -70,11 +72,11 @@ const CartItem: FC<Props> = ({ cartItem, t, isCartPage }): JSX.Element => {
             )}
           </span>
         </p>
-      </div>
+      </td>
 
-      <div className="flex-1">
+      <td className="w-[10%] min-w-[250px] pt-5">
         {isCartPage ? (
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-center gap-2">
             <TooltipProvider delayDuration={0}>
               <Tooltip>
                 <TooltipTrigger>
@@ -128,8 +130,8 @@ const CartItem: FC<Props> = ({ cartItem, t, isCartPage }): JSX.Element => {
             <Trash2Icon className="w-3 h-3 mr-1" /> {t("remove")}
           </Button>
         )}
-      </div>
-    </div>
+      </td>
+    </tr>
   );
 };
 
