@@ -50,18 +50,12 @@ const AccountProfileForm: FC<Props> = ({ userProfile }) => {
       name: z.string().regex(nameRegex, {
         message: t("name_rule"),
       }),
-      gender: z.enum(["male", "female"], {
-        message: t("gender_rule"),
-      }),
+      gender: z.enum(["male", "female"]),
       current_password: z.string().optional(),
       new_password: z.string().optional(),
       date_of_birth: z.date().optional(),
-      terms: z.boolean().refine((val) => val === true, {
-        message: t("terms_must_be_accepted"),
-      }),
-      data_privacy: z.boolean().refine((val) => val === true, {
-        message: t("data_privacy_must_be_accepted"),
-      }),
+      terms: z.boolean().refine((val) => val === true),
+      data_privacy: z.boolean().refine((val) => val === true),
       receive_offers: z.boolean().optional(),
     })
     .refine(
@@ -179,7 +173,7 @@ const AccountProfileForm: FC<Props> = ({ userProfile }) => {
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-          <div className="grid grid-cols-2 gap-10">
+          <div className="grid sm:grid-cols-2 grid-cols-1 gap-10">
             <FormItem>
               <FormLabel className="font-bold">{t("email")}</FormLabel>
               <div className="flex-1">

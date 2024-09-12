@@ -340,10 +340,10 @@ const WishlistItem: FC<Props> = ({ item }): JSX.Element => {
                   }` as any
                 }
                 target="_blank"
-                className="w-full text-white bg-background flex items-center justify-center rounded-sm gap-2 px-4"
+                className="w-full text-white bg-background flex items-center justify-center rounded-sm gap-2 px-4 h-10"
               >
                 {t("view_product")}
-                <SquareArrowOutUpRightIcon className="w-4 h-4" />
+                <SquareArrowOutUpRightIcon className="w-4 h-4 shrink-0" />
               </Link>
             </div>
           </form>

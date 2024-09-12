@@ -219,7 +219,7 @@
     "scent": "Scent",
     "update": "Update",
     "remove": "Remove from wishlist",
-    "view_product": "View product",
+    "view_product": "View",
     "no_change_fail": "Nothing to update",
     "no_change_fail_desc": "Please change at least one field before submitting.",
     "add_to_cart": "Add to cart"

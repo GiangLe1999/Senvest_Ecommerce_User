@@ -155,7 +155,7 @@ const AddUpdateAddressForm: FC<Props> = ({ initialAddress }) => {
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-          <div className="grid grid-cols-2 gap-x-10 gap-y-8">
+          <div className="grid sm:grid-cols-2 grid-cols-1 gap-x-10 gap-y-8">
             <FormField
               control={form.control}
               name="alias"

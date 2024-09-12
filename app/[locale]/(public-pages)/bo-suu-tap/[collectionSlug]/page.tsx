@@ -5,7 +5,7 @@ import {
   getNewArrivalsProducts,
   getSaleProducts,
 } from "@/queries/products.queries";
-import { NextPage } from "next";
+import { Metadata, NextPage } from "next";
 import { unstable_setRequestLocale } from "next-intl/server";
 
 interface Props {
@@ -13,6 +13,84 @@ interface Props {
     locale: string;
     collectionSlug: string;
   };
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const isVi = params.locale === "vi";
+  const isNewArrivals = params.collectionSlug === "san-pham-moi";
+  const isBestSelling = params.collectionSlug === "ban-chay";
+  const isSales = params.collectionSlug === "khuyen-mai";
+
+  if (isVi) {
+    return {
+      title: isNewArrivals
+        ? "Sản phẩm mới | Kindle Hope Candles"
+        : isBestSelling
+        ? "Sản phẩm bán chạy | Kindle Hope Candles"
+        : isSales
+        ? "Sản phẩm khuyến mãi | Kindle Hope Candles"
+        : "Tất cả sản phẩm | Kindle Hope Candles",
+      description: isNewArrivals
+        ? "Khám phá các loại nến thơm mới nhất vừa ra mắt tại Kindle Hope Candles."
+        : isBestSelling
+        ? "Xem các loại nến thơm bán chạy nhất tại Kindle Hope Candles được nhiều khách hàng yêu thích."
+        : isSales
+        ? "Tận hưởng các ưu đãi đặc biệt với các sản phẩm nến thơm đang khuyến mãi tại Kindle Hope Candles."
+        : "Xem toàn bộ bộ sưu tập nến thơm độc đáo tại Kindle Hope Candles.",
+      alternates: {
+        canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/${params.locale}/reset-password`,
+      },
+    };
+  } else {
+    return {
+      title: isNewArrivals
+        ? "New Arrivals | Kindle Hope Candles"
+        : isBestSelling
+        ? "Best Sellers | Kindle Hope Candles"
+        : isSales
+        ? "Special Offers | Kindle Hope Candles"
+        : "All Products",
+      description: isNewArrivals
+        ? "Discover the latest scented candles just released at Kindle Hope Candles."
+        : isBestSelling
+        ? "Explore the top-selling scented candles loved by customers at Kindle Hope Candles."
+        : isSales
+        ? "Enjoy exclusive deals on discounted scented candles at Kindle Hope Candles."
+        : "Browse the entire collection of unique scented candles at Kindle Hope Candles.",
+      alternates: {
+        canonical: isVi
+          ? `${process.env.NEXT_PUBLIC_BASE_URL}/vi/bo-suu-tap/${params.collectionSlug}`
+          : `${process.env.NEXT_PUBLIC_BASE_URL}/en/collections/${
+              params.collectionSlug === "san-pham-moi"
+                ? "new-releases"
+                : params.collectionSlug === "ban-chay"
+                ? "best-sellers"
+                : params.collectionSlug === "khuyen-mai"
+                ? "sale"
+                : "all"
+            }`,
+      },
+    };
+  }
+}
+
+export async function generateStaticParams() {
+  const locales = ["vi", "en"];
+  const collections = [
+    { slug: "san-pham-moi" },
+    { slug: "ban-chay" },
+    { slug: "khuyen-mai" },
+    { slug: "tat-ca" },
+  ];
+
+  const params = locales.flatMap((locale) =>
+    collections.map((collection) => ({
+      locale,
+      collectionSlug: collection.slug,
+    }))
+  );
+
+  return params;
 }
 
 const CollectionPage: NextPage<Props> = async ({

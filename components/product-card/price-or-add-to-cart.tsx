@@ -20,7 +20,10 @@ const PriceOrAddToCart: FC<Props> = ({
 }): JSX.Element => {
   return (
     <div
-      className={cn("relative w-full", isProductListPage && "overflow-hidden")}
+      className={cn(
+        "relative w-full overflow-hidden",
+        isProductListPage && "overflow-hidden"
+      )}
     >
       <div
         className={cn(

@@ -1,5 +1,4 @@
 import UpdateAddressPageContent from "@/components/pages/update-address-page/update-address-page-content";
-import { UserAddress } from "@/entities/user-address.entity";
 import { getUserAddress } from "@/queries/user-addresses.queries";
 import { Metadata, NextPage } from "next";
 import { unstable_setRequestLocale } from "next-intl/server";
@@ -29,15 +28,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       }`,
     },
   };
-}
-
-export async function generateStaticParams({ params }: Props) {
-  const { data } = await getUserAddress(params.id);
-
-  return data.map((address: UserAddress) => ({
-    id: address._id,
-    locale: params.locale,
-  }));
 }
 
 const UpdateAddressPage: NextPage<Props> = async ({
