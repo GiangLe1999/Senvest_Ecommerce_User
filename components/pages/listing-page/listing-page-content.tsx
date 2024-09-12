@@ -96,6 +96,11 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
   const [productsCount, setProductsCount] = useState(0);
 
   useEffect(() => {
+    // Reset page to 1 when a filter changes
+    setPage(1);
+  }, [filterScent, filterStock, filterSales, range, sort]);
+
+  useEffect(() => {
     let filteredProducts = [...category?.products!];
 
     // Apply scent filter
@@ -309,6 +314,8 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
             filterSales={filterSales}
             setFilterSales={setFilterSales}
             productsCount={productsCount}
+            // Pagination
+            setPage={setPage}
           />
         </div>
 
@@ -356,6 +363,8 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
                 filterSales={filterSales}
                 setFilterSales={setFilterSales}
                 productsCount={productsCount}
+                // Pagination
+                setPage={setPage}
               />
             </DialogContent>
           </Dialog>

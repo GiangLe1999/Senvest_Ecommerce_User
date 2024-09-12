@@ -38,6 +38,7 @@ interface Props {
   filterSales: string;
   setFilterSales: React.Dispatch<React.SetStateAction<string>>;
   productsCount: number;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const Filters: FC<Props> = ({
@@ -59,12 +60,14 @@ const Filters: FC<Props> = ({
   salesCount,
   atFullPriceCount,
   productsCount,
+  setPage,
 }): JSX.Element => {
   const resetFilter = () => {
     setRange([lowestPrice, highestPrice]);
     setFilterStock("");
     setFilterScent("");
     setFilterSales("");
+    setPage(1);
   };
 
   return (
