@@ -75,22 +75,31 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  const collectionsSlugs = [
+  const viCollectionsSlugs = [
     { slug: "san-pham-moi" },
     { slug: "ban-chay" },
     { slug: "khuyen-mai" },
     { slug: "tat-ca" },
+  ];
+
+  const enCollectionsSlugs = [
     { slug: "new-releases" },
     { slug: "best-sellers" },
     { slug: "sale" },
     { slug: "all" },
   ];
 
-  const params = collectionsSlugs.map((collection) => ({
-    categorySlug: collection.slug,
-  })) as { locale: string; categorySlug: string }[];
+  const viParams = viCollectionsSlugs.map((collection) => ({
+    locale: "vi",
+    collectionSlug: collection.slug,
+  })) as { locale: string; collectionSlug: string }[];
 
-  return params;
+  const enParams = enCollectionsSlugs.map((collection) => ({
+    locale: "en",
+    collectionSlug: collection.slug,
+  })) as { locale: string; collectionSlug: string }[];
+
+  return [...viParams, ...enParams];
 }
 
 const CollectionPage: NextPage<Props> = async ({
