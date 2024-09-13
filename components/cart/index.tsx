@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/drawer";
 import { FC } from "react";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import useFromStore from "@/hooks/useFromStore";
 import { useCartStore } from "@/stores/useCartStore";
 import TotalCalculation from "./total-calculation";
@@ -21,15 +21,12 @@ import CartItem from "./cart-item";
 import { Separator } from "../ui/separator";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 import Empty from "../empty";
-import { useRouter } from "@/configs/i18n-navigation";
 
 interface Props {}
 
 export const Cart: FC<Props> = () => {
   const cartState = useFromStore(useCartStore, (state) => state);
   const t = useTranslations("cart");
-  const router = useRouter();
-  const isVi = useLocale() === "vi";
 
   return (
     <Drawer>
@@ -66,19 +63,7 @@ export const Cart: FC<Props> = () => {
                     <Empty />
                   ) : (
                     cartState?.cart?.map((item) => (
-                      // <DrawerClose
-                      //   onClick={() =>
-                      //     router.push(
-                      //       `/san-pham/${
-                      //         isVi ? item?.slug?.vi : item?.slug?.en
-                      //       }` as any
-                      //     )
-                      //   }
-                      //   key={item.variant_id}
-                      //   className="w-full mb-4"
-                      // >
                       <CartItem cartItem={item} t={t} key={item.variant_id} />
-                      // </DrawerClose>
                     ))
                   )}
                 </tbody>
