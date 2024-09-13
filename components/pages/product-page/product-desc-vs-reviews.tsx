@@ -32,10 +32,10 @@ const ProductDescVsReviews: FC<Props> = ({
 }): JSX.Element => {
   return (
     <div className="relative">
-      <div className="flex items-center bg-white rounded-[40px] text-xl font-bold absolute -top-10 left-1/2 -translate-x-1/2 w-fit shadow-[0px_10px_20px_0px_rgba(0,0,0,0.1)]">
+      <div className="flex items-center bg-white rounded-[40px] lg:text-xl sm:text-lg text-base font-bold absolute -top-10 left-1/2 -translate-x-1/2 w-max shadow-[0px_10px_20px_0px_rgba(0,0,0,0.1)]">
         <button
           className={cn(
-            "py-[18px] px-[50px] transition rounded-l-[40px]",
+            "py-[18px] lg:px-[50px] px-[30px] transition rounded-l-[40px]",
             shownContent === "desc"
               ? "bg-secondary text-primary"
               : "hover:bg-secondary/50 hover:text-primary"
@@ -46,7 +46,7 @@ const ProductDescVsReviews: FC<Props> = ({
         </button>
         <button
           className={cn(
-            "py-[18px] px-[50px] transition rounded-r-[40px]",
+            "py-[18px] lg:px-[50px] px-[30px] transition rounded-r-[40px]",
             shownContent === "reviews"
               ? "bg-secondary text-primary"
               : "hover:bg-secondary/50 hover:text-primary"
@@ -57,7 +57,7 @@ const ProductDescVsReviews: FC<Props> = ({
         </button>
       </div>
 
-      <div className="pt-24 pb-20">
+      <div className="pt-24 sm:pb-20 pb-10">
         {shownContent === "desc" ? (
           <ProductDesc t={t} isVi={isVi} description={description} />
         ) : (

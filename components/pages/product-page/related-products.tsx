@@ -44,7 +44,7 @@ const RelatedProducts: FC<Props> = ({
           }}
           className="mt-10"
         >
-          <CarouselContent className="w-[24.5%] pl-0 ml-4">
+          <CarouselContent className="lg:w-[24.5%] sm:w-[32.7%] w-[48%] pl-0 ml-4">
             {data?.products?.map((product: Product, index: number) => (
               <CarouselItem key={index}>
                 <ProductCard product={product} isProductListPage />

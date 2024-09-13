@@ -45,8 +45,8 @@ const ProductPageContent: FC<Props> = ({ product }): JSX.Element => {
           ]}
         />
 
-        <div className="flex gap-10 mt-12">
-          <div className="w-[40%] relative">
+        <div className="lg:flex gap-10 mt-12">
+          <div className="lg:w-[40%] w-full relative">
             {/* Sales badge */}
             {isDiscounted(activeVariant) && (
               <SalesBadge activeVariant={activeVariant} />
@@ -57,7 +57,7 @@ const ProductPageContent: FC<Props> = ({ product }): JSX.Element => {
             />
           </div>
 
-          <div className="flex-1">
+          <div className="flex-1 lg:mt-0 mt-10">
             <ProductMainInfo
               t={t}
               isVi={isVi}
@@ -88,7 +88,7 @@ const ProductPageContent: FC<Props> = ({ product }): JSX.Element => {
         </SmallSectionContainer>
       </div>
 
-      <div className="mt-20">
+      <div className="sm:mt-20 mt-10">
         <SmallSectionContainer>
           <RelatedProducts
             product_id={product._id}

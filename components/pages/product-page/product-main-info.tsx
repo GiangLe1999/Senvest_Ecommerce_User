@@ -84,12 +84,12 @@ const ProductMainInfo: FC<Props> = ({
     <div>
       <div className="space-y-3">
         {/* Name */}
-        <h1 className="text-4xl font-bold capitalize line-clamp-2">
+        <h1 className="lg:text-4xl text-3xl font-bold capitalize line-clamp-2">
           {isVi ? product.name.vi : product.name.en}
         </h1>
 
         {/* Reviews */}
-        <div className="flex items-center gap-6 text-sm text-muted">
+        <div className="flex flex-wrap items-center sm:gap-6 gap-2 text-sm text-muted">
           <Rating value={parseFloat(product.rating)} readonly={true} />
           <div className="h-4 bg-border w-[1px]"></div>
           <button
@@ -159,7 +159,7 @@ const ProductMainInfo: FC<Props> = ({
         />
 
         {/* Cart Buttons */}
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-4">
           <ChangeProductQuantity
             cartItem={
               cart?.find(
@@ -181,26 +181,28 @@ const ProductMainInfo: FC<Props> = ({
             }
             isDetailPage
           />
-          <Button
-            size="lg"
-            className="hover:bg-primary"
-            onClick={() => router.push("/gio-hang")}
-          >
-            <ShoppingCartIcon className="w-5 h-5 mr-2" /> {t("check_cart")}
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            className="text-white"
-            onClick={goToCheckout}
-          >
-            <CreditCardIcon className="w-5 h-5 mr-2" /> {t("buy_now")}
-          </Button>
+          <div className="flex flex-wrap items-center gap-4">
+            <Button
+              size="lg"
+              className="hover:bg-primary"
+              onClick={() => router.push("/gio-hang")}
+            >
+              <ShoppingCartIcon className="w-5 h-5 mr-2" /> {t("check_cart")}
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              className="text-white"
+              onClick={goToCheckout}
+            >
+              <CreditCardIcon className="w-5 h-5 mr-2" /> {t("buy_now")}
+            </Button>
+          </div>
         </div>
 
         <div className="bg-border !mt-7 !mb-5 w-full h-[0.5px]"></div>
 
-        <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-muted">
+        <div className="grid sm:grid-cols-2 grid-cols-1 gap-x-6 gap-y-3 text-muted">
           <div className="flex items-center gap-4">
             <span className="uppercase">{t("available")}: </span>{" "}
             <span className="font-bold">

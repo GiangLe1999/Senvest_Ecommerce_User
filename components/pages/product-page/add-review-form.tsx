@@ -199,7 +199,7 @@ const AddReviewForm: FC<Props> = ({
               )}
             />
 
-            <div className="grid grid-cols-3 gap-8">
+            <div className="grid sm:grid-cols-3 grid-cols-1 sm:gap-8 gap-4">
               <FormField
                 control={form.control}
                 name="variant"

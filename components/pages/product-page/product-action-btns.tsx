@@ -113,39 +113,41 @@ const ProductActionBtns: FC<Props> = ({
 
   return (
     <>
-      <div className="flex items-center !my-6 text-sm">
+      <div className="flex flex-wrap items-center !my-6 text-sm">
         <button
           type="button"
-          className="flex items-center gap-2 pr-6 border-r hover:text-primary transition-colors"
+          className="flex items-center sm:gap-2 gap-[3px] sm:pr-6 pr-2 border-r hover:text-primary transition-colors sm:text-base text-sm"
           onClick={addToWishlistHandler}
         >
           {addToWishlistLoading ? (
-            <Loader2Icon className="w-4 h-4 animate-spin" />
+            <Loader2Icon className="sm:w-4 sm:h-4 h-3 w-3 animate-spin" />
           ) : (
-            <HeartIcon className="w-4 h-4" />
+            <HeartIcon className="sm:w-4 sm:h-4 h-3 w-3" />
           )}
           {t("wishlist")}
         </button>
         <button
           type="button"
-          className="flex items-center gap-2 px-6 border-r hover:text-primary transition-colors"
+          className="flex items-center sm:gap-2 gap-[3px] sm:px-6 px-2 border-r hover:text-primary transition-colors sm:text-base text-sm"
           onClick={addToCompareHandler}
         >
-          <ChartColumnIncreasingIcon className="w-4 h-4" /> {t("compare")}
+          <ChartColumnIncreasingIcon className="sm:w-4 sm:h-4 h-3 w-3" />{" "}
+          {t("compare")}
         </button>
         <button
           type="button"
           onClick={() => setShowAskQuestion(true)}
-          className="flex items-center gap-2 px-6 border-r hover:text-primary transition-colors"
+          className="flex items-center sm:gap-2 gap-[3px] sm:px-6 px-2 border-r hover:text-primary transition-colors sm:text-base text-sm"
         >
-          <CircleHelpIcon className="w-4 h-4" /> {t("ask_question")}
+          <CircleHelpIcon className="sm:w-4 sm:h-4 h-3 w-3" />{" "}
+          {t("ask_question")}
         </button>
         <button
           type="button"
           onClick={() => setShowShare(true)}
-          className="flex items-center gap-2 px-6 hover:text-primary transition-colors"
+          className="flex items-center sm:gap-2 gap-[3px] sm:px-6 px-2 hover:text-primary transition-colors sm:text-base text-sm"
         >
-          <Share2 className="w-4 h-4" /> {t("share")}
+          <Share2 className="sm:w-4 sm:h-4 h-3 w-3" /> {t("share")}
         </button>
       </div>
 

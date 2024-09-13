@@ -30,8 +30,8 @@ const ReviewCard: FC<Props> = ({ review }): JSX.Element => {
   const initial = review.name.charAt(0).toUpperCase();
 
   return (
-    <div className="py-6 flex gap-10 border-b">
-      <div className="w-[30%] flex items-start gap-4">
+    <div className="py-6 sm:flex gap-10 border-b">
+      <div className="sm:w-[30%] w-full flex items-start gap-4">
         <div
           className="relative w-12 aspect-square rounded-md flex items-center justify-center"
           style={{ backgroundColor: avatarColor }}
@@ -51,7 +51,7 @@ const ReviewCard: FC<Props> = ({ review }): JSX.Element => {
         </div>
       </div>
 
-      <div className="flex-1">
+      <div className="flex-1 sm:mt-0 mt-4">
         <div className="flex items-center gap-2 mb-3">
           <div className="-mt-1">
             <Rating readonly value={review.rating} />

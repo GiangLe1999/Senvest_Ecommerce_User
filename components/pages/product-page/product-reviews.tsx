@@ -64,7 +64,7 @@ const ProductReviews: FC<Props> = ({
   return (
     <div>
       <section id="reviews">
-        <div className="grid grid-cols-3 mt-4 mb-20">
+        <div className="grid sm:grid-cols-3 grid-cols-2 mt-4 mb-20">
           <div className="pr-8 border-r">
             <h2 className="text-lg font-bold mb-1">{t("total_reviews")}</h2>
             <span className="text-2xl font-bold">{nums_of_reviews}</span>
@@ -83,7 +83,7 @@ const ProductReviews: FC<Props> = ({
             </p>
           </div>
 
-          <div className="px-8">
+          <div className="sm:px-8 px-0 sm:mt-0 mt-10 sm:col-span-1 col-span-2">
             {overviewData?.map((item) => (
               <div key={item.rating} className="flex items-center mb-2">
                 <DefaultStar className="w-3 h-3 mr-2" />
