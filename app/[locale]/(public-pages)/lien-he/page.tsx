@@ -1,13 +1,31 @@
 import ContactPageContent from "@/components/pages/contact-page/contact-page-content";
 import { authOptions } from "@/lib/auth";
 import { getUserPayments } from "@/queries/user-payment.queries";
-import { NextPage } from "next";
+import { Metadata, NextPage } from "next";
 import { getServerSession } from "next-auth";
 import { unstable_setRequestLocale } from "next-intl/server";
 
 interface Props {
   params: {
     locale: string;
+  };
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const isVi = params.locale === "vi";
+
+  return {
+    title: isVi
+      ? "Liên hệ | Kindle Hope Candles"
+      : "Contact Us | Kindle Hope Candles",
+    description: isVi
+      ? "Liên hệ với chúng tôi để được hỗ trợ. Chúng tôi luôn sẵn sàng giúp đỡ bạn!"
+      : "Reach out for any inquiries or support. We're here to assist you!",
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_APP_URL}/${params.locale}/${
+        isVi ? "lien-he" : "contact"
+      }`,
+    },
   };
 }
 

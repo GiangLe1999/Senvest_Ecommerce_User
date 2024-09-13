@@ -28,7 +28,7 @@ const CartItem: FC<Props> = ({ cartItem, t, isCartPage }): JSX.Element => {
 
   return (
     <tr className="mb-4">
-      <td className="w-[13%] min-w-[100px] pt-5">
+      <td className="min-w-[100px] pt-5">
         <div className="border rounded-sm">
           <div className="w-full aspect-square rounded-sm relative">
             <Image
@@ -43,7 +43,7 @@ const CartItem: FC<Props> = ({ cartItem, t, isCartPage }): JSX.Element => {
         </div>
       </td>
 
-      <td className="px-4 w-[42%] min-w-[300px] pt-5">
+      <td className="px-4 min-w-[300px] pt-5">
         <div className="space-y-2 text-left">
           <p className="font-bold text-sm">
             {isVi ? cartItem?.name?.vi : cartItem?.name?.en}
@@ -59,11 +59,11 @@ const CartItem: FC<Props> = ({ cartItem, t, isCartPage }): JSX.Element => {
         </div>
       </td>
 
-      <td className="w-[20%] min-w-[130px] pt-5">
+      <td className="min-w-[130px] pt-5">
         <ChangeProductQuantity cartItem={cartItem} />
       </td>
 
-      <td className="w-[15%] min-w-[115px] pt-5">
+      <td className="min-w-[115px] pt-5">
         <p className="line-clamp-1 text-center">
           <span className="font-bold">
             {formatCurrencyVND(
@@ -74,7 +74,7 @@ const CartItem: FC<Props> = ({ cartItem, t, isCartPage }): JSX.Element => {
         </p>
       </td>
 
-      <td className="w-[10%] min-w-[120px] pt-5">
+      <td className="min-w-[120px] pt-5">
         {isCartPage ? (
           <div className="flex items-center justify-center gap-2">
             <TooltipProvider delayDuration={0}>

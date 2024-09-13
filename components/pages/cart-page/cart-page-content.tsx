@@ -32,23 +32,23 @@ const CartPageContent: FC<Props> = (props): JSX.Element => {
             <table className="w-full">
               <thead>
                 <tr className="border-b">
-                  <th className="w-[13%] min-w-[100px] text-primary text-center font-bold text-sm pb-3">
+                  <th className="min-w-[100px] text-primary text-center font-bold text-sm pb-3">
                     {t("image")}
                   </th>
 
-                  <th className="px-4 w-[42%] min-w-[300px] text-primary text-center font-bold text-sm flex items-center pb-3">
+                  <th className="px-4 min-w-[300px] text-primary text-center font-bold text-sm flex items-center pb-3">
                     {t("details")}
                   </th>
 
-                  <th className="w-[20%] min-w-[130px] text-primary ml-5 font-bold text-sm pb-3">
+                  <th className="min-w-[130px] text-primary ml-5 font-bold text-sm pb-3">
                     {t("quantity")}
                   </th>
 
-                  <th className="w-[15%] min-w-[115px] -ml-3 text-primary font-bold text-sm pb-3">
+                  <th className="min-w-[115px] -ml-3 text-primary font-bold text-sm pb-3">
                     {t("total_price")}
                   </th>
 
-                  <th className="w-[10%] min-w-[120px] text-primary font-bold text-sm pb-3">
+                  <th className="min-w-[120px] text-primary font-bold text-sm pb-3">
                     {t("actions")}
                   </th>
                 </tr>

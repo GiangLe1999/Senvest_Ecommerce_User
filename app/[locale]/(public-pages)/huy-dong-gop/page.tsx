@@ -1,7 +1,7 @@
 import { cancelDonationLink } from "@/actions/donation.actions";
 import CancelDonation from "@/components/pages/cancel-donation-page/cancel-donation";
 import { redirect } from "@/configs/i18n-navigation";
-import { NextPage } from "next";
+import { Metadata, NextPage } from "next";
 import { unstable_setRequestLocale } from "next-intl/server";
 
 interface Props {
@@ -11,6 +11,19 @@ interface Props {
   searchParams: {
     orderCode: string;
     status: string;
+  };
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const isVi = params.locale === "vi";
+
+  return {
+    title: isVi
+      ? "Hủy đóng góp | Kindle Hope Candles"
+      : "Cancel Donation | Kindle Hope Candles",
+    description: isVi
+      ? "Bạn đã hủy đóng góp, hy vọng sẽ đồng hành cùng bạn trong các dự án cộng đồng sắp tới."
+      : "You have canceled your donation. We hope to collaborate with you in future community projects.",
   };
 }
 

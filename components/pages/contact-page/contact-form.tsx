@@ -120,7 +120,7 @@ const ContactForm: FC<Props> = ({ session, payments }): JSX.Element => {
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 mt-5">
-          <div className="grid grid-cols-2 gap-y-4 gap-x-5">
+          <div className="grid sm:grid-cols-2 grid-cols-1 gap-y-4 gap-x-5">
             <FormField
               control={form.control}
               name="name"

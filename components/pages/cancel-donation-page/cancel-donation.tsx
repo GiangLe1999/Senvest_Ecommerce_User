@@ -12,11 +12,13 @@ const CancelDonation: FC<Props> = (): JSX.Element => {
   return (
     <SmallSectionContainer>
       <main className="mt-12 text-center">
-        <h1 className="flex items-center gap-3 font-bold text-red-600 text-4xl mb-4 justify-center">
-          <CircleAlertIcon className="w-8 h-8" /> {t("heading")}
+        <h1 className="flex items-center gap-3 font-bold text-red-600 lg:text-4xl text-2xl mb-4 justify-center">
+          <CircleAlertIcon className="lg:w-8 lg:h-8 w-6 h-6" /> {t("heading")}
         </h1>
-        <h2 className="text-xl font-bold mb-4">{t("sub_heading")}</h2>
-        <ul className="text-muted space-y-2 mb-7">
+        <h2 className="lg:text-xl text-base font-bold mb-4">
+          {t("sub_heading")}
+        </h2>
+        <ul className="text-muted space-y-2 mb-7 lg:text-base text-sm">
           <li>{t("item_1")}</li>
           <li>{t("item_2")}</li>
           <li>{t("item_3")} </li>

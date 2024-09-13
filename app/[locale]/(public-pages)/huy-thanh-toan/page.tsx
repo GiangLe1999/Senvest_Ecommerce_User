@@ -1,7 +1,7 @@
 import { cancelPaymentLink } from "@/actions/payment.actions";
 import CancelPayment from "@/components/pages/cancel-payment-page/cancel-payment";
 import { redirect } from "@/configs/i18n-navigation";
-import { NextPage } from "next";
+import { Metadata, NextPage } from "next";
 import { unstable_setRequestLocale } from "next-intl/server";
 
 interface Props {
@@ -11,6 +11,19 @@ interface Props {
   searchParams: {
     orderCode: string;
     status: string;
+  };
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const isVi = params.locale === "vi";
+
+  return {
+    title: isVi
+      ? "Hủy thanh toán đơn hàng | Kindle Hope Candles"
+      : "Cancel Order Payment | Kindle Hope Candles",
+    description: isVi
+      ? "Bạn đã hủy thanh toán đơn hàng, hy vọng sẽ sớm được phục vụ bạn trong lần tới."
+      : "You have canceled your order payment. We hope to serve you again soon.",
   };
 }
 
