@@ -56,7 +56,12 @@ const ChangeProductQuantity: FC<Props> = ({
   };
 
   return (
-    <div className="flex items-center justify-center">
+    <div
+      className={cn(
+        "flex items-center",
+        isDetailPage ? "justify-start" : "justify-center"
+      )}
+    >
       <button
         onClick={(e) => decreaseQuantity(e)}
         className={cn(

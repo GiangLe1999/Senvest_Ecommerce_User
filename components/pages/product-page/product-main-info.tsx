@@ -159,7 +159,7 @@ const ProductMainInfo: FC<Props> = ({
         />
 
         {/* Cart Buttons */}
-        <div className="flex flex-wrap items-center gap-4">
+        <div className="sm:flex flex-wrap items-center gap-4">
           <ChangeProductQuantity
             cartItem={
               cart?.find(
@@ -181,7 +181,7 @@ const ProductMainInfo: FC<Props> = ({
             }
             isDetailPage
           />
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap items-center gap-4 sm:mt-0 mt-4">
             <Button
               size="lg"
               className="hover:bg-primary"

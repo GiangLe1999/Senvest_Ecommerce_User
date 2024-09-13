@@ -537,7 +537,12 @@
     "heading": "So sánh sản phẩm",
     "add_item": "Thêm sản phẩm vào so sánh",
     "remove": "Xóa khỏi so sánh",
-    "add_to_cart": "Thêm vào giỏ hàng"
+    "add_to_cart": "Thêm vào giỏ hàng",
+    "details": "Chi tiết",
+    "scent": "Hương thơm",
+    "stock": "Tồn kho",
+    "products": "Sản phẩm",
+    "rating": "Đánh giá"
   },
   "share_socials_dialog": {
     "share_product": "Chia sẻ sản phẩm này",

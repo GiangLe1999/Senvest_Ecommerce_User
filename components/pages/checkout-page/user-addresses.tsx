@@ -67,7 +67,7 @@ const UserAddresses: FC<Props> = ({
                     <RadioGroup
                       onValueChange={field.onChange}
                       defaultValue={field.value}
-                      className="grid grid-cols-2 gap-x-6 gap-y-4"
+                      className="grid sm:grid-cols-2 grid-cols-1 gap-x-6 gap-y-4"
                     >
                       {userAdddresses.map((address, index) => (
                         <FormItem
@@ -80,7 +80,7 @@ const UserAddresses: FC<Props> = ({
                               className="shrink-0 absolute top-6 right-4"
                             />
                           </FormControl>
-                          <FormLabel className="leading-5">
+                          <FormLabel className="leading-5 w-full">
                             <AccountAddress
                               address={address}
                               order={index + 1}

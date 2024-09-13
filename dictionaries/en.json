@@ -537,7 +537,12 @@
     "heading": "Products comparison",
     "add_item": "Add product to comparison",
     "remove": "Remove from comparison",
-    "add_to_cart": "Add to cart"
+    "add_to_cart": "Add to cart",
+    "details": "Details",
+    "scent": "Scent",
+    "stock": "Stock",
+    "products": "products",
+    "rating": "Rating"
   },
   "share_socials_dialog": {
     "share_product": "Share this product",

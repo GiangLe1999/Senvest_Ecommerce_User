@@ -38,7 +38,7 @@ const CheckoutPageContent: FC<Props> = ({
         ]}
       />
 
-      <div className="grid grid-cols-12 gap-10">
+      <div className="lg:grid grid-cols-12 gap-10">
         <div className="col-span-8">
           {content === "adddress" ? (
             <ChooseAddress
@@ -63,7 +63,7 @@ const CheckoutPageContent: FC<Props> = ({
           )}
         </div>
 
-        <div className="col-span-4">
+        <div className="col-span-4 lg:mt-0 mt-10">
           <CheckoutItems
             cart={cart}
             totalItems={totalItems}

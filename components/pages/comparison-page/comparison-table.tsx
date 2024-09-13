@@ -55,7 +55,9 @@ const ComparisonTable: FC<Props> = (props): JSX.Element => {
           <table>
             <tbody>
               <tr>
-                <th className="border w-[130px] min-w-[130px]">Details</th>
+                <th className="border w-[130px] min-w-[130px]">
+                  {t("details")}
+                </th>
                 {compareState?.items?.map((item) => {
                   const activeVariantPrice: any = {
                     price: item.price,
@@ -131,7 +133,7 @@ const ComparisonTable: FC<Props> = (props): JSX.Element => {
                 })}
               </tr>
               <tr>
-                <th className="border w-[130px] min-w-[130px]">Scent</th>
+                <th className="border w-[130px] min-w-[130px]">{t("scent")}</th>
                 {compareState?.items?.map((item) => {
                   return (
                     <td
@@ -144,20 +146,24 @@ const ComparisonTable: FC<Props> = (props): JSX.Element => {
                 })}
               </tr>
               <tr>
-                <th className="border w-[130px] min-w-[130px]">Stock</th>
+                <th className="border w-[130px] min-w-[130px]">{t("stock")}</th>
                 {compareState?.items?.map((item) => {
                   return (
                     <td
                       className="border min-w-[300px] w-[300px]"
                       key={item._id}
                     >
-                      <p className="p-4 text-center">{item.stock} products</p>
+                      <p className="p-4 text-center">
+                        {item.stock} {t("products")}
+                      </p>
                     </td>
                   );
                 })}
               </tr>
               <tr>
-                <th className="border w-[130px] min-w-[130px]">Rating</th>
+                <th className="border w-[130px] min-w-[130px]">
+                  {t("rating")}
+                </th>
                 {compareState?.items?.map((item) => {
                   return (
                     <td
