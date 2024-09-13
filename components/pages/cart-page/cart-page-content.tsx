@@ -11,6 +11,7 @@ import SmallSectionContainer from "@/components/small-section-container";
 import CustomBreadcrumb from "@/components/custom-breadcrumb";
 import CartItem from "@/components/cart/cart-item";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import CartTableHeader from "@/components/cart/cart-table-header";
 
 interface Props {}
 
@@ -30,29 +31,7 @@ const CartPageContent: FC<Props> = (props): JSX.Element => {
         ) : (
           <ScrollArea className="xl:flex-1 w-full mt-5 h-fit pb-6">
             <table className="w-full">
-              <thead>
-                <tr className="border-b">
-                  <th className="min-w-[100px] text-primary text-center font-bold text-sm pb-3">
-                    {t("image")}
-                  </th>
-
-                  <th className="px-4 min-w-[300px] text-primary text-center font-bold text-sm flex items-center pb-3">
-                    {t("details")}
-                  </th>
-
-                  <th className="min-w-[130px] text-primary ml-5 font-bold text-sm pb-3">
-                    {t("quantity")}
-                  </th>
-
-                  <th className="min-w-[115px] -ml-3 text-primary font-bold text-sm pb-3">
-                    {t("total_price")}
-                  </th>
-
-                  <th className="min-w-[120px] text-primary font-bold text-sm pb-3">
-                    {t("actions")}
-                  </th>
-                </tr>
-              </thead>
+              <CartTableHeader />
 
               <tbody>
                 {cartState?.cart?.map((item) => (

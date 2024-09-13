@@ -21,6 +21,7 @@ import CartItem from "./cart-item";
 import { Separator } from "../ui/separator";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 import Empty from "../empty";
+import CartTableHeader from "./cart-table-header";
 
 interface Props {}
 
@@ -55,9 +56,10 @@ export const Cart: FC<Props> = () => {
               </DrawerDescription>
             </DrawerHeader>
             <ScrollArea className="px-5 h-[280px]">
-              <Separator className="mb-5" />
+              <Separator className="mb-3" />
 
               <table className="w-full">
+                <CartTableHeader />
                 <tbody>
                   {cartState?.cart?.length === 0 ? (
                     <Empty />
