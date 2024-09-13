@@ -31,6 +31,7 @@ const VideoDialog: FC<Props> = (props): JSX.Element => {
           <button
             type="button"
             className="w-20 h-20 rounded-full text-white grid place-items-center bg-primary opacity-80"
+            aria-label="Play video"
           >
             <PlayIcon className="w-8 h-8" />
           </button>

@@ -109,6 +109,7 @@ const ActionButtons: FC<Props> = ({
               e.stopPropagation();
               addToCartHandler();
             }}
+            aria-label="Add to cart"
           >
             <ShoppingCartIcon className="w-3 h-3" />
           </TooltipTrigger>
@@ -132,6 +133,7 @@ const ActionButtons: FC<Props> = ({
               e.stopPropagation();
               setOpenQuickView(true);
             }}
+            aria-label="Quick view"
           >
             <SquareArrowOutUpRightIcon className="w-3 h-3" />
           </TooltipTrigger>
@@ -154,6 +156,7 @@ const ActionButtons: FC<Props> = ({
               e.stopPropagation();
               addToCompareHandler();
             }}
+            aria-label="Compare"
           >
             <ChartColumnDecreasingIcon className="w-3 h-3" />
           </TooltipTrigger>
@@ -177,6 +180,7 @@ const ActionButtons: FC<Props> = ({
               addToWishlistHandler();
             }}
             disabled={addToWishlistLoading}
+            aria-label="Add to Wishlist"
           >
             {addToWishlistLoading ? (
               <Loader2Icon className="w-3 h-3 animate-spin" />
