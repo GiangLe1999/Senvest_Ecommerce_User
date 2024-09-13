@@ -19,7 +19,7 @@ import { useCartStore } from "@/stores/useCartStore";
 import TotalCalculation from "./total-calculation";
 import CartItem from "./cart-item";
 import { Separator } from "../ui/separator";
-import { ScrollArea } from "../ui/scroll-area";
+import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 import Empty from "../empty";
 import { useRouter } from "@/configs/i18n-navigation";
 
@@ -43,10 +43,15 @@ export const Cart: FC<Props> = () => {
       </DrawerTrigger>
 
       <DrawerContent>
-        <div className="flex">
+        <div className="sm:flex">
           <div className="flex-1">
-            <DrawerHeader className="p-5">
+            <DrawerHeader className="p-5 relative">
               <DrawerTitle>{t("your_cart")}</DrawerTitle>
+              <DrawerClose className="sm:hidden block absolute right-4 top-4">
+                <div className="bg-red-500 text-white w-5 h-5 rounded-full grid place-items-center text-xs">
+                  X
+                </div>
+              </DrawerClose>
               <DrawerDescription>
                 {t("there_are")} {cartState?.totalItems}{" "}
                 {t("items_in_your_cart")}.
@@ -55,29 +60,34 @@ export const Cart: FC<Props> = () => {
             <ScrollArea className="px-5 h-[280px]">
               <Separator className="mb-5" />
 
-              {cartState?.cart?.length === 0 ? (
-                <Empty />
-              ) : (
-                cartState?.cart?.map((item) => (
-                  <DrawerClose
-                    onClick={() =>
-                      router.push(
-                        `/san-pham/${
-                          isVi ? item?.slug?.vi : item?.slug?.en
-                        }` as any
-                      )
-                    }
-                    key={item.variant_id}
-                    className="w-full mb-4"
-                  >
-                    <CartItem cartItem={item} t={t} />
-                  </DrawerClose>
-                ))
-              )}
+              <table className="w-full">
+                <tbody>
+                  {cartState?.cart?.length === 0 ? (
+                    <Empty />
+                  ) : (
+                    cartState?.cart?.map((item) => (
+                      // <DrawerClose
+                      //   onClick={() =>
+                      //     router.push(
+                      //       `/san-pham/${
+                      //         isVi ? item?.slug?.vi : item?.slug?.en
+                      //       }` as any
+                      //     )
+                      //   }
+                      //   key={item.variant_id}
+                      //   className="w-full mb-4"
+                      // >
+                      <CartItem cartItem={item} t={t} key={item.variant_id} />
+                      // </DrawerClose>
+                    ))
+                  )}
+                </tbody>
+              </table>
+              <ScrollBar orientation="horizontal" />
             </ScrollArea>
           </div>
 
-          <div className="w-[30%] bg-[#F5F5F6]">
+          <div className="sm:w-[30%] w-full bg-[#F5F5F6]">
             <TotalCalculation
               totalPrice={cartState?.totalPrice || 0}
               t={t}

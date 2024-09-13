@@ -4,7 +4,6 @@ import { useLocale } from "next-intl";
 import Image from "next/image";
 import { FC } from "react";
 import { formatCurrencyVND } from "@/lib/utils";
-import { Button } from "../ui/button";
 import { useCartStore } from "@/stores/useCartStore";
 import { Link } from "@/configs/i18n-navigation";
 import {
@@ -75,58 +74,45 @@ const CartItem: FC<Props> = ({ cartItem, t, isCartPage }): JSX.Element => {
       </td>
 
       <td className="min-w-[120px] pt-5">
-        {isCartPage ? (
-          <div className="flex items-center justify-center gap-2">
-            <TooltipProvider delayDuration={0}>
-              <Tooltip>
-                <TooltipTrigger
-                  className="bg-red-500 h-8 w-8 grid place-items-center text-white"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    if (cartItem) removeFromCart(cartItem);
-                  }}
-                >
-                  <Trash2Icon className="w-4 h-4" />
-                </TooltipTrigger>
-                <TooltipContent align="center" className="bg-black">
-                  <p>{t("remove")}</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
+        <div className="flex items-center justify-center gap-2">
+          <TooltipProvider delayDuration={0}>
+            <Tooltip>
+              <TooltipTrigger
+                className="bg-red-500 h-8 w-8 grid place-items-center text-white"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (cartItem) removeFromCart(cartItem);
+                }}
+              >
+                <Trash2Icon className="w-4 h-4" />
+              </TooltipTrigger>
+              <TooltipContent align="center" className="bg-black">
+                <p>{t("remove")}</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
 
-            <TooltipProvider delayDuration={0}>
-              <Tooltip>
-                <TooltipTrigger>
-                  <Link
-                    href={
-                      `/san-pham/${
-                        isVi ? cartItem?.slug?.vi : cartItem?.slug?.en
-                      }` as any
-                    }
-                    className="bg-background w-8 h-8 grid place-items-center text-white rounded-sm"
-                    target="_blank"
-                  >
-                    <SquareArrowOutUpRightIcon className="w-4 h-4" />
-                  </Link>
-                </TooltipTrigger>
-                <TooltipContent align="center" className="bg-black">
-                  <p>{t("see_details")}</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          </div>
-        ) : (
-          <Button
-            className="bg-red-500 h-8"
-            variant="destructive"
-            onClick={(e) => {
-              e.stopPropagation();
-              if (cartItem) removeFromCart(cartItem);
-            }}
-          >
-            <Trash2Icon className="w-3 h-3 mr-1" /> {t("remove")}
-          </Button>
-        )}
+          <TooltipProvider delayDuration={0}>
+            <Tooltip>
+              <TooltipTrigger>
+                <Link
+                  href={
+                    `/san-pham/${
+                      isVi ? cartItem?.slug?.vi : cartItem?.slug?.en
+                    }` as any
+                  }
+                  className="bg-background w-8 h-8 grid place-items-center text-white rounded-sm"
+                  target="_blank"
+                >
+                  <SquareArrowOutUpRightIcon className="w-4 h-4" />
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent align="center" className="bg-black">
+                <p>{t("see_details")}</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </div>
       </td>
     </tr>
   );
