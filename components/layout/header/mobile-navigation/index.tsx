@@ -42,7 +42,10 @@ const MobileNavigation: FC<Props> = ({ session }): JSX.Element => {
 
   return (
     <Sheet>
-      <SheetTrigger className="h-full flex items-center justify-start">
+      <SheetTrigger
+        className="h-full flex items-center justify-start"
+        aria-label="Open mobile navigation"
+      >
         <AlignLeft className="w-6 h-6" />
       </SheetTrigger>
       <SheetContent side="left" className="bg-white flex flex-col pr-0 pb-0">

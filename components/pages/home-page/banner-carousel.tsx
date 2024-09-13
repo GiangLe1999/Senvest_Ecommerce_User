@@ -65,7 +65,7 @@ const BannerCarousel: FC<Props> = ({ banners }): JSX.Element => {
               <Button>
                 <Link className="flex items-center" href={banner.image as any}>
                   {t("button")}
-                  <MoveRightIcon className="w-3 h-3 ml-2" />
+                  <MoveRightIcon className="w-3 h-3 ml-1" />
                 </Link>
               </Button>
             </div>

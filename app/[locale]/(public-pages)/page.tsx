@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ? "Nến thơm thân thiện môi trường mang lại sự ấm áp và góp phần cho các hoạt động từ thiện. Thắp nến, lan tỏa hy vọng."
       : "Fragrant eco-friendly candles that warm your home while supporting charitable causes. Light a candle, spread hope.",
     alternates: {
-      canonical: process.env.NEXT_PUBLIC_APP_URL,
+      canonical: `${process.env.NEXT_PUBLIC_APP_URL}/${params.locale}`,
     },
     openGraph: {
       images: "",

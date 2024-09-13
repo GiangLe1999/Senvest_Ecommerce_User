@@ -48,7 +48,7 @@ const SearchItem: FC<Props> = (props): JSX.Element => {
   return (
     <div className="h-full flex items-center hover:text-primary transition-colors px-2 font-bold text-sm">
       <Popover>
-        <PopoverTrigger>
+        <PopoverTrigger aria-label="Search menu">
           <SearchIcon className="sm:w-5 sm:h-5 w-4 h-4" />
         </PopoverTrigger>
         <PopoverContent align="end" className="w-[350px]">

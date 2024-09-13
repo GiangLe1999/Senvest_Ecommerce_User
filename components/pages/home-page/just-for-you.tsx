@@ -40,7 +40,7 @@ const JustForYou: FC<Props> = (props): JSX.Element => {
             <Button>
               <Link className="flex items-center" href="/">
                 {t("discovery")}
-                <MoveRightIcon className="w-3 h-3 ml-2" />
+                <MoveRightIcon className="w-3 h-3 ml-1" />
               </Link>
             </Button>
 

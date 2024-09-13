@@ -4,7 +4,7 @@ import { useParams } from "next/navigation";
 import { FC, useTransition } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/configs/i18n-navigation";
-import { ChevronDown } from "lucide-react";
+import { ChevronDownIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 import {
@@ -57,7 +57,7 @@ const LanguageSwitcher: FC<Props> = ({ productSlugsMapping }): JSX.Element => {
         <HybridTooltip>
           <HybridTooltipTrigger className="w-fit h-full ml-auto text-white text-xs uppercase flex items-center cursor-pointer">
             {locale === "vi" ? "Tiếng Việt" : "English"}
-            <ChevronDown className="h-3 w-3 ml-1" />
+            <ChevronDownIcon className="h-3 w-3 ml-1" />
           </HybridTooltipTrigger>
           <HybridTooltipContent align="end" className="p-0">
             <ul className="text-muted text-xs w-fit">

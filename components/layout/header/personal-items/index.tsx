@@ -36,7 +36,10 @@ const PersonalItems: FC<Props> = ({ session, wishlistLength }): JSX.Element => {
       <TooltipProvider>
         <TouchProvider>
           <HybridTooltip>
-            <HybridTooltipTrigger className="h-full flex items-center hover:text-primary transition-colors px-2 font-bold text-sm">
+            <HybridTooltipTrigger
+              className="h-full flex items-center hover:text-primary transition-colors px-2 font-bold text-sm"
+              aria-label="Account menu"
+            >
               <User
                 className="sm:w-5 sm:h-5 w-4 h-4"
                 onClick={(e) => router.push("/tai-khoan")}
