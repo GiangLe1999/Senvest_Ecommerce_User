@@ -139,3 +139,10 @@
 #price-range.range-slider {
   @apply bg-secondary;
 }
+
+svg {
+  image-rendering: optimizeQuality; /* Ensure high-quality rendering */
+  image-rendering: -webkit-optimize-contrast; /* For WebKit browsers (Safari, Chrome) */
+  image-rendering: crisp-edges; /* Force crisp edges */
+  image-rendering: pixelated; /* Additional option to avoid blurriness */
+}
