@@ -59,7 +59,7 @@ const LanguageSwitcher: FC<Props> = ({ productSlugsMapping }): JSX.Element => {
             {locale === "vi" ? "Tiếng Việt" : "English"}
             <ChevronDownIcon className="h-3 w-3 ml-1" />
           </HybridTooltipTrigger>
-          <HybridTooltipContent align="end" className="p-0">
+          <HybridTooltipContent align="end" className="p-0 z-[101]">
             <ul className="text-muted text-xs w-fit">
               <li
                 className={cn(
