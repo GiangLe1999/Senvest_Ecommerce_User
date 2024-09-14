@@ -255,7 +255,7 @@ const MissionPageContent: FC<Props> = ({ articles }): JSX.Element => {
       </div>
 
       <SmallSectionContainer className="mt-16">
-        <div className="rounded-lg bg-white shadow-md border-t border-[#eeeeee] pb-8">
+        <div className="rounded-lg bg-white shadow border-t border-[#eeeeee] pb-8">
           <div className="relative w-full aspect-[2.7]">
             <Image
               src="/mission-page/banner-5.jpg"
