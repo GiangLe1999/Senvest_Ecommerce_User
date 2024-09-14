@@ -59,7 +59,7 @@ const BannerCarousel: FC<Props> = ({ banners }): JSX.Element => {
               <p className="font-grey_qo text-primary lg:text-5xl sm:text-3xl text-2xl lg:mb-6 mb-2">
                 {isVi ? banner.line_1.vi : banner.line_1.en}
               </p>
-              <div className="lg:text-5xl sm:text-3xl text-2xl lg:mb-4 mb-2 max-w-[400px]">
+              <div className="lg:text-5xl sm:text-3xl text-2xl lg:mb-4 mb-2 sm:max-w-[400px] max-w-[80%]">
                 {isVi ? banner.line_2.vi : banner.line_2.en}
               </div>
               <p className="text-muted lg:mb-6 mb-4 lg:text-base text-sm sm:max-w-none max-w-[60%]">
