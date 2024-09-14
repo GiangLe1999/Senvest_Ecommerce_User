@@ -11,8 +11,8 @@ import {
 } from "@/components/ui/carousel";
 import { Banner } from "@/entities/banner.entity";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
-import { Link } from "@/configs/i18n-navigation";
+import { useLocale } from "next-intl";
+import { Link, useRouter } from "@/configs/i18n-navigation";
 import { MoveRightIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -21,7 +21,8 @@ interface Props {
 }
 
 const BannerCarousel: FC<Props> = ({ banners }): JSX.Element => {
-  const t = useTranslations("home_page.banner_carousel");
+  const isVi = useLocale() === "vi";
+  const router = useRouter();
 
   return (
     <Carousel
@@ -39,7 +40,8 @@ const BannerCarousel: FC<Props> = ({ banners }): JSX.Element => {
         {banners?.map((banner, index) => (
           <CarouselItem
             key={index}
-            className="relative w-full aspect-[2.32] group"
+            className="relative w-full aspect-[2.32] group cursor-pointer"
+            onClick={() => router.push(banner.link as any)}
           >
             <Image
               key={index}
@@ -55,18 +57,17 @@ const BannerCarousel: FC<Props> = ({ banners }): JSX.Element => {
 
             <div className="absolute xl:top-[25%] sm:top-[20%] top-[8%] lg:left-[12.5%] left-[8%]">
               <p className="font-grey_qo text-primary lg:text-5xl sm:text-3xl text-2xl lg:mb-6 mb-2">
-                {t("sub_heading")}
+                {isVi ? banner.line_1.vi : banner.line_1.en}
               </p>
-              <div className="lg:text-5xl sm:text-3xl text-2xl lg:mb-4 mb-2">
-                {t("heading_line_1")} <br />
-                {t("heading_line_2")}
+              <div className="lg:text-5xl sm:text-3xl text-2xl lg:mb-4 mb-2 max-w-[400px]">
+                {isVi ? banner.line_2.vi : banner.line_2.en}
               </div>
               <p className="text-muted lg:mb-6 mb-4 lg:text-base text-sm sm:max-w-none max-w-[60%]">
-                {t("description")}
+                {isVi ? banner.line_3.vi : banner.line_3.en}
               </p>
               <Button className="sm:block hidden">
-                <Link className="flex items-center" href={banner.image as any}>
-                  {t("button")}
+                <Link className="flex items-center" href={banner.link as any}>
+                  {isVi ? banner.button_text.vi : banner.button_text.en}
                   <MoveRightIcon className="w-3 h-3 ml-1" />
                 </Link>
               </Button>
