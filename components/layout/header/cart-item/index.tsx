@@ -27,7 +27,7 @@ const CartItem: FC<Props> = (props): JSX.Element => {
   const router = useRouter();
 
   return (
-    <div onClick={(e) => router.push("/gio-hang")}>
+    <div>
       <TooltipProvider>
         <TouchProvider>
           <HybridTooltip>
@@ -35,7 +35,10 @@ const CartItem: FC<Props> = (props): JSX.Element => {
               className="h-full flex items-center hover:text-primary transition-colors px-2 font-bold text-sm"
               aria-label="Cart menu"
             >
-              <div className="relative">
+              <div
+                className="relative"
+                onClick={(e) => router.push("/gio-hang")}
+              >
                 <ShoppingBagIcon className="sm:w-5 sm:h-5 w-4 h-4" />
                 <div className="bg-primary w-4 h-4 grid place-items-center leading-none text-[10px] rounded-full text-white absolute -top-2 -right-1">
                   {cartState?.totalItems || 0}

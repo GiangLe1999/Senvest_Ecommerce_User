@@ -343,7 +343,12 @@
     "subscribe_description": "Hãy đăng ký và nhận ngay 10% giảm giá cho đơn hàng đầu tiên của bạn!",
     "subscribe_rule": "Vui lòng nhập địa chỉ email hợp lệ.",
     "email": "Địa chỉ email của bạn",
-    "copyright": "Bản quyền © 2024 Kindle Hope Candles. Bảo Lưu Mọi Quyền."
+    "copyright": "Bản quyền © 2024 Kindle Hope Candles. Bảo Lưu Mọi Quyền.",
+    "success": "Đăng ký thành công",
+    "success_desc": "Bạn sẽ sớm nhận được bản tin của chúng tôi.",
+    "fail": "Đăng ký không thành công",
+    "fail_desc_1": "Bạn đã đăng ký trước đó rồi.",
+    "fail_desc_2": "Chúng tôi sẽ giải quyết vấn đề này sớm nhất có thể."
   },
   "product_card": {
     "sales": "Giảm giá",

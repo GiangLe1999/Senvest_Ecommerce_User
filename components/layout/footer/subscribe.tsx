@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import CustomLoadingButton from "@/components/custom-loading-button";
+import { createSubscriber } from "@/actions/subscriber.actions";
 
 interface Props {}
 
@@ -40,28 +41,23 @@ const Subscribe: FC<Props> = (props): JSX.Element => {
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
       setLoading(true);
-      // const res = await registerNewAccount({
-      //   name: data.name,
-      //   email: data.email,
-      //   password: data.password,
-      // });
+      const res = await createSubscriber(data.email);
 
-      // if (res.ok) {
-      //   setLoading(false);
-      //   toast.success(t("success"), {
-      //     description: t("success_desc"),
-      //   });
-      //   setCurrentEmail(data.email);
-      //   setActiveForm("verification");
-      // } else {
-      //   setLoading(false);
-      //   return toast.error(t("fail_1"), {
-      //     description: t("fail_1_desc"),
-      //   });
-      // }
+      if (res.ok) {
+        setLoading(false);
+        toast.success(t("success"), {
+          description: t("success_desc"),
+        });
+        return form.reset();
+      } else {
+        setLoading(false);
+        return toast.error(t("fail"), {
+          description: t("fail_desc_1"),
+        });
+      }
     } catch (error) {
       setLoading(false);
-      return toast.error(t("fail_2"), {
+      return toast.error(t("fail"), {
         description: t("fail_2_desc"),
       });
     }

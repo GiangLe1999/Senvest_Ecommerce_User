@@ -27,7 +27,7 @@ const CartPageContent: FC<Props> = (props): JSX.Element => {
 
       <div className="xl:flex xl:gap-10">
         {cartState?.cart?.length === 0 ? (
-          <Empty />
+          <Empty className="flex-1 !justify-start xl:mt-16 mt-0" />
         ) : (
           <ScrollArea className="xl:flex-1 w-full mt-5 h-fit pb-6">
             <table className="w-full">

@@ -343,7 +343,12 @@
     "subscribe_description": "Get on the list and get 10% off your first order!",
     "subscribe_rule": "Please enter a valid email address.",
     "email": "Your email address",
-    "copyright": "Copyright © 2024 Kindle Hope Candles. All Rights Reserved"
+    "copyright": "Copyright © 2024 Kindle Hope Candles. All Rights Reserved",
+    "success": "Subscribe successfully",
+    "success_desc": "You will receive our newsletter shortly.",
+    "fail": "Failed to subscribe",
+    "fail_desc_1": "You have subscribed to our newsletter.",
+    "fail_desc_2": "We will resolve this issue as soon as possible."
   },
   "product_card": {
     "sales": "Sales",
