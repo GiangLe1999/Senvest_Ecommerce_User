@@ -31,7 +31,7 @@ const Header: FC<Props> = async (props): Promise<JSX.Element> => {
     : { wishlistLength: 0 };
 
   return (
-    <header className="border-b sticky top-0 z-[100] bg-white shadow-sm">
+    <header className="border-b fixed top-0 inset-x-0 z-[100] bg-white shadow-sm">
       <div className="bg-primary">
         <SmallSectionContainer className="grid grid-cols-12 h-10 xl:gap-x-0 gap-x-4">
           <div className="xl:col-span-3 hidden xl:block" />

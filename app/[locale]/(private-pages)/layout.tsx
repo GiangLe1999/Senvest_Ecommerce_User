@@ -16,7 +16,7 @@ const PrivatePagesLayout: FC<Props> = async ({
 
   return (
     <>
-      <main className="mt-12">{children}</main>
+      <main className="mt-[176px]">{children}</main>
     </>
   );
 };
