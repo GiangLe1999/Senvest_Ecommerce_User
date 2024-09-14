@@ -13,7 +13,7 @@ const Logo: FC<Props> = (props): JSX.Element => {
         width={75}
         height={56.25}
         priority
-        className="mx-auto xl:"
+        className="mx-auto"
       />
     </Link>
   );

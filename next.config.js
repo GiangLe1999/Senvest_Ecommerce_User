@@ -15,6 +15,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "api.vietqr.io",
       },
+      {
+        protocol: "https",
+        hostname: "blog.kindlehopecandles.com",
+      },
     ],
   },
 };
