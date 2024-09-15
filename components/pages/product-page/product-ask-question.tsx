@@ -27,6 +27,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { createQuestion } from "@/actions/question.actions";
 import { toast } from "sonner";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface Props {
   open: boolean;
@@ -99,123 +100,131 @@ const ProductAskQuestion: FC<Props> = ({
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle className="text-primary mb-1 font-bold">
-            {t("ask_question_about_product")}
-          </DialogTitle>
-          <DialogDescription>
-            {t("ask_question_about_product_desc")}
-          </DialogDescription>
-        </DialogHeader>
+      <DialogContent className="sm:max-w-md mt-[65px] h-[calc(100vh_-_128px)] pr-2">
+        <ScrollArea className="pr-4">
+          <DialogHeader className="mb-4">
+            <DialogTitle className="text-primary mb-1 font-bold">
+              {t("ask_question_about_product")}
+            </DialogTitle>
+            <DialogDescription>
+              {t("ask_question_about_product_desc")}
+            </DialogDescription>
+          </DialogHeader>
 
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="font-bold">
-                    {t("reviewer_name")}
-                    <span className="text-destructive"> *</span>
-                  </FormLabel>
-                  <div className="flex-1">
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="space-y-5 mx-[2px]"
+            >
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-bold">
+                      {t("reviewer_name")}
+                      <span className="text-destructive"> *</span>
+                    </FormLabel>
+                    <div className="flex-1">
+                      <FormControl>
+                        <Input placeholder="John Doe" {...field} />
+                      </FormControl>
+                      {form.formState.errors.name ? (
+                        <FormMessage />
+                      ) : (
+                        <FormDescription className="text-xs">
+                          {t("name_rule")}
+                        </FormDescription>
+                      )}
+                    </div>
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-bold">
+                      Email
+                      <span className="text-destructive"> *</span>
+                    </FormLabel>
+                    <div className="flex-1">
+                      <FormControl>
+                        <Input placeholder={t("email_rule")} {...field} />
+                      </FormControl>
+                      {form.formState.errors.email ? (
+                        <FormMessage />
+                      ) : (
+                        <FormDescription className="text-xs mt-1">
+                          {t("email_rule")}
+                        </FormDescription>
+                      )}
+                    </div>
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="phone"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-bold">
+                      {t("phone")}
+                      <span className="text-destructive"> *</span>
+                    </FormLabel>
+                    <div className="flex-1">
+                      <FormControl>
+                        <Input placeholder={t("phone")} {...field} />
+                      </FormControl>
+
+                      <FormDescription className="text-xs">
+                        {t("phone_optional")}
+                      </FormDescription>
+                    </div>
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="question"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-bold">{t("question")}</FormLabel>
                     <FormControl>
-                      <Input placeholder="John Doe" {...field} />
+                      <Textarea
+                        placeholder={t("question_rule")}
+                        className="resize-none"
+                        rows={4}
+                        {...field}
+                      />
                     </FormControl>
-                    {form.formState.errors.name ? (
+                    {form.formState.errors.question ? (
                       <FormMessage />
                     ) : (
                       <FormDescription className="text-xs">
-                        {t("name_rule")}
+                        {t("question_rule")}
                       </FormDescription>
                     )}
-                  </div>
-                </FormItem>
-              )}
-            />
+                  </FormItem>
+                )}
+              />
 
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="font-bold">
-                    Email
-                    <span className="text-destructive"> *</span>
-                  </FormLabel>
-                  <div className="flex-1">
-                    <FormControl>
-                      <Input placeholder={t("email_rule")} {...field} />
-                    </FormControl>
-                    {form.formState.errors.email ? (
-                      <FormMessage />
-                    ) : (
-                      <FormDescription className="text-xs mt-1">
-                        {t("email_rule")}
-                      </FormDescription>
-                    )}
-                  </div>
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="phone"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="font-bold">{t("phone")}</FormLabel>
-                  <div className="flex-1">
-                    <FormControl>
-                      <Input placeholder={t("phone")} {...field} />
-                    </FormControl>
-
-                    <FormDescription className="text-xs">
-                      {t("phone_optional")}
-                    </FormDescription>
-                  </div>
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="question"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="font-bold">{t("question")}:</FormLabel>
-                  <FormControl>
-                    <Textarea
-                      placeholder={t("question_rule")}
-                      className="resize-none"
-                      rows={4}
-                      {...field}
-                    />
-                  </FormControl>
-                  {form.formState.errors.question ? (
-                    <FormMessage />
-                  ) : (
-                    <FormDescription className="text-xs">
-                      {t("question_rule")}
-                    </FormDescription>
-                  )}
-                </FormItem>
-              )}
-            />
-
-            <DialogFooter className="mt-3">
-              <div className="sm:justify-end">
-                <CustomLoadingButton
-                  loading={loading}
-                  content="Submit"
-                  type="submit"
-                />
-              </div>
-            </DialogFooter>
-          </form>
-        </Form>
+              <DialogFooter className="mt-3">
+                <div className="sm:justify-end">
+                  <CustomLoadingButton
+                    loading={loading}
+                    content="Submit"
+                    type="submit"
+                  />
+                </div>
+              </DialogFooter>
+            </form>
+          </Form>
+        </ScrollArea>
       </DialogContent>
     </Dialog>
   );
