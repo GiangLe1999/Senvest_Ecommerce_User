@@ -100,47 +100,44 @@ const ProductAskQuestion: FC<Props> = ({
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="sm:max-w-md mt-[65px] h-[calc(100vh_-_128px)] pr-2">
-        <ScrollArea className="pr-4">
-          <DialogHeader className="mb-4">
-            <DialogTitle className="text-primary mb-1 font-bold">
-              {t("ask_question_about_product")}
-            </DialogTitle>
-            <DialogDescription>
-              {t("ask_question_about_product_desc")}
-            </DialogDescription>
-          </DialogHeader>
+      <DialogContent className="sm:max-w-xl max-w-[95%] mt-[65px]">
+        <DialogHeader className="mb-4">
+          <DialogTitle className="text-primary mb-1 font-bold">
+            {t("ask_question_about_product")}
+          </DialogTitle>
+          <DialogDescription>
+            {t("ask_question_about_product_desc")}
+          </DialogDescription>
+        </DialogHeader>
 
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="space-y-5 mx-[2px]"
-            >
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="font-bold">
-                      {t("reviewer_name")}
-                      <span className="text-destructive"> *</span>
-                    </FormLabel>
-                    <div className="flex-1">
-                      <FormControl>
-                        <Input placeholder="John Doe" {...field} />
-                      </FormControl>
-                      {form.formState.errors.name ? (
-                        <FormMessage />
-                      ) : (
-                        <FormDescription className="text-xs">
-                          {t("name_rule")}
-                        </FormDescription>
-                      )}
-                    </div>
-                  </FormItem>
-                )}
-              />
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="font-bold">
+                    {t("reviewer_name")}
+                    <span className="text-destructive"> *</span>
+                  </FormLabel>
+                  <div className="flex-1">
+                    <FormControl>
+                      <Input placeholder="John Doe" {...field} />
+                    </FormControl>
+                    {form.formState.errors.name ? (
+                      <FormMessage />
+                    ) : (
+                      <FormDescription className="text-xs">
+                        {t("name_rule")}
+                      </FormDescription>
+                    )}
+                  </div>
+                </FormItem>
+              )}
+            />
 
+            <div className="grid grid-cols-2 gap-4">
               <FormField
                 control={form.control}
                 name="email"
@@ -152,7 +149,7 @@ const ProductAskQuestion: FC<Props> = ({
                     </FormLabel>
                     <div className="flex-1">
                       <FormControl>
-                        <Input placeholder={t("email_rule")} {...field} />
+                        <Input placeholder="Email" {...field} />
                       </FormControl>
                       {form.formState.errors.email ? (
                         <FormMessage />
@@ -187,44 +184,44 @@ const ProductAskQuestion: FC<Props> = ({
                   </FormItem>
                 )}
               />
+            </div>
 
-              <FormField
-                control={form.control}
-                name="question"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="font-bold">{t("question")}</FormLabel>
-                    <FormControl>
-                      <Textarea
-                        placeholder={t("question_rule")}
-                        className="resize-none"
-                        rows={4}
-                        {...field}
-                      />
-                    </FormControl>
-                    {form.formState.errors.question ? (
-                      <FormMessage />
-                    ) : (
-                      <FormDescription className="text-xs">
-                        {t("question_rule")}
-                      </FormDescription>
-                    )}
-                  </FormItem>
-                )}
-              />
+            <FormField
+              control={form.control}
+              name="question"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="font-bold">{t("question")}</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      placeholder={t("question_rule")}
+                      className="resize-none"
+                      rows={4}
+                      {...field}
+                    />
+                  </FormControl>
+                  {form.formState.errors.question ? (
+                    <FormMessage />
+                  ) : (
+                    <FormDescription className="text-xs">
+                      {t("question_rule")}
+                    </FormDescription>
+                  )}
+                </FormItem>
+              )}
+            />
 
-              <DialogFooter className="mt-3">
-                <div className="sm:justify-end">
-                  <CustomLoadingButton
-                    loading={loading}
-                    content="Submit"
-                    type="submit"
-                  />
-                </div>
-              </DialogFooter>
-            </form>
-          </Form>
-        </ScrollArea>
+            <DialogFooter className="mt-3">
+              <div className="sm:justify-end">
+                <CustomLoadingButton
+                  loading={loading}
+                  content="Submit"
+                  type="submit"
+                />
+              </div>
+            </DialogFooter>
+          </form>
+        </Form>
       </DialogContent>
     </Dialog>
   );
