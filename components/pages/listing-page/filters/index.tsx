@@ -15,7 +15,6 @@ import ScentFilter from "./scent-filter";
 import { VariantCount } from "../listing-page-content";
 import SaleFilter from "./sale-filter";
 import { EraserIcon } from "lucide-react";
-import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface Props {
   products?: Product[];
@@ -63,7 +62,7 @@ const Filters: FC<Props> = ({
   resetFilter,
 }): JSX.Element => {
   return (
-    <ScrollArea className="pr-5 h-[80vh] mt-[140px]">
+    <div>
       <h2 className="font-bold text-2xl text-primary mb-2">{t("filters")}</h2>
       <p className="text-sm text-muted mb-6">
         Show {productsCount} results for “{categoryName}”
@@ -142,7 +141,7 @@ const Filters: FC<Props> = ({
           </Button>
         )}
       </div>
-    </ScrollArea>
+    </div>
   );
 };
 

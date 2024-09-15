@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { EraserIcon, SquareArrowOutUpRightIcon } from "lucide-react";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface Props {
   category?: Category;
@@ -362,37 +363,35 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
                 </Button>
               ) : null}
             </div>
-            <DialogContent>
-              <DialogClose className="sm:hidden absolute right-10 top-[160px] bg-red-500 text-white w-6 h-6 rounded-full grid place-items-center text-sm z-[100]">
-                X
-              </DialogClose>
-
-              <Filters
-                categoryName={isVi ? category?.name.vi : category?.name.en}
-                t={t}
-                // Price filter
-                lowestPrice={lowestPrice}
-                highestPrice={highestPrice}
-                range={range}
-                setRange={setRange}
-                // Availability filter
-                inStockCount={inStockCount}
-                outStockCount={outStockCount}
-                filterStock={filterStock}
-                setFilterStock={setFilterStock}
-                // Scent filter
-                variantsCount={variantsCount}
-                filterScent={filterScent}
-                setFilterScent={setFilterScent}
-                // Sales filter
-                salesCount={salesCount}
-                atFullPriceCount={atFullPriceCount}
-                filterSales={filterSales}
-                setFilterSales={setFilterSales}
-                productsCount={productsCount}
-                // Reset filter
-                resetFilter={resetFilter}
-              />
+            <DialogContent className="mt-[65px] h-[calc(100vh_-_128px)]">
+              <ScrollArea className="pr-4">
+                <Filters
+                  categoryName={isVi ? category?.name.vi : category?.name.en}
+                  t={t}
+                  // Price filter
+                  lowestPrice={lowestPrice}
+                  highestPrice={highestPrice}
+                  range={range}
+                  setRange={setRange}
+                  // Availability filter
+                  inStockCount={inStockCount}
+                  outStockCount={outStockCount}
+                  filterStock={filterStock}
+                  setFilterStock={setFilterStock}
+                  // Scent filter
+                  variantsCount={variantsCount}
+                  filterScent={filterScent}
+                  setFilterScent={setFilterScent}
+                  // Sales filter
+                  salesCount={salesCount}
+                  atFullPriceCount={atFullPriceCount}
+                  filterSales={filterSales}
+                  setFilterSales={setFilterSales}
+                  productsCount={productsCount}
+                  // Reset filter
+                  resetFilter={resetFilter}
+                />
+              </ScrollArea>
             </DialogContent>
           </Dialog>
 
