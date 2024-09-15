@@ -40,7 +40,7 @@ export const Cart: FC<Props> = () => {
         </div>
       </DrawerTrigger>
 
-      <DrawerContent>
+      <DrawerContent className="z-[102]">
         <div className="sm:flex">
           <div className="flex-1">
             <DrawerHeader className="p-5 relative">
@@ -58,18 +58,19 @@ export const Cart: FC<Props> = () => {
             <ScrollArea className="px-5 h-[280px]">
               <Separator className="mb-3" />
 
-              <table className="w-full">
-                <CartTableHeader />
-                <tbody>
-                  {cartState?.cart?.length === 0 ? (
-                    <Empty />
-                  ) : (
-                    cartState?.cart?.map((item) => (
+              {cartState?.cart?.length === 0 ? (
+                <Empty />
+              ) : (
+                <table className="w-full">
+                  <CartTableHeader />
+                  <tbody>
+                    {cartState?.cart?.map((item) => (
                       <CartItem cartItem={item} t={t} key={item.variant_id} />
-                    ))
-                  )}
-                </tbody>
-              </table>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+
               <ScrollBar orientation="horizontal" />
             </ScrollArea>
           </div>
