@@ -14,6 +14,7 @@ import { Variant } from "@/entities/variant.entity";
 import { useSearchParams } from "next/navigation";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -341,10 +342,12 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
 
           {/* Mobile Filter */}
           <Dialog>
-            <div className="flex items-center gap-5 mb-6 lg:hidden">
+            <div className="flex items-center flex-wrap gap-5 mb-6 lg:hidden">
               <DialogTrigger asChild>
-                <div className="flex items-center gap-5">
-                  <span className="font-bold">{t("open_filters")}:</span>{" "}
+                <div className="flex flex-wrap items-center gap-5">
+                  <span className="font-bold shrink-0">
+                    {t("open_filters")}:
+                  </span>{" "}
                   <Button variant="secondary">
                     {t("click_to_open")}{" "}
                     <SquareArrowOutUpRightIcon className="w-[14px] h-[14px] ml-2" />
@@ -364,6 +367,10 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
               ) : null}
             </div>
             <DialogContent>
+              <DialogClose className="sm:hidden absolute right-10 top-[160px] bg-red-500 text-white w-6 h-6 rounded-full grid place-items-center text-sm z-[100]">
+                X
+              </DialogClose>
+
               <Filters
                 categoryName={isVi ? category?.name.vi : category?.name.en}
                 t={t}

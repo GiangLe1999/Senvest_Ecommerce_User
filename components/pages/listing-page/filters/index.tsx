@@ -63,7 +63,7 @@ const Filters: FC<Props> = ({
   resetFilter,
 }): JSX.Element => {
   return (
-    <ScrollArea className="h-[80vh] pr-5">
+    <ScrollArea className="pr-5 h-[80vh] mt-[140px]">
       <h2 className="font-bold text-2xl text-primary mb-2">{t("filters")}</h2>
       <p className="text-sm text-muted mb-6">
         Show {productsCount} results for “{categoryName}”

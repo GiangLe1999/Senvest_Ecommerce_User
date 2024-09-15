@@ -51,7 +51,7 @@ const SearchItem: FC<Props> = (props): JSX.Element => {
         <PopoverTrigger aria-label="Search menu">
           <SearchIcon className="sm:w-5 sm:h-5 w-4 h-4" />
         </PopoverTrigger>
-        <PopoverContent align="end" className="w-[350px]">
+        <PopoverContent align="end" className="w-[350px] z-[101]">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
               <div className="flex gap-2">
