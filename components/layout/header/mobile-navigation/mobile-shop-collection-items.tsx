@@ -35,19 +35,19 @@ const MobileShopCollectionItems: FC<Props> = (): JSX.Element => {
         <p className="font-bold">{t("featured")}</p>
         <ul className="text-muted text-[13px] mt-2">
           <li className="py-1 my-1 hover:text-primary transition-colors">
-            <SheetClose>
-              <Link href="/bo-suu-tap/san-pham-moi">{t("new_arrivals")}</Link>
-            </SheetClose>
+            <Link href="/bo-suu-tap/san-pham-moi">
+              <SheetClose>{t("new_arrivals")}</SheetClose>
+            </Link>
           </li>
           <li className="py-1 my-1 hover:text-primary transition-colors">
-            <SheetClose>
-              <Link href="/bo-suu-tap/ban-chay">{t("best_sellers")}</Link>
-            </SheetClose>
+            <Link href="/bo-suu-tap/ban-chay">
+              <SheetClose>{t("best_sellers")}</SheetClose>
+            </Link>
           </li>
           <li className="py-1 my-1 hover:text-primary transition-colors">
-            <SheetClose>
-              <Link href="/bo-suu-tap/khuyen-mai">{t("the_sale_room")}</Link>
-            </SheetClose>
+            <Link href="/bo-suu-tap/khuyen-mai">
+              <SheetClose>{t("the_sale_room")}</SheetClose>
+            </Link>
           </li>
         </ul>
       </div>
@@ -68,17 +68,17 @@ const MobileShopCollectionItems: FC<Props> = (): JSX.Element => {
                 key={category._id}
                 className="py-1 my-1 hover:text-primary transition-colors capitalize"
               >
-                <SheetClose>
-                  <Link
-                    href={
-                      `/danh-muc/${
-                        locale === "en" ? category.slug.en : category.slug.vi
-                      }` as any
-                    }
-                  >
+                <Link
+                  href={
+                    `/danh-muc/${
+                      locale === "en" ? category.slug.en : category.slug.vi
+                    }` as any
+                  }
+                >
+                  <SheetClose>
                     {locale === "en" ? category.name.en : category.name.vi}
-                  </Link>
-                </SheetClose>
+                  </SheetClose>
+                </Link>
               </li>
             ))}
           </ul>

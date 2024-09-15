@@ -1,3 +1,4 @@
+import { SheetClose } from "@/components/ui/sheet";
 import { Link } from "@/configs/i18n-navigation";
 import { useTranslations } from "next-intl";
 import { FC } from "react";
@@ -11,13 +12,19 @@ const MobileMissionItems: FC<Props> = (): JSX.Element => {
     <nav>
       <ul className="text-muted text-[13px] space-y-1">
         <li className="py-1 mb-1 hover:text-primary transition-colors">
-          <Link href="/su-menh">{t("mission_vs_impact")}</Link>
+          <Link href="/su-menh">
+            <SheetClose>{t("mission_vs_impact")}</SheetClose>
+          </Link>
         </li>
         <li className="py-1 my-1 hover:text-primary transition-colors">
-          <Link href="/dong-gop">{t("donate")}</Link>
+          <Link href="/dong-gop">
+            <SheetClose>{t("donate")}</SheetClose>
+          </Link>
         </li>
         <li className="py-1 my-1 hover:text-primary transition-colors">
-          <Link href="/faqs">FAQs</Link>
+          <Link href="/faqs">
+            <SheetClose>FAQs</SheetClose>
+          </Link>
         </li>
       </ul>
     </nav>

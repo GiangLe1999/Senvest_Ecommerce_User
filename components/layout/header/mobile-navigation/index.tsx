@@ -68,14 +68,13 @@ const MobileNavigation: FC<Props> = ({ session }): JSX.Element => {
           <Accordion type="single" collapsible className="mt-6">
             <AccordionItem value="shop">
               <AccordionTrigger className="hover:no-underline hover:text-primary transition font-bold justify-between gap-x-3 py-2.5">
-                <Link
-                  href="/bo-suu-tap/tat-ca"
-                  className="flex items-center gap-x-1"
-                >
-                  <div className="w-8 h-8 grid place-content-center">
-                    <ShoppingCartIcon className="w-4 h-4" />
-                  </div>
-                  {t("shop")}
+                <Link href="/bo-suu-tap/tat-ca">
+                  <SheetClose className="flex items-center gap-x-1">
+                    <div className="w-8 h-8 grid place-content-center">
+                      <ShoppingCartIcon className="w-4 h-4" />
+                    </div>
+                    {t("shop")}
+                  </SheetClose>
                 </Link>
               </AccordionTrigger>
               <AccordionContent className="text-muted pl-2">
@@ -88,14 +87,13 @@ const MobileNavigation: FC<Props> = ({ session }): JSX.Element => {
                 className="hover:no-underline hover:text-primary transition font-bold justify-between gap-x-3 py-2.5"
                 showIcon={false}
               >
-                <Link
-                  href="/bo-suu-tap/san-pham-moi"
-                  className="flex items-center gap-x-1"
-                >
-                  <div className="w-8 h-8 grid place-content-center">
-                    <PackagePlusIcon className="w-4 h-4" />
-                  </div>
-                  {t("new")}
+                <Link href="/bo-suu-tap/san-pham-moi">
+                  <SheetClose className="flex items-center gap-x-1">
+                    <div className="w-8 h-8 grid place-content-center">
+                      <PackagePlusIcon className="w-4 h-4" />
+                    </div>
+                    {t("new")}
+                  </SheetClose>
                 </Link>
               </AccordionTrigger>
             </AccordionItem>
@@ -105,14 +103,13 @@ const MobileNavigation: FC<Props> = ({ session }): JSX.Element => {
                 className="hover:no-underline hover:text-primary transition font-bold justify-between gap-x-3 py-2.5"
                 showIcon={false}
               >
-                <Link
-                  href="/bo-suu-tap/ban-chay"
-                  className="flex items-center gap-x-1"
-                >
-                  <div className="w-8 h-8 grid place-content-center">
-                    <DollarSignIcon className="w-4 h-4" />
-                  </div>
-                  {t("best_sellers")}
+                <Link href="/bo-suu-tap/ban-chay">
+                  <SheetClose className="flex items-center gap-x-1">
+                    <div className="w-8 h-8 grid place-content-center">
+                      <DollarSignIcon className="w-4 h-4" />
+                    </div>
+                    {t("best_sellers")}
+                  </SheetClose>
                 </Link>
               </AccordionTrigger>
             </AccordionItem>
@@ -122,14 +119,13 @@ const MobileNavigation: FC<Props> = ({ session }): JSX.Element => {
                 className="hover:no-underline hover:text-primary transition font-bold justify-between gap-x-3 py-2.5"
                 showIcon={false}
               >
-                <Link
-                  href="/bo-suu-tap/khuyen-mai"
-                  className="flex items-center gap-x-1"
-                >
-                  <div className="w-8 h-8 grid place-content-center">
-                    <TicketPercentIcon className="w-4 h-4" />
-                  </div>
-                  {t("sale")}
+                <Link href="/bo-suu-tap/khuyen-mai">
+                  <SheetClose className="flex items-center gap-x-1">
+                    <div className="w-8 h-8 grid place-content-center">
+                      <TicketPercentIcon className="w-4 h-4" />
+                    </div>
+                    {t("sale")}
+                  </SheetClose>
                 </Link>
               </AccordionTrigger>
             </AccordionItem>
@@ -140,14 +136,13 @@ const MobileNavigation: FC<Props> = ({ session }): JSX.Element => {
                   className="hover:no-underline hover:text-primary transition font-bold justify-between gap-x-3 py-2.5"
                   showIcon={false}
                 >
-                  <Link
-                    href="/tai-khoan/san-pham-yeu-thich"
-                    className="flex items-center gap-x-1"
-                  >
-                    <div className="w-8 h-8 grid place-content-center">
-                      <HeartIcon className="w-4 h-4" />
-                    </div>
-                    {t("wishlist")}
+                  <Link href="/tai-khoan/san-pham-yeu-thich">
+                    <SheetClose className="flex items-center gap-x-1">
+                      <div className="w-8 h-8 grid place-content-center">
+                        <HeartIcon className="w-4 h-4" />
+                      </div>
+                      {t("wishlist")}
+                    </SheetClose>
                   </Link>
                 </AccordionTrigger>
               </AccordionItem>
@@ -155,11 +150,13 @@ const MobileNavigation: FC<Props> = ({ session }): JSX.Element => {
 
             <AccordionItem value="mission">
               <AccordionTrigger className="hover:no-underline hover:text-primary transition font-bold justify-between gap-x-3 py-2.5">
-                <Link href="/su-menh" className="flex items-center gap-x-1">
-                  <div className="w-8 h-8 grid place-content-center">
-                    <HeartHandshakeIcon className="w-4 h-4" />
-                  </div>
-                  {t("mission")}
+                <Link href="/su-menh">
+                  <SheetClose className="flex items-center gap-x-1">
+                    <div className="w-8 h-8 grid place-content-center">
+                      <HeartHandshakeIcon className="w-4 h-4" />
+                    </div>
+                    {t("mission")}
+                  </SheetClose>
                 </Link>
               </AccordionTrigger>
               <AccordionContent className="text-muted pl-2">
@@ -175,12 +172,13 @@ const MobileNavigation: FC<Props> = ({ session }): JSX.Element => {
                 <Link
                   href={"http://blog.kindlehopecandles.com" as any}
                   target="_blank"
-                  className="flex items-center gap-x-1"
                 >
-                  <div className="w-8 h-8 grid place-content-center">
-                    <NewspaperIcon className="w-4 h-4" />
-                  </div>
-                  {t("blogs")}
+                  <SheetClose className="flex items-center gap-x-1">
+                    <div className="w-8 h-8 grid place-content-center">
+                      <NewspaperIcon className="w-4 h-4" />
+                    </div>
+                    {t("blogs")}
+                  </SheetClose>
                 </Link>
               </AccordionTrigger>
             </AccordionItem>

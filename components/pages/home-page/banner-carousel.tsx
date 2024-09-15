@@ -35,6 +35,7 @@ const BannerCarousel: FC<Props> = ({ banners }): JSX.Element => {
           delay: 6000,
         }),
       ]}
+      className="-mt-[48px]"
     >
       <CarouselContent>
         {banners?.map((banner, index) => (

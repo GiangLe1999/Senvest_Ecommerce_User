@@ -71,7 +71,7 @@ export default function RootLayout({
           )}
         >
           <Header />
-          <main className="mt-[128px]">{children}</main>
+          <main className="mt-[176px]">{children}</main>
           <Footer />
           <Cart />
           <NewPaymentNotification />
