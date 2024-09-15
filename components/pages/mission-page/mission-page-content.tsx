@@ -281,7 +281,7 @@ const MissionPageContent: FC<Props> = ({ articles }): JSX.Element => {
 
             <Link href="/">
               <Image
-                src="/logo.svg"
+                src="/logo.png"
                 alt="Kindle Hope Candles Logo"
                 width={100}
                 height={75.19}

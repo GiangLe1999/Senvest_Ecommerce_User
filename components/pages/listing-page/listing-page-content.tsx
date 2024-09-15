@@ -339,13 +339,13 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
 
           {/* Mobile Filter */}
           <Dialog>
-            <div className="flex items-center flex-wrap gap-5 mb-6 lg:hidden">
+            <div className="flex items-center flex-wrap gap-5 mb-6 lg:hidden relative">
               <DialogTrigger asChild>
                 <div className="flex flex-wrap items-center gap-5">
                   <span className="font-bold shrink-0">
                     {t("open_filters")}:
                   </span>{" "}
-                  <Button variant="secondary">
+                  <Button variant="secondary" className="text-base">
                     {t("click_to_open")}{" "}
                     <SquareArrowOutUpRightIcon className="w-[14px] h-[14px] ml-2" />
                   </Button>
@@ -358,13 +358,17 @@ const ListingPageContent: FC<Props> = ({ category }): JSX.Element => {
               sort ||
               range[0] !== lowestPrice ||
               range[1] !== highestPrice ? (
-                <Button variant="destructive" onClick={resetFilter}>
-                  {t("reset_filters")} <EraserIcon className="w-4 h-4 ml-2" />
+                <Button
+                  variant="link"
+                  onClick={resetFilter}
+                  className="px-0 ml-auto underline absolute right-0 top-0"
+                >
+                  {t("reset_filters")}
                 </Button>
               ) : null}
             </div>
-            <DialogContent className="mt-[65px] h-[calc(100vh_-_128px)]">
-              <ScrollArea className="pr-4">
+            <DialogContent className="mt-[85px]">
+              <ScrollArea className="pr-4 h-[calc(100svh_-_128px)]">
                 <Filters
                   categoryName={isVi ? category?.name.vi : category?.name.en}
                   t={t}

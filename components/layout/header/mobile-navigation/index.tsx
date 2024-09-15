@@ -53,7 +53,7 @@ const MobileNavigation: FC<Props> = ({ session }): JSX.Element => {
           <SheetTitle>
             <Link href="/" className="flex items-center w-full">
               <Image
-                src="/logo.svg"
+                src="/logo.png"
                 alt="Kindle Hope Candles Logo"
                 width={75}
                 height={56.25}

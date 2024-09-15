@@ -71,7 +71,7 @@ const ProductReviews: FC<Props> = ({
             <p className="text-muted text-sm mt-2">{t("total_reviews_desc")}</p>
           </div>
 
-          <div className="px-8 border-r">
+          <div className="px-8 sm:border-r">
             <h2 className="text-lg font-bold mb-1">{t("average_rating")}</h2>
             <div className="text-2xl font-bold flex items-center gap-3">
               {rating}

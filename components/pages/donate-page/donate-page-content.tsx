@@ -31,7 +31,7 @@ const DonatePageContent: FC<Props> = (props): JSX.Element => {
           <div className="px-6 py-7">
             <Link href="/" className="flex items-center h-full">
               <Image
-                src="/logo.svg"
+                src="/logo.png"
                 alt="Kindle Hope Candles Logo"
                 width={75}
                 height={56.25}
