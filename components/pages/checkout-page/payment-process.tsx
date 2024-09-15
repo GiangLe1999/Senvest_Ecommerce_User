@@ -20,6 +20,10 @@ interface Props {
   userAddressId: string | undefined;
   totalItems: number;
   totalPrice: number;
+  discountedByCoupon: {
+    code: string;
+    value: number;
+  };
 }
 
 const PaymentProcess: FC<Props> = ({
@@ -31,6 +35,7 @@ const PaymentProcess: FC<Props> = ({
   totalItems,
   totalPrice,
   cart,
+  discountedByCoupon,
 }): JSX.Element => {
   const chosenUserAddress = userAddresses?.find(
     (address) => address._id === userAddressId
@@ -42,9 +47,13 @@ const PaymentProcess: FC<Props> = ({
   const createPaymentLinkHandler = async () => {
     try {
       setLoading(true);
+
+      const isAppliedCoupon =
+        discountedByCoupon.code && discountedByCoupon.value > 0;
+
       const res = await createPaymentLink({
         locale,
-        amount: totalPrice,
+        amount: totalPrice - (isAppliedCoupon ? discountedByCoupon.value : 0),
         description: "TT nen thom KHC",
         cancelUrl: `${process.env.NEXT_PUBLIC_APP_URL}/${locale}/${
           locale === "vi" ? "huy-thanh-toan" : "cancel-payment"
@@ -59,20 +68,23 @@ const PaymentProcess: FC<Props> = ({
           quantity: item.quantity,
           variant_id: item.variant_id,
         })),
+        ...(isAppliedCoupon && {
+          coupon_code: discountedByCoupon.code,
+        }),
       });
       if (res.ok) {
         setLoading(false);
         window.location.href = res.data.checkoutUrl;
       } else {
         setLoading(false);
-        return toast.error("Tạo link thất bại", {
-          description: "Tạo link thất bại",
+        return toast.error(t("create_link_fail"), {
+          description: res.error,
         });
       }
     } catch (error) {
       setLoading(false);
-      return toast.error("Tạo link thất bại", {
-        description: "Tạo link thất bại",
+      return toast.error(t("create_link_fail"), {
+        description: t("create_link_fail_desc"),
       });
     }
   };

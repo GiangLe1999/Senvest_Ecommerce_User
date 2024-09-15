@@ -2,18 +2,31 @@ import { CartProduct } from "@/entities/cart-product.entity";
 import { cn, formatCurrencyVND } from "@/lib/utils";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
-import { FC } from "react";
+import { Dispatch, FC } from "react";
+import CouponInput from "./coupon-input";
 
 interface Props {
   cart: CartProduct[];
   totalItems: number;
   totalPrice: number;
+  discountedByCoupon: {
+    code: string;
+    value: number;
+  };
+  setDiscountedByCoupon: Dispatch<
+    React.SetStateAction<{
+      code: string;
+      value: number;
+    }>
+  >;
 }
 
 const CheckoutItems: FC<Props> = ({
   cart,
   totalItems,
   totalPrice,
+  discountedByCoupon,
+  setDiscountedByCoupon,
 }): JSX.Element => {
   const isVi = useLocale() === "vi";
   const t = useTranslations("cart");
@@ -75,8 +88,13 @@ const CheckoutItems: FC<Props> = ({
         </ul>
       </div>
 
-      <div className="mt-6">
-        <div className="flex items-center justify-between text-xs mb-2">
+      <div className="mt-4">
+        <CouponInput
+          setDiscountedByCoupon={setDiscountedByCoupon}
+          totalPrice={totalPrice}
+        />
+
+        <div className="border-t pt-6 flex items-center justify-between text-xs mb-2 mt-6">
           <span className="text-muted">{t("subtotal")}:</span>
           <span className="font-bold text-sm">
             {formatCurrencyVND(totalPrice || 0)}
@@ -93,10 +111,21 @@ const CheckoutItems: FC<Props> = ({
           <span className="font-bold text-sm">{formatCurrencyVND(0)}</span>
         </div>
 
+        <div className="flex items-center justify-between text-xs mb-2">
+          <span className="text-muted">{t("discount")}:</span>
+          <span className="font-bold text-sm">
+            - {formatCurrencyVND(discountedByCoupon.value)}
+          </span>
+        </div>
+
         <div className="flex items-center justify-between text-xs">
           <span className="text-muted">{t("total")}:</span>
           <span className="font-black text-lg text-primary">
-            {formatCurrencyVND(totalPrice || 0)}
+            {formatCurrencyVND(
+              totalPrice - discountedByCoupon.value > 0
+                ? totalPrice - discountedByCoupon.value
+                : 0 || 0
+            )}
           </span>
         </div>
       </div>

@@ -13,6 +13,7 @@ export const createPaymentLink = async (data: {
   user_address?: string;
   not_user_info?: NotUserInfo;
   items: { _id: string; quantity: number; variant_id: string }[];
+  coupon_code?: string;
 }) => {
   try {
     const res = await axiosInstance.post("payments/create", data);

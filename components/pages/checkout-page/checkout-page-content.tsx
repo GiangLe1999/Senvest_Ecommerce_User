@@ -24,6 +24,11 @@ const CheckoutPageContent: FC<Props> = ({
   const t = useTranslations("checkout_page");
   const { cart, totalItems, totalPrice } = useCartStore((state) => state);
 
+  const [discountedByCoupon, setDiscountedByCoupon] = useState({
+    code: "",
+    value: 0,
+  });
+
   const [content, setContent] = useState<"adddress" | "payment">("adddress");
 
   const [notUserInfo, setNotUserInfo] = useState<NotUserInfo>();
@@ -59,6 +64,7 @@ const CheckoutPageContent: FC<Props> = ({
               totalItems={totalItems}
               totalPrice={totalPrice}
               cart={cart}
+              discountedByCoupon={discountedByCoupon}
             />
           )}
         </div>
@@ -68,6 +74,8 @@ const CheckoutPageContent: FC<Props> = ({
             cart={cart}
             totalItems={totalItems}
             totalPrice={totalPrice}
+            discountedByCoupon={discountedByCoupon}
+            setDiscountedByCoupon={setDiscountedByCoupon}
           />
         </div>
       </div>

@@ -398,7 +398,17 @@
     "packaging": "Bao bì",
     "packaging_desc": "Bao bì hiện đại và thân thiện với môi trường với chất liệu cao cấp",
     "cart_is_empty": "Không thể tới trang Thanh toán.",
-    "cart_is_empty_desc": "Vì giỏ hàng của bạn không có sản phẩm nào."
+    "cart_is_empty_desc": "Vì giỏ hàng của bạn không có sản phẩm nào.",
+    "coupon": "Mã giảm giá (Nếu có)",
+    "coupon_desc": "Nhập mã giảm giá nếu bạn có",
+    "coupon_rule": "Vui lòng nhập mã giảm giá hợp lệ.",
+    "apply": "Áp dụng",
+    "apply_success": "Áp dụng mã giảm giá thành công cho ",
+    "apply_success_desc": "Bạn sẽ được giảm giá ",
+    "apply_fail": "Áp dụng mã giảm giá không thành công",
+    "apply_fail_desc_1": "Mã giảm giá không hợp lệ",
+    "apply_fail_desc_2": "Chúng tôi sẽ giải quyết vấn đề này càng sớm càng tốt.",
+    "discount": "Giảm giá"
   },
   "checkout_page": {
     "breadcrumb_1": "Giỏ hàng",
@@ -422,7 +432,9 @@
     "total_price": "Tổng giá",
     "payment_methods": "Phương thức thanh toán",
     "payment_note": "* Sau khi nhấn “Hoàn tất đơn hàng”, bạn sẽ được chuyển đến PayOS. Thanh toán sau với PayOS để hoàn tất mua hàng của bạn một cách an toàn.",
-    "complete_order": "Hoàn tất đơn hàng"
+    "complete_order": "Hoàn tất đơn hàng",
+    "create_link_fail": "Tạo liên kết thanh toán không thành công",
+    "create_link_fail_desc": "Chúng tôi sẽ giải quyết vấn đề này càng sớm càng tốt."
   },
   "thank_you_page": {
     "heading": "Cảm ơn bạn đã mua sắm!",
