@@ -853,5 +853,23 @@
     "hope_revolution": "Hope Revolution ",
     "today": "Today",
     "sub_heading_2_4": "Together, we can empower women, nurture, children's dreams, and preserve our planet."
+  },
+  "order_history_page": {
+    "account": "Account",
+    "heading": "Order history",
+    "code": "Order code",
+    "date": "Date",
+    "total_price": "Total price",
+    "status": "Status",
+    "invoice": "Invoice",
+    "details": "Details",
+    "re_order": "Re-order",
+    "pending": "Payment Pending",
+    "cancelled": "Payment Cancelled",
+    "paid": "Payment Complete",
+    "reorder_failed": "Failed to re-order",
+    "reorder_failed_desc": "Please try again later.",
+    "reorder_success": "Order re-ordered successfully.",
+    "reorder_success_desc": "Auto redirect to Checkout page to complete payment."
   }
 }

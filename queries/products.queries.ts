@@ -58,6 +58,31 @@ export async function getProductBySlug(slug: string) {
   }
 }
 
+export async function getProductById({
+  _id,
+  variant_id,
+}: {
+  _id: string;
+  variant_id: string;
+}) {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/products/get-by-id/${_id}?variant_id=${variant_id}`,
+      {
+        next: { revalidate: 20 },
+      }
+    );
+
+    if (!res.ok) {
+      console.log("Failed to fetch product by id");
+    }
+
+    return await res.json();
+  } catch (error) {
+    console.log("Failed to fetch product by id");
+  }
+}
+
 export const getNewArrivalsProducts = async () => {
   try {
     const res = await fetch(

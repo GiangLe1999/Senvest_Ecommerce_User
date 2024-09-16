@@ -7,4 +7,7 @@ export interface Payment {
   _id: string;
   orderCode: number;
   status: StatusEnum;
+  amount: number;
+  transactionDateTime: Date;
+  items: any;
 }
