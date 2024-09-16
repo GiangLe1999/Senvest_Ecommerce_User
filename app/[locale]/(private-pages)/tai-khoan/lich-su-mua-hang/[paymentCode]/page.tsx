@@ -10,9 +10,7 @@ interface Props {
   };
 }
 
-export async function generateOrderDetailMetadata({
-  params,
-}: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const isVi = params.locale === "vi";
   const paymentCode = params.paymentCode;
 
