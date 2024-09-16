@@ -1,6 +1,7 @@
 import { Variant } from "@/entities/variant.entity";
 import { type ClassValue, clsx } from "clsx";
-import { add } from "date-fns";
+import { format } from "date-fns";
+import { enUS, vi } from "date-fns/locale";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
@@ -132,4 +133,13 @@ export function replaceFirstFiveCharacters(str: string) {
     return "***";
   }
   return "*****" + str.slice(5);
+}
+
+export function formatDate(
+  fieldValue: string | number | Date,
+  locale: string
+): string {
+  return format(new Date(fieldValue), "dd/MM/yyyy - HH:mm", {
+    locale: locale === "en" ? enUS : vi,
+  });
 }

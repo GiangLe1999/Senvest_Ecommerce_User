@@ -1,7 +1,7 @@
 import { Rating } from "@/components/rating";
 import { Review } from "@/entities/review.entity";
-import { replaceFirstFiveCharacters } from "@/lib/utils";
-import { format } from "date-fns";
+import { formatDate, replaceFirstFiveCharacters } from "@/lib/utils";
+import { useLocale } from "next-intl";
 import React, { FC } from "react";
 
 const avatarBackgroundColors = [
@@ -28,6 +28,7 @@ const getRandomColor = () => {
 const ReviewCard: FC<Props> = ({ review }): JSX.Element => {
   const avatarColor = getRandomColor();
   const initial = review.name.charAt(0).toUpperCase();
+  const locale = useLocale();
 
   return (
     <div className="py-6 sm:flex gap-10 border-b">
@@ -57,7 +58,7 @@ const ReviewCard: FC<Props> = ({ review }): JSX.Element => {
             <Rating readonly value={review.rating} />
           </div>
           <span className="text-sm text-muted">
-            {format(review.createdAt, "dd/MM/yyyy")}
+            {formatDate(review.createdAt, locale)}
           </span>
         </div>
 

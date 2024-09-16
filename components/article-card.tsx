@@ -1,4 +1,5 @@
-import { format } from "date-fns";
+import { formatDate } from "@/lib/utils";
+import { useLocale } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
@@ -8,6 +9,8 @@ interface Props {
 }
 
 const ArticleCard: FC<Props> = ({ article }): JSX.Element => {
+  const locale = useLocale();
+
   return (
     <article>
       <Link href={article.link} target="_blank" rel="noopener noreferrer">
@@ -34,7 +37,7 @@ const ArticleCard: FC<Props> = ({ article }): JSX.Element => {
           </div>
 
           <span className="text-sm text-muted-foreground">
-            {format(new Date(article.date), "MMMM d, yyyy")}
+            {formatDate(article.date, locale)}
           </span>
         </div>
       </Link>

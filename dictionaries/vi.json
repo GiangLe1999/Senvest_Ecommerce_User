@@ -853,5 +853,23 @@
     "hope_revolution": "Cuộc Cách Mạng Hy Vọng ",
     "today": "Hôm Nay",
     "sub_heading_2_4": "Cùng nhau, chúng ta có thể trao quyền cho phụ nữ, nuôi dưỡng ước mơ trẻ em và bảo vệ hành tinh của chúng ta."
+  },
+  "order_history_page": {
+    "account": "Tài khoản",
+    "heading": "Lịch sử đơn hàng",
+    "code": "Mã đơn hàng",
+    "date": "Ngày",
+    "total_price": "Tổng giá trị",
+    "status": "Trạng thái",
+    "invoice": "Hóa đơn",
+    "details": "Chi tiết",
+    "re_order": "Đặt lại",
+    "pending": "Đang chờ thanh toán",
+    "cancelled": "Thanh toán bị hủy",
+    "paid": "Đã thanh toán",
+    "reorder_failed": "Đặt lại thất bại",
+    "reorder_failed_desc": "Vui lòng thử lại sau.",
+    "reorder_success": "Đặt lại đơn hàng thành công.",
+    "reorder_success_desc": "Tự động chuyển hướng đến trang Thanh toán để hoàn tất thanh toán."
   }
 }

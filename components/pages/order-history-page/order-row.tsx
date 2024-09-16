@@ -1,11 +1,15 @@
 import { useLocale } from "next-intl";
 import { FC, useState } from "react";
-import { cn, formatCurrencyVND, getPriceForVariant } from "@/lib/utils";
+import {
+  cn,
+  formatCurrencyVND,
+  formatDate,
+  getPriceForVariant,
+} from "@/lib/utils";
 import { useCartStore } from "@/stores/useCartStore";
 import { Link, useRouter } from "@/configs/i18n-navigation";
 
 import { Payment } from "@/entities/payment.entity";
-import { format } from "date-fns";
 import OrderStatusTag from "./order-status-tag";
 import { Button } from "@/components/ui/button";
 import { ExternalLinkIcon, LoaderIcon, Repeat2Icon } from "lucide-react";
@@ -75,10 +79,7 @@ const OrderRow: FC<Props> = ({ payment, t, isLastRow }): JSX.Element => {
       </td>
 
       <td className="min-w-[230px] text-center py-4">
-        {format(
-          payment?.transactionDateTime || Date.now(),
-          "dd/MM/yyyy - HH:mm"
-        )}
+        {formatDate(payment?.updatedAt, locale)}
       </td>
 
       <td className="min-w-[205px]">
@@ -88,7 +89,9 @@ const OrderRow: FC<Props> = ({ payment, t, isLastRow }): JSX.Element => {
       </td>
 
       <td className="min-w-[240px] text-center py-4">
-        <OrderStatusTag status={payment.status} />
+        <div className="flex items-center justify-center">
+          <OrderStatusTag status={payment.status} />
+        </div>
       </td>
 
       <td className="min-w-[335px] text-center py-4">
@@ -97,7 +100,6 @@ const OrderRow: FC<Props> = ({ payment, t, isLastRow }): JSX.Element => {
             <Link
               href={`/tai-khoan/lich-su-mua-hang/${payment.orderCode}` as any}
               className="font-bold flex items-center gap-1"
-              target="_blank"
             >
               {t("details")}
               <ExternalLinkIcon className="w-[14px] h-[14px]" />

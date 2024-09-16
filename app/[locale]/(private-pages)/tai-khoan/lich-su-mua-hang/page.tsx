@@ -21,8 +21,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       : "Review your purchase history at Kindle Hope Candles. Track orders and check delivery status.",
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_APP_URL}/${params.locale}/${
-        isVi ? "lich-su-mua-hang" : "order-history"
-      }`,
+        isVi ? "tai-khoan" : "account"
+      }/${isVi ? "lich-su-mua-hang" : "order-history"}`,
     },
   };
 }

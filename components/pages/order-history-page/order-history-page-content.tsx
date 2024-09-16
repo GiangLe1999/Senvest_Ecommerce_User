@@ -13,7 +13,9 @@ interface Props {
   payments: Payment[];
 }
 
-const OrderHistoryPageContent: FC<Props> = ({ payments }): JSX.Element => {
+const OrderHistoryDetailPageContent: FC<Props> = ({
+  payments,
+}): JSX.Element => {
   const t = useTranslations("order_history_page");
 
   return (
@@ -21,7 +23,7 @@ const OrderHistoryPageContent: FC<Props> = ({ payments }): JSX.Element => {
       <CustomBreadcrumb
         pages={[
           { name: t("account"), link: "/tai-khoan" },
-          { name: t("heading"), link: "/lich-su-mua-hang" },
+          { name: t("heading"), link: "/tai-khoan/lich-su-mua-hang" },
         ]}
       />
 
@@ -78,4 +80,4 @@ const OrderHistoryPageContent: FC<Props> = ({ payments }): JSX.Element => {
   );
 };
 
-export default OrderHistoryPageContent;
+export default OrderHistoryDetailPageContent;

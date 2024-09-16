@@ -97,6 +97,10 @@ export const pathnames = {
     vi: "/tai-khoan/lich-su-mua-hang",
     en: "/account/order-history",
   },
+  "/tai-khoan/lich-su-mua-hang/[paymentCode]": {
+    vi: "/tai-khoan/lich-su-mua-hang/[paymentCode]",
+    en: "/account/order-history/[paymentCode]",
+  },
   "/tai-khoan/hoa-don-tra-hang": {
     vi: "/tai-khoan/hoa-don-tra-hang",
     en: "/account/credit-slips",

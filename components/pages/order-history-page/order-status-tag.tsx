@@ -25,7 +25,7 @@ const OrderStatusTag: FC<Props> = ({ status }): JSX.Element => {
   return (
     <div
       className={cn(
-        "py-1.5 px-2 rounded-sm shadow-sm w-fit mx-auto font-bold flex items-center gap-1",
+        "py-1.5 px-2 rounded-sm shadow w-fit font-bold flex items-center gap-1",
         statusStyles[status]
       )}
     >
