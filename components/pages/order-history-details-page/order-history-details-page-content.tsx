@@ -89,12 +89,12 @@ const OrderHistoryDetailsPageContent: FC<Props> = ({
 
       <div className="bg-white border shadow-md mt-6 rounded-sm p-6">
         <div className="flex items-center gap-1 justify-between">
-          <h1 className="text-2xl font-bold capitalize mb-3">
+          <h1 className="sm:text-2xl text-xl font-bold capitalize mb-3">
             {t("order_no")} #{payment.orderCode}
           </h1>
 
-          <Button className="text-base" onClick={exportHandler}>
-            <FileDownIcon className="w-[18px] h-[18px] mr-1" />
+          <Button className="sm:text-base text-xs" onClick={exportHandler}>
+            <FileDownIcon className="sm:w-[18px] w-4 sm:h-[18px] h-4 mr-1" />
             Export
           </Button>
         </div>
@@ -103,14 +103,14 @@ const OrderHistoryDetailsPageContent: FC<Props> = ({
           <OrderStatusTag status={payment.status} />
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center flex-wrap gap-4">
           <div className="text-xs">
             <span className="font-bold">{t("created_at")}</span>:{" "}
             <span className="text-muted">
               {formatDate(payment.createdAt, locale)}
             </span>
           </div>
-          <div className="h-4 border-r"></div>
+          <div className="h-4 sm:border-r"></div>
           {payment.transactionDateTime ? (
             <div className="text-xs">
               <span className="font-bold">{t("paid_on")}</span>:{" "}
@@ -129,44 +129,44 @@ const OrderHistoryDetailsPageContent: FC<Props> = ({
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-6 mt-6">
+      <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-6 mt-6">
         <div className="bg-white border shadow-md rounded-sm p-6 pt-4">
           <h2 className="font-bold uppercase mb-6">{t("customer_order")}</h2>
 
           <ul className="space-y-2.5">
-            <li className="flex items-center gap-4 text-sm text-muted">
+            <li className="flex items-center flex-wrap gap-4 text-sm text-muted">
               <div className="w-[40%] font-bold">{t("name")}</div>:
               <span>{customerInfo?.name}</span>
             </li>
 
-            <li className="flex items-center gap-4 text-sm text-muted">
+            <li className="flex items-center flex-wrap gap-4 text-sm text-muted">
               <div className="w-[40%] font-bold">Email</div>:
               <span>{session ? session.user.email : customerInfo?.email}</span>
             </li>
 
-            <li className="flex items-center gap-4 text-sm text-muted">
+            <li className="flex items-center flex-wrap gap-4 text-sm text-muted">
               <div className="w-[40%] font-bold">{t("phone")}</div>:
               <span>{customerInfo?.phone}</span>
             </li>
 
-            <li className="flex items-center gap-4 text-sm text-muted">
+            <li className="flex items-center flex-wrap gap-4 text-sm text-muted">
               <div className="w-[40%] font-bold">{t("payment_terms")}</div>:
               <span>{t("immediate_payment")}</span>
             </li>
 
-            <li className="flex items-center gap-4 text-sm text-muted">
+            <li className="flex items-center flex-wrap gap-4 text-sm text-muted">
               <div className="w-[40%] font-bold">{t("order_code")}</div>:
               <span>#{payment.orderCode}</span>
             </li>
 
             {payment?.coupon_code && (
-              <li className="flex items-center gap-4 text-sm text-muted">
+              <li className="flex items-center flex-wrap gap-4 text-sm text-muted">
                 <div className="w-[40%] font-bold">{t("coupon_code")}</div>:
                 <span>{payment.coupon_code}</span>
               </li>
             )}
 
-            <li className="flex items-center gap-4 text-sm text-muted">
+            <li className="flex items-center flex-wrap gap-4 text-sm text-muted">
               <div className="w-[40%] font-bold">{t("delivery_method")}</div>:
               <span>Kindle Hope Candles</span>
             </li>
@@ -203,7 +203,7 @@ const OrderHistoryDetailsPageContent: FC<Props> = ({
           <table className="w-full">
             <thead>
               <tr className="border-b text-muted bg-[#F9FAFB]">
-                <th className="min-w-[200px] max-w-[250px] text-xs uppercase text-left pl-6 font-bold py-3">
+                <th className="min-w-[300px] max-w-[300px] text-xs uppercase text-left pl-6 font-bold py-3">
                   {t("items_details")}
                 </th>
 
@@ -215,11 +215,11 @@ const OrderHistoryDetailsPageContent: FC<Props> = ({
                   {t("quantity")}
                 </th>
 
-                <th className="min-w-[100px] text-xs uppercase text-right font-bold py-3">
+                <th className="min-w-[150px] text-xs uppercase text-right font-bold py-3">
                   {t("price")}
                 </th>
 
-                <th className="min-w-[100px] text-xs uppercase text-right pr-6 font-bold py-3">
+                <th className="min-w-[150px] text-xs uppercase text-right pr-6 font-bold py-3">
                   {t("total")}
                 </th>
               </tr>

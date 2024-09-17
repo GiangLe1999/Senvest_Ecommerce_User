@@ -67,7 +67,7 @@ const OrderRow: FC<Props> = ({ item, t }): JSX.Element => {
 
   return (
     <tr className="text-sm border-b">
-      <td className="min-w-[200px] max-w-[250px] py-4 pl-6">
+      <td className="min-w-[300px] max-w-[300px] py-4 pl-6">
         <div className="flex items-center gap-5">
           <div className="relative w-[80px] h-[80px] border rounded-sm shrink-0">
             <Image
@@ -96,11 +96,11 @@ const OrderRow: FC<Props> = ({ item, t }): JSX.Element => {
 
       <td className="min-w-[100px] text-center py-4">{item.quantity}</td>
 
-      <td className="min-w-[100px] text-right">
+      <td className="min-w-[150px] text-right">
         {formatCurrencyVND(item.price)}
       </td>
 
-      <td className="min-w-100px] text-right py-4 pr-6 font-bold">
+      <td className="min-w-[150px] text-right py-4 pr-6 font-bold">
         {formatCurrencyVND(item.price * item.quantity)}
       </td>
     </tr>
