@@ -905,5 +905,11 @@
     "shipping_handling": "Shipping & handling",
     "tax_amount": "Tax amount",
     "currency": "Currency"
+  },
+  "404_page": {
+    "heading": "Page not found",
+    "description": "Sorry, we couldn’t find the page you’re looking for.",
+    "go_back_home": "Go back home",
+    "contact_support": "Contact support"
   }
 }
