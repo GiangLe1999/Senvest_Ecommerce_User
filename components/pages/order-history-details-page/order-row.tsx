@@ -83,9 +83,9 @@ const OrderRow: FC<Props> = ({ item, t }): JSX.Element => {
             <h3 className="font-bold mb-1">
               {isVi ? item._id.name.vi : item._id.name.en}
             </h3>
-            <p className="line-clamp-3 text-xs text-muted">
+            <span className="line-clamp-3 text-xs text-muted">
               {parse(isVi ? item._id.description.vi : item._id.description.en)}
-            </p>
+            </span>
           </div>
         </div>
       </td>
@@ -97,13 +97,11 @@ const OrderRow: FC<Props> = ({ item, t }): JSX.Element => {
       <td className="min-w-[100px] text-center py-4">{item.quantity}</td>
 
       <td className="min-w-[100px] text-right">
-        {formatCurrencyVND(item?.price || item.variant_id.price)}
+        {formatCurrencyVND(item.price)}
       </td>
 
       <td className="min-w-100px] text-right py-4 pr-6 font-bold">
-        {formatCurrencyVND(
-          (item?.price || item.variant_id.price) * item.quantity
-        )}
+        {formatCurrencyVND(item.price * item.quantity)}
       </td>
     </tr>
   );

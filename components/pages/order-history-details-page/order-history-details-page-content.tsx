@@ -12,6 +12,7 @@ import { formatCurrencyVND, formatDate } from "@/lib/utils";
 import { FileDownIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useSession } from "next-auth/react";
+import { exportOrderData } from "@/lib/export-order";
 
 interface Props {
   payment: Payment;
@@ -21,13 +22,58 @@ const OrderHistoryDetailsPageContent: FC<Props> = ({
   payment,
 }): JSX.Element => {
   const t = useTranslations("order_history_details_page");
+  const t2 = useTranslations("order_history_page");
   const locale = useLocale();
+  const isVi = locale === "vi";
   const { data: session } = useSession();
 
   const customerInfo = payment.user_address;
+  const subtotal = payment.items.reduce(
+    (acc: number, item: any) => acc + item.price * item.quantity,
+    0
+  );
 
-  console.log(payment.items[0]);
-
+  const exportHandler = async () => {
+    try {
+      exportOrderData({
+        orderNumber: `#${payment.orderCode}`,
+        paymentStatus: t2(payment.status),
+        createdDate: formatDate(payment.createdAt, locale),
+        paidDate:
+          formatDate(payment.transactionDateTime, locale) ||
+          formatDate(payment.updatedAt, locale),
+        customer: {
+          name: customerInfo?.name,
+          email: session?.user?.email || "",
+          phone: customerInfo?.phone,
+          paymentTerms: t("payment_terms"),
+          orderCode: `#${payment.orderCode}`,
+          couponCode: payment?.coupon_code || "",
+          deliveryMethod: "Kindle Hope Candles",
+        },
+        shippingAddress: `${customerInfo.address}, ${customerInfo.city}, ${
+          customerInfo.province
+        }, ${customerInfo.zip} ${t("vietnam")}`,
+        billingAddress: `${customerInfo.address}, ${customerInfo.city}, ${
+          customerInfo.province
+        }, ${customerInfo.zip} ${t("vietnam")}`,
+        items: payment.items.map((item: any) => ({
+          name: isVi ? item._id.name.vi : item._id.name.en,
+          scent: item.variant_id.fragrance,
+          quantity: item.quantity,
+          price: item.price,
+          total: item.price * item.quantity,
+        })),
+        subtotal,
+        discount: payment?.coupon_value || 0,
+        shipping: 0,
+        taxAmount: 0,
+        total: payment.amount,
+      });
+    } catch (error) {
+      console.error("Failed to export user order:", error);
+    }
+  };
   return (
     <SmallSectionContainer className="mt-12">
       <CustomBreadcrumb
@@ -47,7 +93,7 @@ const OrderHistoryDetailsPageContent: FC<Props> = ({
             {t("order_no")} #{payment.orderCode}
           </h1>
 
-          <Button className="text-base">
+          <Button className="text-base" onClick={exportHandler}>
             <FileDownIcon className="w-[18px] h-[18px] mr-1" />
             Export
           </Button>
@@ -189,7 +235,7 @@ const OrderHistoryDetailsPageContent: FC<Props> = ({
                   {t("subtotal")}
                 </td>
                 <td className="text-right font-bold pr-6">
-                  {formatCurrencyVND(payment.amount)}
+                  {formatCurrencyVND(subtotal)}
                 </td>
               </tr>
 

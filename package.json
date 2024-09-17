@@ -29,6 +29,7 @@
     "date-fns": "^3.6.0",
     "embla-carousel-autoplay": "^8.1.8",
     "embla-carousel-react": "^8.1.8",
+    "exceljs": "^4.4.0",
     "html-react-parser": "^5.1.12",
     "input-otp": "^1.2.4",
     "lucide-react": "^0.418.0",
