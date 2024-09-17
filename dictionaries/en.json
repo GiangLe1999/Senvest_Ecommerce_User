@@ -869,7 +869,7 @@
     "paid": "Payment Complete",
     "reorder_failed": "Failed to re-order",
     "reorder_failed_desc": "Please try again later.",
-    "reorder_success": "Order re-ordered successfully.",
+    "reorder_success": "Re-ordered successfully.",
     "reorder_success_desc": "Auto redirect to Checkout page to complete payment."
   },
   "order_history_details_page": {

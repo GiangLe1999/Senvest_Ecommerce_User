@@ -4,15 +4,19 @@ import CustomBreadcrumb from "@/components/custom-breadcrumb";
 import SmallSectionContainer from "@/components/small-section-container";
 import { Payment } from "@/entities/payment.entity";
 import { useLocale, useTranslations } from "next-intl";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import OrderRow from "./order-row";
 import OrderStatusTag from "../order-history-page/order-status-tag";
-import { formatCurrencyVND, formatDate } from "@/lib/utils";
-import { FileDownIcon } from "lucide-react";
+import { formatCurrencyVND, formatDate, getPriceForVariant } from "@/lib/utils";
+import { FileDownIcon, Loader2Icon, Repeat2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useSession } from "next-auth/react";
 import { exportOrderData } from "@/lib/export-order";
+import { useCartStore } from "@/stores/useCartStore";
+import { getProductById } from "@/queries/products.queries";
+import { toast } from "sonner";
+import { useRouter } from "@/configs/i18n-navigation";
 
 interface Props {
   payment: Payment;
@@ -26,6 +30,9 @@ const OrderHistoryDetailsPageContent: FC<Props> = ({
   const locale = useLocale();
   const isVi = locale === "vi";
   const { data: session } = useSession();
+  const { addToCart } = useCartStore((state) => state);
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const customerInfo = payment.user_address;
   const subtotal = payment.items.reduce(
@@ -74,6 +81,51 @@ const OrderHistoryDetailsPageContent: FC<Props> = ({
       console.error("Failed to export user order:", error);
     }
   };
+
+  const reOrderHandler = async () => {
+    try {
+      setLoading(true);
+      await Promise.all(
+        payment.items.map(async (item: any) => {
+          const res = await getProductById({
+            _id: item._id._id,
+            variant_id: item.variant_id._id,
+          });
+
+          if (res.ok && res.product) {
+            const product = res.product;
+            addToCart({
+              _id: product._id,
+              variant_id: product.variants[0]._id,
+              quantity: item.quantity,
+              price: getPriceForVariant(product.variants[0]),
+              image: product.variants[0].images[0],
+              name: product.name,
+              scent: product.variants[0].fragrance,
+              stock: product.variants[0].stock,
+              slug: product.slug,
+              locale,
+            });
+          } else {
+            return toast.error(t2("reorder_failed"), {
+              description: res.error,
+            });
+          }
+        })
+      );
+
+      setLoading(false);
+      toast.success(t2("reorder_success"), {
+        description: t2("reorder_success_desc"),
+      });
+      return router.push("/thanh-toan");
+    } catch (error) {
+      toast.error(t2("reorder_failed"), {
+        description: t2("reorder_failed_desc"),
+      });
+    }
+  };
+
   return (
     <SmallSectionContainer className="mt-12">
       <CustomBreadcrumb
@@ -88,18 +140,36 @@ const OrderHistoryDetailsPageContent: FC<Props> = ({
       />
 
       <div className="bg-white border shadow-md mt-6 rounded-sm p-6">
-        <div className="flex items-center gap-1 justify-between">
-          <h1 className="sm:text-2xl text-xl font-bold capitalize mb-3">
+        <div className="flex items-center gap-x-2 gap-y-3 justify-between flex-wrap">
+          <h1 className="sm:text-2xl text-xl font-bold capitalize">
             {t("order_no")} #{payment.orderCode}
           </h1>
 
-          <Button className="sm:text-base text-xs" onClick={exportHandler}>
-            <FileDownIcon className="sm:w-[18px] w-4 sm:h-[18px] h-4 mr-1" />
-            Export
-          </Button>
+          <div className="flex items-center gap-3">
+            <button
+              className="py-2 px-4 rounded-sm sm:text-base text-xs text-primary flex items-center bg-primary text-white"
+              onClick={exportHandler}
+            >
+              <FileDownIcon className="sm:w-[18px] w-4 sm:h-[18px] h-4 mr-1" />
+              Export
+            </button>
+
+            <button
+              type="button"
+              onClick={reOrderHandler}
+              className="py-2 px-4 border border-primary rounded-sm sm:text-base text-xs text-primary flex items-center"
+            >
+              {loading ? (
+                <Loader2Icon className="sm:w-[18px] w-4 sm:h-[18px] h-4 mr-1 animate-spin" />
+              ) : (
+                <Repeat2Icon className="sm:w-[18px] w-4 sm:h-[18px] h-4 mr-1" />
+              )}
+              {t2("re_order")}
+            </button>
+          </div>
         </div>
 
-        <div className="mb-6">
+        <div className="mb-6 mt-3">
           <OrderStatusTag status={payment.status} />
         </div>
 

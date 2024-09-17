@@ -17,53 +17,6 @@ interface Props {
 const OrderRow: FC<Props> = ({ item, t }): JSX.Element => {
   const locale = useLocale();
   const isVi = locale === "vi";
-  const { addToCart } = useCartStore((state) => state);
-  const [loading, setLoading] = useState(false);
-  const router = useRouter();
-
-  const reOrderHandler = async (items: any) => {
-    try {
-      setLoading(true);
-      await Promise.all(
-        items.map(async (item: any) => {
-          const res = await getProductById({
-            _id: item._id,
-            variant_id: item.variant_id,
-          });
-
-          if (res.ok && res.product) {
-            const product = res.product;
-            addToCart({
-              _id: product._id,
-              variant_id: product.variants[0]._id,
-              quantity: item.quantity,
-              price: getPriceForVariant(product.variants[0]),
-              image: product.variants[0].images[0],
-              name: product.name,
-              scent: product.variants[0].fragrance,
-              stock: product.variants[0].stock,
-              slug: product.slug,
-              locale,
-            });
-          } else {
-            return toast.error(t("reorder_failed"), {
-              description: res.error,
-            });
-          }
-        })
-      );
-
-      setLoading(false);
-      toast.success(t("reorder_success"), {
-        description: t("reorder_success_desc"),
-      });
-      return router.push("/thanh-toan");
-    } catch (error) {
-      toast.error(t("reorder_failed"), {
-        description: t("reorder_failed_desc"),
-      });
-    }
-  };
 
   return (
     <tr className="text-sm border-b">
