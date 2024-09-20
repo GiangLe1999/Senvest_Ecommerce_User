@@ -20,6 +20,7 @@ import { useTranslations } from "next-intl";
 import { getCoupon } from "@/queries/coupons.queries";
 import CustomLoadingButton from "@/components/custom-loading-button";
 import { formatCurrencyVND } from "@/lib/utils";
+import { useSession } from "next-auth/react";
 
 interface Props {
   setDiscountedByCoupon: Dispatch<
@@ -39,6 +40,8 @@ const CouponInput: FC<Props> = ({
 
   const [loading, setLoading] = useState(false);
 
+  const { data: session } = useSession();
+
   const FormSchema = z.object({
     coupon: z.string({ message: t("coupon_rule") }).min(1, {
       message: t("coupon_rule"),
@@ -55,9 +58,21 @@ const CouponInput: FC<Props> = ({
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
       setLoading(true);
-      const res = await getCoupon(data.coupon);
+      const res = await getCoupon(
+        data.coupon,
+        session?.user?.email ? session?.user?.email : undefined
+      );
 
-      if (res.ok) {
+      if (res.ok && res.coupon.code === data.coupon) {
+        if (res.coupon?.assigned_to_email) {
+          if (res.coupon?.assigned_to_email !== session?.user?.email) {
+            setLoading(false);
+            return toast.error(t("apply_fail"), {
+              description: t("apply_fail_desc_1"),
+            });
+          }
+        }
+
         setLoading(false);
 
         const discount_type = res.coupon.discount_type;

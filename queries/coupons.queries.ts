@@ -1,21 +1,20 @@
 "use server";
 
-// Banners
-export const getCoupon = async (code: string) => {
+// Coupon
+export const getCoupon = async (code: string, email?: string) => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/coupons/${code}`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/coupons/${code}${
+        email ? `?email=${email}` : ""
+      }`,
       {
-        next: { revalidate: 20 },
+        next: { revalidate: 10 },
       }
     );
 
-    if (!res.ok) {
-      console.log("Failed to fetch coupon");
-    }
-
     return await res.json();
   } catch (error) {
+    console.log(error);
     console.log("Failed to fetch coupon");
   }
 };

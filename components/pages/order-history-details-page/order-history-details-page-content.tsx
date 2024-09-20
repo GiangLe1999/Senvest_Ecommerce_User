@@ -10,7 +10,6 @@ import OrderRow from "./order-row";
 import OrderStatusTag from "../order-history-page/order-status-tag";
 import { formatCurrencyVND, formatDate, getPriceForVariant } from "@/lib/utils";
 import { FileDownIcon, Loader2Icon, Repeat2Icon } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { useSession } from "next-auth/react";
 import { exportOrderData } from "@/lib/export-order";
 import { useCartStore } from "@/stores/useCartStore";
