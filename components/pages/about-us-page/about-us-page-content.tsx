@@ -19,7 +19,14 @@ const AboutUsPageContent: FC<Props> = (props): JSX.Element => {
       </h1>
 
       <div className="prose max-w-none">
-        {t("sapo")}
+        <p>{t("sapo")}</p>
+        <p>
+          {t.rich("sapo_2", {
+            ul: (chunks) => <ul className="space-y-2 mt-2">{chunks}</ul>,
+            li: (chunks) => <li className="list-disc">{chunks}</li>,
+            b: (chunks) => <b>{chunks}</b>,
+          })}
+        </p>
 
         <h2 className="mt-6 mb-2">{t("p_1_heading")}</h2>
         <p>{t("p_1_content_1")}</p>

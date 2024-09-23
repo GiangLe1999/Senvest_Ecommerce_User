@@ -161,6 +161,10 @@ export const pathnames = {
     vi: "/chinh-sach-van-chuyen",
     en: "/delivery-policy",
   },
+  "/phuong-thuc-thanh-toan": {
+    vi: "/phuong-thuc-thanh-toan",
+    en: "/payment-methods",
+  },
   "/tim-kiem/[keyword]": {
     vi: "/tim-kiem/[keyword]",
     en: "/search/[keyword]",

@@ -28,6 +28,10 @@ const navItems = [
     url: "/chinh-sach-bao-mat",
   },
   {
+    title: "payment_methods",
+    url: "/phuong-thuc-thanh-toan",
+  },
+  {
     title: "faqs",
     url: "/faqs",
   },
@@ -58,17 +62,17 @@ const Footer: FC<Props> = (props): JSX.Element => {
         <div className="lg:py-10 py-4 text-sm text-muted flex flex-wrap items-center justify-center gap-3 sm:text-left text-center">
           {t("copyright")} <span className="text-gray-300">|</span>{" "}
           <a
-            href="tel:+84962334807"
+            href="tel:+:84779741998"
             className="font-bold text-lg text-foreground hover:text-primary transition-colors"
           >
-            (+84) 962 334 807
+            (+84) 779741998
           </a>
           <span className="text-gray-300">|</span>
           <a
-            href="mailto:info@kindlehopecandles.com"
+            href="mailto:kindlehopecandles@gmail.com"
             className="hover:text-primary transition-colors"
           >
-            info@kindlehopecandles.com
+            kindlehopecandles@gmail.com
           </a>
         </div>
       </SmallSectionContainer>

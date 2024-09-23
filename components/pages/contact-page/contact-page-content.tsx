@@ -34,12 +34,12 @@ const ContactPageContent: FC<Props> = ({ session, payments }): JSX.Element => {
             <p className="text-sm text-muted mb-4">{t("desc")}</p>
             <ul className="space-y-2 text-sm text-muted list-disc list-inside">
               <li>
-                <a href="mailto:info@kindlehopecandles.com">
-                  info@kindlehopecandles.com
+                <a href="mailto:kindlehopecandles@gmail.com">
+                  kindlehopecandles@gmail.com
                 </a>
               </li>
               <li>
-                <a href="tel:0962334807">0962334807</a>
+                <a href="tel:0779741998">0779741998</a>
               </li>
               <li>
                 <a

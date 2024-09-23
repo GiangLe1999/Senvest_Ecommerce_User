@@ -332,6 +332,7 @@
     "terms": "Terms and Conditions",
     "privacy_policy": "Privacy Policy",
     "faqs": "FAQs",
+    "payment_methods": "Payment Methods",
     "subscribe": "Subscribe",
     "subscribe_description": "Get on the list and get 10% off your first order!",
     "subscribe_rule": "Please enter a valid email address.",
@@ -656,7 +657,7 @@
     "p_5_heading": "Order Inspection and Receipt",
     "p_5_content": "<ul><li>Customers have the right to check the condition of the product before making payment. If any damage or discrepancies are found, you can refuse to accept the order.</li><li>After receiving the order, if there are any issues related to the product (damage, missing items, manufacturing defects, etc.), please contact us within 48 hours for assistance.</li></ul>",
     "p_6_heading": "Customer Support",
-    "p_6_content": "<ul><li>For more information about your order status or any questions regarding the delivery process, please contact us via our hotline at 0962334807 or email us at support@kindlehopecandles.vn.</li></ul>",
+    "p_6_content": "<ul><li>For more information about your order status or any questions regarding the delivery process, please contact us via our hotline at 0779741998 or email us at support@kindlehopecandles.vn.</li></ul>",
     "p_7": "We hope Kindle Hope Candles brings you the best products and services. Thank you for your trust and support!"
   },
   "terms_and_conditions_page": {
@@ -738,6 +739,7 @@
   "about_us_page": {
     "heading": "About Kindle Hope Candles",
     "sapo": "Welcome to Kindle Hope Candles, where we believe that each candle not only brings a gentle fragrance but also symbolizes warmth, hope, and kindness. Here, we are not only creating high-quality scented candles but also striving to make a positive difference in the community through charitable activities.",
+    "sapo_2": "<ul><li><b>Company name: </b>Kindle Hope Candles Co., Ltd.</li><li><b>Head office address: </b>245/11 Chu Van An, Ward 12, Binh Thanh District, Ho Chi Minh City</li><li><b>Phone number: </b>0779741998</li><li><b>Business registration number: </b>0318649406</li><li><b>First registration: </b>August 30, 2024</li><li><b>Place of issue: </b>Department of Administrative Management on Social Order</li></ul>",
     "p_1_heading": "Our journey began with passion and sharing",
     "p_1_content_1": "Kindle Hope Candles was founded by a group of fragrance enthusiasts who wanted to spread love. Starting with simple candles used at home, we gradually expanded our production with the goal of providing delicate and distinctive fragrance experiences for everyone.",
     "p_1_content_2": "Each of our candles is made from natural, safe, and eco-friendly materials. Moreover, every detail in the production process is meticulously crafted to ensure the highest quality. However, what sets us apart is not just our scented candles but the mission of Kindle Hope Candles.",
@@ -914,5 +916,35 @@
     "description": "Sorry, we couldn’t find the page you’re looking for.",
     "go_back_home": "Go back home",
     "contact_support": "Contact support"
+  },
+  "payment_methods_page": {
+    "heading": "Payment Methods",
+    "sapo": "At Kindle Hope Candles, we always prioritize our customers' shopping experience by providing secure, convenient, and easy-to-understand payment methods. You can choose the payment method that best suits your needs when purchasing products or using services on our website. Please refer to the following instructions to make your payment easily and securely.",
+    "p_1_heading": "1. Bank Transfer Payment",
+    "p_1_sapo_1": "<b>Bank transfer payment</b> is a simple and fast payment method. After completing your order on the website, you can make a payment by transferring funds to our bank account as follows:",
+    "p_1_sapo_2": "<ul><li><b>Account holder: </b>Phạm Huỳnh Linh</li><li><b>Account number: </b>9099 6666 8888</li><li><b>Bank: </b>Military Commercial Joint Stock Bank (MB Bank)</li></ul>",
+    "p_1_subheading_1": "a) Bank transfer instructions:",
+    "p_1_p_1_content": "<ol><li>After placing your order, log into your internet banking service or banking app to make the transfer.</li><li>Enter the recipient’s details as provided, including the account holder’s name, account number, and bank name.</li><li>Please enter the correct transfer details so we can easily confirm your order.</li></ol>",
+    "p_1_subheading_2": "b) Transfer details:",
+    "p_1_p_2_content": "<ul><li><b>For candle orders: </b>Please specify the details as: <b>TT nen thom KHC</b></li><li><b>For donations via the website: </b>If you are making a donation through the <a>Donation</a> page, please specify the details as: <b>Dong gop + Amount</b> (Example: Dong gop 500000)</li></ul>",
+    "p_1_subheading_3": "c) Notes on bank transfer payments:",
+    "p_1_p_3_content": "<ul><li>After completing the transfer, please keep your transaction receipt or take a screenshot for future reference if needed.</li><li>Your order will be processed after we receive confirmation of successful payment from the bank. Typically, confirmation of bank transfers takes 1-2 business hours.</li><li>If you do not receive a confirmation from Kindle Hope Candles within 24 hours of the transfer, please contact us for support.</li></ul>",
+    "p_2_heading": "2. PayOS QR Code Payment",
+    "p_2_sapo": "<b>PayOS</b> is a trusted online payment gateway that Kindle Hope Candles uses to secure our customers' online transactions. Your entire payment process will be handled through PayOS, ensuring the highest level of security for your personal and financial information.",
+    "p_2_subheading_1": "a) How to pay via QR code using PayOS:",
+    "p_2_p_1_content": "<ol><li><b>Select your product and complete your order</b> on the Kindle Hope Candles website.</li><li>After order confirmation, the system will display a <b>payment QR code</b>.</li><li><b>Open your banking app</b> or e-wallet (such as VNPay, Momo, ZaloPay).</li><li>Use the app's QR code scanning feature to scan the displayed QR code.</li><li>Payment information will be automatically filled in, including the amount and order details.</li><li>Simply confirm the transaction to complete the payment.</li></ol>",
+    "p_2_subheading_2": "b) Advantages of QR code payment:",
+    "p_2_p_2_content": "<ol><li><b>Fast and convenient: </b> Simply open the app, scan the QR code, and confirm. No need to manually enter information.</li><li><b>High security: </b>All transactions are encrypted and protected by PayOS's secure system, giving you peace of mind when making payments.</li><li><b>Compatible with many banking apps and e-wallets: </b>Supports most popular payment apps such as VNPay, Momo, ZaloPay, and many other banking apps.</li></ol>",
+    "p_3_heading": "3. Payment and Delivery Policy",
+    "p_3_content": "<ul><li>Kindle Hope Candles will only deliver products once payment has been successfully completed via PayOS or bank transfer.</li><li>After receiving payment confirmation, we will proceed to pack and ship your order within 1-2 business days.</li><li>If you encounter any issues during the payment process, you can contact our support team immediately via email or phone for assistance.</li></ul>",
+    "p_4_heading": "4. Payment Verification and Reconciliation Instructions",
+    "p_4_content": "<ul><li>After completing the payment, you will receive a confirmation email from Kindle Hope Candles, including detailed information about your order and payment.</li><li>For orders paid via bank transfer, if you do not receive a confirmation from us within 24 hours after the transfer, please contact us to check and verify.</li><li>Kindle Hope Candles recommends that you always double-check payment information before proceeding, especially for bank transfers, to avoid errors or mistakes.</li></ul>",
+    "p_5_heading": "5. Commitment to Payment Information Security",
+    "p_5_sapo": "We understand that your financial information is extremely important. Therefore, Kindle Hope Candles is committed to:",
+    "p_5_content": "<ul><li><b>Absolute confidentiality</b> of all information related to the payment process.</li><li><b>No storage of credit card information</b> or any sensitive financial data. All transactions are processed through the PayOS payment gateway with international security standards.</li><li><b>Strict compliance</b> with legal regulations on personal information protection and financial security.</li></ul>",
+    "p_6_heading": "6. Customer Support",
+    "p_6_content_1": "If you have any questions about payment methods or experience difficulties during the process, please contact us via:",
+    "p_6_content_2": "<ul><li><b>Email: </b>kindlehopecandles@gmail.com</li><li><b>Phone: </b>0779741998</li></ul>",
+    "p_6_content_3": "We are always ready to assist you to ensure your payment experience is smooth and secure."
   }
 }
