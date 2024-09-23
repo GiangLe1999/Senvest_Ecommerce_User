@@ -23,12 +23,27 @@ const TermsAndConditionsPageContent: FC<Props> = (props): JSX.Element => {
         {t("sapo")}
 
         <h2 className="mt-6 mb-2">{t("p_1_heading")}</h2>
-        <p>{t("p_1_content_1")}</p>
-        <p>{t("p_1_content_2")}</p>
+        <h3 className="mt-6 mb-2">{t("p_1_subheading_1")}</h3>
+        {t.rich("p_1_p_1_content", {
+          ul: (chunks) => <ul className="space-y-2 mt-2">{chunks}</ul>,
+          li: (chunks) => <li className="list-disc">{chunks}</li>,
+        })}
+
+        <h3 className="mt-6 mb-2">{t("p_1_subheading_2")}</h3>
+        {t.rich("p_1_p_2_content", {
+          ul: (chunks) => <ul className="space-y-2 mt-2">{chunks}</ul>,
+          li: (chunks) => <li className="list-disc">{chunks}</li>,
+        })}
 
         <h2 className="mt-6 mb-2">{t("p_2_heading")}</h2>
-        <p>{t("p_2_content_1")}</p>
-        <p>{t("p_2_content_2")}</p>
+        <h3 className="mt-6 mb-2">{t("p_2_subheading_1")}</h3>
+        {t("p_2_p_1_content")}
+
+        <h3 className="mt-6 mb-2">{t("p_2_subheading_2")}</h3>
+        {t.rich("p_2_p_2_content", {
+          ul: (chunks) => <ul className="space-y-2 mt-2">{chunks}</ul>,
+          li: (chunks) => <li className="list-disc">{chunks}</li>,
+        })}
 
         <h2 className="mt-6 mb-2">{t("p_3_heading")}</h2>
         {t.rich("p_3_content", {
@@ -37,35 +52,31 @@ const TermsAndConditionsPageContent: FC<Props> = (props): JSX.Element => {
         })}
 
         <h2 className="mt-6 mb-2">{t("p_4_heading")}</h2>
-        {t.rich("p_4_content", {
+        <h3 className="mt-6 mb-2">{t("p_4_subheading_1")}</h3>
+        {t.rich("p_4_p_1_content", {
           ul: (chunks) => <ul className="space-y-2 mt-2">{chunks}</ul>,
           li: (chunks) => <li className="list-disc">{chunks}</li>,
         })}
 
-        <h2 className="mt-6 mb-2">{t("p_5_heading")}</h2>
-        <p>{t("p_5_content")}</p>
-
-        <h2 className="mt-6 mb-2">{t("p_6_heading")}</h2>
-        <p>{t("p_6_content")}</p>
-
-        <h2 className="mt-6 mb-2">{t("p_7_heading")}</h2>
-        {t.rich("p_7_content", {
-          a: (chunks) => (
-            <Link
-              href="/chinh-sach-bao-mat"
-              className="text-primary font-bold underline"
-              target="_blank"
-            >
-              {chunks}
-            </Link>
-          ),
+        <h3 className="mt-6 mb-2">{t("p_4_subheading_3")}</h3>
+        {t.rich("p_4_p_3_content", {
+          ul: (chunks) => <ul className="space-y-2 mt-2">{chunks}</ul>,
+          li: (chunks) => <li className="list-disc">{chunks}</li>,
+          b: (chunks) => <strong>{chunks}</strong>,
         })}
 
-        <h2 className="mt-6 mb-2">{t("p_8_heading")}</h2>
-        <p>{t("p_8_content")}</p>
+        <h2 className="mt-6 mb-2">{t("p_5_heading")}</h2>
+        <h3 className="mt-6 mb-2">{t("p_5_subheading_1")}</h3>
+        {t.rich("p_5_p_1_content", {
+          ul: (chunks) => <ul className="space-y-2 mt-2">{chunks}</ul>,
+          li: (chunks) => <li className="list-disc">{chunks}</li>,
+        })}
 
-        <h2 className="mt-6 mb-2">{t("p_9_heading")}</h2>
-        <p>{t("p_9_content")}</p>
+        <h3 className="mt-6 mb-2">{t("p_5_subheading_2")}</h3>
+        {t.rich("p_5_p_2_content", {
+          ul: (chunks) => <ul className="space-y-2 mt-2">{chunks}</ul>,
+          li: (chunks) => <li className="list-disc">{chunks}</li>,
+        })}
       </div>
     </SmallSectionContainer>
   );

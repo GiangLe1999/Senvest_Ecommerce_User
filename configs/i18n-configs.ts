@@ -150,7 +150,7 @@ export const pathnames = {
     en: "/store-location",
   },
   "/dieu-khoan-va-dieu-kien": {
-    vi: "/dieu-kien-va-dieu-kien",
+    vi: "/dieu-khoan-va-dieu-kien",
     en: "/terms-and-conditions",
   },
   "/chinh-sach-bao-mat": {
