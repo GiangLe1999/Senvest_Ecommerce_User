@@ -11,6 +11,11 @@ import { Cart } from "@/components/cart";
 import NewPaymentNotification from "@/components/new-payment-notification";
 import NewDonationNotification from "@/components/new-donation-notification";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import dynamic from "next/dynamic";
+
+const Contacts = dynamic(
+  () => import("@/components/layout/sticky-components/contacts")
+);
 
 const philosopher = Philosopher({
   subsets: ["vietnamese"],
@@ -75,6 +80,7 @@ export default function RootLayout({
           <main className="mt-[176px]">{children}</main>
           <Footer />
           <Cart />
+          <Contacts />
           <NewPaymentNotification />
           <NewDonationNotification />
         </body>
