@@ -23,13 +23,13 @@ const Contacts: FC<Props> = (props): JSX.Element => {
   const t = useTranslations("sticky_contacts");
 
   return (
-    <div className="hidden sm:flex fixed bottom-[85px] z-[49] right-4 flex-col gap-y-2">
+    <div className="flex fixed bottom-4 z-[49] sm:right-4 right-2 flex-col gap-y-2">
       <TooltipProvider>
         <TouchProvider>
           <HybridTooltip>
             <HybridTooltipTrigger>
               <Link href="tel:+:84779741998">
-                <Phone className="w-11 h-11" />
+                <Phone className="sm:w-11 sm:h-11 w-9 h-9" />
               </Link>
             </HybridTooltipTrigger>
             <HybridTooltipContent
@@ -47,7 +47,7 @@ const Contacts: FC<Props> = (props): JSX.Element => {
           <HybridTooltip>
             <HybridTooltipTrigger>
               <Link href="https://zalo.me/0779741998" target="_blank">
-                <Zalo className="w-11 h-11" />
+                <Zalo className="sm:w-11 sm:h-11 w-9 h-9" />
               </Link>
             </HybridTooltipTrigger>
             <HybridTooltipContent
@@ -67,7 +67,7 @@ const Contacts: FC<Props> = (props): JSX.Element => {
           <HybridTooltip>
             <HybridTooltipTrigger>
               <Link href="https://zalo.me/0779741998" target="_blank">
-                <Messenger className="w-11 h-11" />
+                <Messenger className="sm:w-11 sm:h-11 w-9 h-9" />
               </Link>
             </HybridTooltipTrigger>
             <HybridTooltipContent
@@ -87,7 +87,7 @@ const Contacts: FC<Props> = (props): JSX.Element => {
           <HybridTooltip>
             <HybridTooltipTrigger>
               <Link href="mailto:kindlehopecandles@gmail.com">
-                <Email className="w-11 h-11" />
+                <Email className="sm:w-11 sm:h-11 w-9 h-9" />
               </Link>
             </HybridTooltipTrigger>
             <HybridTooltipContent
@@ -107,7 +107,7 @@ const Contacts: FC<Props> = (props): JSX.Element => {
           <HybridTooltip>
             <HybridTooltipTrigger>
               <Link href="/contact">
-                <Address className="w-11 h-11" />
+                <Address className="sm:w-11 sm:h-11 w-9 h-9" />
               </Link>
             </HybridTooltipTrigger>
             <HybridTooltipContent
