@@ -59,21 +59,45 @@ const Footer: FC<Props> = (props): JSX.Element => {
         </nav>
         <Subscribe />
 
-        <div className="lg:py-10 py-4 text-sm text-muted flex flex-wrap items-center justify-center gap-3 sm:text-left text-center">
-          {t("copyright")} <span className="text-gray-300">|</span>{" "}
-          <a
-            href="tel:+:84779741998"
-            className="font-bold text-lg text-foreground hover:text-primary transition-colors"
-          >
-            (+84) 779741998
-          </a>
-          <span className="text-gray-300">|</span>
-          <a
-            href="mailto:kindlehopecandles@gmail.com"
-            className="hover:text-primary transition-colors"
-          >
-            kindlehopecandles@gmail.com
-          </a>
+        <div className="lg:py-6 py-4 text-sm text-muted sm:text-left text-center">
+          <div className="mb-3">
+            <div className="flex flex-wrap items-center gap-3 justify-center mb-3">
+              <p>
+                {t("dkkd")}: <b className="text-foreground">0318649406</b>
+              </p>
+              <span className="text-gray-300">|</span>
+              <p>
+                {t("issue_date")}: <b className="text-foreground">30/08/2024</b>
+              </p>
+            </div>
+
+            <p className="text-center mb-3">
+              {t("issue_company_1")}:{" "}
+              <b className="text-foreground">{t("issue_company_2")}</b>
+            </p>
+
+            <p className="text-center">
+              {t("address_1")}:{" "}
+              <b className="text-foreground">{t("address_2")}</b>
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            {t("copyright")} <span className="text-gray-300">|</span>{" "}
+            <a
+              href="tel:+:84779741998"
+              className="font-bold text-lg text-foreground hover:text-primary transition-colors"
+            >
+              (+84) 779741998
+            </a>
+            <span className="text-gray-300">|</span>
+            <a
+              href="mailto:kindlehopecandles@gmail.com"
+              className="hover:text-primary transition-colors"
+            >
+              kindlehopecandles@gmail.com
+            </a>
+          </div>
         </div>
       </SmallSectionContainer>
     </footer>

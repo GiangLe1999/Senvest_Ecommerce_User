@@ -92,10 +92,10 @@ const ContactPageContent: FC<Props> = ({ session, payments }): JSX.Element => {
             {t("headquarters")}
           </h3>
           <ul className="text-muted text-sm mt-1 space-y-1">
-            <li>Kindle Hopes Candles Co., Ltd.</li>
-            <li>16 Má Hai, Phường Tân Hòa</li>
-            <li>TP. Buôn Ma Thuột, Đăk Lăk, 630000</li>
-            <li>Việt Nam</li>
+            <li>{t("company_name")}</li>
+            <li>{t("address_1")}</li>
+            <li>{t("address_2")}</li>
+            <li>{t("address_3")}</li>
           </ul>
         </div>
       </div>
