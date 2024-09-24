@@ -10,6 +10,7 @@ import Footer from "@/components/layout/footer";
 import { Cart } from "@/components/cart";
 import NewPaymentNotification from "@/components/new-payment-notification";
 import NewDonationNotification from "@/components/new-donation-notification";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const philosopher = Philosopher({
   subsets: ["vietnamese"],
@@ -77,6 +78,7 @@ export default function RootLayout({
           <NewPaymentNotification />
           <NewDonationNotification />
         </body>
+        <GoogleAnalytics gaId="G-PY7GFNTKHP" />
       </Providers>
     </html>
   );
