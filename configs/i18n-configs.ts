@@ -9,10 +9,6 @@ export const pathnames = {
     vi: "/danh-muc/[categorySlug]",
     en: "/category/[categorySlug]",
   },
-  "/cua-hang": {
-    vi: "/cua-hang",
-    en: "/shop",
-  },
   "/bo-suu-tap/tat-ca": {
     vi: "/bo-suu-tap/tat-ca",
     en: "/collections/all",
