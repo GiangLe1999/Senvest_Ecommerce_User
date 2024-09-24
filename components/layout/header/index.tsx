@@ -36,12 +36,14 @@ const Header: FC<Props> = async (props): Promise<JSX.Element> => {
         <SmallSectionContainer className="grid grid-cols-12 h-10 xl:gap-x-0 gap-x-4">
           <div className="xl:col-span-3 hidden xl:block" />
           <div className="xl:col-span-6 col-span-8">
-            <SloganCarousel slogans={slogansResponse.slogans as Slogan[]} />
+            <SloganCarousel
+              slogans={(slogansResponse?.slogans || []) as Slogan[]}
+            />
           </div>
           <div className="xl:col-span-3 col-span-4">
             <LanguageSwitcher
               productSlugsMapping={
-                productSlugsMappingResponse.productSlugsMapping
+                productSlugsMappingResponse?.productSlugsMapping || {}
               }
             />
           </div>

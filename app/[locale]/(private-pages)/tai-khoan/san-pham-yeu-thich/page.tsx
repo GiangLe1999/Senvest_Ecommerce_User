@@ -32,9 +32,9 @@ const AccountWishlistPage: NextPage<Props> = async ({
 }: Props) => {
   unstable_setRequestLocale(locale);
 
-  const { wishlist } = await getUserWishlist();
+  const data = await getUserWishlist();
 
-  return <AccountWishlistPageContent wishlist={wishlist} />;
+  return <AccountWishlistPageContent wishlist={data?.wishlist} />;
 };
 
 export default AccountWishlistPage;

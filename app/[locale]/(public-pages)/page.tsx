@@ -50,12 +50,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 const HomePage: NextPage<Props> = async ({ params: { locale } }: Props) => {
   unstable_setRequestLocale(locale);
-  const { banners } = await getBanners();
+  const data = await getBanners();
   const { products } = await getHomepageProducts();
 
   return (
     <>
-      <BannerCarousel banners={banners} />
+      <BannerCarousel banners={data?.banners || []} />
       <Introduction />
       <Products products={products} />
       <Ingredients />

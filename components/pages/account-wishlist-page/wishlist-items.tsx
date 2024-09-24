@@ -13,7 +13,7 @@ const WishlistItems: FC<Props> = ({ t, wishlist }): JSX.Element => {
     <div>
       <h1 className="text-xl font-bold my-8">{t("breadcrumb_2")}</h1>
 
-      {wishlist.items.length > 0 ? (
+      {wishlist?.items?.length > 0 ? (
         <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">
           {wishlist.items.map((item, index) => (
             <WishlistItem key={index} item={item} />
