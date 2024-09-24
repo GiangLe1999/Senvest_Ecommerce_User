@@ -65,10 +65,10 @@ const Footer: FC<Props> = (props): JSX.Element => {
               <p>
                 {t("dkkd")}: <b className="text-foreground">0318649406</b>
               </p>
-              <span className="text-gray-300">|</span>
+              {/* <span className="text-gray-300">|</span>
               <p>
                 {t("issue_date")}: <b className="text-foreground">30/08/2024</b>
-              </p>
+              </p> */}
             </div>
 
             <p className="text-center mb-3">
