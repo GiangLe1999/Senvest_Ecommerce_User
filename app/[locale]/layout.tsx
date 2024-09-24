@@ -45,7 +45,7 @@ export default function RootLayout({
   unstable_setRequestLocale(locale);
   return (
     <html lang={locale} className="scroll-smooth" suppressHydrationWarning>
-      {/* <link
+      <link
         rel="apple-touch-icon"
         sizes="76x76"
         href="/static/favicons/apple-touch-icon.png"
@@ -61,7 +61,7 @@ export default function RootLayout({
         type="image/png"
         sizes="16x16"
         href="/static/favicons/favicon-16x16.png"
-      /> */}
+      />
       <Providers locale={locale}>
         <body
           className={cn(
