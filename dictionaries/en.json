@@ -440,6 +440,10 @@
     "payment_methods": "Payment methods",
     "payment_note": "* After clicking “Complete order”, you will be directed to PayOS, pay later with PayOS to complete your purchase securely.",
     "complete_order": "Complete order",
+    "agree_1": "I have read and agree to the ",
+    "agree_2": "General Terms and Conditions",
+    "agree_3": " of the website",
+    "agree_error": "Please agree to the terms and conditions before continue to checkout.",
     "create_link_fail": "Create payment link failed",
     "create_link_fail_desc": "We will resolve this issue as soon as possible."
   },

@@ -440,6 +440,10 @@
     "payment_methods": "Phương thức thanh toán",
     "payment_note": "* Sau khi nhấn “Hoàn tất đơn hàng”, bạn sẽ được chuyển đến PayOS. Thanh toán sau với PayOS để hoàn tất mua hàng của bạn một cách an toàn.",
     "complete_order": "Hoàn tất đơn hàng",
+    "agree_1": "Tôi đã đọc và đồng ý với các ",
+    "agree_2": "Điều kiện giao dịch chung",
+    "agree_3": " của website",
+    "agree_error": "Vui lòng đồng ý với các điều khoản và điều kiện trước khi tiếp tục thanh toán.",
     "create_link_fail": "Tạo liên kết thanh toán không thành công",
     "create_link_fail_desc": "Chúng tôi sẽ giải quyết vấn đề này càng sớm càng tốt."
   },

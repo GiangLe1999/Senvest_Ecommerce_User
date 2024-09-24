@@ -1,15 +1,16 @@
 import { createPaymentLink } from "@/actions/payment.actions";
 import CustomLoadingButton from "@/components/custom-loading-button";
-import { Button } from "@/components/ui/button";
 import { CartProduct } from "@/entities/cart-product.entity";
 import { NotUserInfo } from "@/entities/not-user-info-entity";
 import { UserAddress } from "@/entities/user-address.entity";
-import { formatCurrencyVND } from "@/lib/utils";
+import { cn, formatCurrencyVND } from "@/lib/utils";
 import { Session } from "next-auth";
 import { useLocale } from "next-intl";
 import Image from "next/image";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { toast } from "sonner";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Link } from "@/configs/i18n-navigation";
 
 interface Props {
   t: any;
@@ -41,10 +42,18 @@ const PaymentProcess: FC<Props> = ({
     (address) => address._id === userAddressId
   );
 
+  const [agreeState, setAgreeState] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
   const [loading, setLoading] = useState(false);
   const locale = useLocale();
 
   const createPaymentLinkHandler = async () => {
+    setSubmitted(true);
+    if (!agreeState) {
+      return;
+    }
+
     try {
       setLoading(true);
 
@@ -172,6 +181,42 @@ const PaymentProcess: FC<Props> = ({
           height={426}
         />
 
+        <div className="flex items-center mt-6 space-x-2">
+          <Checkbox
+            id="terms"
+            checked={agreeState}
+            onCheckedChange={() => setAgreeState(!agreeState)}
+            className={cn(
+              "accent-primary",
+              submitted && !agreeState && "border-red-500"
+            )}
+          />
+          <label
+            htmlFor="terms"
+            className={cn(
+              "text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer",
+              submitted && !agreeState && "text-red-500"
+            )}
+          >
+            {t("agree_1")}
+            <Link
+              href="/dieu-khoan-va-dieu-kien"
+              className={cn(
+                "underline font-bold",
+                submitted && !agreeState ? "text-red-500" : "text-primary "
+              )}
+            >
+              {t("agree_2")}
+            </Link>
+            {t("agree_3")}
+          </label>
+        </div>
+        {submitted && !agreeState && (
+          <p className="text-red-500 text-xs ml-6 mt-2">{t("agree_error")}</p>
+        )}
+
+        <p className="text-muted italic mt-4 text-xs">{t("payment_note")}</p>
+
         <div className="mt-5 text-center">
           <CustomLoadingButton
             loading={loading}
@@ -179,10 +224,6 @@ const PaymentProcess: FC<Props> = ({
             content={t("complete_order")}
           />
         </div>
-
-        <p className="text-muted italic mt-4 text-center text-xs">
-          {t("payment_note")}
-        </p>
       </div>
     </div>
   );
