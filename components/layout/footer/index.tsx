@@ -3,6 +3,7 @@ import { Link } from "@/configs/i18n-navigation";
 import { useTranslations } from "next-intl";
 import { FC } from "react";
 import Subscribe from "./subscribe";
+import Image from "next/image";
 
 interface Props {}
 
@@ -60,8 +61,22 @@ const Footer: FC<Props> = (props): JSX.Element => {
         <Subscribe />
 
         <div className="lg:py-6 py-4 text-sm text-muted sm:text-left text-center">
+          <Link
+            href={"http://online.gov.vn/Home/WebDetails/123390" as any}
+            target="_blank"
+            className="px-4 w-fit"
+          >
+            <Image
+              src="/logo-da-thong-bao-bo-cong-thuong.webp"
+              alt="Bộ Công Thương"
+              width={180}
+              height={70}
+              className="mx-auto"
+            />
+          </Link>
+
           <div className="mb-3">
-            <div className="flex flex-wrap items-center gap-3 justify-center mb-3">
+            <div className="flex flex-wrap items-center gap-3 justify-center mt-4 mb-3">
               <p>
                 {t("dkkd")}: <b className="text-foreground">0318649406</b>
               </p>
